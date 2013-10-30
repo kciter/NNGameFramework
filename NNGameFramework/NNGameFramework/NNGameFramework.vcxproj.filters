@@ -1,17 +1,166 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{1f37ffd2-e87b-4586-8017-7917c257dc86}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    <Filter Include="Framework\Application">
+      <UniqueIdentifier>{3eedc5be-ceac-4b43-bb3b-739a2e52630f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Framework\AudioSystem">
+      <UniqueIdentifier>{51f85f65-19b1-4888-9094-c10c45de9d58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\DataType">
+      <UniqueIdentifier>{65648ba5-f458-4e90-a722-9a0f092620f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\InputSystem">
+      <UniqueIdentifier>{a0ff2743-f8aa-4690-8739-05dd3c819d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Macro">
+      <UniqueIdentifier>{fb7c8a14-586f-4730-afab-46842e640b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node">
+      <UniqueIdentifier>{18cf93cd-1767-4b71-be1d-24bef893846f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Renderer">
+      <UniqueIdentifier>{1168af66-e86f-4083-bde4-ca7c22f0b9f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Resource">
+      <UniqueIdentifier>{7c063821-c97d-4e75-867c-a3adc2382a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene">
+      <UniqueIdentifier>{c4b05e9a-2644-4d63-afb0-f0170d11ba38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Example">
+      <UniqueIdentifier>{a76db04a-0608-45c6-9613-8d9c4a635523}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\DataType\Point">
+      <UniqueIdentifier>{9d1d755d-009c-4e7e-a938-eab0ef6b1293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\DataType\Size">
+      <UniqueIdentifier>{dca7f237-6652-4477-b5cf-5d8c6504a25a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Resource\Texture">
+      <UniqueIdentifier>{5958ceec-5bcb-4ad0-85a2-4ac712cab010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Renderer\D2D">
+      <UniqueIdentifier>{8b3c4275-9331-44a9-8a69-1148ef0b4ce0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\Label">
+      <UniqueIdentifier>{a8669a6a-b3ae-4bd0-aa54-95834e27ed28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\Object">
+      <UniqueIdentifier>{db4c4467-6863-4a27-82c1-4877d9c5fc84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\Scene">
+      <UniqueIdentifier>{5d93d218-84f3-47ba-a994-9fb923fef933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\Sprite">
+      <UniqueIdentifier>{b66eb4dc-2d24-4a2d-96d4-ed17e58f193f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NNApplication.cpp">
+      <Filter>Framework\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="NNAudioSystem.cpp">
+      <Filter>Framework\AudioSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="NNInputSystem.cpp">
+      <Filter>Framework\InputSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="NNSceneDirector.cpp">
+      <Filter>Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="NNResourceManager.cpp">
+      <Filter>Framework\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="NNSound.cpp">
+      <Filter>Framework\AudioSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="NNSize.cpp">
+      <Filter>Framework\DataType\Size</Filter>
+    </ClCompile>
+    <ClCompile Include="NNPoint.cpp">
+      <Filter>Framework\DataType\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="NNTexture.cpp">
+      <Filter>Framework\Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="NND2DRenderer.cpp">
+      <Filter>Framework\Renderer\D2D</Filter>
+    </ClCompile>
+    <ClCompile Include="NNLabel.cpp">
+      <Filter>Framework\Node\Label</Filter>
+    </ClCompile>
+    <ClCompile Include="NNSprite.cpp">
+      <Filter>Framework\Node\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="NNObject.cpp">
+      <Filter>Framework\Node\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="NNScene.cpp">
+      <Filter>Framework\Node\Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NNApplication.h">
+      <Filter>Framework\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="NNAudioSystem.h">
+      <Filter>Framework\AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="NNIncludeSet.h">
+      <Filter>Framework\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="NNConfig.h">
+      <Filter>Framework\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="NNLibSet.h">
+      <Filter>Framework\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="NNInputSystem.h">
+      <Filter>Framework\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="NNMacroSet.h">
+      <Filter>Framework\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="NNSceneDirector.h">
+      <Filter>Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="NNRenderer.h">
+      <Filter>Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="NNResourceManager.h">
+      <Filter>Framework\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="NNSound.h">
+      <Filter>Framework\AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="NNSize.h">
+      <Filter>Framework\DataType\Size</Filter>
+    </ClInclude>
+    <ClInclude Include="NNPoint.h">
+      <Filter>Framework\DataType\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="NNTexture.h">
+      <Filter>Framework\Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="NND2DRenderer.h">
+      <Filter>Framework\Renderer\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="NNLabel.h">
+      <Filter>Framework\Node\Label</Filter>
+    </ClInclude>
+    <ClInclude Include="NNSprite.h">
+      <Filter>Framework\Node\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="NNObject.h">
+      <Filter>Framework\Node\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="NNScene.h">
+      <Filter>Framework\Node\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

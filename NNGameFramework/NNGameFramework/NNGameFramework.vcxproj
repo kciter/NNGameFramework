@@ -78,6 +78,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NNApplication.cpp" />
+    <ClCompile Include="NNAudioSystem.cpp" />
+    <ClCompile Include="NND2DRenderer.cpp" />
+    <ClCompile Include="NNInputSystem.cpp" />
+    <ClCompile Include="NNLabel.cpp" />
+    <ClCompile Include="NNObject.cpp" />
+    <ClCompile Include="NNPoint.cpp" />
+    <ClCompile Include="NNResourceManager.cpp" />
+    <ClCompile Include="NNScene.cpp" />
+    <ClCompile Include="NNSceneDirector.cpp" />
+    <ClCompile Include="NNSize.cpp" />
+    <ClCompile Include="NNSound.cpp" />
+    <ClCompile Include="NNSprite.cpp" />
+    <ClCompile Include="NNTexture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NNApplication.h" />
+    <ClInclude Include="NNAudioSystem.h" />
+    <ClInclude Include="NNConfig.h" />
+    <ClInclude Include="NND2DRenderer.h" />
+    <ClInclude Include="NNIncludeSet.h" />
+    <ClInclude Include="NNInputSystem.h" />
+    <ClInclude Include="NNLabel.h" />
+    <ClInclude Include="NNLibSet.h" />
+    <ClInclude Include="NNMacroSet.h" />
+    <ClInclude Include="NNObject.h" />
+    <ClInclude Include="NNPoint.h" />
+    <ClInclude Include="NNRenderer.h" />
+    <ClInclude Include="NNResourceManager.h" />
+    <ClInclude Include="NNScene.h" />
+    <ClInclude Include="NNSceneDirector.h" />
+    <ClInclude Include="NNSize.h" />
+    <ClInclude Include="NNSound.h" />
+    <ClInclude Include="NNSprite.h" />
+    <ClInclude Include="NNTexture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
