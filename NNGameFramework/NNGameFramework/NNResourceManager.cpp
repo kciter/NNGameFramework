@@ -11,7 +11,7 @@ NNResourceManager::NNResourceManager()
 }
 NNResourceManager::~NNResourceManager()
 {
-	for (auto iter=m_TextureTable.begin(); iter!=m_TextureTable.end(); iter++ )
+	for (auto& iter=m_TextureTable.begin(); iter!=m_TextureTable.end(); iter++ )
 	{
 		SafeDelete( iter->second );
 	}

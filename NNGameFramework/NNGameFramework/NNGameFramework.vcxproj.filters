@@ -58,6 +58,9 @@
     <Filter Include="Framework\Node\Sprite">
       <UniqueIdentifier>{b66eb4dc-2d24-4a2d-96d4-ed17e58f193f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Example\SpriteExample">
+      <UniqueIdentifier>{ebea452a-d90e-4819-9923-809896377653}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -102,6 +105,9 @@
     </ClCompile>
     <ClCompile Include="NNScene.cpp">
       <Filter>Framework\Node\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteExampleScene.cpp">
+      <Filter>Example\SpriteExample</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="NNScene.h">
       <Filter>Framework\Node\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteExampleScene.h">
+      <Filter>Example\SpriteExample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

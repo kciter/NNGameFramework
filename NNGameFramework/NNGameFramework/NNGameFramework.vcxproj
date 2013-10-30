@@ -93,6 +93,7 @@
     <ClCompile Include="NNSound.cpp" />
     <ClCompile Include="NNSprite.cpp" />
     <ClCompile Include="NNTexture.cpp" />
+    <ClCompile Include="SpriteExampleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NNApplication.h" />
@@ -114,6 +115,7 @@
     <ClInclude Include="NNSound.h" />
     <ClInclude Include="NNSprite.h" />
     <ClInclude Include="NNTexture.h" />
+    <ClInclude Include="SpriteExampleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

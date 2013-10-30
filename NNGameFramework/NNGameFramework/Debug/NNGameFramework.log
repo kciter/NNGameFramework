@@ -1,23 +1,8 @@
-﻿빌드 시작: 2013-10-30 오전 11:26:10
+﻿빌드 시작: 2013-10-30 오전 11:56:34
      1>2 노드의 "C:\Users\Sun-hyoup\Desktop\NNGameFramework\NNGameFramework\NNGameFramework\NNGameFramework.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp NNApplication.cpp NNAudioSystem.cpp NND2DRenderer.cpp NNInputSystem.cpp NNLabel.cpp NNObject.cpp NNPoint.cpp NNResourceManager.cpp NNScene.cpp NNSceneDirector.cpp NNSize.cpp NNSound.cpp NNSprite.cpp NNTexture.cpp
-         NNTexture.cpp
-         NNSprite.cpp
-         NNSound.cpp
-         NNSize.cpp
-         NNSceneDirector.cpp
-         NNScene.cpp
-         NNResourceManager.cpp
-         NNPoint.cpp
-         NNObject.cpp
-         NNLabel.cpp
-         NNInputSystem.cpp
-         NND2DRenderer.cpp
-         NNAudioSystem.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt NNApplication.cpp
          NNApplication.cpp
-         Main.cpp
-         코드를 생성하고 있습니다...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sun-hyoup\Desktop\NNGameFramework\NNGameFramework\Debug\NNGameFramework.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sun-hyoup\Desktop\NNGameFramework\NNGameFramework\Debug\NNGameFramework.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sun-hyoup\Desktop\NNGameFramework\NNGameFramework\Debug\NNGameFramework.lib" /MACHINE:X86 Debug\Main.obj
          Debug\NNApplication.obj
@@ -34,9 +19,10 @@
          Debug\NNSound.obj
          Debug\NNSprite.obj
          Debug\NNTexture.obj
+         Debug\SpriteExampleScene.obj
          NNGameFramework.vcxproj -> C:\Users\Sun-hyoup\Desktop\NNGameFramework\NNGameFramework\Debug\NNGameFramework.exe
      1>"C:\Users\Sun-hyoup\Desktop\NNGameFramework\NNGameFramework\NNGameFramework\NNGameFramework.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:30.06
+경과 시간: 00:00:03.85
