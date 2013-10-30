@@ -15,6 +15,9 @@
 # Debug folder
 Debug/
 
+# Release folder
+Release/
+
 # Project files
 *.sdf
 *.opensdf
