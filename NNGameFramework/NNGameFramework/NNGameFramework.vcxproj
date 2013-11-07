@@ -41,6 +41,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>.\Library\FMOD\lib;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <ExecutablePath>.\DLL;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -55,7 +58,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -78,9 +81,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationSample.cpp" />
+    <ClCompile Include="CameraSample.cpp" />
+    <ClCompile Include="FMODSoundSample.cpp" />
+    <ClCompile Include="Library\TinyXML\action_store.cpp" />
+    <ClCompile Include="Library\TinyXML\htmlutil.cpp" />
+    <ClCompile Include="Library\TinyXML\lex_util.cpp" />
+    <ClCompile Include="Library\TinyXML\node_set.cpp" />
+    <ClCompile Include="Library\TinyXML\tinystr.cpp" />
+    <ClCompile Include="Library\TinyXML\tinyxml.cpp" />
+    <ClCompile Include="Library\TinyXML\tinyxmlerror.cpp" />
+    <ClCompile Include="Library\TinyXML\tinyxmlparser.cpp" />
+    <ClCompile Include="Library\TinyXML\tokenlist.cpp" />
+    <ClCompile Include="Library\TinyXML\xml_util.cpp" />
+    <ClCompile Include="Library\TinyXML\xpath_expression.cpp" />
+    <ClCompile Include="Library\TinyXML\xpath_processor.cpp" />
+    <ClCompile Include="Library\TinyXML\xpath_stack.cpp" />
+    <ClCompile Include="Library\TinyXML\xpath_static.cpp" />
+    <ClCompile Include="Library\TinyXML\xpath_stream.cpp" />
+    <ClCompile Include="Library\TinyXML\xpath_syntax.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NNAnimation.cpp" />
     <ClCompile Include="NNApplication.cpp" />
     <ClCompile Include="NNAudioSystem.cpp" />
+    <ClCompile Include="NNCamera.cpp" />
     <ClCompile Include="NND2DRenderer.cpp" />
     <ClCompile Include="NNInputSystem.cpp" />
     <ClCompile Include="NNLabel.cpp" />
@@ -92,12 +116,46 @@
     <ClCompile Include="NNSize.cpp" />
     <ClCompile Include="NNSound.cpp" />
     <ClCompile Include="NNSprite.cpp" />
+    <ClCompile Include="NNSpriteAtlas.cpp" />
+    <ClCompile Include="NNSpriteNode.cpp" />
     <ClCompile Include="NNTexture.cpp" />
+    <ClCompile Include="NNXML.cpp" />
+    <ClCompile Include="SpriteAtlasSample.cpp" />
     <ClCompile Include="SpriteExampleScene.cpp" />
+    <ClCompile Include="XMLSample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationSample.h" />
+    <ClInclude Include="CameraSample.h" />
+    <ClInclude Include="FMODSoundSample.h" />
+    <ClInclude Include="Library\FMOD\inc\fmod.h" />
+    <ClInclude Include="Library\FMOD\inc\fmod.hpp" />
+    <ClInclude Include="Library\FMOD\inc\fmod_codec.h" />
+    <ClInclude Include="Library\FMOD\inc\fmod_common.h" />
+    <ClInclude Include="Library\FMOD\inc\fmod_dsp.h" />
+    <ClInclude Include="Library\FMOD\inc\fmod_errors.h" />
+    <ClInclude Include="Library\FMOD\inc\fmod_output.h" />
+    <ClInclude Include="Library\TinyXML\action_store.h" />
+    <ClInclude Include="Library\TinyXML\byte_stream.h" />
+    <ClInclude Include="Library\TinyXML\htmlutil.h" />
+    <ClInclude Include="Library\TinyXML\lex_token.h" />
+    <ClInclude Include="Library\TinyXML\lex_util.h" />
+    <ClInclude Include="Library\TinyXML\node_set.h" />
+    <ClInclude Include="Library\TinyXML\tinystr.h" />
+    <ClInclude Include="Library\TinyXML\tinyxml.h" />
+    <ClInclude Include="Library\TinyXML\tinyxpath_conf.h" />
+    <ClInclude Include="Library\TinyXML\tokenlist.h" />
+    <ClInclude Include="Library\TinyXML\xml_util.h" />
+    <ClInclude Include="Library\TinyXML\xpath_expression.h" />
+    <ClInclude Include="Library\TinyXML\xpath_processor.h" />
+    <ClInclude Include="Library\TinyXML\xpath_stack.h" />
+    <ClInclude Include="Library\TinyXML\xpath_static.h" />
+    <ClInclude Include="Library\TinyXML\xpath_stream.h" />
+    <ClInclude Include="Library\TinyXML\xpath_syntax.h" />
+    <ClInclude Include="NNAnimation.h" />
     <ClInclude Include="NNApplication.h" />
     <ClInclude Include="NNAudioSystem.h" />
+    <ClInclude Include="NNCamera.h" />
     <ClInclude Include="NNConfig.h" />
     <ClInclude Include="NND2DRenderer.h" />
     <ClInclude Include="NNIncludeSet.h" />
@@ -114,8 +172,13 @@
     <ClInclude Include="NNSize.h" />
     <ClInclude Include="NNSound.h" />
     <ClInclude Include="NNSprite.h" />
+    <ClInclude Include="NNSpriteAtlas.h" />
+    <ClInclude Include="NNSpriteNode.h" />
     <ClInclude Include="NNTexture.h" />
+    <ClInclude Include="NNXML.h" />
+    <ClInclude Include="SpriteAtlasSample.h" />
     <ClInclude Include="SpriteExampleScene.h" />
+    <ClInclude Include="XMLSample.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

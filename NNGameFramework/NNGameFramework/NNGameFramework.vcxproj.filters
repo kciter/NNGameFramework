@@ -58,8 +58,53 @@
     <Filter Include="Framework\Node\Sprite">
       <UniqueIdentifier>{b66eb4dc-2d24-4a2d-96d4-ed17e58f193f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Example\SpriteExample">
+    <Filter Include="Example\CameraSample">
+      <UniqueIdentifier>{d2a5c468-2d9d-4199-93b8-52a2cdcbd7fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Example\SpriteSample">
       <UniqueIdentifier>{ebea452a-d90e-4819-9923-809896377653}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Example\FMODSoundSample">
+      <UniqueIdentifier>{586855b3-3970-42b7-aba3-ca450eb54ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Example\AnimationSample">
+      <UniqueIdentifier>{48223dbe-17f4-4feb-bd64-1a79ff0312e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Example\SpriteAtlasSample">
+      <UniqueIdentifier>{bb7a5954-846c-46c5-b797-02b2ac50d827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Example\XMLSample">
+      <UniqueIdentifier>{cdf12d9f-13e7-4a84-acd1-952fceb274af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\Animation">
+      <UniqueIdentifier>{0cbd7ab1-fb2b-4b51-8589-82088261d8db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\SpriteAtlas">
+      <UniqueIdentifier>{68b586be-40c1-4ae0-b608-6597665dfdee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\Animation\SpriteNode">
+      <UniqueIdentifier>{dc9bfbb7-1e34-42cc-a38e-b63ce72f262d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Resource\Sound">
+      <UniqueIdentifier>{169195cf-81e8-4e27-a0f8-e31c7b0b2fa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Resource\XML">
+      <UniqueIdentifier>{4a32d1f5-069f-4899-97da-b2d7d5c0388b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{c2e41c61-d42e-47a2-b457-01eec90d2f2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\TinyXML">
+      <UniqueIdentifier>{cfb0c3ba-49e4-40be-a39c-9297bf92ead0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\TinyXML\TinyXPath">
+      <UniqueIdentifier>{e51010e0-9773-4d24-b36e-cf63354cb9cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\FMOD">
+      <UniqueIdentifier>{5d0519c4-0ddc-4461-830f-966337729932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\Scene\Camera">
+      <UniqueIdentifier>{4225039e-7778-4b09-88ce-f1b445d5e740}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +123,6 @@
     </ClCompile>
     <ClCompile Include="NNResourceManager.cpp">
       <Filter>Framework\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="NNSound.cpp">
-      <Filter>Framework\AudioSystem</Filter>
     </ClCompile>
     <ClCompile Include="NNSize.cpp">
       <Filter>Framework\DataType\Size</Filter>
@@ -107,7 +149,88 @@
       <Filter>Framework\Node\Scene</Filter>
     </ClCompile>
     <ClCompile Include="SpriteExampleScene.cpp">
-      <Filter>Example\SpriteExample</Filter>
+      <Filter>Example\SpriteSample</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAtlasSample.cpp">
+      <Filter>Example\SpriteAtlasSample</Filter>
+    </ClCompile>
+    <ClCompile Include="FMODSoundSample.cpp">
+      <Filter>Example\FMODSoundSample</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationSample.cpp">
+      <Filter>Example\AnimationSample</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraSample.cpp">
+      <Filter>Example\CameraSample</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLSample.cpp">
+      <Filter>Example\XMLSample</Filter>
+    </ClCompile>
+    <ClCompile Include="NNAnimation.cpp">
+      <Filter>Framework\Node\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="NNSpriteNode.cpp">
+      <Filter>Framework\Node\Animation\SpriteNode</Filter>
+    </ClCompile>
+    <ClCompile Include="NNSpriteAtlas.cpp">
+      <Filter>Framework\Node\SpriteAtlas</Filter>
+    </ClCompile>
+    <ClCompile Include="NNSound.cpp">
+      <Filter>Framework\Resource\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="NNXML.cpp">
+      <Filter>Framework\Resource\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\tinystr.cpp">
+      <Filter>Library\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\tinyxml.cpp">
+      <Filter>Library\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\tinyxmlerror.cpp">
+      <Filter>Library\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\tinyxmlparser.cpp">
+      <Filter>Library\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\action_store.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\htmlutil.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\lex_util.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\node_set.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\tokenlist.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\xml_util.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\xpath_expression.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\xpath_processor.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\xpath_stack.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\xpath_static.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\xpath_stream.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TinyXML\xpath_syntax.cpp">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClCompile>
+    <ClCompile Include="NNCamera.cpp">
+      <Filter>Framework\Node\Scene\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,9 +264,6 @@
     <ClInclude Include="NNResourceManager.h">
       <Filter>Framework\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="NNSound.h">
-      <Filter>Framework\AudioSystem</Filter>
-    </ClInclude>
     <ClInclude Include="NNSize.h">
       <Filter>Framework\DataType\Size</Filter>
     </ClInclude>
@@ -169,7 +289,112 @@
       <Filter>Framework\Node\Scene</Filter>
     </ClInclude>
     <ClInclude Include="SpriteExampleScene.h">
-      <Filter>Example\SpriteExample</Filter>
+      <Filter>Example\SpriteSample</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAtlasSample.h">
+      <Filter>Example\SpriteAtlasSample</Filter>
+    </ClInclude>
+    <ClInclude Include="FMODSoundSample.h">
+      <Filter>Example\FMODSoundSample</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationSample.h">
+      <Filter>Example\AnimationSample</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraSample.h">
+      <Filter>Example\CameraSample</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLSample.h">
+      <Filter>Example\XMLSample</Filter>
+    </ClInclude>
+    <ClInclude Include="NNAnimation.h">
+      <Filter>Framework\Node\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="NNSpriteNode.h">
+      <Filter>Framework\Node\Animation\SpriteNode</Filter>
+    </ClInclude>
+    <ClInclude Include="NNSpriteAtlas.h">
+      <Filter>Framework\Node\SpriteAtlas</Filter>
+    </ClInclude>
+    <ClInclude Include="NNSound.h">
+      <Filter>Framework\Resource\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="NNXML.h">
+      <Filter>Framework\Resource\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\tinystr.h">
+      <Filter>Library\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\tinyxml.h">
+      <Filter>Library\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\action_store.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\byte_stream.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\htmlutil.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\lex_token.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\lex_util.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\node_set.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\tinyxpath_conf.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\tokenlist.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\xml_util.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\xpath_expression.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\xpath_processor.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\xpath_stack.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\xpath_static.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\xpath_stream.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TinyXML\xpath_syntax.h">
+      <Filter>Library\TinyXML\TinyXPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod.h">
+      <Filter>Library\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod.hpp">
+      <Filter>Library\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_codec.h">
+      <Filter>Library\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_common.h">
+      <Filter>Library\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_dsp.h">
+      <Filter>Library\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_errors.h">
+      <Filter>Library\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_output.h">
+      <Filter>Library\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="NNCamera.h">
+      <Filter>Framework\Node\Scene\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
