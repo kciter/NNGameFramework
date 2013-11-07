@@ -1,6 +1,5 @@
 
 #include "NNApplication.h"
-#include "GameScene.h"
 
 #include "AnimationSample.h"
 #include "XMLSample.h"
@@ -26,12 +25,11 @@ int main()
 
 	Application->Init( L"D2D Test", 800, 600, D2D );
 
-	// NNSceneDirector::GetInstance()->ChangeScene( CGameScene::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( XMLSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( CameraSample::Create() );
-	NNSceneDirector::GetInstance()->ChangeScene( FMODSoundSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( FMODSoundSample::Create() );
 
 	Application->Run();
 	Application->Release();
