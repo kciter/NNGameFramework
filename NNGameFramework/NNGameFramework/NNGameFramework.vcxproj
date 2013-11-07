@@ -43,10 +43,11 @@
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>.\Library\FMOD\lib;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
-    <ExecutablePath>.\DLL;$(ExecutablePath)</ExecutablePath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>.\Library\FMOD\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,7 +122,7 @@
     <ClCompile Include="NNTexture.cpp" />
     <ClCompile Include="NNXML.cpp" />
     <ClCompile Include="SpriteAtlasSample.cpp" />
-    <ClCompile Include="SpriteExampleScene.cpp" />
+    <ClCompile Include="SpriteSample.cpp" />
     <ClCompile Include="XMLSample.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,7 +178,7 @@
     <ClInclude Include="NNTexture.h" />
     <ClInclude Include="NNXML.h" />
     <ClInclude Include="SpriteAtlasSample.h" />
-    <ClInclude Include="SpriteExampleScene.h" />
+    <ClInclude Include="SpriteSample.h" />
     <ClInclude Include="XMLSample.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

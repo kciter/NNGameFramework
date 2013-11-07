@@ -4,16 +4,16 @@
 #include "NNScene.h"
 #include "NNSprite.h"
 
-class SpriteExampleScene : public NNScene
+class SpriteSample : public NNScene
 {
 public:
-	SpriteExampleScene();
-	virtual ~SpriteExampleScene();
+	SpriteSample();
+	virtual ~SpriteSample();
 
 	void Render();
 	void Update( float dTime );
 
-	NNCREATE_FUNC(SpriteExampleScene);
+	NNCREATE_FUNC(SpriteSample);
 
 private:
 	NNSprite* m_Sprite;

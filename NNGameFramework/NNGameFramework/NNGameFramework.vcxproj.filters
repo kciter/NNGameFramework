@@ -148,9 +148,6 @@
     <ClCompile Include="NNScene.cpp">
       <Filter>Framework\Node\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteExampleScene.cpp">
-      <Filter>Example\SpriteSample</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteAtlasSample.cpp">
       <Filter>Example\SpriteAtlasSample</Filter>
     </ClCompile>
@@ -232,6 +229,9 @@
     <ClCompile Include="NNCamera.cpp">
       <Filter>Framework\Node\Scene\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteSample.cpp">
+      <Filter>Example\SpriteSample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NNApplication.h">
@@ -287,9 +287,6 @@
     </ClInclude>
     <ClInclude Include="NNScene.h">
       <Filter>Framework\Node\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteExampleScene.h">
-      <Filter>Example\SpriteSample</Filter>
     </ClInclude>
     <ClInclude Include="SpriteAtlasSample.h">
       <Filter>Example\SpriteAtlasSample</Filter>
@@ -395,6 +392,9 @@
     </ClInclude>
     <ClInclude Include="NNCamera.h">
       <Filter>Framework\Node\Scene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSample.h">
+      <Filter>Example\SpriteSample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

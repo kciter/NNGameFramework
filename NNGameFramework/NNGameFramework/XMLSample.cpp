@@ -9,9 +9,11 @@
 
 XMLSample::XMLSample()
 {
-	m_TestXML = NNResourceManager::GetInstance()->LoadXMLFromFIle("Resource/XML/test2.xml");
+	m_TestXML = NNResourceManager::GetInstance()->LoadXMLFromFIle("Resources/XML/test2.xml");
 	std::cout << m_TestXML->XPathToString("/MyApp/Messages/Welcome/text()").c_str() << std::endl;
 	std::cout << "xml end" << std::endl;
+	// 커맨드 창 확인
+	// test2.xml에서 Welcome 엘리멘트 안에 있는 값이 출력됨
 }
 XMLSample::~XMLSample()
 {
