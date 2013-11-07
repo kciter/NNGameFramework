@@ -30,6 +30,13 @@ public:
 	NNPoint operator/( float n ) const;
 
 public:
+	NNPoint NNPoint::Lerp( const NNPoint& startPoint, const NNPoint& endPoint, float t )
+	{
+		return NNPoint( t * startPoint.GetX() + ( 1 - t ) * endPoint.GetX()
+			, t * startPoint.GetY() + ( 1 - t ) * endPoint.GetY() );
+	}
+
+public:
 	inline float GetDistance( NNPoint& point ) const { 
 		return sqrtf( pow(m_X-point.GetX(), 2) + pow(m_Y-point.GetY(), 2) );
 	}

@@ -27,7 +27,7 @@ public:
 	static void ReleaseInstance();
 
 public:
-	bool Init( wchar_t* const title, int width, int height, RendererStatus renderStatus );
+	bool Init( wchar_t* title, int width, int height, RendererStatus renderStatus );
 	/* 파라메터에 따라 윈도우 프레임, 렌더러 생성 */
 	bool Release();
 
@@ -63,7 +63,6 @@ private:
 
 private:
 	static LRESULT CALLBACK WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam );
-
 public:
 	inline NNRenderer* GetRenderer() const { return m_Renderer; }
 	inline HWND GetHWND() const { return m_Hwnd; }
@@ -77,3 +76,4 @@ public:
 	inline float GetElapsedTime() const { return m_ElapsedTime; }
 	inline float GetDeltaTime() const { return m_DeltaTime; }
 };
+

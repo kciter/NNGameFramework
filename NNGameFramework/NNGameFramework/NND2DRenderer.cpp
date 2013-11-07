@@ -26,7 +26,7 @@ bool NND2DRenderer::Init()
 	D2D1_SIZE_U size = D2D1::SizeU( rt.right-rt.left, rt.bottom-rt.top );
 
 	hr = m_ipD2DFactory->CreateHwndRenderTarget( D2D1::RenderTargetProperties(),
-												 D2D1::HwndRenderTargetProperties( hwnd, size ),
+		D2D1::HwndRenderTargetProperties( hwnd, size, D2D1_PRESENT_OPTIONS_IMMEDIATELY ),
 												 &m_ipRenderTarget );
 
 	if ( hr != S_OK )

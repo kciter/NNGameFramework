@@ -28,5 +28,3 @@ NNPoint NNPoint::operator/( float n ) const
 {
 	return NNPoint( this->m_X/n, this->m_Y/n );
 }
-
-

@@ -3,6 +3,7 @@
 #include "NNInputSystem.h"
 #include "NNAudioSystem.h"
 #include "NNResourceManager.h"
+#include <stdio.h>
 
 NNApplication* NNApplication::m_pInstance = nullptr;
 
@@ -12,7 +13,7 @@ NNApplication::NNApplication()
 	  m_Fps(0.f), m_ElapsedTime(0.f), m_DeltaTime(0.f),
 	  m_PrevTime(0), m_NowTime(0),
 	  m_Renderer(nullptr), m_pSceneDirector(nullptr),
-	  m_RendererStatus(UNKNOWN), m_DestroyWindow(false)
+	  m_RendererStatus(UNKNOWN),m_DestroyWindow(false)
 {
 
 }
@@ -39,7 +40,7 @@ void NNApplication::ReleaseInstance()
 	}
 }
 
-bool NNApplication::Init( wchar_t* const title, int width, int height, RendererStatus renderStatus )
+bool NNApplication::Init( wchar_t* title, int width, int height, RendererStatus renderStatus )
 {
 	m_hInstance = GetModuleHandle(0);
 
@@ -100,7 +101,7 @@ bool NNApplication::Run()
 			{
 				m_PrevTime = m_NowTime;
 			}
-			m_DeltaTime = static_cast<float>(m_NowTime - m_PrevTime) / 60.f;
+			m_DeltaTime = static_cast<float>(m_NowTime - m_PrevTime) / 1000.f;
 			m_PrevTime = m_NowTime;
 			m_Fps = 1.f / m_DeltaTime;
 
@@ -146,8 +147,11 @@ bool NNApplication::_CreateWindow( wchar_t* title, int width, int height )
 
 	DWORD style = WS_OVERLAPPEDWINDOW;
 
+	RECT wr = {0, 0, width, height};
+	AdjustWindowRect( &wr, WS_OVERLAPPEDWINDOW, FALSE );
+
 	m_Hwnd = CreateWindow( L"NNApplication", title, style, CW_USEDEFAULT, CW_USEDEFAULT,
-		width, height, NULL, NULL, m_hInstance, NULL);
+		wr.right-wr.left, wr.bottom-wr.top, NULL, NULL, m_hInstance, NULL);
 
 	ShowWindow( m_Hwnd, SW_SHOWNORMAL );
 
@@ -167,6 +171,7 @@ bool NNApplication::_CreateRenderer( RendererStatus renderStatus )
 	return true;
 }
 
+
 LRESULT CALLBACK NNApplication::WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 {
 	switch( message )
@@ -184,4 +189,3 @@ LRESULT CALLBACK NNApplication::WndProc( HWND hWnd, UINT message, WPARAM wParam,
 
 	return(DefWindowProc(hWnd,message,wParam,lParam));
 }
-

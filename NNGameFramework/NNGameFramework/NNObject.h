@@ -46,7 +46,7 @@ public:
 	inline float GetCenterY() const { return m_Center.GetY(); }
 	inline float GetScaleX() const { return m_ScaleX; }
 	inline float GetScaleY() const { return m_ScaleY; }
-	inline float GetRotation() const { return m_ScaleX; }
+	inline float GetRotation() const { return m_Rotation; }
 	inline int GetZindex() const { return m_Zindex; }
 	inline bool IsVisible() const { return m_Visible; }
 

@@ -1,23 +1,17 @@
 
 #include "NNAudioSystem.h"
 
-
-
 NNAudioSystem* NNAudioSystem::m_pInstance = nullptr;
 
 NNAudioSystem::NNAudioSystem()
-	: m_BackgroundSound(nullptr)
+	: m_System(nullptr)
 {
+	FMOD::System_Create( &m_System );
+	m_System->init( 32, FMOD_INIT_NORMAL, 0 );
 }
 NNAudioSystem::~NNAudioSystem()
 {
-	SafeDelete( m_BackgroundSound );
-
-	for (auto iter=m_EffectSoundTable.begin(); iter!=m_EffectSoundTable.end(); iter++ )
-	{
-		SafeDelete( iter->second );
-	}
-	m_EffectSoundTable.clear();
+	m_System->release();
 }
 
 NNAudioSystem* NNAudioSystem::GetInstance()
@@ -37,98 +31,40 @@ void NNAudioSystem::ReleaseInstance()
 	}
 }
 
-/*		Background	*/
-void NNAudioSystem::SetBackgroundSound( std::wstring path )
+void NNAudioSystem::Play( NNSound* sound )
 {
-	if ( m_BackgroundSound != nullptr )
-	{
-		SafeDelete( m_BackgroundSound );
-	}
-	m_BackgroundSound = new NNSound();
-	m_BackgroundSound->Create( path );
+	m_System->playSound( sound->GetSound(), m_ChannelGroup, false, sound->GetChannelPointer() );
 }
-void NNAudioSystem::PlayBackgroundSound()
+void NNAudioSystem::Pause( NNSound* sound )
 {
-	if ( m_BackgroundSound != nullptr )
-	{
-		m_BackgroundSound->Play();
-	}
+	sound->GetChannel()->setPaused( true );
 }
-void NNAudioSystem::PauseBackgroundSound()
+void NNAudioSystem::Stop( NNSound* sound )
 {
-	if ( m_BackgroundSound != nullptr )
-	{
-		m_BackgroundSound->Pause();
-	}
+	sound->GetChannel()->setPosition( 0, FMOD_TIMEUNIT_MS );
+	sound->GetChannel()->setPaused( true );
 }
-void NNAudioSystem::StopBackgroundSound()
+void NNAudioSystem::Reset( NNSound* sound )
 {
-	if ( m_BackgroundSound != nullptr )
-	{
-		m_BackgroundSound->Stop();
-	}
+	sound->GetChannel()->setPosition( 0, FMOD_TIMEUNIT_MS );
 }
 
-/*		Effect		*/
-void NNAudioSystem::AddEffectSound( std::string key, std::wstring path )
+void NNAudioSystem::SetVolume( NNSound* sound, float volume )
 {
-	if ( m_EffectSoundTable[key] )
-	{
-		SafeDelete( m_EffectSoundTable[key] );
-	}
-	m_EffectSoundTable[key] = new NNSound();
-	m_EffectSoundTable[key]->Create( path );
+	sound->GetChannel()->setVolume( volume );
 }
-void NNAudioSystem::RemoveEffectSound( std::string key )
+void NNAudioSystem::SetPan( NNSound* sound, float pan )
 {
-	if ( m_EffectSoundTable[key] )
-	{
-		SafeDelete( m_EffectSoundTable[key] );
-	}
+	sound->GetChannel()->setPan( pan );
+}
+void NNAudioSystem::SetFrequency( NNSound* sound, float frequency )
+{
+	sound->GetChannel()->setFrequency( frequency );
 }
 
-void NNAudioSystem::PlayEffectSound( std::string key )
+bool NNAudioSystem::IsPlay( NNSound* sound )
 {
-	if ( m_EffectSoundTable[key] )
-	{
-		m_EffectSoundTable[key]->Play();
-	}
+	bool isPlay;
+	sound->GetChannel()->isPlaying( &isPlay );
+	return isPlay;
 }
-void NNAudioSystem::PauseEffectSound( std::string key )
-{
-	if ( m_EffectSoundTable[key] )
-	{
-		m_EffectSoundTable[key]->Pause();
-	}
-}
-void NNAudioSystem::StopEffectSound( std::string key )
-{
-	if ( m_EffectSoundTable[key] )
-	{
-		m_EffectSoundTable[key]->Stop();
-	}
-}
-
-void NNAudioSystem::AllPlayEffectSound()
-{
-	for (auto iter=m_EffectSoundTable.begin(); iter!=m_EffectSoundTable.end(); iter++ )
-	{
-		iter->second->Play();
-	}
-}
-void NNAudioSystem::AllPauseEffectSound()
-{
-	for (auto iter=m_EffectSoundTable.begin(); iter!=m_EffectSoundTable.end(); iter++ )
-	{
-		iter->second->Pause();
-	}
-}
-void NNAudioSystem::AllStopEffectSound()
-{
-	for (auto iter=m_EffectSoundTable.begin(); iter!=m_EffectSoundTable.end(); iter++ )
-	{
-		iter->second->Stop();
-	}
-}
-
-
