@@ -21,7 +21,7 @@ NNSprite* NNSprite::Create( std::wstring path )
 	}*/
 	
 	return pInstance;
-}
+} 
 
 //////////////////////////////////////////////////////////////////////////
 /*					NND2DSprite											*/
