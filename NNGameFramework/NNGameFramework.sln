@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NNGameFramework", "NNGameFramework\NNGameFramework.vcxproj", "{960874C5-E4E1-40F8-8082-BEDD3CD77B0B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sample", "Sample\Sample.vcxproj", "{F689F842-12F6-48E3-B019-7E63AE3B213C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{960874C5-E4E1-40F8-8082-BEDD3CD77B0B}.Debug|Win32.Build.0 = Debug|Win32
 		{960874C5-E4E1-40F8-8082-BEDD3CD77B0B}.Release|Win32.ActiveCfg = Release|Win32
 		{960874C5-E4E1-40F8-8082-BEDD3CD77B0B}.Release|Win32.Build.0 = Release|Win32
+		{F689F842-12F6-48E3-B019-7E63AE3B213C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F689F842-12F6-48E3-B019-7E63AE3B213C}.Debug|Win32.Build.0 = Debug|Win32
+		{F689F842-12F6-48E3-B019-7E63AE3B213C}.Release|Win32.ActiveCfg = Release|Win32
+		{F689F842-12F6-48E3-B019-7E63AE3B213C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

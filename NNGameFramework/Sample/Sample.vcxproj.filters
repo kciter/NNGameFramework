@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{4889deff-d9fd-42c6-8096-f9b33cc83634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\AnimationSample">
+      <UniqueIdentifier>{d47ec467-8ccb-4011-8d90-d1a692fef4b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\CameraSample">
+      <UniqueIdentifier>{ebfa7a5c-e5da-41e3-be99-debeb2487932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\FMODSoundSample">
+      <UniqueIdentifier>{2a0f39d6-8b03-424c-9c86-15b43045ce07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SpriteAtlasSample">
+      <UniqueIdentifier>{632ce297-e486-4709-b70c-a0e61bca053d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SpriteSample">
+      <UniqueIdentifier>{297d46ca-f790-47f5-954d-3d48633f1f67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\XMLSample">
+      <UniqueIdentifier>{ff464720-f472-4487-b945-7ad81b6ea0f0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="AnimationSample.cpp">
+      <Filter>Scene\AnimationSample</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraSample.cpp">
+      <Filter>Scene\CameraSample</Filter>
+    </ClCompile>
+    <ClCompile Include="FMODSoundSample.cpp">
+      <Filter>Scene\FMODSoundSample</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAtlasSample.cpp">
+      <Filter>Scene\SpriteAtlasSample</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSample.cpp">
+      <Filter>Scene\SpriteSample</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLSample.cpp">
+      <Filter>Scene\XMLSample</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AnimationSample.h">
+      <Filter>Scene\AnimationSample</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraSample.h">
+      <Filter>Scene\CameraSample</Filter>
+    </ClInclude>
+    <ClInclude Include="FMODSoundSample.h">
+      <Filter>Scene\FMODSoundSample</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAtlasSample.h">
+      <Filter>Scene\SpriteAtlasSample</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSample.h">
+      <Filter>Scene\SpriteSample</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLSample.h">
+      <Filter>Scene\XMLSample</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

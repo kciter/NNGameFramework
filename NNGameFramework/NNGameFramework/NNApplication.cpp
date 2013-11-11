@@ -3,7 +3,7 @@
 #include "NNInputSystem.h"
 #include "NNAudioSystem.h"
 #include "NNResourceManager.h"
-#include "NNNetworkSystem.h"
+//#include "NNNetworkSystem.h"
 
 NNApplication* NNApplication::m_pInstance = nullptr;
 
@@ -72,7 +72,7 @@ bool NNApplication::Release()
 	NNResourceManager::ReleaseInstance();
 	NNInputSystem::ReleaseInstance();
 	NNAudioSystem::ReleaseInstance();
-	NNNetworkSystem::ReleaseInstance();
+	//NNNetworkSystem::ReleaseInstance();
 	SafeDelete( m_Renderer );
 	ReleaseInstance();
 

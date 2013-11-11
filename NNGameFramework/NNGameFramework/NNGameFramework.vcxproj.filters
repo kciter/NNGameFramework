@@ -31,9 +31,6 @@
     <Filter Include="Framework\Scene">
       <UniqueIdentifier>{c4b05e9a-2644-4d63-afb0-f0170d11ba38}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Example">
-      <UniqueIdentifier>{a76db04a-0608-45c6-9613-8d9c4a635523}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\DataType\Point">
       <UniqueIdentifier>{9d1d755d-009c-4e7e-a938-eab0ef6b1293}</UniqueIdentifier>
     </Filter>
@@ -57,24 +54,6 @@
     </Filter>
     <Filter Include="Framework\Node\Sprite">
       <UniqueIdentifier>{b66eb4dc-2d24-4a2d-96d4-ed17e58f193f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Example\CameraSample">
-      <UniqueIdentifier>{d2a5c468-2d9d-4199-93b8-52a2cdcbd7fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Example\SpriteSample">
-      <UniqueIdentifier>{ebea452a-d90e-4819-9923-809896377653}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Example\FMODSoundSample">
-      <UniqueIdentifier>{586855b3-3970-42b7-aba3-ca450eb54ca3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Example\AnimationSample">
-      <UniqueIdentifier>{48223dbe-17f4-4feb-bd64-1a79ff0312e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Example\SpriteAtlasSample">
-      <UniqueIdentifier>{bb7a5954-846c-46c5-b797-02b2ac50d827}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Example\XMLSample">
-      <UniqueIdentifier>{cdf12d9f-13e7-4a84-acd1-952fceb274af}</UniqueIdentifier>
     </Filter>
     <Filter Include="Framework\Node\Animation">
       <UniqueIdentifier>{0cbd7ab1-fb2b-4b51-8589-82088261d8db}</UniqueIdentifier>
@@ -108,7 +87,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="NNApplication.cpp">
       <Filter>Framework\Application</Filter>
     </ClCompile>
@@ -147,21 +125,6 @@
     </ClCompile>
     <ClCompile Include="NNScene.cpp">
       <Filter>Framework\Node\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteAtlasSample.cpp">
-      <Filter>Example\SpriteAtlasSample</Filter>
-    </ClCompile>
-    <ClCompile Include="FMODSoundSample.cpp">
-      <Filter>Example\FMODSoundSample</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationSample.cpp">
-      <Filter>Example\AnimationSample</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraSample.cpp">
-      <Filter>Example\CameraSample</Filter>
-    </ClCompile>
-    <ClCompile Include="XMLSample.cpp">
-      <Filter>Example\XMLSample</Filter>
     </ClCompile>
     <ClCompile Include="NNAnimation.cpp">
       <Filter>Framework\Node\Animation</Filter>
@@ -229,9 +192,6 @@
     <ClCompile Include="NNCamera.cpp">
       <Filter>Framework\Node\Scene\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteSample.cpp">
-      <Filter>Example\SpriteSample</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NNApplication.h">
@@ -287,21 +247,6 @@
     </ClInclude>
     <ClInclude Include="NNScene.h">
       <Filter>Framework\Node\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteAtlasSample.h">
-      <Filter>Example\SpriteAtlasSample</Filter>
-    </ClInclude>
-    <ClInclude Include="FMODSoundSample.h">
-      <Filter>Example\FMODSoundSample</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationSample.h">
-      <Filter>Example\AnimationSample</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraSample.h">
-      <Filter>Example\CameraSample</Filter>
-    </ClInclude>
-    <ClInclude Include="XMLSample.h">
-      <Filter>Example\XMLSample</Filter>
     </ClInclude>
     <ClInclude Include="NNAnimation.h">
       <Filter>Framework\Node\Animation</Filter>
@@ -392,9 +337,6 @@
     </ClInclude>
     <ClInclude Include="NNCamera.h">
       <Filter>Framework\Node\Scene\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteSample.h">
-      <Filter>Example\SpriteSample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
