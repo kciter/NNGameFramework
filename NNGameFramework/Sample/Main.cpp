@@ -1,6 +1,7 @@
 
 #include "NNApplication.h"
 
+#include "SpriteSample.h"
 #include "AnimationSample.h"
 #include "XMLSample.h"
 #include "SpriteAtlasSample.h"
@@ -30,7 +31,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 
 	Application->Init( L"D2D Test", 800, 600, D2D );
 
-	//NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
+	NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( XMLSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( CameraSample::Create() );

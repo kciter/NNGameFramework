@@ -23,13 +23,10 @@ void NNObject::Render()
 {
 	if ( m_Visible == false ) return;
 
-	
-	m_Matrix = D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F((m_Center).GetX(), (m_Center).GetY()) ) *
-		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY, D2D1::Point2F((m_Center).GetX(), (m_Center).GetY()) ) *
-		D2D1::Matrix3x2F::Translation( m_Position.GetX(), m_Position.GetY() );
-
-	m_Matrix.TransformPoint( D2D1::Point2F( m_Center.GetX(), m_Center.GetY() ) );
-
+	m_Matrix = D2D1::Matrix3x2F::Translation( -m_Center.GetX(), -m_Center.GetY() )* 
+		D2D1::Matrix3x2F::Rotation( m_Rotation ) *
+		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY ) *
+		D2D1::Matrix3x2F::Translation( m_Position.GetX(), m_Position.GetY() );;
 	if( m_pParent )
 	{
 		m_Matrix = m_Matrix * m_pParent->GetMatrix();

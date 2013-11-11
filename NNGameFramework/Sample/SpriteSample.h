@@ -4,6 +4,7 @@
 #include "NNScene.h"
 #include "NNSprite.h"
 
+
 class SpriteSample : public NNScene
 {
 public:
@@ -17,4 +18,6 @@ public:
 
 private:
 	NNSprite* m_Sprite;
+	NNSprite* m_Sprite2;
+	NNObject* m_Object;
 };
