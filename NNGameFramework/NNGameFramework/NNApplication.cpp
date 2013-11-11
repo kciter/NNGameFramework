@@ -3,7 +3,7 @@
 #include "NNInputSystem.h"
 #include "NNAudioSystem.h"
 #include "NNResourceManager.h"
-//#include "NNNetworkSystem.h"
+#include "NNNetworkSystem.h"
 
 NNApplication* NNApplication::m_pInstance = nullptr;
 
@@ -72,7 +72,7 @@ bool NNApplication::Release()
 	NNResourceManager::ReleaseInstance();
 	NNInputSystem::ReleaseInstance();
 	NNAudioSystem::ReleaseInstance();
-	//NNNetworkSystem::ReleaseInstance();
+	NNNetworkSystem::ReleaseInstance();
 	SafeDelete( m_Renderer );
 	ReleaseInstance();
 
@@ -96,6 +96,8 @@ bool NNApplication::Run()
 			DispatchMessage( &msg );
 		}
 		else{
+			SleepEx(0, TRUE);
+
 			m_FrameCount++;
 			m_NowTime = timeGetTime();
 			if ( m_PrevTime == 0.f )

@@ -24,9 +24,9 @@ void NNObject::Render()
 	if ( m_Visible == false ) return;
 
 	
-	m_Matrix = D2D1::Matrix3x2F::Translation( m_Position.GetX(), m_Position.GetY() ) *
-		D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F((m_Center).GetX(), (m_Center).GetY()) ) *
-		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY, D2D1::Point2F((m_Center).GetX(), (m_Center).GetY()) );
+	m_Matrix = D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F((m_Center).GetX(), (m_Center).GetY()) ) *
+		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY, D2D1::Point2F((m_Center).GetX(), (m_Center).GetY()) ) *
+		D2D1::Matrix3x2F::Translation( m_Position.GetX(), m_Position.GetY() );
 
 	m_Matrix.TransformPoint( D2D1::Point2F( m_Center.GetX(), m_Center.GetY() ) );
 
@@ -35,10 +35,6 @@ void NNObject::Render()
 		m_Matrix = m_Matrix * m_pParent->GetMatrix();
 	}
 
-	// 	for (auto& iter=m_ChildList.begin(); iter!=m_ChildList.end(); iter++ )
-	// 	{
-	// 		(*iter)->Render();
-	// 	}
 	for (const auto& child : m_ChildList )
 	{
 		child->Render();
@@ -48,10 +44,6 @@ void NNObject::Update( float dTime )
 {
 	if ( m_Visible == false ) return;
 
-	// 	for (auto& iter=m_ChildList.begin(); iter!=m_ChildList.end(); iter++ )
-	// 	{
-	// 		(*iter)->Update( dTime );
-	// 	}
 	for (const auto& child : m_ChildList)
 	{
 		child->Update( dTime );
