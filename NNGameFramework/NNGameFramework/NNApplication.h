@@ -53,11 +53,13 @@ private:
 
 private:
 	float m_Fps;
+	float m_FpsTimer;
 	float m_ElapsedTime;
 	float m_DeltaTime;
 
 	int m_PrevTime;
 	int m_NowTime;
+	int m_FrameCount;
 
 	bool m_DestroyWindow;
 

@@ -3,17 +3,17 @@
 #include "NNInputSystem.h"
 #include "NNAudioSystem.h"
 #include "NNResourceManager.h"
-#include <stdio.h>
+#include "NNNetworkSystem.h"
 
 NNApplication* NNApplication::m_pInstance = nullptr;
 
 NNApplication::NNApplication()
 	: m_Hwnd(nullptr), m_hInstance(nullptr),
-	  m_ScreenHeight(0), m_ScreenWidth(0),
-	  m_Fps(0.f), m_ElapsedTime(0.f), m_DeltaTime(0.f),
-	  m_PrevTime(0), m_NowTime(0),
-	  m_Renderer(nullptr), m_pSceneDirector(nullptr),
-	  m_RendererStatus(UNKNOWN),m_DestroyWindow(false)
+	m_ScreenHeight(0), m_ScreenWidth(0),
+	m_Fps(0.f), m_ElapsedTime(0.f), m_DeltaTime(0.f),m_FpsTimer(0.f),
+	m_PrevTime(0), m_NowTime(0),
+	m_Renderer(nullptr), m_pSceneDirector(nullptr),
+	m_RendererStatus(UNKNOWN),m_DestroyWindow(false)
 {
 
 }
@@ -51,7 +51,7 @@ bool NNApplication::Init( wchar_t* title, int width, int height, RendererStatus 
 
 	_CreateWindow( m_Title, m_ScreenWidth, m_ScreenHeight );
 	_CreateRenderer( renderStatus );
-	
+
 	m_pSceneDirector = NNSceneDirector::GetInstance();
 
 	m_Renderer->Init();
@@ -72,6 +72,7 @@ bool NNApplication::Release()
 	NNResourceManager::ReleaseInstance();
 	NNInputSystem::ReleaseInstance();
 	NNAudioSystem::ReleaseInstance();
+	NNNetworkSystem::ReleaseInstance();
 	SafeDelete( m_Renderer );
 	ReleaseInstance();
 
@@ -94,18 +95,23 @@ bool NNApplication::Run()
 			TranslateMessage( &msg );
 			DispatchMessage( &msg );
 		}
-		else
-		{
+		else{
+			m_FrameCount++;
 			m_NowTime = timeGetTime();
 			if ( m_PrevTime == 0.f )
 			{
 				m_PrevTime = m_NowTime;
 			}
-			m_DeltaTime = static_cast<float>(m_NowTime - m_PrevTime) / 1000.f;
-			m_PrevTime = m_NowTime;
-			m_Fps = 1.f / m_DeltaTime;
-
+			m_DeltaTime = (static_cast<float>(m_NowTime - m_PrevTime)) / 1000.f;
 			m_ElapsedTime += m_DeltaTime;
+			m_FpsTimer += m_DeltaTime;
+			if(m_FpsTimer > 0.1f)
+			{
+				m_Fps = ((float)m_FrameCount) / m_FpsTimer;
+				m_FrameCount = 0;
+				m_FpsTimer = 0.f;
+			}
+			m_PrevTime = m_NowTime;
 
 			NNInputSystem::GetInstance()->UpdateKeyState();
 
