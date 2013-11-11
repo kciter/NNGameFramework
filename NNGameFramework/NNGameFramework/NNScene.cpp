@@ -17,7 +17,7 @@ void NNScene::Render()
 		D2D1::Matrix3x2F::Scale( m_Camera.GetZoom(), m_Camera.GetZoom(), D2D1::Point2F(m_Camera.GetPositionX()+m_Camera.GetCenterX(), m_Camera.GetPositionY()+m_Camera.GetCenterY()) ) * 
 		D2D1::Matrix3x2F::Translation( m_Camera.GetPositionX()+m_Camera.GetCenterX(), m_Camera.GetPositionY()+m_Camera.GetCenterY() );
 
-	//m_Matrix.TransformPoint( D2D1::Point2F( m_Camera.GetPositionX()+m_Camera.GetCenterX(), m_Camera.GetPositionY()+m_Camera.GetCenterY() ) );
+	m_Matrix.TransformPoint( D2D1::Point2F( m_Camera.GetPositionX()+m_Camera.GetCenterX(), m_Camera.GetPositionY()+m_Camera.GetCenterY() ) );
 
 	for (const auto& child : m_ChildList )
 	{
