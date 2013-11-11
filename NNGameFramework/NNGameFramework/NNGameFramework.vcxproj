@@ -105,9 +105,11 @@
     <ClCompile Include="NNApplication.cpp" />
     <ClCompile Include="NNAudioSystem.cpp" />
     <ClCompile Include="NNCamera.cpp" />
+    <ClCompile Include="NNCircularBuffer.cpp" />
     <ClCompile Include="NND2DRenderer.cpp" />
     <ClCompile Include="NNInputSystem.cpp" />
     <ClCompile Include="NNLabel.cpp" />
+    <ClCompile Include="NNNetworkSystem.cpp" />
     <ClCompile Include="NNObject.cpp" />
     <ClCompile Include="NNPoint.cpp" />
     <ClCompile Include="NNResourceManager.cpp" />
@@ -150,6 +152,7 @@
     <ClInclude Include="NNApplication.h" />
     <ClInclude Include="NNAudioSystem.h" />
     <ClInclude Include="NNCamera.h" />
+    <ClInclude Include="NNCircularBuffer.h" />
     <ClInclude Include="NNConfig.h" />
     <ClInclude Include="NND2DRenderer.h" />
     <ClInclude Include="NNIncludeSet.h" />
@@ -157,7 +160,9 @@
     <ClInclude Include="NNLabel.h" />
     <ClInclude Include="NNLibSet.h" />
     <ClInclude Include="NNMacroSet.h" />
+    <ClInclude Include="NNNetworkSystem.h" />
     <ClInclude Include="NNObject.h" />
+    <ClInclude Include="NNPacketHeader.h" />
     <ClInclude Include="NNPoint.h" />
     <ClInclude Include="NNRenderer.h" />
     <ClInclude Include="NNResourceManager.h" />

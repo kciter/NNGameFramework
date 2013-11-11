@@ -85,6 +85,15 @@
     <Filter Include="Framework\Node\Scene\Camera">
       <UniqueIdentifier>{4225039e-7778-4b09-88ce-f1b445d5e740}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\NetworkSystem">
+      <UniqueIdentifier>{cc0300e8-a59b-4462-8ea6-21bcc3df1220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\NetworkSystem\CircularBuffer">
+      <UniqueIdentifier>{f12e6452-4b83-4731-b482-513207d87c24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\NetworkSystem\PacketHeader">
+      <UniqueIdentifier>{b6733f05-32e8-404a-bd4e-4b59ea609e8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -191,6 +200,12 @@
     </ClCompile>
     <ClCompile Include="NNCamera.cpp">
       <Filter>Framework\Node\Scene\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="NNCircularBuffer.cpp">
+      <Filter>Framework\NetworkSystem\CircularBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="NNNetworkSystem.cpp">
+      <Filter>Framework\NetworkSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -337,6 +352,15 @@
     </ClInclude>
     <ClInclude Include="NNCamera.h">
       <Filter>Framework\Node\Scene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="NNCircularBuffer.h">
+      <Filter>Framework\NetworkSystem\CircularBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="NNPacketHeader.h">
+      <Filter>Framework\NetworkSystem\PacketHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="NNNetworkSystem.h">
+      <Filter>Framework\NetworkSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
