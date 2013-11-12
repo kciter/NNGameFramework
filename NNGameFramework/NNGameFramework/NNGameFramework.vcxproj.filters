@@ -94,6 +94,9 @@
     <Filter Include="Framework\NetworkSystem\PacketHeader">
       <UniqueIdentifier>{b6733f05-32e8-404a-bd4e-4b59ea609e8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\NetworkSystem\BaseHandler">
+      <UniqueIdentifier>{21699230-0574-4df6-8e74-43ce58d13c41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -206,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="NNNetworkSystem.cpp">
       <Filter>Framework\NetworkSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="NNBaseHandler.cpp">
+      <Filter>Framework\NetworkSystem\BaseHandler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +367,9 @@
     </ClInclude>
     <ClInclude Include="NNNetworkSystem.h">
       <Filter>Framework\NetworkSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="NNBaseHandler.h">
+      <Filter>Framework\NetworkSystem\BaseHandler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

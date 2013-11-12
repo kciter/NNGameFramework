@@ -104,6 +104,7 @@
     <ClCompile Include="NNAnimation.cpp" />
     <ClCompile Include="NNApplication.cpp" />
     <ClCompile Include="NNAudioSystem.cpp" />
+    <ClCompile Include="NNBaseHandler.cpp" />
     <ClCompile Include="NNCamera.cpp" />
     <ClCompile Include="NNCircularBuffer.cpp" />
     <ClCompile Include="NND2DRenderer.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="NNAnimation.h" />
     <ClInclude Include="NNApplication.h" />
     <ClInclude Include="NNAudioSystem.h" />
+    <ClInclude Include="NNBaseHandler.h" />
     <ClInclude Include="NNCamera.h" />
     <ClInclude Include="NNCircularBuffer.h" />
     <ClInclude Include="NNConfig.h" />
