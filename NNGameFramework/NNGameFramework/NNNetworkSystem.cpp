@@ -1,5 +1,6 @@
 
 #include "NNNetworkSystem.h"
+#include "NNApplication.h"
 
 NNNetworkSystem* NNNetworkSystem::m_pInstance = nullptr;
 
@@ -16,28 +17,17 @@ NNNetworkSystem::~NNNetworkSystem()
 
 bool NNNetworkSystem::Init()
 {
-	int nResult = WSAStartup( MAKEWORD(2,2), &m_WSAData );
+	WSADATA WsaDat ;
+
+	int nResult = WSAStartup(MAKEWORD(2,2),&WsaDat) ;
 	if ( nResult != 0 )
-	{
-		return false;
-	}
+		return false ;
 
-	m_Socket = socket( AF_INET, SOCK_STREAM, IPPROTO_TCP );
-	u_long arg = 1 ;
-	::ioctlsocket(m_Socket, FIONBIO, &arg) ;
-
-	int opt = 1 ;
-	::setsockopt(m_Socket, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)) ;
-
+	m_Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) ;
 	if ( m_Socket == INVALID_SOCKET )
-	{
-		return false;
-	}
+		return false ;
 
-	
-	//SetPacketFunction(PKT_SC_CHAT,TestChatResultPacketFunction);
-
-	return true;
+	return true ;
 }
 
 void NNNetworkSystem::Destroy()
@@ -46,111 +36,95 @@ void NNNetworkSystem::Destroy()
 
 bool NNNetworkSystem::Connect( const char* serverIP, int port )
 {
-	struct hostent* host;
+	// Resolve IP address for hostname
+	struct hostent* host ;
 
-	if ( (host=gethostbyname(serverIP)) == NULL )
-	{
-		return false;
-	}
+	if ( (host=gethostbyname(serverIP) ) == NULL )
+		return false ;
 
-	SOCKADDR_IN SockAddr;
-	SockAddr.sin_port = htons(port);
+	// Set up our socket address structure
+	SOCKADDR_IN SockAddr ;
+	SockAddr.sin_port = htons(port) ;
 	SockAddr.sin_family = AF_INET;
-	SockAddr.sin_addr.s_addr = *((unsigned long*)host->h_addr);
+	SockAddr.sin_addr.s_addr = *((unsigned long*)host->h_addr) ;
 
 	if ( SOCKET_ERROR == connect(m_Socket, (LPSOCKADDR)(&SockAddr), sizeof(SockAddr)) )
 	{
-		if ( GetLastError() != WSAEWOULDBLOCK )
-		{
-			return false;
-		}
-	}
-	
-	return PostRecv() ;
-}
-bool NNNetworkSystem::PostRecv()
-{
-	DWORD recvbytes = 0 ;
-	DWORD flags = 0 ;
-	WSABUF buf ;
-	buf.len = (ULONG)m_RecvBuffer.GetFreeSpaceSize() ;
-	buf.buf = (char*)m_RecvBuffer.GetBuffer() ;
-
-	memset(&m_OverlappedRecv, 0, sizeof(OVERLAPPED)) ;
-	/// 비동기 입출력 시작
-	if ( SOCKET_ERROR == WSARecv(m_Socket, &buf, 1, &recvbytes, &flags, &m_OverlappedRecv, RecvCompletion) )
-	{
-		int error = WSAGetLastError();
-		if ( error != WSA_IO_PENDING )
+		if (GetLastError() != WSAEWOULDBLOCK )
 			return false ;
 	}
-	return true;
+
+	/// NAGLE 끈다
+	/// NAGLE Algorithm
+	/// http://en.wikipedia.org/wiki/Nagle's_algorithm
+	int opt = 1 ;
+	::setsockopt(m_Socket, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)) ;
+
+	return true ;
 }
-void NNNetworkSystem::OnRead(size_t len)
+void NNNetworkSystem::ProcessPacket()
 {
-	m_RecvBuffer.Commit(len);
 	while ( true )
 	{
 		NNPacketHeader header;
 
-		if ( false ==  m_RecvBuffer.Peek((char*)&header, sizeof(NNPacketHeader)) )
+		if ( m_RecvBuffer.Peek((char*)&header, sizeof(NNPacketHeader)) )
 		{
 			break;
 		}
 
-		if ( (header.m_Size - sizeof(NNPacketHeader)) > m_RecvBuffer.GetStoredSize() )
+		if ( header.m_Size > m_RecvBuffer.GetCurrentSize() ) /// 문제 생길 것 같은 느낌
 		{
 			break;
 		}
 
-		m_PacketFunction[header.m_Type](header);
+		m_PacketHandler[header.m_Type]->HandlingPacket(header.m_Type);
 	}
 }
 
-bool NNNetworkSystem::Send(NNPacketHeader* pkt)
+void NNNetworkSystem::Read()
 {
+	char inBuf[4096] = {0, } ;
 
-	/// 버퍼 용량 부족인 경우는 끊어버림
-	if ( false == m_SendBuffer.Write((char*)pkt, pkt->m_Size) )
+	int recvLen = recv(m_Socket, inBuf, 4096, 0) ;
+
+	if ( !m_RecvBuffer.Write(inBuf, recvLen) )
 	{
-		return false ;
+		/// 버퍼 꽉찼다. 
+		assert(false) ;
 	}
 
-	/// 보낼 데이터가 있는지 검사
-	if ( m_SendBuffer.GetContiguiousBytes() == 0 )
+	ProcessPacket() ;
+}
+
+void NNNetworkSystem::Write()
+{
+	int size = m_SendBuffer.GetCurrentSize() ;
+	if ( size > 0 )
 	{
-		/// 방금전에 write 했는데, 데이터가 없다면 뭔가 잘못된 것
-		return false ;
-	}	
-	DWORD sendbytes = 0 ;
-	DWORD flags = 0 ;
+		char* data = new char[size] ;
+		m_SendBuffer.Peek(data) ;
 
-	WSABUF buf ;
-	buf.len = (ULONG)m_SendBuffer.GetContiguiousBytes() ;
-	buf.buf = (char*)m_SendBuffer.GetBufferStart() ;
+		int sent = send(m_Socket, data, size, 0) ;
 
+		/// 다를수 있다
+		if ( sent != size )
+			OutputDebugStringA("sent != request\n") ;
 
-	memset(&m_OverlappedSend, 0, sizeof(OVERLAPPED)) ;
+		m_SendBuffer.Consume(sent) ;
 
-	// 비동기 입출력 시작
-	if ( SOCKET_ERROR == WSASend(m_Socket, &buf, 1, &sendbytes, flags, &m_OverlappedSend, SendCompletion) )
-	{
-		DWORD error = WSAGetLastError();
-		printf_s("%d",error);
-		if ( error != WSA_IO_PENDING )
-			return false ;
+		delete [] data ;
 	}
-
-	return true ;
-}
-void NNNetworkSystem::OnWriteComplete(size_t len)
-{
-	m_SendBuffer.Remove(len);
 }
 
-void NNNetworkSystem::SetPacketFunction( short packetType, void(Function)(NNPacketHeader&) )
+void NNNetworkSystem::Close()
 {
-	m_PacketFunction[packetType] = Function;
+	closesocket(m_Socket);
+}
+
+void NNNetworkSystem::SetPacketHandler( short packetType, NNBaseHandler* handler )
+{
+	m_PacketHandler[packetType] = handler;
 }
 
 NNNetworkSystem* NNNetworkSystem::GetInstance()
@@ -168,35 +142,4 @@ void NNNetworkSystem::ReleaseInstance()
 	{
 		delete m_pInstance;
 	}
-}
-
-///////////////////////////////////////////////////////////
-
-void CALLBACK RecvCompletion(DWORD dwError, DWORD cbTransferred, LPWSAOVERLAPPED lpOverlapped, DWORD dwFlags)
-{
-	/// 에러 발생시 해당 세션 종료
-	if ( dwError || cbTransferred == 0 )
-	{
-		return ;
-	}
-
-	/// 받은 데이터 처리
-	NNNetworkSystem::GetInstance()->OnRead(cbTransferred);
-
-	/// 다시 받기
-	if ( false == NNNetworkSystem::GetInstance()->PostRecv() )
-	{
-		return ;
-	}
-}
-
-void CALLBACK SendCompletion(DWORD dwError, DWORD cbTransferred, LPWSAOVERLAPPED lpOverlapped, DWORD dwFlags)
-{
-	/// 에러 발생시 해당 세션 종료
-	if ( dwError || cbTransferred == 0 )
-	{
-		return ;
-	}
-
-	NNNetworkSystem::GetInstance()->OnWriteComplete(cbTransferred) ;
 }
