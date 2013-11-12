@@ -7,5 +7,5 @@ public:
 	NNBaseHandler();
 	virtual ~NNBaseHandler();
 
-	virtual void HandlerPacket( short packetType ) = 0;
+	virtual void HandlingPacket( short packetType ) = 0;
 };
