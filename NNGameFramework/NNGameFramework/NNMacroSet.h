@@ -51,6 +51,8 @@ inline double NNRadianToDegree( double n )
 	return n * 180 / NN_PI;
 }
 
+#define assert(_Expression) (void)( (!!(_Expression)) || (_wassert(_CRT_WIDE(#_Expression), _CRT_WIDE(__FILE__), __LINE__), 0) )
+
 #define NNCREATE_FUNC(CLASS_NAME) \
 	static CLASS_NAME* Create() \
 	{ \
