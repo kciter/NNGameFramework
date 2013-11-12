@@ -1,9 +1,9 @@
 #pragma once
 
-
 class NNCircularBuffer
 {
 public:
+	friend class NNNetworkSystem;
 
 	NNCircularBuffer(size_t capacity) : m_BRegionPointer(nullptr), m_ARegionSize(0), m_BRegionSize(0)
 	{
@@ -16,6 +16,8 @@ public:
 	{
 		delete [] m_Buffer ;
 	}
+
+private:
 
 	bool Peek(char* destbuf, size_t bytes) const ;
 	bool Read(char* destbuf, size_t bytes) ;
@@ -63,8 +65,6 @@ public:
 		else
 			return m_ARegionPointer + m_ARegionSize ;
 	}
-
-	
 
 
 	/// Ä¿¹Ô(aka. IncrementWritten)
