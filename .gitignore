@@ -12,6 +12,9 @@
 *.la
 *.a
 
+# ipch folder
+ipch/
+
 # Debug folder
 Debug/
 
