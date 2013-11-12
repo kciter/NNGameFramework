@@ -18,6 +18,4 @@ public:
 
 private:
 	NNSprite* m_Sprite;
-	NNSprite* m_Sprite2;
-	NNObject* m_Object;
 };

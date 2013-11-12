@@ -22,6 +22,9 @@
     <Filter Include="Scene\XMLSample">
       <UniqueIdentifier>{ff464720-f472-4487-b945-7ad81b6ea0f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\NetworkSample">
+      <UniqueIdentifier>{327f9d51-2e63-4ba9-90f4-d2d81f4173a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -43,6 +46,9 @@
     <ClCompile Include="XMLSample.cpp">
       <Filter>Scene\XMLSample</Filter>
     </ClCompile>
+    <ClCompile Include="NetworkSample.cpp">
+      <Filter>Scene\NetworkSample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationSample.h">
@@ -62,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="XMLSample.h">
       <Filter>Scene\XMLSample</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkSample.h">
+      <Filter>Scene\NetworkSample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
