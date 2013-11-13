@@ -210,9 +210,6 @@
     <ClCompile Include="NNNetworkSystem.cpp">
       <Filter>Framework\NetworkSystem</Filter>
     </ClCompile>
-    <ClCompile Include="NNBaseHandler.cpp">
-      <Filter>Framework\NetworkSystem\BaseHandler</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NNApplication.h">
