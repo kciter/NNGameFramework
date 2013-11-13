@@ -7,6 +7,7 @@
 #include "SpriteAtlasSample.h"
 #include "CameraSample.h"
 #include "FMODSoundSample.h"
+#include "NetworkSample.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "NNGameFramework_DEBUG.lib")
@@ -31,7 +32,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 
 	Application->Init( L"D2D Test", 800, 600, D2D );
 
-	NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );
+	NNSceneDirector::GetInstance()->ChangeScene( NetworkSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( XMLSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );

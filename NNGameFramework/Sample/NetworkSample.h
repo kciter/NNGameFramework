@@ -2,7 +2,8 @@
 #pragma once
 
 #include "NNScene.h"
-#include "NNSprite.h"
+#include "Player.h"
+#include "PacketHandler.h"
 
 class NetworkSample : public NNScene
 {
@@ -16,5 +17,11 @@ public:
 	NNCREATE_FUNC(NetworkSample);
 	
 private:
+	NNSprite* m_Background;
 	NNSprite* m_Sprite;
+	int m_MyPlayerId;
+	std::map<int,NNSprite*> m_PlayerMap;
+
+	LoginHandler* m_LoginHandler;
+	MoveBroadcastHandler* m_MoveBroadcastHandler;
 };
