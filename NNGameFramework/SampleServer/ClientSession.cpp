@@ -18,7 +18,7 @@ bool ClientSession::OnConnect(SOCKADDR_IN* addr)
 	::setsockopt(mSocket, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)) ;
 
 	printf("[DEBUG] Client Connected: IP=%s, PORT=%d\n", inet_ntoa(mClientAddr.sin_addr), ntohs(mClientAddr.sin_port)) ;
-	
+
 	mConnected = true ;
 
 	return PostRecv() ;
@@ -91,12 +91,24 @@ void ClientSession::OnRead(size_t len)
 				/// 로그인은 DB 작업을 거쳐야 하기 때문에 DB 작업 요청한다.
 				LoadPlayerDataContext* newDbJob = new LoadPlayerDataContext(mSocket, inPacket.mPlayerId) ;
 				GDatabaseJobManager->PushDatabaseJobRequest(newDbJob) ;
-			
+
 			}
 			break ;
+		case PKT_CS_LOGIN_BROADCAST:
+			{
+				LoginBroadcastRequest inPacket;
+				mRecvBuffer.Read((char*)&inPacket, header.mSize) ;
 
+				LoginBroadcastResult outPacket;
+				outPacket.m_PlayerId = inPacket.m_PlayerId;
+
+				if ( !Broadcast(&outPacket) )
+					return;
+			}
+			break;
 		case PKT_CS_MOVE:
 			{
+
 				MoveBroadcastRequest inPacket;
 				mRecvBuffer.Read((char*)&inPacket, header.mSize);
 
@@ -105,46 +117,32 @@ void ClientSession::OnRead(size_t len)
 				if ( inPacket.m_Direction == 'W' )
 				{
 					outPacket.m_PositionX = inPacket.m_PositionX;
-					outPacket.m_PositionY = inPacket.m_PositionY - 5.f;
+					outPacket.m_PositionY = inPacket.m_PositionY - 100.f * inPacket.m_DeltaTime;
 				}
 				else if ( inPacket.m_Direction == 'A' )
 				{
-					outPacket.m_PositionX = inPacket.m_PositionX - 5.f;
+					outPacket.m_PositionX = inPacket.m_PositionX - 100.f * inPacket.m_DeltaTime;
 					outPacket.m_PositionY = inPacket.m_PositionY;
 				}
 				else if ( inPacket.m_Direction == 'S' )
 				{
 					outPacket.m_PositionX = inPacket.m_PositionX;
-					outPacket.m_PositionY = inPacket.m_PositionY + 5.f;
+					outPacket.m_PositionY = inPacket.m_PositionY + 100.f * inPacket.m_DeltaTime;
 				}
 				else if ( inPacket.m_Direction == 'D' )
 				{
-					outPacket.m_PositionX = inPacket.m_PositionX + 5.f;
+					outPacket.m_PositionX = inPacket.m_PositionX + 100.f * inPacket.m_DeltaTime;
 					outPacket.m_PositionY = inPacket.m_PositionY;
 				}
+
+				printf( "Player Id:%d , Player PositionX:%f, Player PositionY:%f \n", outPacket.m_PlayerId, outPacket.m_PositionX, outPacket.m_PositionY );
 
 				if ( !Broadcast(&outPacket) )
 					return;
 			}
+
 			break;
-			/*
-		case PKT_CS_CHAT:
-			{
-				ChatBroadcastRequest inPacket ;
-				mRecvBuffer.Read((char*)&inPacket, header.mSize) ;
-				
-				ChatBroadcastResult outPacket ;
-				outPacket.mPlayerId = inPacket.mPlayerId ;
-				strcpy_s(outPacket.mName, mPlayerName) ;
-				strcpy_s(outPacket.mChat, inPacket.mChat) ;
-		
-				/// 채팅은 바로 방송 하면 끝
-				if ( !Broadcast(&outPacket) )
-					return ;
- 
-			}
-			break ;
-			*/
+
 		default:
 			{
 				/// 여기 들어오면 이상한 패킷 보낸거다.
@@ -176,14 +174,14 @@ bool ClientSession::Send(PacketHeader* pkt)
 		Disconnect() ;
 		return false ;
 	}
-		
+
 	DWORD sendbytes = 0 ;
 	DWORD flags = 0 ;
 
 	WSABUF buf ;
 	buf.len = (ULONG)mSendBuffer.GetContiguiousBytes() ;
 	buf.buf = (char*)mSendBuffer.GetBufferStart() ;
-	
+
 	memset(&mOverlappedSend, 0, sizeof(OverlappedIO)) ;
 	mOverlappedSend.mObject = this ;
 
@@ -240,13 +238,13 @@ void ClientSession::OnTick()
 		strcpy_s(updatePlayer->mComment, "updated_test") ; ///< 일단은 테스트를 위해
 		GDatabaseJobManager->PushDatabaseJobRequest(updatePlayer) ;
 	}
-	
+
 }
 
 void ClientSession::DatabaseJobDone(DatabaseJobContext* result)
 {
 	CRASH_ASSERT( mSocket == result->mSockKey ) ;
-	
+
 
 	const type_info& typeInfo = typeid(*result) ;
 
@@ -255,7 +253,7 @@ void ClientSession::DatabaseJobDone(DatabaseJobContext* result)
 		LoadPlayerDataContext* login = dynamic_cast<LoadPlayerDataContext*>(result) ;
 
 		LoginDone(login->mPlayerId, login->mPosX, login->mPosY, login->mPosZ, login->mPlayerName) ;
-	
+
 	}
 	else if ( typeInfo == typeid(UpdatePlayerDataContext) )
 	{
@@ -299,7 +297,7 @@ void ClientSession::LoginDone(int pid, double x, double y, double z, const char*
 void CALLBACK RecvCompletion(DWORD dwError, DWORD cbTransferred, LPWSAOVERLAPPED lpOverlapped, DWORD dwFlags)
 {
 	ClientSession* fromClient = static_cast<OverlappedIO*>(lpOverlapped)->mObject ;
-	
+
 	fromClient->DecOverlappedRequest() ;
 
 	if ( !fromClient->IsConnected() )
