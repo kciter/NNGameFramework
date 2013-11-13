@@ -59,3 +59,6 @@ inline double NNRadianToDegree( double n )
 		CLASS_NAME* pInstance = new CLASS_NAME(); \
 		return pInstance; \
 	}
+
+
+#define WM_SOCKET 104
