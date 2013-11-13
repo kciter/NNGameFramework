@@ -5,6 +5,7 @@
 
 NetworkSample::NetworkSample()
 {
+	GetCamera().SetCameraAnchor(MIDDLE_CENTER);
 	m_LoginHandler = new LoginHandler;
 	m_MoveBroadcastHandler = new MoveBroadcastHandler;
 
@@ -21,6 +22,8 @@ NetworkSample::NetworkSample()
 	m_Sprite = NNSprite::Create( L"Resources/Texture/walk_0.png" );
 	AddChild(m_Background);
 	AddChild(m_Sprite);
+	m_Background->SetPosition(-400.f,-300.f);
+	m_Sprite->SetCenter(m_Sprite->GetPositionX()/2.f, m_Sprite->GetPositionY()/2.f);
 }
 NetworkSample::~NetworkSample()
 {
@@ -59,6 +62,7 @@ void NetworkSample::Update( float dTime )
 			m_PlayerMap[m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PlayerId]->SetPosition( m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PositionX, m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PositionY );
 			*/
 		m_Sprite->SetPosition( m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PositionX, m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PositionY );
+		GetCamera().SetPosition(m_Sprite->GetPosition());
 		if ( NNInputSystem::GetInstance()->GetKeyState('W') == KEY_PRESSED )
 		{
 			m_MoveBroadcastHandler->m_MoveBroadcastRequestPacket.m_PlayerId = m_LoginHandler->m_LoginResultPacket.m_PlayerId;
