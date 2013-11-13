@@ -57,12 +57,14 @@ bool NNApplication::Init( wchar_t* title, int width, int height, RendererStatus 
 	m_Renderer->Init();
 	m_pSceneDirector->Init();
 
+	srand( time(NULL) ) ;
+
 	return true;
 }
 
 bool NNApplication::Release()
 {
-	if ( m_DestroyWindow == true ) {
+	if ( m_DestroyWindow ) {
 		ReleaseInstance();
 		return true;
 	}
@@ -182,15 +184,103 @@ LRESULT CALLBACK NNApplication::WndProc( HWND hWnd, UINT message, WPARAM wParam,
 {
 	switch( message )
 	{
+	case WM_CREATE:
+		{
+			break;
+		}
 	case WM_DESTROY:
-		NNApplication::GetInstance()->Release();
-		NNApplication::GetInstance()->m_DestroyWindow = true;
-		PostQuitMessage(0);
-		return 0;
+		{
+			NNApplication::GetInstance()->Release();
+			NNApplication::GetInstance()->m_DestroyWindow = true;
+			PostQuitMessage(0);
+			break;
+		}
 	case WM_PAINT:
-		PAINTSTRUCT ps;
-		HDC hdc = BeginPaint( hWnd, &ps );
-		EndPaint( hWnd, &ps );
+		{
+			PAINTSTRUCT ps;
+			HDC hdc = BeginPaint( hWnd, &ps );
+			EndPaint( hWnd, &ps );
+			break;
+		}
+
+	case WM_SOCKET:
+		{
+			if (WSAGETSELECTERROR(lParam))
+			{	
+				MessageBox(hWnd,L"WSAGETSELECTERROR",	L"Error", MB_OK|MB_ICONERROR);
+				SendMessage(hWnd,WM_DESTROY,NULL,NULL);
+				break;
+			}
+
+			switch (WSAGETSELECTEVENT(lParam))
+			{
+			case FD_CONNECT:
+				{
+					/// NAGLE 끈다
+					/// NAGLE Algorithm
+					/// http://en.wikipedia.org/wiki/Nagle's_algorithm
+					int opt = 1 ;
+					::setsockopt(NNNetworkSystem::GetInstance()->m_Socket, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)) ;
+
+					int nResult = WSAAsyncSelect(NNNetworkSystem::GetInstance()->m_Socket, hWnd, WM_SOCKET, (FD_CLOSE|FD_READ|FD_WRITE) ) ;
+					if (nResult)
+					{
+						assert(false) ;
+						break;
+					}
+				}
+				break ;
+
+			case FD_READ:
+				{
+					char inBuf[4096] = {0, } ;
+
+					int recvLen = recv(NNNetworkSystem::GetInstance()->m_Socket, inBuf, 4096, 0) ;
+
+					if ( !NNNetworkSystem::GetInstance()->m_RecvBuffer.Write(inBuf, recvLen) )
+					{
+						/// 버퍼 꽉찼다. 
+						assert(false) ;
+					}
+
+					NNNetworkSystem::GetInstance()->ProcessPacket() ;
+
+				}
+				break;
+
+			case FD_WRITE:
+				{
+					/// 실제로 버퍼에 있는것들 꺼내서 보내기
+					int size = NNNetworkSystem::GetInstance()->m_SendBuffer.GetCurrentSize() ;
+					if ( size > 0 )
+					{
+						char* data = new char[size] ;
+						NNNetworkSystem::GetInstance()->m_SendBuffer.Peek(data) ;
+
+						int sent = send(NNNetworkSystem::GetInstance()->m_Socket, data, size, 0) ;
+
+						/// 다를수 있다
+						if ( sent != size )
+							OutputDebugStringA("sent != request\n") ;
+
+						NNNetworkSystem::GetInstance()->m_SendBuffer.Consume(sent) ;
+
+						delete [] data ;
+					}
+
+				}
+				break ;
+
+			case FD_CLOSE:
+				{
+					MessageBox(hWnd, L"Server closed connection", L"Connection closed!", MB_ICONINFORMATION|MB_OK);
+					closesocket(NNNetworkSystem::GetInstance()->m_Socket);
+					SendMessage(hWnd,WM_DESTROY,NULL,NULL);
+				}
+				break;
+			}
+		} 
+		break ;
 	}
 
 	return(DefWindowProc(hWnd,message,wParam,lParam));
