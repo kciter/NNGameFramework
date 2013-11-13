@@ -8,7 +8,7 @@ public:
 	NNCircularBuffer(size_t capacity) ;
 	~NNCircularBuffer() ;
 
-private:
+public:
 	size_t GetCurrentSize() const
 	{ 
 		return mCurrentSize ; 
