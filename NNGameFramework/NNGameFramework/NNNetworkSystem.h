@@ -10,6 +10,8 @@
 class NNNetworkSystem
 {
 public:
+	friend class NNApplication;
+
 	static NNNetworkSystem* GetInstance();
 	static void ReleaseInstance();
 
@@ -19,10 +21,8 @@ public:
 	
 	void SetPacketHandler( short packetType, NNBaseHandler* handler );
 	
+	void Write( const char* data, size_t size );
 	void Read();
-	void Write();
-
-	void Close();
 
 private:
 	void ProcessPacket();
