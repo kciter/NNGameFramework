@@ -95,6 +95,39 @@ void ClientSession::OnRead(size_t len)
 			}
 			break ;
 
+		case PKT_CS_MOVE:
+			{
+				MoveBroadcastRequest inPacket;
+				mRecvBuffer.Read((char*)&inPacket, header.mSize);
+
+				MoveBroadcastResult outPacket;
+				outPacket.m_PlayerId = inPacket.m_PlayerId;
+				if ( inPacket.m_Direction == 'W' )
+				{
+					outPacket.m_PositionX = inPacket.m_PositionX;
+					outPacket.m_PositionY = inPacket.m_PositionY - 5.f;
+				}
+				else if ( inPacket.m_Direction == 'A' )
+				{
+					outPacket.m_PositionX = inPacket.m_PositionX - 5.f;
+					outPacket.m_PositionY = inPacket.m_PositionY;
+				}
+				else if ( inPacket.m_Direction == 'S' )
+				{
+					outPacket.m_PositionX = inPacket.m_PositionX;
+					outPacket.m_PositionY = inPacket.m_PositionY + 5.f;
+				}
+				else if ( inPacket.m_Direction == 'D' )
+				{
+					outPacket.m_PositionX = inPacket.m_PositionX + 5.f;
+					outPacket.m_PositionY = inPacket.m_PositionY;
+				}
+
+				if ( !Broadcast(&outPacket) )
+					return;
+			}
+			break;
+			/*
 		case PKT_CS_CHAT:
 			{
 				ChatBroadcastRequest inPacket ;
@@ -111,7 +144,7 @@ void ClientSession::OnRead(size_t len)
  
 			}
 			break ;
-
+			*/
 		default:
 			{
 				/// 여기 들어오면 이상한 패킷 보낸거다.

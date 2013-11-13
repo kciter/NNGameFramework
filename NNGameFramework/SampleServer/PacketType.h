@@ -14,6 +14,9 @@ enum PacketTypes
 	
 	PKT_CS_CHAT		= 3,
 	PKT_SC_CHAT		= 4,
+
+	PKT_CS_MOVE		= 5,
+	PKT_SC_MOVE		= 6,
 	
 } ;
 
@@ -26,7 +29,39 @@ struct PacketHeader
 	short mType ;
 } ;
 
+struct MoveBroadcastRequest : public PacketHeader
+{
+	MoveBroadcastRequest()
+	{
+		mSize = sizeof(MoveBroadcastRequest);
+		mType = PKT_CS_MOVE;
+		m_PlayerId = -1;
+		m_PositionX = 0;
+		m_PositionY = 0;
+		m_Direction = 0;
+	}
 
+	int m_PlayerId;
+	float m_PositionX;
+	float m_PositionY;
+	char m_Direction;
+};
+
+struct MoveBroadcastResult : public PacketHeader
+{
+	MoveBroadcastResult()
+	{
+		mSize = sizeof(MoveBroadcastResult) ;
+		mType = PKT_SC_MOVE ;
+		m_PlayerId = -1 ;
+		m_PositionX = 0;
+		m_PositionY = 0;
+	}
+
+	int	m_PlayerId ;
+	float m_PositionX;
+	float m_PositionY;
+} ;
 
 struct LoginRequest : public PacketHeader
 {
@@ -56,38 +91,6 @@ struct LoginResult : public PacketHeader
 	double	mPosZ ;
 	char	mName[MAX_NAME_LEN] ;
 
-} ;
-
-struct ChatBroadcastRequest : public PacketHeader
-{
-	ChatBroadcastRequest()
-	{
-		mSize = sizeof(ChatBroadcastRequest) ;
-		mType = PKT_CS_CHAT ;
-		mPlayerId = -1 ;
-	
-		memset(mChat, 0, MAX_CHAT_LEN) ;
-	}
-
-	int	mPlayerId ;
-	char mChat[MAX_CHAT_LEN] ;
-} ;
-
-struct ChatBroadcastResult : public PacketHeader
-{
-	ChatBroadcastResult()
-	{
-		mSize = sizeof(ChatBroadcastResult) ;
-		mType = PKT_SC_CHAT ;
-		mPlayerId = -1 ;
-		
-		memset(mName, 0, MAX_NAME_LEN) ;
-		memset(mChat, 0, MAX_CHAT_LEN) ;
-	}
-	
-	int	mPlayerId ;
-	char mName[MAX_NAME_LEN] ;
-	char mChat[MAX_CHAT_LEN] ;
 } ;
 
 #pragma pack(pop)
