@@ -3,12 +3,9 @@
 
 AnimationSample::AnimationSample()
 {
-	m_Animation = NNAnimation::Create( 6, L"Resources/Texture/attack_0.png",
-										L"Resources/Texture/attack_1.png", 
-										L"Resources/Texture/die_0.png", 
-										L"Resources/Texture/die_1.png",
-										L"Resources/Texture/idle_0.png", 
-										L"Resources/Texture/idle_1.png");
+	m_Animation = NNAnimation::Create( 3, L"Resources/Texture/z1.png",
+										L"Resources/Texture/z2.png", 
+										L"Resources/Texture/z3.png");
 
 	// 총 6장 애니메이션
 	// 맨 앞이 텍스쳐 수, 뒤가 경로

@@ -8,6 +8,10 @@ NNAnimation::NNAnimation()
 }
 NNAnimation::~NNAnimation()
 {
+	for (auto& iter=m_SpriteList.begin(); iter!=m_SpriteList.end(); iter++ )
+	{
+		SafeDelete(*iter);
+	}
 	m_SpriteList.clear();
 }
 
@@ -23,7 +27,8 @@ NNAnimation* NNAnimation::Create( int count, ... )
 		NNSpriteNode* spriteInstance = NNSpriteNode::Create( va_arg( ap, wchar_t* ) );
 		pInstance->m_SpriteList.push_back( spriteInstance );
 		pInstance->m_SpriteList[i]->SetFrameTime( 0.2f );
-		pInstance->AddChild( spriteInstance );
+		spriteInstance->SetParent( pInstance );
+		//pInstance->AddChild( spriteInstance );
 	}
 
 	va_end( ap );
@@ -43,7 +48,8 @@ void NNAnimation::AddSpriteNode( wchar_t* path )
 	NNSpriteNode* spriteInstance = NNSpriteNode::Create( path);
 	m_FrameCount++;
 	m_SpriteList.push_back( spriteInstance );
-	AddChild( spriteInstance );
+	spriteInstance->SetParent( this );
+	//AddChild( spriteInstance );
 }
 
 void NNAnimation::Render()
