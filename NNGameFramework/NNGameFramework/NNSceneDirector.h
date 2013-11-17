@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "NNScene.h"
@@ -6,8 +5,8 @@
 
 /* */
 /* NNSceneDirector
-/* »ý¼ºµÈ ¾ÀÀ» °ü¸®ÇÏ´Â ½Ì±ÛÅæ Å¬·¡½º
-/* µî·ÏµÈ ¾ÀÀ» Ãâ·Â, Ã³¸®ÇÏ´Â ¿ªÈ°ÀÌ´Ù.
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
+/* ï¿½ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, Ã³ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½È°ï¿½Ì´ï¿½.
 /* */
 
 class NNSceneDirector
@@ -29,6 +28,8 @@ private:
 public:
 	bool Init();
 	bool Release();
+	
+	NNScene* GetNowScene() { return m_NowScene; }
 
 public:
 	bool ChangeScene( NNScene* scene );
