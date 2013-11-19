@@ -25,15 +25,10 @@ bool NND2DRenderer::Init()
 	GetClientRect( hwnd, &rt );
 	D2D1_SIZE_U size = D2D1::SizeU( rt.right-rt.left, rt.bottom-rt.top );
 
-#ifdef _DEBUG
 	hr = m_ipD2DFactory->CreateHwndRenderTarget( D2D1::RenderTargetProperties(),
 		D2D1::HwndRenderTargetProperties( hwnd, size, D2D1_PRESENT_OPTIONS_IMMEDIATELY ),	
 		&m_ipRenderTarget );
-#else
-	hr = m_ipD2DFactory->CreateHwndRenderTarget( D2D1::RenderTargetProperties(),
-		D2D1::HwndRenderTargetProperties( hwnd, size, D2D1_PRESENT_OPTIONS_FORCE_DWORD ),
-		&m_ipRenderTarget );
-#endif	
+
 	if ( hr != S_OK )
 	{
 		return false;
