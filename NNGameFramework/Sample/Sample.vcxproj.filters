@@ -34,6 +34,9 @@
     <Filter Include="Scene\NetworkSample\Player">
       <UniqueIdentifier>{2f39f06d-4a72-46ef-9ebe-9e82dd378fb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\ParticleSample">
+      <UniqueIdentifier>{02ffd270-ce42-477c-aa27-bdc49d44863c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -67,6 +70,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>Scene\NetworkSample\Player</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleSample.cpp">
+      <Filter>Scene\ParticleSample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationSample.h">
@@ -98,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Scene\NetworkSample\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSample.h">
+      <Filter>Scene\ParticleSample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

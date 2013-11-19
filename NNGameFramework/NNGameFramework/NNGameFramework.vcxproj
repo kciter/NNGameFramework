@@ -111,6 +111,8 @@
     <ClCompile Include="NNLabel.cpp" />
     <ClCompile Include="NNNetworkSystem.cpp" />
     <ClCompile Include="NNObject.cpp" />
+    <ClCompile Include="NNParticle.cpp" />
+    <ClCompile Include="NNParticleSystem.cpp" />
     <ClCompile Include="NNPoint.cpp" />
     <ClCompile Include="NNResourceManager.cpp" />
     <ClCompile Include="NNScene.cpp" />
@@ -164,6 +166,8 @@
     <ClInclude Include="NNNetworkSystem.h" />
     <ClInclude Include="NNObject.h" />
     <ClInclude Include="NNPacketHeader.h" />
+    <ClInclude Include="NNParticle.h" />
+    <ClInclude Include="NNParticleSystem.h" />
     <ClInclude Include="NNPoint.h" />
     <ClInclude Include="NNRenderer.h" />
     <ClInclude Include="NNResourceManager.h" />

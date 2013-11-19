@@ -97,6 +97,12 @@
     <Filter Include="Framework\NetworkSystem\BaseHandler">
       <UniqueIdentifier>{21699230-0574-4df6-8e74-43ce58d13c41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Node\ParticleSystem">
+      <UniqueIdentifier>{a7e299f5-f9ce-48c2-8ae6-e481c8c104c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\ParticleSystem\Particle">
+      <UniqueIdentifier>{4fbc5eea-1a5b-46ba-8d98-2ea302980254}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -209,6 +215,12 @@
     </ClCompile>
     <ClCompile Include="NNNetworkSystem.cpp">
       <Filter>Framework\NetworkSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="NNParticleSystem.cpp">
+      <Filter>Framework\Node\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="NNParticle.cpp">
+      <Filter>Framework\Node\ParticleSystem\Particle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +379,12 @@
     </ClInclude>
     <ClInclude Include="NNBaseHandler.h">
       <Filter>Framework\NetworkSystem\BaseHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="NNParticleSystem.h">
+      <Filter>Framework\Node\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="NNParticle.h">
+      <Filter>Framework\Node\ParticleSystem\Particle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
