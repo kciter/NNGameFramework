@@ -14,7 +14,7 @@ public:
 	void Render();
 	void Update( float dTime );
 
-	static NNParticleSystem* Create();
+	static NNParticleSystem* Create(); 
 
 private:
 	std::list<NNParticle*> m_ParticleList;
