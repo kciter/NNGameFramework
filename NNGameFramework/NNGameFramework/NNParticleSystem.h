@@ -17,6 +17,9 @@ public:
 	static NNParticleSystem* Create();
 
 private:
+	void CreateParticle();
+
+private:
 	std::list<NNParticle*> m_ParticleList;
 	
 	float m_LifeTime;
