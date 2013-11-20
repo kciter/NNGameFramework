@@ -37,6 +37,9 @@ private:
 	float m_StartOpacity;
 	float m_EndOpacity;
 
+	float m_Direction;
+	float m_SpreadDegree;
+
 	NNColor m_StartColor;
 	NNColor m_EndColor;
 };
