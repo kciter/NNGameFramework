@@ -103,6 +103,9 @@
     <Filter Include="Framework\Node\ParticleSystem\Particle">
       <UniqueIdentifier>{4fbc5eea-1a5b-46ba-8d98-2ea302980254}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\DataType\Color">
+      <UniqueIdentifier>{0d1f5451-bdb9-47cf-8e9d-c638935c2aa0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -221,6 +224,9 @@
     </ClCompile>
     <ClCompile Include="NNParticle.cpp">
       <Filter>Framework\Node\ParticleSystem\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="NNColor.cpp">
+      <Filter>Framework\DataType\Color</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -385,6 +391,9 @@
     </ClInclude>
     <ClInclude Include="NNParticle.h">
       <Filter>Framework\Node\ParticleSystem\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="NNColor.h">
+      <Filter>Framework\DataType\Color</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
