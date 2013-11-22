@@ -5,7 +5,7 @@
 #include "AnimationSample.h"
 #include "XMLSample.h"
 #include "SpriteAtlasSample.h"
-#include "CameraSample.h"
+#include "CameraSample.h" 
 #include "FMODSoundSample.h"
 #include "NetworkSample.h"
 
