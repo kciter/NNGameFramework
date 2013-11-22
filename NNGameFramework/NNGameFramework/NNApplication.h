@@ -61,7 +61,7 @@ private:
 	/* 현재 렌더러의 상태(종류) */
 
 private:
-	wchar_t m_Title[256];
+	wchar_t* m_Title;
 	/* 프로그램의 이름 */
 	int m_ScreenWidth;
 	/* 윈도우 프레임의 너비 */
