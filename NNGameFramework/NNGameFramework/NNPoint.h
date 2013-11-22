@@ -4,7 +4,10 @@
 #include "NNConfig.h"
 #include <math.h>
 
-
+/* */
+/* NNPoint
+/* 한 점의 좌표를 나타내는 클래스
+/* */
 
 class NNPoint
 {
