@@ -23,6 +23,7 @@
     <ClCompile Include="SpriteAtlasSample.cpp" />
     <ClCompile Include="SpriteSample.cpp" />
     <ClCompile Include="XMLSample.cpp" />
+    <ClCompile Include="ZipSample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationSample.h" />
@@ -36,6 +37,7 @@
     <ClInclude Include="SpriteAtlasSample.h" />
     <ClInclude Include="SpriteSample.h" />
     <ClInclude Include="XMLSample.h" />
+    <ClInclude Include="ZipSample.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F689F842-12F6-48E3-B019-7E63AE3B213C}</ProjectGuid>

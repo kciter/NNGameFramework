@@ -39,6 +39,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( CameraSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( FMODSoundSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( ZipSample::Create() );
 
 	Application->Run();
 	Application->Release();
