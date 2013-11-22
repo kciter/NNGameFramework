@@ -15,3 +15,8 @@
 
 #include <assert.h>
 #include <time.h>
+
+/* */
+/* NNIncludeSet
+/* 인클루드하는 헤더 파일을 모아둔 헤더파일
+/* */
