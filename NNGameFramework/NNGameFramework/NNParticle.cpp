@@ -63,8 +63,3 @@ void NND2DParticle::Update( float dTime )
 {
 
 }
-
-void NND2DParticle::Render()
-{
-
-}
