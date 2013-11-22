@@ -12,6 +12,8 @@
 /* 현재 텍스쳐 파일만 관리함
 /* */
 
+#pragma comment(lib, "zdll.lib")
+
 class NNResourceManager
 {
 private:
@@ -33,6 +35,7 @@ public:
 	NNTexture* LoadTextureFromFile( std::wstring path );
 	NNXML* LoadXMLFromFIle( std::string path );
 	NNSound* LoadSoundFromFile( std::string path, bool isLoop=false, bool isBackground=false );
+	NNXML* LoadXmlFromZip ( std::string zipPath, std::string xmlName);
 };
 
 
