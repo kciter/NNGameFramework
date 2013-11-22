@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>.\Library\zlib;.\Library\FMOD\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>.\Library\FMOD\lib;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
     <OutDir>$(SolutionDir)lib\</OutDir>
@@ -151,8 +151,6 @@
     <ClInclude Include="Library\TinyXML\xpath_static.h" />
     <ClInclude Include="Library\TinyXML\xpath_stream.h" />
     <ClInclude Include="Library\TinyXML\xpath_syntax.h" />
-    <ClInclude Include="Library\zlib\zconf.h" />
-    <ClInclude Include="Library\zlib\zlib.h" />
     <ClInclude Include="NNAnimation.h" />
     <ClInclude Include="NNApplication.h" />
     <ClInclude Include="NNAudioSystem.h" />

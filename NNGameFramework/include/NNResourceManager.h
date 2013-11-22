@@ -12,8 +12,6 @@
 /* 현재 텍스쳐 파일만 관리함
 /* */
 
-#pragma comment(lib, "zdll.lib")
-
 class NNResourceManager
 {
 private:

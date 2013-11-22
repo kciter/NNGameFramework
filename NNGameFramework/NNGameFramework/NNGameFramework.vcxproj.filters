@@ -398,11 +398,5 @@
     <ClInclude Include="NNColor.h">
       <Filter>Framework\DataType\Color</Filter>
     </ClInclude>
-    <ClInclude Include="Library\zlib\zconf.h">
-      <Filter>Library\zlib</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\zlib\zlib.h">
-      <Filter>Library\zlib</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
