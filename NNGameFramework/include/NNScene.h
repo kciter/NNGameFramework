@@ -10,7 +10,7 @@
 /* SceneDirector에 등록될 수 있는 Scene 노드
 /* */
 
-class NNScene : virtual public NNObject
+class NNScene : public NNObject
 {
 public:
 	NNScene();
