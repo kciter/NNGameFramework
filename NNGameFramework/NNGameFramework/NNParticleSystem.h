@@ -64,6 +64,52 @@ public:
 	NNColor GetStartColor() { return m_StartColor; }
 	NNColor GetEndColor() { return m_EndColor; }
 
+	void SetCount( int count ) {  m_Count = count; }
+	void SetCreateParticlePerClock( int createParticlePerClock ) {  m_CreateParticlePerClock = createParticlePerClock; }
+
+	void SetMinLifeTime( float minLifeTime ) { m_MinLifeTime = minLifeTime; }
+	void SetMaxLifeTime( float maxLifeTime ) { m_MaxLifeTime = maxLifeTime; }
+
+	void SetMinStartSpeed( float minStartSpeed ) { m_MinStartSpeed = minStartSpeed; }
+	void SetMaxStartSpeed( float maxStartSpeed ) { m_MaxStartSpeed = maxStartSpeed; }
+
+	void SetMinEndSpeed( float  minEndSpeed ) { m_MinEndSpeed = minEndSpeed; }
+	void SetMaxEndSpeed( float maxEndSpeed ) { m_MaxEndSpeed = maxEndSpeed; }
+
+	void SetMinStartRotationSpeed( float minStartRotationSpeed ) { m_MinStartRotationSpeed = minStartRotationSpeed; }
+	void SetMaxStartRotationSpeed( float maxStartRotationSpeed ) { m_MaxStartRotationSpeed = maxStartRotationSpeed; }
+
+	void SetMinEndRotationSpeed( float minEndRotationSpeed ) { m_MinEndRotationSpeed = minEndRotationSpeed; }
+	void SetMaxEndRotationSpeed( float maxEndRotationSpeed ) { m_MaxEndRotationSpeed = maxEndRotationSpeed; }
+
+	void SetMinStartScaleX( float minStartScaleX ) { m_MinStartScaleX = minStartScaleX; }
+	void SetMaxStartScaleX( float maxStartScaleX) { m_MaxStartScaleX = maxStartScaleX; }
+
+	void SetMinStartScaleY( float minStartScaleY ) { m_MinStartScaleY = minStartScaleY; }
+	void SetMaxStartScaleY( float maxStartScaleY) { m_MaxStartScaleY = maxStartScaleY; }
+
+	void SetMinEndSacleX( float minEndScaleX ) { m_MinEndScaleX = minEndScaleX; }
+	void SetMaxEndSacleX( float maxEndScaleX ) { m_MaxEndScaleX = maxEndScaleX; }
+
+	void SetMinEndSacleY( float minEndScaleY ) { m_MinEndScaleY = minEndScaleY; }
+	void SetMaxEndSacleY( float maxEndScaleY) { m_MaxEndScaleY = maxEndScaleY; }
+
+	void SetStartOpacity( float startOpacity ) { m_StartOpacity = startOpacity; }
+	void SetEndOpacity( float endOpacity ) { m_EndOpacity = endOpacity; }
+
+	void SetDirection( float direction ) { m_Direction = direction; }
+
+	void SetSpreadDegree( float spreadDegree ) { m_SpreadDegree = spreadDegree; }
+
+	void SetMinStartRodiusX( float minStartRadiusX ) { m_MinStartRadiusX = minStartRadiusX; }
+	void SetMaxStartRodiusX( float mxStartRadiusX ) { m_MaxStartRadiusX = mxStartRadiusX ; }
+
+	void SetMinStartRodiusY( float minStartRadiusY ) { m_MinStartRadiusY = minStartRadiusY; }
+	void SetMaxStartRodiusY( float maxStartRadiusY ) { m_MaxStartRadiusY = maxStartRadiusY; }
+
+	void SetStartColor( NNColor startColor ) { m_StartColor = startColor; }
+	void SetEndColor( NNColor endColor) { m_EndColor = endColor; }
+
 private:
 	void CreateParticle();
 
