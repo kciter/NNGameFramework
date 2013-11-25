@@ -37,6 +37,9 @@
     <Filter Include="Scene\ParticleSample">
       <UniqueIdentifier>{02ffd270-ce42-477c-aa27-bdc49d44863c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\ZipSample">
+      <UniqueIdentifier>{0f034720-040d-43c4-9aaa-290554d8dc59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -55,9 +58,6 @@
     <ClCompile Include="SpriteSample.cpp">
       <Filter>Scene\SpriteSample</Filter>
     </ClCompile>
-    <ClCompile Include="XMLSample.cpp">
-      <Filter>Scene\XMLSample</Filter>
-    </ClCompile>
     <ClCompile Include="NetworkSample.cpp">
       <Filter>Scene\NetworkSample</Filter>
     </ClCompile>
@@ -72,6 +72,12 @@
     </ClCompile>
     <ClCompile Include="ParticleSample.cpp">
       <Filter>Scene\ParticleSample</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLSample.cpp">
+      <Filter>Scene\XMLSample</Filter>
+    </ClCompile>
+    <ClCompile Include="ZipSample.cpp">
+      <Filter>Scene\ZipSample</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +96,6 @@
     <ClInclude Include="SpriteSample.h">
       <Filter>Scene\SpriteSample</Filter>
     </ClInclude>
-    <ClInclude Include="XMLSample.h">
-      <Filter>Scene\XMLSample</Filter>
-    </ClInclude>
     <ClInclude Include="NetworkSample.h">
       <Filter>Scene\NetworkSample</Filter>
     </ClInclude>
@@ -107,6 +110,12 @@
     </ClInclude>
     <ClInclude Include="ParticleSample.h">
       <Filter>Scene\ParticleSample</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLSample.h">
+      <Filter>Scene\XMLSample</Filter>
+    </ClInclude>
+    <ClInclude Include="ZipSample.h">
+      <Filter>Scene\ZipSample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,8 +1,6 @@
 
 #include "NNPoint.h"
 
-
-
 NNPoint& NNPoint::operator= ( const NNPoint& point )
 {
 	this->SetPoint( point.GetX(), point.GetY() );

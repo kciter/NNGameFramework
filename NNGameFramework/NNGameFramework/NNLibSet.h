@@ -7,3 +7,8 @@
 #pragma comment(lib, "WindowsCodecs.lib")
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "fmod_vc.lib")
+
+/* */
+/* NNLibSet
+/* 여러 라이브러리를 불러오는 헤더파일
+/* */

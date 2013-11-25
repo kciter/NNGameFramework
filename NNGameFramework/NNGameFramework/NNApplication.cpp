@@ -15,11 +15,10 @@ NNApplication::NNApplication()
 	m_Renderer(nullptr), m_pSceneDirector(nullptr),
 	m_RendererStatus(UNKNOWN),m_DestroyWindow(false)
 {
-
 }
 NNApplication::~NNApplication()
 {
-
+	// Release();
 }
 
 NNApplication* NNApplication::GetInstance()

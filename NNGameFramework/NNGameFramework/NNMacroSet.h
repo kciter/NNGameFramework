@@ -1,6 +1,11 @@
 
 #pragma once
 
+/* */
+/* NNMacroSet
+/* 편리하게 사용하기 위해 정의한 매크로
+/* */
+
 template <typename T>
 inline void SafeDelete( T* &p )
 {

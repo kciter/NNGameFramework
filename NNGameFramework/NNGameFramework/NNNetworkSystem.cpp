@@ -112,8 +112,6 @@ void NNNetworkSystem::Read()
 	{
 		ProcessPacket() ;
 	}
-
-	
 }
 
 void NNNetworkSystem::SetPacketHandler( short packetType, NNBaseHandler* handler )

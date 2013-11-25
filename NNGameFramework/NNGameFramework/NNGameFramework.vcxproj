@@ -106,6 +106,7 @@
     <ClCompile Include="NNAudioSystem.cpp" />
     <ClCompile Include="NNCamera.cpp" />
     <ClCompile Include="NNCircularBuffer.cpp" />
+    <ClCompile Include="NNColor.cpp" />
     <ClCompile Include="NND2DRenderer.cpp" />
     <ClCompile Include="NNInputSystem.cpp" />
     <ClCompile Include="NNLabel.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="NNBaseHandler.h" />
     <ClInclude Include="NNCamera.h" />
     <ClInclude Include="NNCircularBuffer.h" />
+    <ClInclude Include="NNColor.h" />
     <ClInclude Include="NNConfig.h" />
     <ClInclude Include="NND2DRenderer.h" />
     <ClInclude Include="NNIncludeSet.h" />
