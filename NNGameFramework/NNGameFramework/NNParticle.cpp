@@ -61,5 +61,5 @@ void NND2DParticle::Render()
 
 void NND2DParticle::Update( float dTime )
 {
-
+	m_LifeTime += dTime;
 }
