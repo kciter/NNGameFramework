@@ -109,6 +109,9 @@
     <Filter Include="Library\zlib">
       <UniqueIdentifier>{d44db12c-d966-41a9-9c19-db47ee2a31da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Node\Scene\UI">
+      <UniqueIdentifier>{de416ea1-5539-40e9-bae2-db1d196e18d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -230,6 +233,9 @@
     </ClCompile>
     <ClCompile Include="NNColor.cpp">
       <Filter>Framework\DataType\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="NNUISet.cpp">
+      <Filter>Framework\Node\Scene\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +403,9 @@
     </ClInclude>
     <ClInclude Include="NNColor.h">
       <Filter>Framework\DataType\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="NNUISet.h">
+      <Filter>Framework\Node\Scene\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

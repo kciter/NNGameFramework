@@ -40,6 +40,12 @@
     <Filter Include="Scene\ZipSample">
       <UniqueIdentifier>{0f034720-040d-43c4-9aaa-290554d8dc59}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\UISetSample">
+      <UniqueIdentifier>{42aa5b00-a41c-47d2-bde5-a19e71dabd0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\UISetSample\UISet">
+      <UniqueIdentifier>{6e8cdf27-7c69-4e8a-b2d7-8d7b2234992e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -79,6 +85,12 @@
     <ClCompile Include="ZipSample.cpp">
       <Filter>Scene\ZipSample</Filter>
     </ClCompile>
+    <ClCompile Include="UISetSample.cpp">
+      <Filter>Scene\UISetSample</Filter>
+    </ClCompile>
+    <ClCompile Include="UISet.cpp">
+      <Filter>Scene\UISetSample\UISet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationSample.h">
@@ -116,6 +128,12 @@
     </ClInclude>
     <ClInclude Include="ZipSample.h">
       <Filter>Scene\ZipSample</Filter>
+    </ClInclude>
+    <ClInclude Include="UISetSample.h">
+      <Filter>Scene\UISetSample</Filter>
+    </ClInclude>
+    <ClInclude Include="UISet.h">
+      <Filter>Scene\UISetSample\UISet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -124,6 +124,7 @@
     <ClCompile Include="NNSpriteAtlas.cpp" />
     <ClCompile Include="NNSpriteNode.cpp" />
     <ClCompile Include="NNTexture.cpp" />
+    <ClCompile Include="NNUISet.cpp" />
     <ClCompile Include="NNXML.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +182,7 @@
     <ClInclude Include="NNSpriteAtlas.h" />
     <ClInclude Include="NNSpriteNode.h" />
     <ClInclude Include="NNTexture.h" />
+    <ClInclude Include="NNUISet.h" />
     <ClInclude Include="NNXML.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

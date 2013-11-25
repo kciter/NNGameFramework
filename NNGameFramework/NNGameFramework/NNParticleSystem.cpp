@@ -20,3 +20,8 @@ void NNParticleSystem::Update( float dTime )
 {
 
 }
+
+void NNParticleSystem::CreateParticle()
+{
+
+}
