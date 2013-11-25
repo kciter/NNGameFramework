@@ -64,6 +64,8 @@ public:
 	NNColor GetStartColor() { return m_StartColor; }
 	NNColor GetEndColor() { return m_EndColor; }
 
+	void SetCreate( bool isCreate ) { m_IsCreate = isCreate; }
+
 	void SetCount( int count ) {  m_Count = count; }
 	void SetCreateParticlePerClock( int createParticlePerClock ) {  m_CreateParticlePerClock = createParticlePerClock; }
 
