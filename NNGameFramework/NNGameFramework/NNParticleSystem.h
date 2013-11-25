@@ -17,6 +17,10 @@ public:
 	static NNParticleSystem* Create();
 
 public:
+	bool IsCreate() const { return m_IsCreate; }
+	int GetCount() const { return m_Count; }
+	int GetCreateParticlePerClock() const { return m_CreateParticlePerClock; }
+
 	float GetMinLifeTime() const { return m_MinLifeTime; }
 	float GetMaxLifeTime() const { return m_MaxLifeTime; }
 
@@ -69,7 +73,7 @@ private:
 	bool m_IsCreate;
 
 	int m_Count;
-	int m_CreateNumber;
+	int m_CreateParticlePerClock;
 	
 	float m_MinLifeTime, m_MaxLifeTime;
 
