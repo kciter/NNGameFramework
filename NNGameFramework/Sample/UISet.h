@@ -13,6 +13,8 @@ public:
 	void Render();
 	void Update( float dTime );
 
+	NNCREATE_FUNC(UISet);
+
 private:
-	NNSprite m_UI;
+	NNSprite* m_UI;
 };
