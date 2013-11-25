@@ -13,7 +13,9 @@ class NNParticle
 {
 public:
 	NNParticle()
-	 : m_Position(0.f,0.f), m_ScaleX(0.f),m_ScaleY(0.f), m_Rotation(0.f), m_Visible(true), m_Color(255,255,255,1.f) {}
+	 : m_Position(0.f,0.f), m_ScaleX(0.f), m_ScaleY(0.f), 
+	   m_ImageWidth(0.f), m_ImageHeight(0.f), m_Rotation(0.f), 
+	   m_LifeTime(0.f), m_Visible(true), m_Color(255,255,255,1.f) {}
 	virtual ~NNParticle(){}
 
 	static NNParticle* Create( std::wstring path );
@@ -55,6 +57,7 @@ protected:
 	float m_ImageWidth;
 	float m_ImageHeight;
 	float m_Rotation; // Degree
+	float m_LifeTime;
 	bool m_Visible;
 	NNColor m_Color;
 };
