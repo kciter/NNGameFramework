@@ -2,11 +2,12 @@
 #include "NNScene.h"
 
 NNScene::NNScene()
+	: m_UISet(nullptr)
 {
 }
 NNScene::~NNScene()
 {
-
+	SafeDelete(m_UISet);
 }
 
 void NNScene::Render()
@@ -22,6 +23,11 @@ void NNScene::Render()
 	{
 		child->Render();
 	}
+
+	if ( m_UISet != nullptr )
+	{
+		m_UISet->Render();
+	}
 }
 void NNScene::Update( float dTime )
 {
@@ -30,6 +36,11 @@ void NNScene::Update( float dTime )
 	for (const auto& child : m_ChildList)
 	{
 		child->Update( dTime );
+	}
+
+	if ( m_UISet != nullptr )
+	{
+		m_UISet->Update( dTime );
 	}
 }
 
