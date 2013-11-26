@@ -9,6 +9,7 @@
 #include "FMODSoundSample.h"
 #include "NetworkSample.h"
 #include "UISetSample.h"
+#include "ParticleSample.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "NNGameFramework_DEBUG.lib")
@@ -41,7 +42,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	// NNSceneDirector::GetInstance()->ChangeScene( CameraSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( FMODSoundSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( ZipSample::Create() );
-	NNSceneDirector::GetInstance()->ChangeScene( UISetSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( UISetSample::Create() );
+	NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
 
 	Application->Run();
 	Application->Release();

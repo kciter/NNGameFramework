@@ -1,9 +1,10 @@
 
 #pragma once
 
-#include "NNObject.h"
+#include "NNScene.h"
+#include "NNParticleSystem.h"
 
-class ParticleSample : public NNObject
+class ParticleSample : public NNScene
 {
 public:
 	ParticleSample();
@@ -15,5 +16,7 @@ public:
 	NNCREATE_FUNC(ParticleSample);
 
 private:
-	//NNParticleSystem* m_ParticleSystem;
+	NNParticleSystem* m_ParticleSystem1;
+	NNParticleSystem* m_ParticleSystem2;
+	NNParticleSystem* m_ParticleSystem3;
 };
