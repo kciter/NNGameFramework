@@ -35,7 +35,10 @@ void NNObject::Render()
 
 	for (const auto& child : m_ChildList )
 	{
-		child->Render();
+		if ( child->IsVisible() == true )
+		{
+			child->Render();
+		}
 	}
 }
 void NNObject::Update( float dTime )
@@ -44,7 +47,10 @@ void NNObject::Update( float dTime )
 
 	for (const auto& child : m_ChildList)
 	{
-		child->Update( dTime );
+		if ( child->IsVisible() == true )
+		{
+			child->Update( dTime );
+		}
 	}
 }
 void NNObject::SortingChildByZindex()
