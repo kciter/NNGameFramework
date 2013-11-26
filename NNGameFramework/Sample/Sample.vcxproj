@@ -22,6 +22,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpriteAtlasSample.cpp" />
     <ClCompile Include="SpriteSample.cpp" />
+    <ClCompile Include="TestSample.cpp" />
     <ClCompile Include="UISet.cpp" />
     <ClCompile Include="UISetSample.cpp" />
     <ClCompile Include="XMLSample.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpriteAtlasSample.h" />
     <ClInclude Include="SpriteSample.h" />
+    <ClInclude Include="TestSample.h" />
     <ClInclude Include="UISet.h" />
     <ClInclude Include="UISetSample.h" />
     <ClInclude Include="XMLSample.h" />
