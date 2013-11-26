@@ -5,6 +5,8 @@
 #include "NNResourceManager.h"
 #include "NNNetworkSystem.h"
 
+#include "NNRandom.h"
+
 NNApplication* NNApplication::m_pInstance = nullptr;
 
 NNApplication::NNApplication()
@@ -74,6 +76,9 @@ bool NNApplication::Release()
 	NNInputSystem::ReleaseInstance();
 	NNAudioSystem::ReleaseInstance();
 	NNNetworkSystem::ReleaseInstance();
+
+	NNRandom::ReleaseInstance();
+
 	SafeDelete( m_Renderer );
 	ReleaseInstance();
 

@@ -112,6 +112,12 @@
     <Filter Include="Framework\Node\Scene\UI">
       <UniqueIdentifier>{de416ea1-5539-40e9-bae2-db1d196e18d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Util">
+      <UniqueIdentifier>{6d0c3d29-2e8a-4890-9bfc-1caa8f405a33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Util\Random">
+      <UniqueIdentifier>{e55e4a72-2dc4-4ad6-a065-79229f6fccc7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -236,6 +242,9 @@
     </ClCompile>
     <ClCompile Include="NNUISet.cpp">
       <Filter>Framework\Node\Scene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="NNRandom.cpp">
+      <Filter>Framework\Util\Random</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +415,9 @@
     </ClInclude>
     <ClInclude Include="NNUISet.h">
       <Filter>Framework\Node\Scene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="NNRandom.h">
+      <Filter>Framework\Util\Random</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

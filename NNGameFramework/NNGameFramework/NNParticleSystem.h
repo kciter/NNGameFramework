@@ -14,12 +14,12 @@ public:
 	void Render();
 	void Update( float dTime );
 
-	static NNParticleSystem* Create();
+	static NNParticleSystem* Create( std::wstring path );
 
 public:
 	bool IsCreate() const { return m_IsCreate; }
-	int GetCount() const { return m_Count; }
-	int GetCreateParticlePerClock() const { return m_CreateParticlePerClock; }
+	int GetCount() const { return m_ParticleList.size(); }
+	int GetCreateParticlePerSecond() const { return m_CreateParticlePerSecond; }
 
 	float GetMinLifeTime() const { return m_MinLifeTime; }
 	float GetMaxLifeTime() const { return m_MaxLifeTime; }
@@ -42,11 +42,11 @@ public:
 	float GetMinStartScaleY() const { return m_MinStartScaleY; }
 	float GetMaxStartScaleY() const { return m_MaxStartScaleY; }
 
-	float GetMinEndSacleX() const { return m_MinEndScaleX; }
-	float GetMaxEndSacleX() const { return m_MaxEndScaleX; }
+	float GetMinEndScaleX() const { return m_MinEndScaleX; }
+	float GetMaxEndScaleX() const { return m_MaxEndScaleX; }
 
-	float GetMinEndSacleY() const { return m_MinEndScaleY; }
-	float GetMaxEndSacleY() const { return m_MaxEndScaleY; }
+	float GetMinEndScaleY() const { return m_MinEndScaleY; }
+	float GetMaxEndScaleY() const { return m_MaxEndScaleY; }
 
 	float GetStartOpacity() const { return m_StartOpacity; }
 	float GetEndOpacity() const { return m_EndOpacity; }
@@ -61,13 +61,15 @@ public:
 	float GetMinStartRodiusY() const { return m_MinStartRadiusY; }
 	float GetMaxStartRodiusY() const { return m_MaxStartRadiusY; }
 
-	NNColor GetStartColor() { return m_StartColor; }
-	NNColor GetEndColor() { return m_EndColor; }
+	NNColor GetMinStartColor() { return m_MinStartColor; }
+	NNColor GetMaxStartColor() { return m_MaxStartColor; }
+
+	NNColor GetMinEndColor() { return m_MinEndColor; }
+	NNColor GetMaxEndColor() { return m_MaxEndColor; }
 
 	void SetCreate( bool isCreate ) { m_IsCreate = isCreate; }
 
-	void SetCount( int count ) {  m_Count = count; }
-	void SetCreateParticlePerClock( int createParticlePerClock ) {  m_CreateParticlePerClock = createParticlePerClock; }
+	void SetCreateParticlePerSecond( int createParticlePerSecond ) {  m_CreateParticlePerSecond = createParticlePerSecond; }
 
 	void SetMinLifeTime( float minLifeTime ) { m_MinLifeTime = minLifeTime; }
 	void SetMaxLifeTime( float maxLifeTime ) { m_MaxLifeTime = maxLifeTime; }
@@ -109,8 +111,11 @@ public:
 	void SetMinStartRodiusY( float minStartRadiusY ) { m_MinStartRadiusY = minStartRadiusY; }
 	void SetMaxStartRodiusY( float maxStartRadiusY ) { m_MaxStartRadiusY = maxStartRadiusY; }
 
-	void SetStartColor( NNColor startColor ) { m_StartColor = startColor; }
-	void SetEndColor( NNColor endColor) { m_EndColor = endColor; }
+	void SetMinStartColor( NNColor startColor ) { m_MinStartColor = startColor; }
+	void SetMaxStartColor( NNColor startColor ) { m_MaxStartColor = startColor; }
+
+	void SetMinEndColor( NNColor endColor) { m_MinEndColor = endColor; }
+	void SetMaxEndColor( NNColor endColor) { m_MaxEndColor = endColor; }
 
 private:
 	void CreateParticle();
@@ -118,10 +123,12 @@ private:
 private:
 	std::list<NNParticle*> m_ParticleList;
 
+	std::wstring m_TexturePath; //
+
 	bool m_IsCreate;
 
-	int m_Count;
-	int m_CreateParticlePerClock;
+	int m_CreateParticlePerSecond;
+	float m_Timer;
 	
 	float m_MinLifeTime, m_MaxLifeTime;
 
@@ -145,6 +152,6 @@ private:
 	float m_MinStartRadiusX, m_MaxStartRadiusX;
 	float m_MinStartRadiusY, m_MaxStartRadiusY;
 
-	NNColor m_StartColor;
-	NNColor m_EndColor;
+	NNColor m_MinStartColor, m_MaxStartColor;
+	NNColor m_MinEndColor, m_MaxEndColor;
 };

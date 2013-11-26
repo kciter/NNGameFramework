@@ -115,6 +115,7 @@
     <ClCompile Include="NNParticle.cpp" />
     <ClCompile Include="NNParticleSystem.cpp" />
     <ClCompile Include="NNPoint.cpp" />
+    <ClCompile Include="NNRandom.cpp" />
     <ClCompile Include="NNResourceManager.cpp" />
     <ClCompile Include="NNScene.cpp" />
     <ClCompile Include="NNSceneDirector.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="NNParticle.h" />
     <ClInclude Include="NNParticleSystem.h" />
     <ClInclude Include="NNPoint.h" />
+    <ClInclude Include="NNRandom.h" />
     <ClInclude Include="NNRenderer.h" />
     <ClInclude Include="NNResourceManager.h" />
     <ClInclude Include="NNScene.h" />
