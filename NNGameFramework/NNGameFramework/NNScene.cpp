@@ -21,12 +21,18 @@ void NNScene::Render()
 
 	for (const auto& child : m_ChildList )
 	{
-		child->Render();
+		if ( child->IsVisible() == true )
+		{
+			child->Render();
+		}
 	}
 
 	if ( m_UISet != nullptr )
 	{
-		m_UISet->Render();
+		if ( m_UISet->IsVisible() == true )
+		{
+			m_UISet->Render();
+		}
 	}
 }
 void NNScene::Update( float dTime )
@@ -35,12 +41,18 @@ void NNScene::Update( float dTime )
 
 	for (const auto& child : m_ChildList)
 	{
-		child->Update( dTime );
+		if ( child->IsVisible() == true )
+		{
+			child->Update( dTime );
+		}
 	}
 
 	if ( m_UISet != nullptr )
 	{
-		m_UISet->Update( dTime );
+		if ( m_UISet->IsVisible() == true )
+		{
+			m_UISet->Update( dTime );
+		}
 	}
 }
 
