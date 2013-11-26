@@ -98,9 +98,6 @@ public:
 	void SetMinEndSacleY( float minEndScaleY ) { m_MinEndScaleY = minEndScaleY; }
 	void SetMaxEndSacleY( float maxEndScaleY) { m_MaxEndScaleY = maxEndScaleY; }
 
-	void SetStartOpacity( float startOpacity ) { m_StartOpacity = startOpacity; }
-	void SetEndOpacity( float endOpacity ) { m_EndOpacity = endOpacity; }
-
 	void SetDirection( float direction ) { m_Direction = direction; }
 
 	void SetSpreadDegree( float spreadDegree ) { m_SpreadDegree = spreadDegree; }
@@ -121,9 +118,12 @@ private:
 	void CreateParticle();
 
 private:
+	NNParticle** m_ParticlePool;
 	std::list<NNParticle*> m_ParticleList;
 
 	std::wstring m_TexturePath; //
+	
+	int m_PoolCount;
 
 	bool m_IsCreate;
 

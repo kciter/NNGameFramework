@@ -18,9 +18,8 @@ NNParticleSystem::NNParticleSystem()
 	m_MinStartRadiusY(0.f), m_MaxStartRadiusY(0.f),
 	m_MinStartColor(255,255,255,1.f), m_MaxStartColor(255,255,255,1.f),
 	m_MinEndColor(0,0,0,0.f), m_MaxEndColor(0,0,0,0.f),
-	m_Timer(0.f)
+	m_Timer(0.f), m_PoolCount(0), m_ParticlePool(nullptr)
 {
-
 }
 
 NNParticleSystem::~NNParticleSystem()
@@ -80,17 +79,6 @@ void NNParticleSystem::Update( float dTime )
 			}
 		}
 	}
-
-	/*for ( const auto& iter : m_ParticleList )
-	{
-		iter->Update( dTime );
-
-		if ( iter->GetNowLifeTime() > iter->GetLifeTime() )
-		{
-			m_ParticleList.remove( iter );
-			//delete iter;
-		}
-	}*/
 }
 
 void NNParticleSystem::CreateParticle()

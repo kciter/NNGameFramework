@@ -4,7 +4,7 @@
 
 ParticleSample::ParticleSample()
 {
-	m_ParticleSystem1 = NNParticleSystem::Create(L"Resources/Texture/fire.png");
+	m_ParticleSystem1 = NNParticleSystem::Create(L"Resources/Texture/character.png");
 	AddChild( m_ParticleSystem1 );
 	/*m_ParticleSystem2 = NNParticleSystem::Create(L"Resources/Texture/walk_0.png");
 	AddChild( m_ParticleSystem2 );
