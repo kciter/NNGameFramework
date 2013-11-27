@@ -1,8 +1,8 @@
 
 #include "NNTexture.h"
 #include "NNApplication.h"
-
-
+#include "NND2DRenderer.h"
+#include "NND3DRenderer.h"
 
 //////////////////////////////////////////////////////////////////////////
 /*					NND2DTexture										*/
@@ -80,4 +80,26 @@ void NND2DTexture::Destroy()
 	SafeRelease( m_FmtConverter );
 }
 
+//////////////////////////////////////////////////////////////////////////
+/*					NND3DTexture										*/
+//////////////////////////////////////////////////////////////////////////
+NND3DTexture::NND3DTexture()
+	: mTexture(nullptr)
+{
+}
+NND3DTexture::NND3DTexture( std::wstring path )
+{
+	NND3DRenderer* pD2DRenderer = static_cast<NND3DRenderer*>(NNApplication::GetInstance()->GetRenderer());
 
+	D3DXCreateTextureFromFileEx( pD2DRenderer->GetDevice(), path.c_str(), D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2,
+		1, 0, D3DFMT_UNKNOWN, D3DPOOL_MANAGED, D3DX_DEFAULT, D3DX_DEFAULT, NULL, NULL, NULL, &mTexture );
+}
+NND3DTexture::~NND3DTexture()
+{
+	Destroy();
+}
+
+void NND3DTexture::Destroy()
+{
+	SafeRelease( mTexture );
+}

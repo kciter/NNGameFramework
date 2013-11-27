@@ -12,9 +12,6 @@
 
 class NNTexture
 {
-protected:
-	std::wstring m_Path;
-
 public:
 	NNTexture(){}
 	virtual ~NNTexture(){}
@@ -22,15 +19,13 @@ public:
 	//virtual NNTexture* Create() = 0;
 	static NNTexture* Create( std::wstring path );
 	virtual void Destroy() = 0;
+
+protected:
+	std::wstring m_Path;
 };
 
 class NND2DTexture : public NNTexture
 {
-private:
-	static IWICImagingFactory* g_pWICFactory;
-	ID2D1Bitmap* m_D2DBitmap;
-	IWICFormatConverter* m_FmtConverter;
-
 public:
 	NND2DTexture();
 	NND2DTexture( std::wstring path );
@@ -41,7 +36,25 @@ public:
 	void Destroy();
 
 public:
-	inline ID2D1Bitmap* GetD2DBitmap() const { return m_D2DBitmap; }
+	ID2D1Bitmap* GetD2DBitmap() { return m_D2DBitmap; }
+
+private:
+	static IWICImagingFactory* g_pWICFactory;
+	ID2D1Bitmap* m_D2DBitmap;
+	IWICFormatConverter* m_FmtConverter;
 };
 
+class NND3DTexture : public NNTexture
+{
+public:
+	NND3DTexture();
+	NND3DTexture( std::wstring path );
+	virtual ~NND3DTexture();
 
+	void Destroy();
+	
+private:
+	LPDIRECT3DTEXTURE9 mTexture;
+
+	friend class NND3DSprite;
+};
