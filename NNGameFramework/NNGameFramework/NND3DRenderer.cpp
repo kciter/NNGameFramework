@@ -69,6 +69,8 @@ bool NND3DRenderer::Init()
 	mD3D->CreateDevice( D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, NNApplication::GetInstance()->GetHWND(),
 		D3DCREATE_HARDWARE_VERTEXPROCESSING, &mD3DPresentParameters, &mD3DDevice ); //D3DCREATE_SOFTWARE_VERTEXPROCESSING
 
+	D3DXCreateSprite( mD3DDevice, &mSprite );
+
 	return true;
 }
 bool NND3DRenderer::Release()
