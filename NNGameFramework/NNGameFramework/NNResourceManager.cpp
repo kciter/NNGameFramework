@@ -71,7 +71,7 @@ NNSound* NNResourceManager::LoadSoundFromFile( std::string path, bool isLoop, bo
 	return m_SoundTable[path];
 }
 
-char* NNResourceManager::UnzipFileToMemory( std::wstring zipPath, std::wstring FileName)
+NNZip* NNResourceManager::UnzipFileToMemory( std::wstring zipPath, std::wstring FileName)
 {
 	HZIP hz = OpenZip(zipPath.c_str(),0);
 	ZIPENTRY ze;
@@ -83,14 +83,28 @@ char* NNResourceManager::UnzipFileToMemory( std::wstring zipPath, std::wstring F
 
 	CloseZip(hz);
 
-	return buf;
+	m_ZipTable[zipPath] = NNZip::Create(buf, ze.unc_size);
+	return m_ZipTable[zipPath];
 }
 
-NNXML* NNResourceManager::LoadXMLFromMemory( char *buf )
+NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
 {
-// 	if ( !m_XMLTable[] )
-//  	{
-// 		m_XMLTable[path] = NNXML::Create( buf );
-//  	}
-// 	return m_XMLTable["AA"];
+	md5_state_t state;
+	md5_byte_t digest[16];
+	char result[16*2 + 1];
+	int di;
+
+	md5_init(&state);
+	md5_append(&state, (const md5_byte_t *)buf->GetBuffer(), buf->GetSize());
+	md5_finish(&state, digest);
+
+	for (di = 0; di < 16; ++di)
+		sprintf(result + di * 2, "%02x", digest[di]);
+
+	if ( !m_XMLTable[result] )
+	{
+		m_XMLTable[result] = NNXML::CreateStream( buf->GetBuffer() );
+	}
+	
+	return m_XMLTable[result];
 }
