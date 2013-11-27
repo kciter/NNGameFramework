@@ -41,11 +41,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>.\Library\FMOD\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>.\Library\DirectX\Lib\x86;.\Library\FMOD\lib;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
     <OutDir>$(SolutionDir)lib\</OutDir>
     <TargetName>$(ProjectName)_DEBUG</TargetName>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -111,8 +112,10 @@
     <ClCompile Include="NNCircularBuffer.cpp" />
     <ClCompile Include="NNColor.cpp" />
     <ClCompile Include="NND2DRenderer.cpp" />
+    <ClCompile Include="NND3DRenderer.cpp" />
     <ClCompile Include="NNInputSystem.cpp" />
     <ClCompile Include="NNLabel.cpp" />
+    <ClCompile Include="NNMatrix.cpp" />
     <ClCompile Include="NNNetworkSystem.cpp" />
     <ClCompile Include="NNObject.cpp" />
     <ClCompile Include="NNParticle.cpp" />
@@ -132,6 +135,80 @@
     <ClCompile Include="NNXML.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Library\DirectX\Include\audiodefs.h" />
+    <ClInclude Include="Library\DirectX\Include\comdecl.h" />
+    <ClInclude Include="Library\DirectX\Include\D2D1.h" />
+    <ClInclude Include="Library\DirectX\Include\D2D1Helper.h" />
+    <ClInclude Include="Library\DirectX\Include\D2DBaseTypes.h" />
+    <ClInclude Include="Library\DirectX\Include\D2Derr.h" />
+    <ClInclude Include="Library\DirectX\Include\D3D10.h" />
+    <ClInclude Include="Library\DirectX\Include\D3D10effect.h" />
+    <ClInclude Include="Library\DirectX\Include\d3d10misc.h" />
+    <ClInclude Include="Library\DirectX\Include\d3d10sdklayers.h" />
+    <ClInclude Include="Library\DirectX\Include\D3D10shader.h" />
+    <ClInclude Include="Library\DirectX\Include\D3D10_1.h" />
+    <ClInclude Include="Library\DirectX\Include\D3D10_1shader.h" />
+    <ClInclude Include="Library\DirectX\Include\D3D11.h" />
+    <ClInclude Include="Library\DirectX\Include\D3D11SDKLayers.h" />
+    <ClInclude Include="Library\DirectX\Include\D3D11Shader.h" />
+    <ClInclude Include="Library\DirectX\Include\d3d9.h" />
+    <ClInclude Include="Library\DirectX\Include\d3d9caps.h" />
+    <ClInclude Include="Library\DirectX\Include\d3d9types.h" />
+    <ClInclude Include="Library\DirectX\Include\D3Dcommon.h" />
+    <ClInclude Include="Library\DirectX\Include\D3Dcompiler.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DCSX.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX10.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx10async.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX10core.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX10math.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX10mesh.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX10tex.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX11.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX11async.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX11core.h" />
+    <ClInclude Include="Library\DirectX\Include\D3DX11tex.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9anim.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9core.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9effect.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9math.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9mesh.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9shader.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9shape.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9tex.h" />
+    <ClInclude Include="Library\DirectX\Include\d3dx9xof.h" />
+    <ClInclude Include="Library\DirectX\Include\Dcommon.h" />
+    <ClInclude Include="Library\DirectX\Include\dinput.h" />
+    <ClInclude Include="Library\DirectX\Include\dinputd.h" />
+    <ClInclude Include="Library\DirectX\Include\dsconf.h" />
+    <ClInclude Include="Library\DirectX\Include\dsetup.h" />
+    <ClInclude Include="Library\DirectX\Include\dsound.h" />
+    <ClInclude Include="Library\DirectX\Include\DWrite.h" />
+    <ClInclude Include="Library\DirectX\Include\dxdiag.h" />
+    <ClInclude Include="Library\DirectX\Include\DxErr.h" />
+    <ClInclude Include="Library\DirectX\Include\dxfile.h" />
+    <ClInclude Include="Library\DirectX\Include\DXGI.h" />
+    <ClInclude Include="Library\DirectX\Include\DXGIFormat.h" />
+    <ClInclude Include="Library\DirectX\Include\DXGIType.h" />
+    <ClInclude Include="Library\DirectX\Include\dxsdkver.h" />
+    <ClInclude Include="Library\DirectX\Include\gameux.h" />
+    <ClInclude Include="Library\DirectX\Include\PIXPlugin.h" />
+    <ClInclude Include="Library\DirectX\Include\rmxfguid.h" />
+    <ClInclude Include="Library\DirectX\Include\rmxftmpl.h" />
+    <ClInclude Include="Library\DirectX\Include\rpcsal.h" />
+    <ClInclude Include="Library\DirectX\Include\X3DAudio.h" />
+    <ClInclude Include="Library\DirectX\Include\xact3.h" />
+    <ClInclude Include="Library\DirectX\Include\xact3d3.h" />
+    <ClInclude Include="Library\DirectX\Include\xact3wb.h" />
+    <ClInclude Include="Library\DirectX\Include\XAPO.h" />
+    <ClInclude Include="Library\DirectX\Include\XAPOBase.h" />
+    <ClInclude Include="Library\DirectX\Include\XAPOFX.h" />
+    <ClInclude Include="Library\DirectX\Include\XAudio2.h" />
+    <ClInclude Include="Library\DirectX\Include\XAudio2fx.h" />
+    <ClInclude Include="Library\DirectX\Include\XDSP.h" />
+    <ClInclude Include="Library\DirectX\Include\XInput.h" />
+    <ClInclude Include="Library\DirectX\Include\xma2defs.h" />
+    <ClInclude Include="Library\DirectX\Include\xnamath.h" />
     <ClInclude Include="Library\FMOD\inc\fmod.h" />
     <ClInclude Include="Library\FMOD\inc\fmod.hpp" />
     <ClInclude Include="Library\FMOD\inc\fmod_codec.h" />
@@ -168,11 +245,13 @@
     <ClInclude Include="NNColor.h" />
     <ClInclude Include="NNConfig.h" />
     <ClInclude Include="NND2DRenderer.h" />
+    <ClInclude Include="NND3DRenderer.h" />
     <ClInclude Include="NNIncludeSet.h" />
     <ClInclude Include="NNInputSystem.h" />
     <ClInclude Include="NNLabel.h" />
     <ClInclude Include="NNLibSet.h" />
     <ClInclude Include="NNMacroSet.h" />
+    <ClInclude Include="NNMatrix.h" />
     <ClInclude Include="NNNetworkSystem.h" />
     <ClInclude Include="NNObject.h" />
     <ClInclude Include="NNPacketHeader.h" />
@@ -192,6 +271,15 @@
     <ClInclude Include="NNTexture.h" />
     <ClInclude Include="NNUISet.h" />
     <ClInclude Include="NNXML.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Library\DirectX\Include\D3DX10math.inl" />
+    <None Include="Library\DirectX\Include\d3dx9math.inl" />
+    <None Include="Library\DirectX\Include\D3DX_DXGIFormatConvert.inl" />
+    <None Include="Library\DirectX\Include\xnamathconvert.inl" />
+    <None Include="Library\DirectX\Include\xnamathmatrix.inl" />
+    <None Include="Library\DirectX\Include\xnamathmisc.inl" />
+    <None Include="Library\DirectX\Include\xnamathvector.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
