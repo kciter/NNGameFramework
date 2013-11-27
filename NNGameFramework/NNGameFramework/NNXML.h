@@ -15,6 +15,7 @@ public:
 
 	static NNXML* Create( std::string path );
 	static NNXML* Create();
+	static NNXML* CreateStream( char* buf );
 
 	TiXmlString XPathToString( std::string xpath );
 

@@ -39,7 +39,12 @@ public:
 	NNSound* LoadSoundFromFile( std::string path, bool isLoop=false, bool isBackground=false );
 
 	NNZip* UnzipFileToMemory( std::wstring zipPath, std::wstring FileName );
+	NNTexture* LoadTextureFromMemory( NNZip *buf );
 	NNXML* LoadXMLFromMemory( NNZip *buf );
+	NNSound* LoadSoundFromMemory( NNZip *buf, bool isLoop=false, bool isBackground=false );
+
+protected:
+	char* CreateZipCode( char *buf ,int size );
 };
 
 

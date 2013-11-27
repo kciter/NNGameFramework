@@ -28,7 +28,11 @@ NNXML* NNXML::Create( std::string path )
 	NNXML* pInstacne = new NNXML(path);
 	return pInstacne;
 }
-
+NNXML* NNXML::CreateStream( char* buf )
+{
+	NNXML* pInstacne = new NNXML(buf);
+	return pInstacne;
+}
 NNXML* NNXML::Create()
 {
 	NNXML* pInstacne = new NNXML();

@@ -1,7 +1,7 @@
 
 #include "NNResourceManager.h"
 //#include "NNApplication.h"
-
+#include <iostream>
 NNResourceManager* NNResourceManager::m_pInstance = nullptr;
 
 NNResourceManager::NNResourceManager()
@@ -87,24 +87,47 @@ NNZip* NNResourceManager::UnzipFileToMemory( std::wstring zipPath, std::wstring 
 	return m_ZipTable[zipPath];
 }
 
-NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
+char* NNResourceManager::CreateZipCode( char *buf, int size)
 {
 	md5_state_t state;
 	md5_byte_t digest[16];
-	char result[16*2 + 1];
+	char *result = new char[33];
 	int di;
 
 	md5_init(&state);
-	md5_append(&state, (const md5_byte_t *)buf->GetBuffer(), buf->GetSize());
+	md5_append(&state, (const md5_byte_t *)buf, size);
 	md5_finish(&state, digest);
 
 	for (di = 0; di < 16; ++di)
 		sprintf(result + di * 2, "%02x", digest[di]);
 
+	return result;
+}
+NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
+{
+	char *result = CreateZipCode( buf->GetBuffer(), buf->GetSize());
+
 	if ( !m_XMLTable[result] )
-	{
 		m_XMLTable[result] = NNXML::CreateStream( buf->GetBuffer() );
-	}
-	
+
 	return m_XMLTable[result];
+}
+NNTexture* NNResourceManager::LoadTextureFromMemory( NNZip *buf )
+{
+	char *code = CreateZipCode( buf->GetBuffer(), buf->GetSize());
+	std::wstring result = std::wstring(code, code + sizeof(char) * 32);
+
+ 	if ( !m_TextureTable[result] )
+ 		m_TextureTable[result] = NNTexture::CreateStream( buf->GetBuffer(), buf->GetSize() );
+ 
+ 	return m_TextureTable[result];
+}
+NNSound* NNResourceManager::LoadSoundFromMemory( NNZip *buf, bool isLoop, bool isBackground )
+{
+	char *result = CreateZipCode( buf->GetBuffer(), buf->GetSize());
+
+	if ( !m_SoundTable[result] )
+		m_SoundTable[result] = NNSound::CreateStream( buf, isLoop, isBackground );
+
+	return m_SoundTable[result];
 }
