@@ -12,6 +12,7 @@ enum RendererStatus
 {
 	UNKNOWN,
 	D2D,
+	D3D,
 };
 
 class NNRenderer
