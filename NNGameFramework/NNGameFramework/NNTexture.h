@@ -52,9 +52,10 @@ public:
 	virtual ~NND3DTexture();
 
 	void Destroy();
+
+public:
+	LPDIRECT3DTEXTURE9 GetTexture() { return mTexture; }
 	
 private:
 	LPDIRECT3DTEXTURE9 mTexture;
-
-	friend class NND3DSprite;
 };
