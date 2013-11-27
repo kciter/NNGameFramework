@@ -48,9 +48,6 @@ public:
 	float GetMinEndScaleY() const { return m_MinEndScaleY; }
 	float GetMaxEndScaleY() const { return m_MaxEndScaleY; }
 
-	float GetStartOpacity() const { return m_StartOpacity; }
-	float GetEndOpacity() const { return m_EndOpacity; }
-
 	float GetDirection() const { return m_Direction; }
 
 	float GetSpreadDegree() const { return m_SpreadDegree; }
@@ -142,9 +139,6 @@ private:
 	float m_MinStartScaleY, m_MaxStartScaleY;
 	float m_MinEndScaleX, m_MaxEndScaleX;
 	float m_MinEndScaleY, m_MaxEndScaleY;
-
-	float m_StartOpacity;
-	float m_EndOpacity;
 
 	float m_Direction;
 	float m_SpreadDegree;

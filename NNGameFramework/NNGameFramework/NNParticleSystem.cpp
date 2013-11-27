@@ -87,7 +87,7 @@ void NNParticleSystem::CreateParticle()
 
 	pInstance->SetParentMatrix( this->m_Matrix );
 	
-	float tempDirection = NNDegreeToRadian(m_Direction+NNRandom::NextFloat(-m_SpreadDegree/2.f,m_SpreadDegree/2.f));
+	float tempDirection = NNDegreeToRadian(NNRandom::NextFloat(m_Direction-m_SpreadDegree/2.f,m_Direction+m_SpreadDegree/2.f));
 	pInstance->SetPosition(
 		NNRandom::NextFloat(m_MinStartRadiusX, m_MaxStartRadiusX)*cos(tempDirection),
 		NNRandom::NextFloat(m_MinStartRadiusX, m_MaxStartRadiusX)*sin(tempDirection) );
