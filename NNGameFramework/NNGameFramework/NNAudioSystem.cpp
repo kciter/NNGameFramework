@@ -8,6 +8,7 @@ NNAudioSystem::NNAudioSystem()
 {
 	FMOD::System_Create( &m_System );
 	m_System->init( 32, FMOD_INIT_NORMAL, 0 );
+	m_System->createChannelGroup( "MasterChannelGroup", &m_ChannelGroup );
 }
 NNAudioSystem::~NNAudioSystem()
 {

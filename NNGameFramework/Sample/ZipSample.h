@@ -2,6 +2,9 @@
 #pragma once
 
 #include "NNScene.h"
+#include "NNZip.h"
+#include "NNXML.h"
+
 class ZipSample : public NNScene
 {
 public:
@@ -14,4 +17,5 @@ public:
 	NNCREATE_FUNC(ZipSample);
 
 private:
+	NNXML *m_TestXML;
 };

@@ -18,6 +18,7 @@ public:
 
 	//virtual NNTexture* Create() = 0;
 	static NNTexture* Create( std::wstring path );
+	static NNTexture* CreateStream( char *buf, int size );
 	virtual void Destroy() = 0;
 
 protected:
@@ -28,6 +29,7 @@ class NND2DTexture : public NNTexture
 {
 public:
 	NND2DTexture();
+	NND2DTexture( char *buf , int size );
 	NND2DTexture( std::wstring path );
 	virtual ~NND2DTexture();
 

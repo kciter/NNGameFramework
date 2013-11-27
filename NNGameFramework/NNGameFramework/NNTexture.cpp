@@ -23,6 +23,22 @@ NNTexture* NNTexture::Create( std::wstring path )
 	
 	return pInstance;
 }
+NNTexture* NNTexture::CreateStream( char *buf, int size )
+{
+	static RendererStatus rendererStatus = NNApplication::GetInstance()->GetRendererStatus();
+
+	NNTexture* pInstance = nullptr;
+	switch( rendererStatus )
+	{
+	case D2D:
+		pInstance = new NND2DTexture( buf, size );
+		break;
+	default:
+		break;
+	}
+
+	return pInstance;
+}
 
 //////////////////////////////////////////////////////////////////////////
 /*					NND2DTexture										*/
@@ -40,7 +56,7 @@ NND2DTexture::NND2DTexture( std::wstring path )
 		HRESULT ret = CoCreateInstance( CLSID_WICImagingFactory, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&g_pWICFactory) );
 		if( ret == REGDB_E_CLASSNOTREG ) 
 		{
-			 CoCreateInstance( CLSID_WICImagingFactory1, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&g_pWICFactory) );
+			CoCreateInstance( CLSID_WICImagingFactory1, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&g_pWICFactory) );
 		}
 	}
 
@@ -49,6 +65,41 @@ NND2DTexture::NND2DTexture( std::wstring path )
 	IWICBitmapDecoder* bitmapDecoder = nullptr;
 	g_pWICFactory->CreateDecoderFromFilename( path.c_str(), nullptr, GENERIC_READ, 
 		WICDecodeMetadataCacheOnDemand, &bitmapDecoder );
+
+	IWICBitmapFrameDecode* bitmapFrameDecode = nullptr;
+	bitmapDecoder->GetFrame( 0, &bitmapFrameDecode );
+
+	g_pWICFactory->CreateFormatConverter( &m_FmtConverter );
+
+	m_FmtConverter->Initialize( bitmapFrameDecode,
+		GUID_WICPixelFormat32bppPBGRA,
+		WICBitmapDitherTypeNone,
+		nullptr,
+		0.0f,
+		WICBitmapPaletteTypeCustom );
+
+	NND2DRenderer* pD2DRenderer = static_cast<NND2DRenderer*>(NNApplication::GetInstance()->GetRenderer());
+
+	pD2DRenderer->GetHwndRenderTarget()->CreateBitmapFromWicBitmap( m_FmtConverter, nullptr, &m_D2DBitmap );
+
+	SafeRelease( bitmapDecoder );
+	SafeRelease( bitmapFrameDecode );
+}
+NND2DTexture::NND2DTexture( char *buf, int size )
+{
+	if ( g_pWICFactory == nullptr)
+	{
+		HRESULT ret = CoCreateInstance( CLSID_WICImagingFactory, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&g_pWICFactory) );
+		if( ret == REGDB_E_CLASSNOTREG ) 
+		{
+			CoCreateInstance( CLSID_WICImagingFactory1, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&g_pWICFactory) );
+		}
+	}
+	IWICBitmapDecoder* bitmapDecoder = nullptr;
+	IWICStream* iWICStream;
+	g_pWICFactory->CreateStream( &iWICStream );
+	iWICStream->InitializeFromMemory( (WICInProcPointer)buf, size );
+	g_pWICFactory->CreateDecoderFromStream( iWICStream, nullptr, WICDecodeMetadataCacheOnDemand, &bitmapDecoder );
 
 	IWICBitmapFrameDecode* bitmapFrameDecode = nullptr;
 	bitmapDecoder->GetFrame( 0, &bitmapFrameDecode );
