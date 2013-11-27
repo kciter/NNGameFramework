@@ -7,6 +7,9 @@
 
 #include "NNRandom.h"
 
+#include "NND2DRenderer.h"
+#include "NND3DRenderer.h"
+
 NNApplication* NNApplication::m_pInstance = nullptr;
 
 NNApplication::NNApplication()
@@ -174,8 +177,15 @@ bool NNApplication::_CreateRenderer( RendererStatus renderStatus )
 	switch( renderStatus )
 	{
 	case D2D:
-		m_Renderer = new NND2DRenderer();
-		break;
+		{
+			m_Renderer = new NND2DRenderer();
+			break;
+		}
+	case D3D:
+		{
+			m_Renderer = new NND3DRenderer();
+			break;
+		}
 	default:
 		return false;
 	}

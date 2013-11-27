@@ -7,6 +7,9 @@
 #pragma comment(lib, "WindowsCodecs.lib")
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "fmod_vc.lib")
+#pragma comment(lib, "d3d9.lib")
+#pragma comment(lib, "d3dx9.lib")
+#pragma comment(lib, "dxguid.lib")
 
 /* */
 /* NNLibSet

@@ -2,7 +2,6 @@
 #pragma once
 
 #include "NNRenderer.h"
-#include "NND2DRenderer.h"
 #include "NNSceneDirector.h"
 #include "NNConfig.h"
 

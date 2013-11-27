@@ -6,6 +6,8 @@
 
 #include <d2d1.h>
 #include <d2d1helper.h>
+#include "Library/DirectX/Include/d3d9.h"
+#include "Library/DirectX/Include/d3dx9.h"
 #include <wincodec.h>
 #include <dwrite.h>
 
