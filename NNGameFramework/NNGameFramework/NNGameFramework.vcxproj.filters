@@ -130,6 +130,9 @@
     <Filter Include="Framework\DataType\Matrix">
       <UniqueIdentifier>{a15d22ff-df9c-420c-ae93-eba460381a22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Resource\Zip">
+      <UniqueIdentifier>{a8973b74-d8f4-4583-84c1-d4c250c0ad03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -272,6 +275,9 @@
     </ClCompile>
     <ClCompile Include="NNMatrix.cpp">
       <Filter>Framework\DataType\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="NNZip.cpp">
+      <Filter>Framework\Resource\Zip</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -682,6 +688,9 @@
     </ClInclude>
     <ClInclude Include="NNMatrix.h">
       <Filter>Framework\DataType\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="NNZip.h">
+      <Filter>Framework\Resource\Zip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

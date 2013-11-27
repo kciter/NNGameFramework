@@ -2,6 +2,7 @@
 #pragma once
 
 #include "NNConfig.h"
+#include "NNZip.h"
 #include "Library/FMOD/inc/fmod.hpp"
 #include "Library/FMOD/inc/fmod_errors.h"
 
@@ -12,6 +13,7 @@ public:
 	~NNSound();
 
 	static NNSound* Create( std::string path, bool isLoop=false, bool isBackground=false );
+	static NNSound* CreateStream( NNZip* buf, bool isLoop=false, bool isBackground=false );
 
 	FMOD::Sound* GetSound() { return m_Sound; }
 	FMOD::Sound** GetSoundPointer() { return &m_Sound; }

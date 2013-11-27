@@ -133,6 +133,7 @@
     <ClCompile Include="NNTexture.cpp" />
     <ClCompile Include="NNUISet.cpp" />
     <ClCompile Include="NNXML.cpp" />
+    <ClCompile Include="NNZip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DirectX\Include\audiodefs.h" />
@@ -271,6 +272,7 @@
     <ClInclude Include="NNTexture.h" />
     <ClInclude Include="NNUISet.h" />
     <ClInclude Include="NNXML.h" />
+    <ClInclude Include="NNZip.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\DirectX\Include\D3DX10math.inl" />

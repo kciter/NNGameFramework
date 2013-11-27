@@ -10,10 +10,6 @@
 
 class NND2DRenderer : public NNRenderer
 {
-private:
-	ID2D1Factory* m_ipD2DFactory;
-	ID2D1HwndRenderTarget* m_ipRenderTarget;
-
 public:
 	NND2DRenderer();
 	virtual ~NND2DRenderer();
@@ -29,6 +25,8 @@ public:
 public:
 	ID2D1Factory* GetD2DFactory() const { return m_ipD2DFactory; }
 	ID2D1HwndRenderTarget* GetHwndRenderTarget() const { return m_ipRenderTarget; }
+
+private:
+	ID2D1Factory* m_ipD2DFactory;
+	ID2D1HwndRenderTarget* m_ipRenderTarget;
 };
-
-

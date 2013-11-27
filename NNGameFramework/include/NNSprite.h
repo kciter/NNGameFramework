@@ -3,9 +3,11 @@
 
 #include "NNObject.h"
 #include "NNConfig.h"
+#include "NNZip.h"
 
 #include "NNTexture.h"
 #include "NND2DRenderer.h"
+#include "NND3DRenderer.h"
 
 /* */
 /* NNSprite
@@ -29,6 +31,7 @@ public:
 public:
 	//static NNSprite* Create();
 	static NNSprite* Create( std::wstring path );
+	static NNSprite* Create( NNZip *buf );
 	virtual void Destroy() {}
 	virtual void Render() {}
 
@@ -51,7 +54,23 @@ private:
 public:
 	NND2DSprite();
 	NND2DSprite( std::wstring path );
+	NND2DSprite( NNZip *buf );
 	virtual ~NND2DSprite();
+
+	void Destroy();
+	void Render();
+};
+
+class NND3DSprite : public NNSprite
+{
+private:
+	NND3DRenderer* mpD3DRenderer;
+	NND3DTexture* mpD3DTexture;
+
+public:
+	NND3DSprite();
+	NND3DSprite( std::wstring path );
+	virtual ~NND3DSprite();
 
 	void Destroy();
 	void Render();

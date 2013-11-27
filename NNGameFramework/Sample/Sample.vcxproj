@@ -77,12 +77,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\include\Library\FMOD\lib;..\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\include\Library\DirectX\Lib\x86;..\include\Library\FMOD\lib;..\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>..\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\include\Library\FMOD\lib;..\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\include\Library\DirectX\Lib\x86;..\include\Library\FMOD\lib;..\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
