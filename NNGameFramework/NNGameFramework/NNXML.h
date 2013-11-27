@@ -9,6 +9,7 @@ class NNXML
 {
 public: 
 	NNXML( std::string path );
+	NNXML( char *buf );
 	NNXML();
 	~NNXML();
 

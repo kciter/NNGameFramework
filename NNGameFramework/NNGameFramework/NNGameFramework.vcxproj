@@ -59,7 +59,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -85,6 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Library\MD5\md5.cpp" />
     <ClCompile Include="Library\TinyXML\action_store.cpp" />
     <ClCompile Include="Library\TinyXML\htmlutil.cpp" />
     <ClCompile Include="Library\TinyXML\lex_util.cpp" />
@@ -101,6 +102,8 @@
     <ClCompile Include="Library\TinyXML\xpath_static.cpp" />
     <ClCompile Include="Library\TinyXML\xpath_stream.cpp" />
     <ClCompile Include="Library\TinyXML\xpath_syntax.cpp" />
+    <ClCompile Include="Library\zip\unzip.cpp" />
+    <ClCompile Include="Library\zip\zip.cpp" />
     <ClCompile Include="NNAnimation.cpp" />
     <ClCompile Include="NNApplication.cpp" />
     <ClCompile Include="NNAudioSystem.cpp" />
@@ -136,6 +139,7 @@
     <ClInclude Include="Library\FMOD\inc\fmod_dsp.h" />
     <ClInclude Include="Library\FMOD\inc\fmod_errors.h" />
     <ClInclude Include="Library\FMOD\inc\fmod_output.h" />
+    <ClInclude Include="Library\MD5\md5.h" />
     <ClInclude Include="Library\TinyXML\action_store.h" />
     <ClInclude Include="Library\TinyXML\byte_stream.h" />
     <ClInclude Include="Library\TinyXML\htmlutil.h" />
@@ -153,6 +157,8 @@
     <ClInclude Include="Library\TinyXML\xpath_static.h" />
     <ClInclude Include="Library\TinyXML\xpath_stream.h" />
     <ClInclude Include="Library\TinyXML\xpath_syntax.h" />
+    <ClInclude Include="Library\zip\unzip.h" />
+    <ClInclude Include="Library\zip\zip.h" />
     <ClInclude Include="NNAnimation.h" />
     <ClInclude Include="NNApplication.h" />
     <ClInclude Include="NNAudioSystem.h" />

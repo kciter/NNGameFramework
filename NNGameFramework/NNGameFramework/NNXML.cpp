@@ -8,6 +8,12 @@ NNXML::NNXML( std::string path )
 	//m_Document.LoadFile(TIXML_ENCODING_UTF8);
 	m_LoadSuccess = m_Document.LoadFile();
 }
+NNXML::NNXML( char *buf )
+{
+	m_Document = TiXmlDocument();
+	//m_Document.LoadFile(TIXML_ENCODING_UTF8);
+	m_Document.Parse( buf );
+}
 NNXML::NNXML()
 {
 	m_Document = TiXmlDocument();

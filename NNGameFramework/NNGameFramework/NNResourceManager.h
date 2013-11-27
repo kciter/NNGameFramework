@@ -5,6 +5,8 @@
 #include "NNTexture.h"
 #include "NNXML.h"
 #include "NNSound.h"
+#include "Library/zip/unzip.h"
+#include "Library/MD5/md5.h"
 
 /* */
 /* NNResourceManager
@@ -33,7 +35,9 @@ public:
 	NNTexture* LoadTextureFromFile( std::wstring path );
 	NNXML* LoadXMLFromFIle( std::string path );
 	NNSound* LoadSoundFromFile( std::string path, bool isLoop=false, bool isBackground=false );
-	NNXML* LoadXmlFromZip ( std::string zipPath, std::string xmlName);
+
+	char* UnzipFileToMemory( std::wstring zipPath, std::wstring FileName );
+	NNXML* LoadXMLFromMemory( char *buf );
 };
 
 

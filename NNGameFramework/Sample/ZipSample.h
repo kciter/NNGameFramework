@@ -2,7 +2,6 @@
 #pragma once
 
 #include "NNScene.h"
-
 class ZipSample : public NNScene
 {
 public:

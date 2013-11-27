@@ -1,6 +1,5 @@
 
 #include "NNResourceManager.h"
-//#include "Library/zlib/zlib.h"
 //#include "NNApplication.h"
 
 NNResourceManager* NNResourceManager::m_pInstance = nullptr;
@@ -71,13 +70,27 @@ NNSound* NNResourceManager::LoadSoundFromFile( std::string path, bool isLoop, bo
 	}
 	return m_SoundTable[path];
 }
-NNXML* NNResourceManager::LoadXmlFromZip( std::string zipPath, std::string xmlName )
+
+char* NNResourceManager::UnzipFileToMemory( std::wstring zipPath, std::wstring FileName)
 {
-	if ( !m_XMLTable[zipPath] )
-	{
+	HZIP hz = OpenZip(zipPath.c_str(),0);
+	ZIPENTRY ze;
+	int index=0;
 
+	FindZipItem(hz,FileName.c_str() ,true , &index , &ze);
+	char *buf = new char[ze.unc_size];
+	UnzipItem(hz,index, buf, ze.unc_size);
 
-		//m_XMLTable[zipPath] = NNXML::Create( path );
-	}
-	return m_XMLTable[zipPath];
+	CloseZip(hz);
+
+	return buf;
+}
+
+NNXML* NNResourceManager::LoadXMLFromMemory( char *buf )
+{
+// 	if ( !m_XMLTable[] )
+//  	{
+// 		m_XMLTable[path] = NNXML::Create( buf );
+//  	}
+// 	return m_XMLTable["AA"];
 }
