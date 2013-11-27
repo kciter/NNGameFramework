@@ -1,40 +1,36 @@
 
 #include "ParticleSample.h"
 #include "NNApplication.h"
+#include "NNInputSystem.h"
 
 ParticleSample::ParticleSample()
 {
-	m_ParticleSystem1 = NNParticleSystem::Create(L"Resources/Texture/fire.png");
+	m_ParticleSystem1 = NNParticleSystem::Create(L"Resources/Texture/character.png");
 	AddChild( m_ParticleSystem1 );
-	/*m_ParticleSystem2 = NNParticleSystem::Create(L"Resources/Texture/walk_0.png");
+	m_ParticleSystem2 = NNParticleSystem::Create(L"Resources/Texture/fire.jpg");
 	AddChild( m_ParticleSystem2 );
 	m_ParticleSystem3 = NNParticleSystem::Create(L"Resources/Texture/walk_0.png");
-	AddChild( m_ParticleSystem3 );*/
+	AddChild( m_ParticleSystem3 );
 // 
-  	m_ParticleSystem1->SetPosition( 300.f, 300.f );
+  	m_ParticleSystem1->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
   	m_ParticleSystem1->SetMaxLifeTime(1.f);
 	m_ParticleSystem1->SetDirection(-90.f);
  	m_ParticleSystem1->SetSpreadDegree(90.f);
-// 	m_ParticleSystem1->SetMinStartScaleX( 0.2f );
-// 	m_ParticleSystem1->SetMaxStartScaleX( 0.2f );
-// 	m_ParticleSystem1->SetMinStartScaleY( 0.2f );
-// 	m_ParticleSystem1->SetMaxStartScaleY( 0.2f );
-// 	m_ParticleSystem1->SetMinEndSacleX( 0.1f );
-// 	m_ParticleSystem1->SetMaxEndSacleX( 0.1f );
-// 	m_ParticleSystem1->SetMinEndSacleY( 0.1f );
-// 	m_ParticleSystem1->SetMaxEndSacleY( 0.1f );
-// 	m_ParticleSystem1->SetMinStartSpeed( 5.f );
-// 	m_ParticleSystem1->SetMaxStartSpeed( 5.f );
-// 	m_ParticleSystem1->SetMinEndSpeed( 0.2f );
-// 	m_ParticleSystem1->SetMaxEndSpeed( 0.2f );
-// 	m_ParticleSystem1->SetMinStartRotationSpeed( 0.f );
-// 	m_ParticleSystem1->SetMaxStartRotationSpeed( 0.f );
-// 	m_ParticleSystem1->SetMinEndRotationSpeed( 5.f );
-// 	m_ParticleSystem1->SetMaxEndRotationSpeed( 10.f );
-// 	m_ParticleSystem1->SetMinStartRodiusX( 0.f );
-// 	m_ParticleSystem1->SetMinStartRodiusY( 0.f );
-// 	m_ParticleSystem1->SetMaxStartRodiusX( 5.f );
-// 	m_ParticleSystem1->SetMaxStartRodiusY( 5.f );
+
+	m_ParticleSystem2->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
+	m_ParticleSystem2->SetMinStartRodiusX( 100.f );
+	m_ParticleSystem2->SetMinStartRodiusY( 100.f );
+	m_ParticleSystem2->SetMaxStartRodiusX( 100.f );
+	m_ParticleSystem2->SetMaxStartRodiusY( 100.f );
+	m_ParticleSystem2->SetMinStartSpeed( 10.f );
+	m_ParticleSystem2->SetMaxStartSpeed( 10.f );
+	m_ParticleSystem2->SetSpreadDegree( 360.f );
+
+	m_ParticleSystem3->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
+
+	m_ParticleSystem1->SetVisible(false);
+	m_ParticleSystem2->SetVisible(false);
+	m_ParticleSystem3->SetVisible(false);
 
 	//m_ParticleSystem2->SetPosition( 200.f, 100.f );
 	//m_ParticleSystem3->SetPosition( 300.f, 100.f );
@@ -55,4 +51,27 @@ void ParticleSample::Render()
 void ParticleSample::Update( float dTime )
 {
 	NNScene::Update( dTime );
+
+	if ( NNInputSystem::GetInstance()->GetKeyState('1') == KEY_DOWN )
+	{
+		m_ParticleSystem1->SetVisible(true);
+		m_ParticleSystem2->SetVisible(false);
+		m_ParticleSystem3->SetVisible(false);
+	}
+	else if ( NNInputSystem::GetInstance()->GetKeyState('2') == KEY_DOWN )
+	{
+		m_ParticleSystem1->SetVisible(false);
+		m_ParticleSystem2->SetVisible(true);
+		m_ParticleSystem3->SetVisible(false);
+	}
+	else if ( NNInputSystem::GetInstance()->GetKeyState('3') == KEY_DOWN )
+	{
+		m_ParticleSystem1->SetVisible(false);
+		m_ParticleSystem2->SetVisible(false);
+		m_ParticleSystem3->SetVisible(true);
+	}
+	else if ( NNInputSystem::GetInstance()->GetKeyState('4') == KEY_DOWN )
+	{
+
+	}
 } 

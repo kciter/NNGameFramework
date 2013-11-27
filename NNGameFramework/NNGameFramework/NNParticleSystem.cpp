@@ -18,9 +18,8 @@ NNParticleSystem::NNParticleSystem()
 	m_MinStartRadiusY(0.f), m_MaxStartRadiusY(0.f),
 	m_MinStartColor(255,255,255,1.f), m_MaxStartColor(255,255,255,1.f),
 	m_MinEndColor(0,0,0,0.f), m_MaxEndColor(0,0,0,0.f),
-	m_Timer(0.f)
+	m_Timer(0.f), m_PoolCount(0), m_ParticlePool(nullptr)
 {
-
 }
 
 NNParticleSystem::~NNParticleSystem()
@@ -80,17 +79,6 @@ void NNParticleSystem::Update( float dTime )
 			}
 		}
 	}
-
-	/*for ( const auto& iter : m_ParticleList )
-	{
-		iter->Update( dTime );
-
-		if ( iter->GetNowLifeTime() > iter->GetLifeTime() )
-		{
-			m_ParticleList.remove( iter );
-			//delete iter;
-		}
-	}*/
 }
 
 void NNParticleSystem::CreateParticle()
@@ -99,7 +87,7 @@ void NNParticleSystem::CreateParticle()
 
 	pInstance->SetParentMatrix( this->m_Matrix );
 	
-	float tempDirection = NNDegreeToRadian(m_Direction+NNRandom::NextFloat(-m_SpreadDegree/2.f,m_SpreadDegree/2.f));
+	float tempDirection = NNDegreeToRadian(NNRandom::NextFloat(m_Direction-m_SpreadDegree/2.f,m_Direction+m_SpreadDegree/2.f));
 	pInstance->SetPosition(
 		NNRandom::NextFloat(m_MinStartRadiusX, m_MaxStartRadiusX)*cos(tempDirection),
 		NNRandom::NextFloat(m_MinStartRadiusX, m_MaxStartRadiusX)*sin(tempDirection) );
