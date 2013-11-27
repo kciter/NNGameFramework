@@ -93,4 +93,5 @@ NNXML* NNResourceManager::LoadXMLFromMemory( char *buf )
 // 		m_XMLTable[path] = NNXML::Create( buf );
 //  	}
 // 	return m_XMLTable["AA"];
+	return nullptr;
 }
