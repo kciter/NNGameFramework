@@ -12,6 +12,7 @@
 #include "ParticleSample.h"
 #include "TestSample.h"
 #include "ZipSample.h"
+#include "LabelSample.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "NNGameFramework_DEBUG.lib")
@@ -43,10 +44,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( CameraSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( FMODSoundSample::Create() );
-	 NNSceneDirector::GetInstance()->ChangeScene( ZipSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( ZipSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( UISetSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
-	//NNSceneDirector::GetInstance()->ChangeScene( TestSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( TestSample::Create() );
+	NNSceneDirector::GetInstance()->ChangeScene( LabelSample::Create() );
 
 	Application->Run();
 	Application->Release();
