@@ -3,7 +3,7 @@
 
 #include "NNObject.h"
 #include "NNConfig.h"
-
+#include "NNZip.h"
 #include "NNTexture.h"
 #include "NND2DRenderer.h"
 
@@ -19,6 +19,7 @@ public:
 	void Update( float dTime ){}
 
 	static NNSpriteAtlas* Create( std::wstring path );
+	static NNSpriteAtlas* Create( NNZip *buf );
 
 	inline float GetImageWidth() const { return m_ImageWidth; }
 	inline float GetImageHeight() const { return m_ImageHeight; }
@@ -46,6 +47,7 @@ private:
 public:
 	NND2DSpriteAtlas();
 	NND2DSpriteAtlas( std::wstring path );
+	NND2DSpriteAtlas( NNZip *buf );
 	virtual ~NND2DSpriteAtlas();
 
 	void Destroy();
