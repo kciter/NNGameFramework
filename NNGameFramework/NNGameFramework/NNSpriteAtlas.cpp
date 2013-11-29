@@ -22,6 +22,22 @@ NNSpriteAtlas* NNSpriteAtlas::Create( std::wstring path )
 	
 	return pInstance;
 }
+NNSpriteAtlas* NNSpriteAtlas::Create( NNZip *buf )
+{
+	static RendererStatus rendererStatus = NNApplication::GetInstance()->GetRendererStatus();
+
+	NNSpriteAtlas* pInstance = nullptr;
+	/*switch ( rendererStatus )
+	{
+	case D2D:
+	*/	pInstance = new NND2DSpriteAtlas( buf );
+	/*	break;
+	default:
+		break;
+	}*/
+	
+	return pInstance;
+}
 
 //////////////////////////////////////////////////////////////////////////
 /*					NND2DSpriteAtlas									*/
@@ -35,6 +51,14 @@ NND2DSpriteAtlas::NND2DSpriteAtlas( std::wstring path )
 {
 	m_pD2DRenderer = static_cast<NND2DRenderer*>(NNApplication::GetInstance()->GetRenderer());
 	m_pD2DTexture = static_cast<NND2DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromFile( path ));
+
+	m_ImageWidth = m_pD2DTexture->GetD2DBitmap()->GetSize().width;
+	m_ImageHeight = m_pD2DTexture->GetD2DBitmap()->GetSize().height;
+}
+NND2DSpriteAtlas::NND2DSpriteAtlas( NNZip *buf )
+{
+	m_pD2DRenderer = static_cast<NND2DRenderer*>(NNApplication::GetInstance()->GetRenderer());
+	m_pD2DTexture = static_cast<NND2DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromMemory( buf ));
 
 	m_ImageWidth = m_pD2DTexture->GetD2DBitmap()->GetSize().width;
 	m_ImageHeight = m_pD2DTexture->GetD2DBitmap()->GetSize().height;
