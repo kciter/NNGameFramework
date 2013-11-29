@@ -32,6 +32,8 @@ NND2DLabel::NND2DLabel()
 {
 }
 NND2DLabel::NND2DLabel( wchar_t* string, wchar_t* fontFace, float fontSize )
+	: m_pD2DRenderer(nullptr), m_DWriteFactory(nullptr),
+	  m_TextFormat(nullptr), m_Brush(nullptr)
 {
 	NND2DLabel();
 
