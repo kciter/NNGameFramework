@@ -39,6 +39,14 @@ NND2DSpriteAtlas::NND2DSpriteAtlas( std::wstring path )
 	m_ImageWidth = m_pD2DTexture->GetD2DBitmap()->GetSize().width;
 	m_ImageHeight = m_pD2DTexture->GetD2DBitmap()->GetSize().height;
 }
+NND2DSpriteAtlas::NND2DSpriteAtlas( NNZip *buf )
+{
+	m_pD2DRenderer = static_cast<NND2DRenderer*>(NNApplication::GetInstance()->GetRenderer());
+	m_pD2DTexture = static_cast<NND2DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromMemory( buf ));
+
+	m_ImageWidth = m_pD2DTexture->GetD2DBitmap()->GetSize().width;
+	m_ImageHeight = m_pD2DTexture->GetD2DBitmap()->GetSize().height;
+}
 NND2DSpriteAtlas::~NND2DSpriteAtlas()
 {
 	Destroy();
