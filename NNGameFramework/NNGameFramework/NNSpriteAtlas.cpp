@@ -22,6 +22,22 @@ NNSpriteAtlas* NNSpriteAtlas::Create( std::wstring path )
 	
 	return pInstance;
 }
+NNSpriteAtlas* NNSpriteAtlas::Create( NNZip *buf )
+{
+	static RendererStatus rendererStatus = NNApplication::GetInstance()->GetRendererStatus();
+
+	NNSpriteAtlas* pInstance = nullptr;
+	/*switch ( rendererStatus )
+	{
+	case D2D:
+	*/	pInstance = new NND2DSpriteAtlas( buf );
+	/*	break;
+	default:
+		break;
+	}*/
+	
+	return pInstance;
+}
 
 //////////////////////////////////////////////////////////////////////////
 /*					NND2DSpriteAtlas									*/
