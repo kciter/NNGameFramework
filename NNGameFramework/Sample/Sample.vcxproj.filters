@@ -49,6 +49,9 @@
     <Filter Include="Scene\TestSample">
       <UniqueIdentifier>{b28f6088-4a45-4697-8f8a-91e780de8cf5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\LabelSample">
+      <UniqueIdentifier>{f06158c1-795d-4582-a776-f2b658548b7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -97,6 +100,9 @@
     <ClCompile Include="TestSample.cpp">
       <Filter>Scene\TestSample</Filter>
     </ClCompile>
+    <ClCompile Include="LabelSample.cpp">
+      <Filter>Scene\LabelSample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationSample.h">
@@ -143,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="TestSample.h">
       <Filter>Scene\TestSample</Filter>
+    </ClInclude>
+    <ClInclude Include="LabelSample.h">
+      <Filter>Scene\LabelSample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

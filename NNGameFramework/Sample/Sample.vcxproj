@@ -14,6 +14,7 @@
     <ClCompile Include="AnimationSample.cpp" />
     <ClCompile Include="CameraSample.cpp" />
     <ClCompile Include="FMODSoundSample.cpp" />
+    <ClCompile Include="LabelSample.cpp" />
     <ClCompile Include="LoginHandler.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoveBroadcastHandler.cpp" />
@@ -32,6 +33,7 @@
     <ClInclude Include="AnimationSample.h" />
     <ClInclude Include="CameraSample.h" />
     <ClInclude Include="FMODSoundSample.h" />
+    <ClInclude Include="LabelSample.h" />
     <ClInclude Include="NetworkSample.h" />
     <ClInclude Include="PacketHandler.h" />
     <ClInclude Include="PacketType.h" />
