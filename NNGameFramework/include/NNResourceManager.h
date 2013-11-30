@@ -44,7 +44,8 @@ public:
 	NNSound* LoadSoundFromMemory( NNZip *buf, bool isLoop=false, bool isBackground=false );
 
 protected:
-	char* CreateZipCode( char *buf ,int size );
+	//char* CreateZipCode( char *buf ,int size);//, char *result );
+	void CreateZipCode( char *buf ,int size, char *result );
 };
 
 
