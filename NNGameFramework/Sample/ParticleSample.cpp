@@ -25,7 +25,7 @@ ParticleSample::ParticleSample()
 	m_ParticleSystem2->SetMinStartSpeed( 10.f );
 	m_ParticleSystem2->SetMaxStartSpeed( 10.f );
 	m_ParticleSystem2->SetSpreadDegree( 360.f );
-	m_ParticleSystem2->SetSystemLifeTime(3.f);
+	m_ParticleSystem2->SetSystemLifeTime(2.f);
 
 	m_ParticleSystem3->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
 
