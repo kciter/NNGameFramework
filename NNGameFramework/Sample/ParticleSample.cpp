@@ -25,11 +25,12 @@ ParticleSample::ParticleSample()
 	m_ParticleSystem2->SetMinStartSpeed( 10.f );
 	m_ParticleSystem2->SetMaxStartSpeed( 10.f );
 	m_ParticleSystem2->SetSpreadDegree( 360.f );
+	m_ParticleSystem2->SetSystemLifeTime(3.f);
 
 	m_ParticleSystem3->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
 
 	m_ParticleSystem1->SetVisible(false);
-	m_ParticleSystem2->SetVisible(false);
+	m_ParticleSystem2->SetVisible(true);
 	m_ParticleSystem3->SetVisible(false);
 
 	//m_ParticleSystem2->SetPosition( 200.f, 100.f );

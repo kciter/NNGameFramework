@@ -44,9 +44,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( CameraSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( FMODSoundSample::Create() );
-	 NNSceneDirector::GetInstance()->ChangeScene( ZipSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( ZipSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( UISetSample::Create() );
-	// NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
+	 NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( TestSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( LabelSample::Create() );
 

@@ -18,7 +18,8 @@ NNParticleSystem::NNParticleSystem()
 	m_MinStartRadiusY(0.f), m_MaxStartRadiusY(0.f),
 	m_MinStartColor(255,255,255,1.f), m_MaxStartColor(255,255,255,1.f),
 	m_MinEndColor(0,0,0,0.f), m_MaxEndColor(0,0,0,0.f),
-	m_Timer(0.f), m_PoolCount(0), m_ParticlePool(nullptr)
+	m_Timer(0.f), m_PoolCount(0), m_ParticlePool(nullptr),
+	m_nowTime(0.f), m_SystemLifeTime(0.f) // 0 = infinite
 {
 }
 
@@ -63,6 +64,16 @@ void NNParticleSystem::Update( float dTime )
 				CreateParticle();
 			}
 			m_Timer = 0.f;
+		}
+		if(m_SystemLifeTime != 0)
+		{
+			m_nowTime += dTime;
+
+			if(m_nowTime >= m_SystemLifeTime)
+			{
+				GetParent()->RemoveChild(this);
+				return;
+			}
 		}
 	}
 

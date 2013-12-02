@@ -111,6 +111,9 @@ public:
 	void SetMinEndColor( NNColor endColor) { m_MinEndColor = endColor; }
 	void SetMaxEndColor( NNColor endColor) { m_MaxEndColor = endColor; }
 
+	void SetSystemLifeTime ( float lifeTime ) { m_SystemLifeTime = lifeTime; }
+	float GetSystemLifeTime () { return m_SystemLifeTime; }
+
 private:
 	void CreateParticle();
 
@@ -145,6 +148,8 @@ private:
 
 	float m_MinStartRadiusX, m_MaxStartRadiusX;
 	float m_MinStartRadiusY, m_MaxStartRadiusY;
+
+	float m_SystemLifeTime, m_nowTime;
 
 	NNColor m_MinStartColor, m_MaxStartColor;
 	NNColor m_MinEndColor, m_MaxEndColor;
