@@ -24,7 +24,7 @@ public:
 	NNScene();
 	virtual ~NNScene();
 
-	static NNScene* Create();
+	virtual void Init() = 0;
 
 	virtual void Render();
 	virtual void Update( float dTime );

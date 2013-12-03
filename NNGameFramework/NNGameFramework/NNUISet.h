@@ -17,8 +17,8 @@ public:
 	NNUISet();
 	virtual ~NNUISet();
 
+	virtual void Init() = 0;
+
 	void Render();
 	void Update( float dTime );
-
-	NNCREATE_FUNC(NNUISet);
 };

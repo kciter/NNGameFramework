@@ -19,6 +19,8 @@ public:
 	NNParticleSystem();
 	virtual ~NNParticleSystem();
 
+	void Init(){}
+
 	void Render();
 	void Update( float dTime );
 

@@ -18,6 +18,8 @@ public:
 	NNAnimation();
 	virtual ~NNAnimation();
 
+	void Init(){}
+
 	void Render();
 	void Update( float dTime );
 

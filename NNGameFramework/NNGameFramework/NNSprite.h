@@ -37,6 +37,7 @@ public:
 	virtual ~NNSprite(){}
 
 public:
+	void Init(){}
 	//static NNSprite* Create();
 	static NNSprite* Create( std::wstring path );
 	static NNSprite* Create( NNZip *buf );

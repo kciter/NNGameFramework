@@ -17,6 +17,8 @@ public:
 	NNFrameNode();
 	virtual ~NNFrameNode();
 
+	void Init(){}
+
 	void Render();
 	void Update( float dTime );
 

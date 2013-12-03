@@ -34,7 +34,7 @@ public:
 	virtual void Render();
 	virtual void Update( float dTime );
 
-	//virtual void Init() = 0;
+	virtual void Init() = 0;
 
 	NNObject* GetParent() { return m_pParent; }
 	std::list<NNObject*> GetChildList() { return m_ChildList; }

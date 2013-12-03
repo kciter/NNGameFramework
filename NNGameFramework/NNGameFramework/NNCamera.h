@@ -31,6 +31,8 @@ public:
 	NNCamera();
 	~NNCamera();
 
+	void Init(){}
+
 	CameraAnchor GetAnchorStatus() const { return m_Anchor; }
 	NNPoint GetPosition() { return m_Position; }
 	float GetPositionX() const { return m_Position.GetX(); }

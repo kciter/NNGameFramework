@@ -23,6 +23,8 @@ public:
 		m_ColorR(0.f), m_ColorG(0.f), m_ColorB(0.f), m_Opacity(1.f){}
 	virtual ~NNSpriteAtlas(){}
 
+	void Init(){}
+
 	void Render(){}
 	void Update( float dTime ){}
 

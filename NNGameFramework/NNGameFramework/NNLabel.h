@@ -36,6 +36,8 @@ public:
 	{}
 	virtual ~NNLabel(){}
 
+	void Init(){}
+
 	static NNLabel* Create( wchar_t* string, wchar_t* fontFace, float fontSize );
 	virtual void Destroy() = 0;
 	virtual void Render() = 0;
