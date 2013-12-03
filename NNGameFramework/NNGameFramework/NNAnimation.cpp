@@ -1,4 +1,12 @@
 
+/**
+ * NNAnimation.cpp
+ * 작성자: 이선협
+ * 작성일: 2013. 11. 08
+ * 마지막으로 수정한 사람: 이선협
+ * 수정일: 2013. 12. 04
+ */
+
 #include "NNAnimation.h"
 
 NNAnimation::NNAnimation()
@@ -24,7 +32,7 @@ NNAnimation* NNAnimation::Create( int count, ... )
 
 	for (int i=0; i<count; i++ )
 	{
-		NNSpriteNode* spriteInstance = NNSpriteNode::Create( va_arg( ap, wchar_t* ) );
+		NNFrameNode* spriteInstance = NNFrameNode::Create( va_arg( ap, wchar_t* ) );
 		pInstance->m_SpriteList.push_back( spriteInstance );
 		pInstance->m_SpriteList[i]->SetFrameTime( 0.2f );
 		spriteInstance->SetParent( pInstance );

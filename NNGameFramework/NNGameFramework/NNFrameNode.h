@@ -1,20 +1,28 @@
 
+/**
+ * NNFrameNode.h
+ * 작성자: 이선협
+ * 작성일: 2013. 11. 07 // NNSpriteNode -> NNFrameNode
+ * 마지막으로 수정한 사람: 이선협
+ * 수정일: 2013. 12. 04
+ */
+
 #pragma once
 
 #include "NNSprite.h"
 
-class NNSpriteNode : public NNObject
+class NNFrameNode : public NNObject
 {
 public:
-	NNSpriteNode();
-	virtual ~NNSpriteNode();
+	NNFrameNode();
+	virtual ~NNFrameNode();
 
 	void Render();
 	void Update( float dTime );
 
 	//NNCREATE_FUNC(NNSpriteNode);
 
-	static NNSpriteNode* Create( wchar_t* path );
+	static NNFrameNode* Create( wchar_t* path );
 
 public:
 	NNSprite* GetSprite() const { return m_Sprite; }

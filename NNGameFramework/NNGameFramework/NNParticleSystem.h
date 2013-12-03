@@ -1,4 +1,12 @@
 
+/**
+ * NNParticleSystem.h
+ * 작성자: 이선협
+ * 작성일: 2013. 11. 08
+ * 마지막으로 수정한 사람: 이선협
+ * 수정일: 2013. 12. 04
+ */
+
 #pragma once
 
 #include "NNObject.h"

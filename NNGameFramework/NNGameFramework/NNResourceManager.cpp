@@ -1,7 +1,14 @@
+/**
+ * NN
+ * 작성자: 이선협
+ * 작성일: 2013. 10. 30
+ * 마지막으로 수정한 사람: 이선협
+ * 수정일: 2013. 12. 04
+ */
+
 
 #include "NNResourceManager.h"
-//#include "NNApplication.h"
-#include <iostream>
+
 NNResourceManager* NNResourceManager::m_pInstance = nullptr;
 
 NNResourceManager::NNResourceManager()
@@ -98,23 +105,6 @@ NNZip* NNResourceManager::UnzipFileToMemory( std::wstring zipPath, std::wstring 
 	return m_ZipTable[zipPath + FileName];
 }
 
-// char* NNResourceManager::CreateZipCode( char *buf, int size)//, char *result)
-// {
-// 	md5_state_t state;
-// 	md5_byte_t digest[16];
-// 	char *result = new char[33];
-// 	int di;
-// 
-// 	md5_init(&state);
-// 	md5_append(&state, (const md5_byte_t *)buf, size);
-// 	md5_finish(&state, digest);
-// 
-// 	for (di = 0; di < 16; ++di)
-// 		sprintf(result + di * 2, "%02x", digest[di]);
-// 
-// 	//return nullptr;
-// 	return result;
-// }
 void NNResourceManager::CreateZipCode( char *buf, int size, char *result)
 {
 	md5_state_t state;
@@ -128,6 +118,7 @@ void NNResourceManager::CreateZipCode( char *buf, int size, char *result)
 	for (di = 0; di < 16; ++di)
 		sprintf(result + di * 2, "%02x", digest[di]);
 }
+
 NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
 {
 	//char *result = CreateZipCode( buf->GetBuffer(), buf->GetSize());
@@ -140,6 +131,7 @@ NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
 
 	return m_XMLTable[result];
 }
+
 NNTexture* NNResourceManager::LoadTextureFromMemory( NNZip *buf )
 {
 	//char *code = CreateZipCode( buf->GetBuffer(), buf->GetSize());
@@ -154,6 +146,7 @@ NNTexture* NNResourceManager::LoadTextureFromMemory( NNZip *buf )
  
  	return m_TextureTable[result];
 }
+
 NNSound* NNResourceManager::LoadSoundFromMemory( NNZip *buf, bool isLoop, bool isBackground )
 {
 	//char *result = CreateZipCode( buf->GetBuffer(), buf->GetSize());

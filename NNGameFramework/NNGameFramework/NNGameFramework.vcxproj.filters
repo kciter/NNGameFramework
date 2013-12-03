@@ -61,9 +61,6 @@
     <Filter Include="Framework\Node\SpriteAtlas">
       <UniqueIdentifier>{68b586be-40c1-4ae0-b608-6597665dfdee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Node\Animation\SpriteNode">
-      <UniqueIdentifier>{dc9bfbb7-1e34-42cc-a38e-b63ce72f262d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Resource\Sound">
       <UniqueIdentifier>{169195cf-81e8-4e27-a0f8-e31c7b0b2fa9}</UniqueIdentifier>
     </Filter>
@@ -133,6 +130,9 @@
     <Filter Include="Framework\Resource\Zip">
       <UniqueIdentifier>{a8973b74-d8f4-4583-84c1-d4c250c0ad03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Node\Animation\FrameNode">
+      <UniqueIdentifier>{dc9bfbb7-1e34-42cc-a38e-b63ce72f262d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -176,9 +176,6 @@
     </ClCompile>
     <ClCompile Include="NNAnimation.cpp">
       <Filter>Framework\Node\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="NNSpriteNode.cpp">
-      <Filter>Framework\Node\Animation\SpriteNode</Filter>
     </ClCompile>
     <ClCompile Include="NNSpriteAtlas.cpp">
       <Filter>Framework\Node\SpriteAtlas</Filter>
@@ -279,6 +276,9 @@
     <ClCompile Include="NNZip.cpp">
       <Filter>Framework\Resource\Zip</Filter>
     </ClCompile>
+    <ClCompile Include="NNFrameNode.cpp">
+      <Filter>Framework\Node\Animation\FrameNode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NNApplication.h">
@@ -337,9 +337,6 @@
     </ClInclude>
     <ClInclude Include="NNAnimation.h">
       <Filter>Framework\Node\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="NNSpriteNode.h">
-      <Filter>Framework\Node\Animation\SpriteNode</Filter>
     </ClInclude>
     <ClInclude Include="NNSpriteAtlas.h">
       <Filter>Framework\Node\SpriteAtlas</Filter>
@@ -691,6 +688,9 @@
     </ClInclude>
     <ClInclude Include="NNZip.h">
       <Filter>Framework\Resource\Zip</Filter>
+    </ClInclude>
+    <ClInclude Include="NNFrameNode.h">
+      <Filter>Framework\Node\Animation\FrameNode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,15 @@
 
+/**
+ * NNAnimationNode.h
+ * 작성자: 이선협
+ * 작성일: 2013. 11. 08
+ * 마지막으로 수정한 사람: 이선협
+ * 수정일: 2013. 12. 04
+ */
+
 #pragma once
 
-#include "NNSpriteNode.h"
+#include "NNFrameNode.h"
 #include <vector>
 
 class NNAnimation : public NNObject
@@ -24,7 +32,7 @@ public:
 	void SetLoop( bool loop ) { m_Loop = loop; }
 
 private:
-	std::vector<NNSpriteNode*> m_SpriteList;
+	std::vector<NNFrameNode*> m_SpriteList;
 
 	int m_FrameCount;
 	int m_Frame;

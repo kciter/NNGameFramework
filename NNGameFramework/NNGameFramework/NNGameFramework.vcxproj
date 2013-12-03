@@ -129,7 +129,7 @@
     <ClCompile Include="NNSound.cpp" />
     <ClCompile Include="NNSprite.cpp" />
     <ClCompile Include="NNSpriteAtlas.cpp" />
-    <ClCompile Include="NNSpriteNode.cpp" />
+    <ClCompile Include="NNFrameNode.cpp" />
     <ClCompile Include="NNTexture.cpp" />
     <ClCompile Include="NNUISet.cpp" />
     <ClCompile Include="NNXML.cpp" />
@@ -268,7 +268,7 @@
     <ClInclude Include="NNSound.h" />
     <ClInclude Include="NNSprite.h" />
     <ClInclude Include="NNSpriteAtlas.h" />
-    <ClInclude Include="NNSpriteNode.h" />
+    <ClInclude Include="NNFrameNode.h" />
     <ClInclude Include="NNTexture.h" />
     <ClInclude Include="NNUISet.h" />
     <ClInclude Include="NNXML.h" />
