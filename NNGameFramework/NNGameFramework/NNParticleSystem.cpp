@@ -54,7 +54,6 @@ void NNParticleSystem::Update( float dTime )
 {
 	NNObject::Update( dTime );
 
-	printf("SSSSSSSSSS");
 	if ( m_IsCreate == true )
 	{
 		m_Timer += dTime;
@@ -72,8 +71,6 @@ void NNParticleSystem::Update( float dTime )
 
 			if(m_nowTime >= m_SystemLifeTime)
 			{
-				delete this;
-				//GetParent()->RemoveChild(this);
 				return;
 			}
 		}

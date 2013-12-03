@@ -114,6 +114,8 @@ public:
 	void SetSystemLifeTime ( float lifeTime ) { m_SystemLifeTime = lifeTime; }
 	float GetSystemLifeTime () { return m_SystemLifeTime; }
 
+	bool isAlive() { return (m_SystemLifeTime!=0 && m_SystemLifeTime<=m_nowTime) ? false : true; }
+
 private:
 	void CreateParticle();
 
