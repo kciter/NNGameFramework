@@ -53,7 +53,7 @@ NNAnimation* NNAnimation::Create()
 
 void NNAnimation::AddSpriteNode( wchar_t* path )
 {
-	NNSpriteNode* spriteInstance = NNSpriteNode::Create( path);
+	NNFrameNode* spriteInstance = NNFrameNode::Create( path);
 	m_FrameCount++;
 	m_SpriteList.push_back( spriteInstance );
 	spriteInstance->SetParent( this );
