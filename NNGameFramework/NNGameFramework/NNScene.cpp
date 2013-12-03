@@ -63,8 +63,3 @@ void NNScene::Update( float dTime )
 		}
 	}
 }
-
-NNScene* NNScene::Create() { 
-	NNScene* pInstance = new NNScene();
-	return pInstance;
-}
