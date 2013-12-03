@@ -1,4 +1,12 @@
 
+/**
+ * NNCamera.h
+ * 작성자: 이선협
+ * 작성일: 2013. 11. 08
+ * 마지막으로 수정한 사람: 이선협
+ * 수정일: 2013. 12. 04
+ */
+
 #pragma once
 
 #include "NNPoint.h"
@@ -22,6 +30,8 @@ class NNCamera
 public:
 	NNCamera();
 	~NNCamera();
+
+	void Init(){}
 
 	CameraAnchor GetAnchorStatus() const { return m_Anchor; }
 	NNPoint GetPosition() { return m_Position; }
