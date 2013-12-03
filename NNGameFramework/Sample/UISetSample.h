@@ -11,6 +11,7 @@ public:
 	UISetSample();
 	virtual ~UISetSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

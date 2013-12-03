@@ -7,6 +7,13 @@
 
 ZipSample::ZipSample()
 {
+}
+ZipSample::~ZipSample()
+{
+}
+
+void ZipSample::Init()
+{
 	m_loadZip = NNResourceManager::GetInstance()->UnzipFileToMemory(L"Resources/map.csm", L"map.xml");
 	m_TestXML = NNResourceManager::GetInstance()->LoadXMLFromMemory( m_loadZip );
 	/*
@@ -26,10 +33,6 @@ ZipSample::ZipSample()
 
 	//AddChild( m_TestSprite );
 	//NNAudioSystem::GetInstance()->Play( m_TestSound );
-}
-ZipSample::~ZipSample()
-{
-
 }
 
 void ZipSample::Render()

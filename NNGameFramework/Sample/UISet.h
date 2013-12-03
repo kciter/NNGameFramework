@@ -10,6 +10,7 @@ public:
 	UISet();
 	virtual ~UISet();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

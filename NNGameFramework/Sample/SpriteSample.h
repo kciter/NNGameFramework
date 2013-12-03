@@ -11,6 +11,8 @@ public:
 	SpriteSample();
 	virtual ~SpriteSample();
 
+	void Init();
+
 	void Render();
 	void Update( float dTime );
 

@@ -10,6 +10,7 @@ public:
 	AnimationSample();
 	virtual ~AnimationSample();
 
+	void Init();
 	void Render();
 	void Update( float eTime );
 

@@ -5,6 +5,13 @@
 
 NetworkSample::NetworkSample()
 {
+}
+NetworkSample::~NetworkSample()
+{
+}
+
+void NetworkSample::Init()
+{
 	GetCamera().SetCameraAnchor(MIDDLE_CENTER);
 	m_LoginHandler = new LoginHandler;
 	m_MoveBroadcastHandler = new MoveBroadcastHandler;
@@ -25,9 +32,6 @@ NetworkSample::NetworkSample()
 	m_Background->SetPosition(-400.f,-300.f);
 	m_Sprite->SetCenter(m_Sprite->GetPositionX()/2.f, m_Sprite->GetPositionY()/2.f);
 }
-NetworkSample::~NetworkSample()
-{
-}
 
 void NetworkSample::Render()
 {
@@ -36,31 +40,9 @@ void NetworkSample::Render()
 void NetworkSample::Update( float dTime )
 {
 	NNScene::Update( dTime );
-	/*
-	if ( !m_PlayerMap[m_LoginHandler->m_LoginBroadcastResultPacket.m_PlayerId] && m_LoginHandler->m_LoginBroadcastResultPacket.m_PlayerId != -1 ) 
-	{
-		m_PlayerMap[m_LoginHandler->m_LoginBroadcastResultPacket.m_PlayerId] = NNSprite::Create( L"Resources/Texture/walk_0.png" );
-		AddChild(m_PlayerMap[m_LoginHandler->m_LoginBroadcastResultPacket.m_PlayerId]);
-	}*/
 
 	if ( m_LoginHandler->m_LoginCheck == true ) 
 	{
-		/*
-		if ( !m_PlayerMap[m_LoginHandler->m_LoginResultPacket.m_PlayerId] && m_LoginHandler->m_LoginResultPacket.m_PlayerId != -1 )
-		{
-			m_PlayerMap[m_LoginHandler->m_LoginResultPacket.m_PlayerId] = NNSprite::Create( L"Resources/Texture/walk_0.png" );
-			AddChild(m_PlayerMap[m_LoginHandler->m_LoginResultPacket.m_PlayerId]);
-		}
-		if ( !m_PlayerMap[m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PlayerId] && m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PlayerId != -1)
-		{
-			m_PlayerMap[m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PlayerId] = NNSprite::Create( L"Resources/Texture/walk_0.png" );
-			AddChild(m_PlayerMap[m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PlayerId]);
-		}
-		*/
-		/*
-		if (m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PlayerId != -1)
-			m_PlayerMap[m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PlayerId]->SetPosition( m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PositionX, m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PositionY );
-			*/
 		m_Sprite->SetPosition( m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PositionX, m_MoveBroadcastHandler->m_MoveBroadcastResultPacket.m_PositionY );
 		GetCamera().SetPosition(m_Sprite->GetPosition());
 		if ( NNInputSystem::GetInstance()->GetKeyState('W') == KEY_PRESSED )

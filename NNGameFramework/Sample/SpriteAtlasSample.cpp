@@ -3,6 +3,14 @@
 
 SpriteAtlasSample::SpriteAtlasSample()
 {
+}
+
+SpriteAtlasSample::~SpriteAtlasSample()
+{
+}
+
+void SpriteAtlasSample::Init()
+{
 	m_SpriteAtlas = NNSpriteAtlas::Create(L"Resources/Texture/map.png");
 	AddChild(m_SpriteAtlas);
 
@@ -11,11 +19,6 @@ SpriteAtlasSample::SpriteAtlasSample()
 
 	// 이미지를 0,0에서 100,100으로 자른 이미지를 출력
 	// 이 노드의 사용법은 Atlas 검색
-}
-
-SpriteAtlasSample::~SpriteAtlasSample()
-{
-
 }
 
 void SpriteAtlasSample::Render()

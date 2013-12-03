@@ -3,11 +3,15 @@
 
 LabelSample::LabelSample()
 {
-	m_Label = NNLabel::Create( L"asdf", L"¸¼Àº °íµñ", 20.f );
-	AddChild( m_Label );
 }
 LabelSample::~LabelSample()
 {
+}
+
+void LabelSample::Init()
+{
+	m_Label = NNLabel::Create( L"asdf", L"¸¼Àº °íµñ", 20.f );
+	AddChild( m_Label );
 }
 
 void LabelSample::Render()

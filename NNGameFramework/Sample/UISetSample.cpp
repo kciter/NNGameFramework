@@ -4,15 +4,19 @@
 
 UISetSample::UISetSample()
 {
+}
+UISetSample::~UISetSample()
+{
+
+}
+
+void UISetSample::Init()
+{
 	m_UI = UISet::Create();
 	SetUISet( m_UI );
 
 	m_Map = NNSprite::Create(L"Resources/Texture/map.png");
 	AddChild( m_Map );
-}
-UISetSample::~UISetSample()
-{
-
 }
 
 void UISetSample::Render()

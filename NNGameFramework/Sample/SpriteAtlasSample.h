@@ -10,6 +10,7 @@ public:
 	SpriteAtlasSample();
 	virtual ~SpriteAtlasSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 	NNCREATE_FUNC(SpriteAtlasSample);

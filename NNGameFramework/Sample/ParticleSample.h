@@ -10,6 +10,7 @@ public:
 	ParticleSample();
 	virtual ~ParticleSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

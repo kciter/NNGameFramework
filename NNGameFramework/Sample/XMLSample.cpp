@@ -7,6 +7,14 @@
 
 XMLSample::XMLSample()
 {
+}
+XMLSample::~XMLSample()
+{
+
+}
+
+void XMLSample::Init()
+{
 	m_TestXML = NNResourceManager::GetInstance()->LoadXMLFromFIle("Resources/XML/test2.xml");
 	std::cout << m_TestXML->XPathToString("/MyApp/Messages/Welcome/text()").c_str() << std::endl;
 	std::cout << m_TestXML->XPathToString("/MyApp/Messages/Welcome/text()").c_str() << std::endl;
@@ -20,10 +28,6 @@ XMLSample::XMLSample()
 	std::cout << "xml end" << std::endl;
 	// 커맨드 창 확인
 	// test2.xml에서 Welcome 엘리멘트 안에 있는 값이 출력됨
-}
-XMLSample::~XMLSample()
-{
-
 }
 
 void XMLSample::Render()

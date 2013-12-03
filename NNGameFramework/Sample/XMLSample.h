@@ -10,6 +10,7 @@ public:
 	XMLSample();
 	virtual ~XMLSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

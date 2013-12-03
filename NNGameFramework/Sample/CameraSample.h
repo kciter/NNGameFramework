@@ -10,6 +10,7 @@ public:
 	CameraSample();
 	virtual ~CameraSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 	NNCREATE_FUNC(CameraSample);

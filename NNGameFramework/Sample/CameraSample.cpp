@@ -3,6 +3,13 @@
 
 CameraSample::CameraSample()
 {
+}
+CameraSample::~CameraSample()
+{
+}
+
+void CameraSample::Init()
+{
 	GetCamera().SetCameraAnchor(CameraAnchor::MIDDLE_CENTER);
 	//GetCamera().SetPosition(100.f,100.f);
 	GetCamera().SetZoom( 3.f ); // มÜ 2น่
@@ -12,10 +19,6 @@ CameraSample::CameraSample()
 
 	m_Sprite = NNSprite::Create(L"Resources/Texture/walk_0.png");
 	AddChild(m_Sprite);
-}
-CameraSample::~CameraSample()
-{
-
 }
 
 void CameraSample::Render()

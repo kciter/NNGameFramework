@@ -10,6 +10,7 @@ public:
 	LabelSample();
 	virtual ~LabelSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

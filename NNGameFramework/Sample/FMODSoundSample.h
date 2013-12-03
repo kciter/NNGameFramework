@@ -8,6 +8,7 @@ public:
 	FMODSoundSample();
 	virtual ~FMODSoundSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

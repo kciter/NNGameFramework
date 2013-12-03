@@ -10,6 +10,7 @@ public:
 	Player();
 	virtual ~Player();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

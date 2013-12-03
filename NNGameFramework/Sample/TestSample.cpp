@@ -7,15 +7,18 @@
 TestSample::TestSample()
 	: m_SceneState(0), m_Sprite(nullptr), m_Sprite2(nullptr)
 {
+}
+TestSample::~TestSample()
+{
+}
+
+void TestSample::Init()
+{
 	m_Sprite = NNSprite::Create( L"Resources/Texture/character.png" );
 	m_Sprite2 = NNSprite::Create( L"Resources/Texture/map.png" );
 
 	AddChild( m_Sprite );
 	AddChild( m_Sprite2 );
-}
-TestSample::~TestSample()
-{
-
 }
 
 void TestSample::Render()

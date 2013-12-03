@@ -13,6 +13,7 @@ public:
 	ZipSample();
 	virtual ~ZipSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

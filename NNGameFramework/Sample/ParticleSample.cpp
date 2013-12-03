@@ -5,17 +5,25 @@
 
 ParticleSample::ParticleSample()
 {
+}
+
+ParticleSample::~ParticleSample()
+{
+}
+
+void ParticleSample::Init()
+{
 	m_ParticleSystem1 = NNParticleSystem::Create(L"Resources/Texture/character.png");
 	AddChild( m_ParticleSystem1 );
 	m_ParticleSystem2 = NNParticleSystem::Create(L"Resources/Texture/fire.jpg");
 	AddChild( m_ParticleSystem2 );
 	m_ParticleSystem3 = NNParticleSystem::Create(L"Resources/Texture/walk_0.png");
 	AddChild( m_ParticleSystem3 );
-// 
-  	m_ParticleSystem1->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
-  	m_ParticleSystem1->SetMaxLifeTime(1.f);
+	// 
+	m_ParticleSystem1->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
+	m_ParticleSystem1->SetMaxLifeTime(1.f);
 	m_ParticleSystem1->SetDirection(-90.f);
- 	m_ParticleSystem1->SetSpreadDegree(90.f);
+	m_ParticleSystem1->SetSpreadDegree(90.f);
 
 	m_ParticleSystem2->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
 	m_ParticleSystem2->SetMinStartRodiusX( 100.f );
@@ -35,11 +43,6 @@ ParticleSample::ParticleSample()
 
 	//m_ParticleSystem2->SetPosition( 200.f, 100.f );
 	//m_ParticleSystem3->SetPosition( 300.f, 100.f );
-}
-
-ParticleSample::~ParticleSample()
-{
-
 }
 
 void ParticleSample::Render()

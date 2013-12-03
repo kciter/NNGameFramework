@@ -11,6 +11,7 @@ public:
 	NetworkSample();
 	virtual ~NetworkSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 

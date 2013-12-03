@@ -10,6 +10,7 @@ public:
 	TestSample();
 	virtual ~TestSample();
 
+	void Init();
 	void Render();
 	void Update( float dTime );
 
