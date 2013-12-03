@@ -68,13 +68,13 @@ void NNObject::SortingChildByZindex()
 void NNObject::AddChild( NNObject* object )
 {
 	object->SetParent( this );
-
+	object->Init();
 	m_ChildList.push_back( object );
-	SortingChildByZindex();
 }
 void NNObject::AddChild( NNObject* object, int zindex )
 {
 	object->SetParent( this );
+	object->Init();
 	object->SetZindex( zindex );
 	m_ChildList.push_back( object );
 	SortingChildByZindex();

@@ -62,6 +62,8 @@ bool NNSceneDirector::ChangeScene( NNScene* scene )
 		m_NowScene = scene;
 	}
 
+	scene->Init();
+
 	return true;
 }
 bool NNSceneDirector::RenderScene()
