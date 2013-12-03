@@ -99,11 +99,11 @@ public:
 	void SetMinStartScaleY( float minStartScaleY ) { m_MinStartScaleY = minStartScaleY; }
 	void SetMaxStartScaleY( float maxStartScaleY) { m_MaxStartScaleY = maxStartScaleY; }
 
-	void SetMinEndSacleX( float minEndScaleX ) { m_MinEndScaleX = minEndScaleX; }
-	void SetMaxEndSacleX( float maxEndScaleX ) { m_MaxEndScaleX = maxEndScaleX; }
+	void SetMinEndScaleX( float minEndScaleX ) { m_MinEndScaleX = minEndScaleX; }
+	void SetMaxEndScaleX( float maxEndScaleX ) { m_MaxEndScaleX = maxEndScaleX; }
 
-	void SetMinEndSacleY( float minEndScaleY ) { m_MinEndScaleY = minEndScaleY; }
-	void SetMaxEndSacleY( float maxEndScaleY) { m_MaxEndScaleY = maxEndScaleY; }
+	void SetMinEndScaleY( float minEndScaleY ) { m_MinEndScaleY = minEndScaleY; }
+	void SetMaxEndScaleY( float maxEndScaleY) { m_MaxEndScaleY = maxEndScaleY; }
 
 	void SetDirection( float direction ) { m_Direction = direction; }
 
@@ -120,11 +120,6 @@ public:
 
 	void SetMinEndColor( NNColor endColor) { m_MinEndColor = endColor; }
 	void SetMaxEndColor( NNColor endColor) { m_MaxEndColor = endColor; }
-
-	void SetSystemLifeTime ( float lifeTime ) { m_SystemLifeTime = lifeTime; }
-	float GetSystemLifeTime () { return m_SystemLifeTime; }
-
-	bool isAlive() { return (m_SystemLifeTime!=0 && m_SystemLifeTime<=m_nowTime) ? false : true; }
 
 private:
 	void CreateParticle();
@@ -160,8 +155,6 @@ private:
 
 	float m_MinStartRadiusX, m_MaxStartRadiusX;
 	float m_MinStartRadiusY, m_MaxStartRadiusY;
-
-	float m_SystemLifeTime, m_nowTime;
 
 	NNColor m_MinStartColor, m_MaxStartColor;
 	NNColor m_MinEndColor, m_MaxEndColor;
