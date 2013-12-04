@@ -21,7 +21,7 @@
 
 #endif // DWRITE_NO_WINDOWS_H
 
-#include <dcommon.h>
+#include "dcommon.h"
 
 #ifndef DWRITE_DECLARE_INTERFACE
 #define DWRITE_DECLARE_INTERFACE(iid) DECLSPEC_UUID(iid) DECLSPEC_NOVTABLE

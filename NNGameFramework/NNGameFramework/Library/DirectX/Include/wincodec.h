@@ -299,7 +299,7 @@ extern "C"{
 /* [local] */ 
 
 #include <intsafe.h>
-#include <dcommon.h>
+#include "dcommon.h"
 #define WINCODEC_SDK_VERSION1 0x0236
 #define WINCODEC_SDK_VERSION2 0x0237
 DEFINE_GUID(CLSID_WICImagingFactory,  0xcacaf262, 0x9370, 0x4615, 0xa1, 0x3b, 0x9f, 0x55, 0x39, 0xda, 0x4c, 0xa);

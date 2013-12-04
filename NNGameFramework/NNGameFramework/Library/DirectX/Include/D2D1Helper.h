@@ -16,7 +16,7 @@
 #define _D2D1_HELPER_H_
 
 #ifndef _D2D1_H_
-#include <d2d1.h>
+#include "d2d1.h"
 #endif // #ifndef _D2D1_H_
 
 #ifndef D2D_USE_C_DEFINITIONS
