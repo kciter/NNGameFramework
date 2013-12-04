@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 #pragma once
@@ -48,7 +48,6 @@ public:
 
 	void SortingChildByZindex();
 
-	//inline D2D1::Matrix3x2F GetMatrix() const { return m_Matrix; }
 	inline NNMatrix GetMatrix() const { return m_Matrix; }
 	inline NNPoint GetPosition() { return m_Position; }
 	inline float GetPositionX() const { return m_Position.GetX(); }
@@ -81,7 +80,6 @@ protected:
 	std::list<NNObject*> m_ChildList;
 
 protected:
-	//D2D1::Matrix3x2F m_Matrix;
 	NNMatrix m_Matrix;
 	NNPoint m_Position;
 	NNPoint m_Center;

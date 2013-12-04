@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 #pragma once
@@ -22,6 +22,7 @@
 #pragma comment(lib, "d3dx9.lib")
 #endif
 #pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "dxerr.lib")
 
 /* */
 /* NNLibSet

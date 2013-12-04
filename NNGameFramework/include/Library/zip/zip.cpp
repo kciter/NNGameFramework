@@ -2225,7 +2225,7 @@ ZRESULT GetFileInfo(HANDLE hf, ulg *attr, long *size, iztimes *times, ulg *times
 
 class TZip
 { public:
-  TZip(const char *pwd) : hfout(0),mustclosehfout(false),hmapout(0),zfis(0),obuf(0),hfin(0),writ(0),oerr(false),hasputcen(false),ooffset(0),encwriting(false),encbuf(0),password(0), state(0) {if (pwd!=0 && *pwd!=0) {password=new char[strlen(pwd)+1]; strcpy(password,pwd);}}
+  TZip(const char *pwd) : hfout(0),mustclosehfout(false),hmapout(0),zfis(0),obuf(0),hfin(0),writ(0),oerr(false),hasputcen(false),ooffset(0),encwriting(false),encbuf(0),password(0), state(0) {if (pwd!=0 && *pwd!=0) {password=new char[strlen(pwd)+1]; strcpy_s(password,sizeof(password),pwd);}}
   ~TZip() {if (state!=0) delete state; state=0; if (encbuf!=0) delete[] encbuf; encbuf=0; if (password!=0) delete[] password; password=0;}
 
   // These variables say about the file we're writing into
@@ -2558,7 +2558,7 @@ ZRESULT TZip::Add(const TCHAR *odstzn, void *src,unsigned int len, DWORD flags)
   int passex=0; if (password!=0 && flags!=ZIP_FOLDER) passex=12;
 
   // zip has its own notion of what its names should look like: i.e. dir/file.stuff
-  TCHAR dstzn[MAX_PATH]; _tcscpy(dstzn,odstzn);
+  TCHAR dstzn[MAX_PATH]; _tcscpy_s(dstzn,sizeof(dstzn),odstzn);
   if (*dstzn==0) return ZR_ARGS;
   TCHAR *d=dstzn; while (*d!=0) {if (*d=='\\') *d='/'; d++;}
   bool isdir = (flags==ZIP_FOLDER);
@@ -2579,15 +2579,15 @@ ZRESULT TZip::Add(const TCHAR *odstzn, void *src,unsigned int len, DWORD flags)
 
   // Initialize the local header
   TZipFileInfo zfi; zfi.nxt=NULL;
-  strcpy(zfi.name,"");
+  strcpy_s(zfi.name,sizeof(zfi.name),"");
 #ifdef UNICODE
   WideCharToMultiByte(CP_UTF8,0,dstzn,-1,zfi.iname,MAX_PATH,0,0);
 #else
   strcpy(zfi.iname,dstzn);
 #endif
   zfi.nam=strlen(zfi.iname);
-  if (needs_trailing_slash) {strcat(zfi.iname,"/"); zfi.nam++;}
-  strcpy(zfi.zname,"");
+  if (needs_trailing_slash) {strcat_s(zfi.iname,sizeof(zfi.iname),"/"); zfi.nam++;}
+  strcpy_s(zfi.zname,sizeof(zfi.zname),"");
   zfi.extra=NULL; zfi.ext=0;   // extra header to go after this compressed data, and its length
   zfi.cextra=NULL; zfi.cext=0; // extra header to go in the central end-of-zip directory, and its length
   zfi.comment=NULL; zfi.com=0; // comment, and its length
@@ -2762,7 +2762,7 @@ unsigned int FormatZipMessageZ(ZRESULT code, char *buf,unsigned int len)
   unsigned int mlen=(unsigned int)strlen(msg);
   if (buf==0 || len==0) return mlen;
   unsigned int n=mlen; if (n+1>len) n=len-1;
-  strncpy(buf,msg,n); buf[n]=0;
+  strncpy_s(buf,sizeof(buf),msg,n); buf[n]=0;
   return mlen;
 }
 

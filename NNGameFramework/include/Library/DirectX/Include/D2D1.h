@@ -15,12 +15,12 @@
 #include <windows.h>
 #endif // #ifndef COM_NO_WINDOWS_H
 #include <unknwn.h>
-#include <dcommon.h>
-#include <D2DErr.h>
-#include <D2DBaseTypes.h>
-#include <dxgiformat.h>
+#include "dcommon.h"
+#include "D2DErr.h"
+#include "D2DBaseTypes.h"
+#include "dxgiformat.h"
 #ifndef D2D_NO_INCLUDE_D3D10
-#include <d3d10_1.h>
+#include "d3d10_1.h"
 #endif // #ifndef D2D_NO_INCLUDE_D3D10
 
 #ifndef D2D_USE_C_DEFINITIONS
