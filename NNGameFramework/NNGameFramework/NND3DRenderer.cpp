@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 11. 27
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 #include "NND3DRenderer.h"
@@ -31,7 +31,7 @@ bool NND3DRenderer::Init()
 	ZeroMemory( &mD3DPresentParameters, sizeof(mD3DPresentParameters) );
 
 	D3DMULTISAMPLE_TYPE mst = D3DMULTISAMPLE_NONE;
-
+	/*
 	switch(4)
 	{
 	case 1: mst = D3DMULTISAMPLE_NONMASKABLE;break;
@@ -52,7 +52,7 @@ bool NND3DRenderer::Init()
 	case 16: mst = D3DMULTISAMPLE_16_SAMPLES;break;
 	default: mst = D3DMULTISAMPLE_NONE;break;
 	}
-
+	*/
 	mD3DPresentParameters.Windowed = true;
 	mD3DPresentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	mD3DPresentParameters.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;
@@ -91,7 +91,7 @@ bool NND3DRenderer::Release()
 bool NND3DRenderer::Clear()
 {
 	HRESULT hr = 0;
-	hr = mD3DDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_ARGB(255,255,255,0), 1.0f, 0 );
+	hr = mD3DDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_ARGB(255,255,255,255), 1.0f, 0 );
 	if( FAILED(hr) )
 		return false;
 
@@ -101,7 +101,7 @@ bool NND3DRenderer::Begin()
 {
 	HRESULT hr = 0;
 
-	hr = mD3DDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_ARGB(255,255,255,0), 1.0f, 0 );
+	Clear();
 	if( FAILED(hr) )
 		return false;
 
