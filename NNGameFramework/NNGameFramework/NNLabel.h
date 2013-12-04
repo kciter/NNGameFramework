@@ -4,13 +4,16 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 #pragma once
 
 #include "NNObject.h"
 #include "NND2DRenderer.h"
+#include "NND3DRenderer.h"
+
+#include "NNColor.h"
 
 /* */
 /* NNLabel
@@ -23,15 +26,13 @@ protected:
 	wchar_t* m_FontFace;
 	wchar_t* m_String;
 	float m_FontSize;
-	float m_ColorR, m_ColorG, m_ColorB;
-	float m_Opacity;
+	NNColor m_Color;
 	bool m_Bold;
 	bool m_Italic;
 
 public:
 	NNLabel()
 		: m_FontFace(nullptr), m_String(nullptr), m_FontSize(0.f),
-		  m_ColorR(0.f), m_ColorG(0.f), m_ColorB(0.f), m_Opacity(1.f),
 		  m_Bold(false), m_Italic(false)
 	{}
 	virtual ~NNLabel(){}
@@ -45,10 +46,7 @@ public:
 	inline wchar_t* GetString() const { return m_String; }
 	inline wchar_t* GetFontFace() const { return m_FontFace; }
 	inline float GetFontSize() const { return m_FontSize; }
-	inline float GetRed() const { return m_ColorR; }
-	inline float GetGreen() const { return m_ColorG; }
-	inline float GetBlue() const { return m_ColorB; }
-	inline float GetOpacity() const { return m_Opacity; }
+	inline NNColor GetColor() { return m_Color; }
 	inline bool IsItalic() const { return m_Italic; }
 	inline bool IsBold() const { return m_Bold; }
 
@@ -57,12 +55,13 @@ public:
 	virtual void SetFontFace( wchar_t* fontface ) { m_FontFace = fontface; }
 	virtual void SetBold( bool bold ) { m_Bold = bold; }
 	virtual void SetItalic( bool italic ) { m_Italic = italic; }
-	virtual void SetRed( float r ) { m_ColorR = r; }
-	virtual void SetGreen( float g ) { m_ColorG = g; }
-	virtual void SetBlue( float b ) { m_ColorB = b; }
-	virtual void SetColor( float r, float g, float b ) { m_ColorR = r; m_ColorG = g; m_ColorB = b; }
-	virtual void SetOpacity( float opacity ) { m_Opacity = opacity; }
-	virtual void SetRGBA( float r, float g, float b, float a ) { m_ColorR = r; m_ColorG = g; m_ColorB = b; m_Opacity = a; }
+	virtual void SetColor( NNColor color ) { m_Color = color; }
+	virtual void SetRed( int r ) { m_Color.SetRed(r); }
+	virtual void SetGreen( int g ) { m_Color.SetGreen(g); }
+	virtual void SetBlue( int b ) { m_Color.SetBlue(b); }
+	virtual void SetColor( int r, int g, int b ) { m_Color.SetRGB(r,g,b); }
+	virtual void SetOpacity( float opacity ) { m_Color.SetOpacity(opacity); }
+	virtual void SetRGBA( int r, int g, int b, int a ) { m_Color.SetRGBA(r,g,b,a); }
 };
 
 class NND2DLabel : public NNLabel
@@ -89,22 +88,41 @@ public:
 	void SetFontFace( wchar_t* fontface ) { m_FontFace = fontface; SetTextFormat();}
 	void SetBold( bool bold ) { m_Bold = bold; SetTextFormat(); }
 	void SetItalic( bool italic ) { m_Italic = italic; SetTextFormat(); }
-	void SetRed( float r) { m_ColorR = r; m_Brush->SetColor(D2D1::ColorF(r/255.f,m_ColorG/255.f,m_ColorB/255.f)); }
-	void SetGreen( float g ) { m_ColorG = g; m_Brush->SetColor(D2D1::ColorF(m_ColorR/255.f,g/255.f,m_ColorB/255.f)); }
-	void SetBlue( float b ) { m_ColorB = b; m_Brush->SetColor(D2D1::ColorF(m_ColorR/255.f,m_ColorG/255.f,b/255.f)); }
-	void SetColor( float r, float g, float b )
+	void SetRed( int r) { NNLabel::SetRed(r); m_Brush->SetColor(D2D1::ColorF(r/255.f,m_Color.GetGreen()/255.f,m_Color.GetBlue()/255.f)); }
+	void SetGreen( int g ) {NNLabel::SetGreen(g); m_Brush->SetColor(D2D1::ColorF(m_Color.GetRed()/255.f,g/255.f,m_Color.GetBlue()/255.f)); }
+	void SetBlue( int b ) { NNLabel::SetBlue(b); m_Brush->SetColor(D2D1::ColorF(m_Color.GetRed()/255.f,m_Color.GetGreen()/255.f,b/255.f)); }
+	void SetColor( int r, int g, int b )
 	{
-		m_ColorR = r; m_ColorG = g; m_ColorB = b;
+		NNLabel::SetColor(r,g,b);
 		m_Brush->SetColor(D2D1::ColorF(r/255.f,g/255.f,b/255.f));
 	}
-	void SetOpacity( float opacity ) { m_Opacity = opacity; m_Brush->SetOpacity(opacity); }
-	void SetRGBA( float r, float g, float b, float a )
+	void SetOpacity( float opacity ) { NNLabel::SetOpacity(opacity); m_Brush->SetOpacity(opacity); }
+	void SetRGBA( int r, int g, int b, int a )
 	{
-		m_ColorR = r; m_ColorG = g; m_ColorB = b;
-		m_Opacity = a;
+		NNLabel::SetRGBA(r,g,b,a);
 		m_Brush->SetColor(D2D1::ColorF(r/255.f,g/255.f,b/255.f));
-		m_Brush->SetOpacity(a);
+		m_Brush->SetOpacity(a/255.f);
 	}
+
+private:
+	D2D1::Matrix3x2F m_D2DMatrix;
 };
 
+class NND3DLabel : public NNLabel
+{
+private:
+	NND3DRenderer* m_pD3DRenderer;
 
+public:
+	NND3DLabel();
+	NND3DLabel( wchar_t* string, wchar_t* face, float fontSize );
+	virtual ~NND3DLabel();
+
+	void Destroy();
+	void Render();
+
+private:
+	RECT m_Rect;
+	LPD3DXFONT m_D3DFont;
+	D3DXMATRIX m_D3DMatrix;
+};
