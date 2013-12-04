@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 #include "NNObject.h"
@@ -29,10 +29,10 @@ void NNObject::Render()
 {
 	if ( m_Visible == false ) return;
 
-	m_Matrix = D2D1::Matrix3x2F::Translation( -m_Center.GetX(), -m_Center.GetY() )* 
-		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY ) *
-		D2D1::Matrix3x2F::Rotation( m_Rotation ) *
-		D2D1::Matrix3x2F::Translation( m_Position.GetX(), m_Position.GetY() );
+	m_Matrix = NNMatrix::Translate( -m_Center.GetX(), -m_Center.GetY() ) * 
+		NNMatrix::Scale( m_ScaleX, m_ScaleY ) *
+		NNMatrix::Rotation( m_Rotation ) *
+		NNMatrix::Translate( m_Position.GetX(), m_Position.GetY() );
 
 	if( m_pParent )
 	{

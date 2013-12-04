@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 #include "NNScene.h"
@@ -21,11 +21,11 @@ NNScene::~NNScene()
 void NNScene::Render()
 {
 	if ( m_Visible == false ) return;
-	
-	m_Matrix = D2D1::Matrix3x2F::Translation( m_Camera.GetCenterX(), m_Camera.GetCenterY() ) *
-	    D2D1::Matrix3x2F::Scale( m_Camera.GetZoom(), m_Camera.GetZoom(), D2D1::Point2F(m_Camera.GetPositionX()+m_Camera.GetCenterX(), m_Camera.GetPositionY()+m_Camera.GetCenterY()) ) *
-		D2D1::Matrix3x2F::Rotation( m_Camera.GetRotation(), D2D1::Point2F(m_Camera.GetPositionX()+m_Camera.GetCenterX(),m_Camera.GetPositionY()+m_Camera.GetCenterY()) ) *
-	    D2D1::Matrix3x2F::Translation( -m_Camera.GetPositionX(), -m_Camera.GetPositionY());
+
+	m_Matrix = NNMatrix::Translate( m_Camera.GetCenterX(), m_Camera.GetCenterY() ) *
+		NNMatrix::Scale( m_Camera.GetZoom(), m_Camera.GetZoom() ) *
+		NNMatrix::Rotation( m_Camera.GetRotation() ) *
+		NNMatrix::Translate( -m_Camera.GetPositionX(), -m_Camera.GetPositionY());
 
 	for (const auto& child : m_ChildList )
 	{
