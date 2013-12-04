@@ -3,7 +3,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 
@@ -116,7 +116,7 @@ void NNResourceManager::CreateZipCode( char *buf, int size, char *result)
 	md5_finish(&state, digest);
 
 	for (di = 0; di < 16; ++di)
-		sprintf(result + di * 2, "%02x", digest[di]);
+		sprintf_s(result + di * 2, sizeof(result+di*2), "%02x", digest[di]);
 }
 
 NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
