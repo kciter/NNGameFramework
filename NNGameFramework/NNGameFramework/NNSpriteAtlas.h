@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 #pragma once
@@ -14,6 +14,7 @@
 #include "NNZip.h"
 #include "NNTexture.h"
 #include "NND2DRenderer.h"
+#include "NND3DRenderer.h"
 
 class NNSpriteAtlas : public NNObject
 {
@@ -62,4 +63,26 @@ public:
 
 	void Destroy();
 	void Render();
+
+private:
+	D2D1::Matrix3x2F m_D2DMatrix;
+};
+
+class NND3DSpriteAtlas : public NNSpriteAtlas
+{
+private:
+	NND3DRenderer* mpD3DRenderer;
+	NND3DTexture* mpD3DTexture;
+
+public:
+	NND3DSpriteAtlas();
+	NND3DSpriteAtlas( std::wstring path );
+	virtual ~NND3DSpriteAtlas();
+
+	void Destroy();
+	void Render();
+
+private:
+	D3DXMATRIX m_D3DMatrix;
+	RECT m_Rect;
 };
