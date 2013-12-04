@@ -72,6 +72,7 @@ inline double NNRadianToDegree( double n )
 	static CLASS_NAME* Create() \
 	{ \
 		CLASS_NAME* pInstance = new CLASS_NAME(); \
+		pInstance->Init(); \
 		return pInstance; \
 	}
 
