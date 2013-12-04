@@ -13,6 +13,7 @@
 #include "NNPoint.h"
 #include "NNSize.h"
 #include "NNColor.h"
+#include "NNMatrix.h"
 
 #include "NND2DRenderer.h"
 #include "NNTexture.h"
@@ -35,7 +36,7 @@ public:
 	virtual void Update( float dTime );
 
 public:
-	void SetParentMatrix( D2D1::Matrix3x2F matrix ) { m_ParentMatrix = matrix; }
+	void SetParentMatrix( NNMatrix matrix ) { m_ParentMatrix = matrix; }
 	void SetPosition( NNPoint position ) { m_Position = position; }
 	void SetPosition( float x, float y ) { m_Position.SetPoint(x,y); }
 	void SetStartSpeed( float speed ) { m_StartSpeed = speed; }
@@ -60,8 +61,8 @@ public:
 	void SetEndRGBA( int r, int g, int b, int a ) { m_EndColor = NNColor(r,g,b,a); }
 	void SetDirection( float direction ) { m_Direction = direction; }
 
-	D2D1::Matrix3x2F GetParentMatrix() const { return m_ParentMatrix; }
-	D2D1::Matrix3x2F GetMatrix() const { return m_Matrix; }
+	NNMatrix GetParentMatrix() const { return m_ParentMatrix; }
+	NNMatrix GetMatrix() const { return m_Matrix; }
 	NNPoint GetPosition() { return m_Position; }
 	float GetStartSpeed() const { return m_StartSpeed; }
 	float GetEndSpeed() const { return m_EndSpeed; }
@@ -81,8 +82,8 @@ public:
 	float GetDirection() { return m_Direction; }
 
 protected:
-	D2D1::Matrix3x2F m_ParentMatrix;
-	D2D1::Matrix3x2F m_Matrix;
+	NNMatrix m_ParentMatrix;
+	NNMatrix m_Matrix;
 	NNPoint m_Position;
 	float m_StartSpeed, m_EndSpeed;
 	float m_StartScaleX, m_EndScaleX;
@@ -118,4 +119,5 @@ public:
 private:
 	NND2DRenderer* m_pD2DRenderer;
 	NND2DTexture* m_pD2DTexture;
+	D2D1::Matrix3x2F m_D2DMatrix;
 };

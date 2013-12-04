@@ -11,7 +11,6 @@
 #include "NNApplication.h"
 #include "NNResourceManager.h"
 #include "NNConfig.h"
-#include <d2d1_1.h>
 
 //////////////////////////////////////////////////////////////////////////
 /*					NNParticle											*/
@@ -36,10 +35,10 @@ NNParticle* NNParticle::Create( std::wstring path )
 
 void NNParticle::Render()
 {
-	m_Matrix = D2D1::Matrix3x2F::Translation( -m_ImageWidth/2.f, -m_ImageHeight/2.f ) *
-		D2D1::Matrix3x2F::Rotation( m_Rotation ) *
-		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY ) *
-		D2D1::Matrix3x2F::Translation( m_Position.GetX(), m_Position.GetY() );
+	m_Matrix = NNMatrix::Translate( -m_ImageWidth/2.f, -m_ImageHeight/2.f ) *
+		NNMatrix::Rotation( m_Rotation ) *
+		NNMatrix::Scale( m_ScaleX, m_ScaleY ) *
+		NNMatrix::Translate( m_Position.GetX(), m_Position.GetY() );
 
 	m_Matrix = m_Matrix * m_ParentMatrix;
 }
@@ -89,32 +88,13 @@ void NND2DParticle::Render()
 {
 	NNParticle::Render();
 
-// 	ID2D1DeviceContext* context;
-// 
-// 	D2D1_CREATION_PROPERTIES properties;
-// 	properties.debugLevel = D2D1_DEBUG_LEVEL_NONE;
-// 	properties.options = D2D1_DEVICE_CONTEXT_OPTIONS_NONE;
-// 	properties.threadingMode = D2D1_THREADING_MODE_SINGLE_THREADED;
-// 	D2D1CreateDeviceContext( nullptr, properties, &context );
-// 
-// 	ID2D1Effect* saturationEffect;
-// 
-// 	context->CreateEffect(CLSID_D2D1Saturation, &saturationEffect);
-// 
-// 	// Connect the input bitmap to the effect
-// 	saturationEffect->SetInput(0, m_pD2DTexture->GetD2DBitmap());
-// 
-// 	// Set a property to adjust the effect’s behavior
-// 	saturationEffect->SetValue(D2D1_SATURATION_PROP_SATURATION, 0.6f);
-// 
-// 	// Render the image
-// 	context->BeginDraw();
-// 	context->DrawImage(saturationEffect);
-// 	context->EndDraw();
+// 	블랜딩 모드 추가해야함
 
-	
+	m_D2DMatrix._11 = m_Matrix._11; m_D2DMatrix._12 = m_Matrix._12;
+	m_D2DMatrix._21 = m_Matrix._21; m_D2DMatrix._22 = m_Matrix._22;
+	m_D2DMatrix._31 = m_Matrix._31; m_D2DMatrix._32 = m_Matrix._32;
 
-	m_pD2DRenderer->GetHwndRenderTarget()->SetTransform( m_Matrix );
+	m_pD2DRenderer->GetHwndRenderTarget()->SetTransform( m_D2DMatrix );
 	m_pD2DRenderer->GetHwndRenderTarget()->DrawBitmap(
 		m_pD2DTexture->GetD2DBitmap(), D2D1::RectF(0.f,0.f,m_ImageWidth,m_ImageHeight),
 		m_Color.GetOpacity() );
