@@ -692,6 +692,9 @@
     <ClInclude Include="NNFrameNode.h">
       <Filter>Framework\Node\Animation\FrameNode</Filter>
     </ClInclude>
+    <ClInclude Include="Library\DirectX\Include\wincodec.h">
+      <Filter>Library\DirectX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\DirectX\Include\D3DX_DXGIFormatConvert.inl">

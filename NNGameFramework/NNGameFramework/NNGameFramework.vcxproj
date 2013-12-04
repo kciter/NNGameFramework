@@ -197,6 +197,7 @@
     <ClInclude Include="Library\DirectX\Include\rmxfguid.h" />
     <ClInclude Include="Library\DirectX\Include\rmxftmpl.h" />
     <ClInclude Include="Library\DirectX\Include\rpcsal.h" />
+    <ClInclude Include="Library\DirectX\Include\wincodec.h" />
     <ClInclude Include="Library\DirectX\Include\X3DAudio.h" />
     <ClInclude Include="Library\DirectX\Include\xact3.h" />
     <ClInclude Include="Library\DirectX\Include\xact3d3.h" />
