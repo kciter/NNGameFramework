@@ -12,12 +12,15 @@
 #include <winsock2.h>
 #include <windows.h>
 
-#include <d2d1.h>
-#include <d2d1helper.h>
-#include "Library/DirectX/Include/d3d9.h"
-#include "Library/DirectX/Include/d3dx9.h"
+#include "Library/DirectX/Include/D2D1.h"
+#include "Library/DirectX/Include/D2D1Helper.h"
+#include "Library/DirectX/Include/DWrite.h"
 #include <wincodec.h>
 #include <dwrite.h>
+#include <wincodec.h>
+
+#include "Library/DirectX/Include/d3d9.h"
+#include "Library/DirectX/Include/d3dx9.h"
 
 #include <string>
 #include <list>

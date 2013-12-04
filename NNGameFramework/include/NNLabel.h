@@ -105,6 +105,9 @@ public:
 		m_Brush->SetColor(D2D1::ColorF(r/255.f,g/255.f,b/255.f));
 		m_Brush->SetOpacity(a);
 	}
+
+private:
+	D2D1::Matrix3x2F m_D2DMatrix;
 };
 
 

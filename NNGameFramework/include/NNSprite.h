@@ -68,6 +68,9 @@ public:
 
 	void Destroy();
 	void Render();
+
+private:
+	D2D1::Matrix3x2F m_D2DMatrix;
 };
 
 class NND3DSprite : public NNSprite
@@ -83,4 +86,7 @@ public:
 
 	void Destroy();
 	void Render();
+
+private:
+	D3DXMATRIX m_D3DMatrix;
 };

@@ -20,15 +20,24 @@ public:
 	~NNMatrix();
 
 	void Identity();
-	bool IsIdentity();
+	bool IsIdentity() const;
+	float Determinant() const;
 
-	static NNMatrix Scale( NNPoint size, NNPoint center );
-	static NNMatrix Scale( float x, float y, NNPoint center );
+	static NNMatrix Scale( NNPoint size );
+	static NNMatrix Scale( float x, float y );
 	static NNMatrix Translate( NNPoint size );
 	static NNMatrix Translate( float x, float y );
-	static NNMatrix Rotation( float angle, NNPoint center );
+	static NNMatrix Rotation( float angle );
 
-private:
+	NNMatrix& operator= ( const NNMatrix& matrix );
+	NNMatrix operator+( const NNMatrix& matrix ) const;
+	NNMatrix operator-( const NNMatrix& matrix ) const;
+	NNMatrix operator-() const;
+	NNMatrix operator*( float n ) const;
+	NNMatrix operator/( float n ) const;
+	NNMatrix operator*( const NNMatrix& matrix ) const;
+
+public:
 	float _11;
 	float _12;
 	float _21;
