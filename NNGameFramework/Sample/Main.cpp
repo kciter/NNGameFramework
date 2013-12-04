@@ -38,7 +38,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	Application->Init( L"Sample", 800, 600, D3D );
 
 	// NNSceneDirector::GetInstance()->ChangeScene( NetworkSample::Create() );
-	// NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );
+	NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( XMLSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );
@@ -46,7 +46,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	// NNSceneDirector::GetInstance()->ChangeScene( FMODSoundSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( ZipSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( UISetSample::Create() );
-	 NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( TestSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( LabelSample::Create() );
 
