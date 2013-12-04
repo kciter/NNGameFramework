@@ -69,7 +69,7 @@ bool NNApplication::Init( wchar_t* title, int width, int height, RendererStatus 
 	m_Renderer->Init();
 	m_pSceneDirector->Init();
 
-	srand( time(NULL) ) ;
+	srand( (unsigned int)time(NULL) ) ;
 
 	return true;
 }
