@@ -35,7 +35,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 
 	NNApplication* Application = NNApplication::GetInstance();
 
-	Application->Init( L"D2D Test", 800, 600, D2D );
+	Application->Init( L"Sample", 800, 600, D3D );
 
 	// NNSceneDirector::GetInstance()->ChangeScene( NetworkSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );

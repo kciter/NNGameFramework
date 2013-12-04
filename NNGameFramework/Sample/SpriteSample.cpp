@@ -12,7 +12,8 @@ SpriteSample::~SpriteSample()
 
 void SpriteSample::Init()
 {
-	m_Sprite = NNSprite::Create( L"Resources/Texture/character.png" );
+	m_Sprite = NNSprite::Create( L"Resources/Texture/map.png" );
+	m_Sprite->SetPosition(100.f,100.f);
 	AddChild( m_Sprite );
 
 	// 간단한 스프라이트 출력 예제
