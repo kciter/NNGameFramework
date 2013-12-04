@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 05
  */
 
 #pragma once
@@ -68,6 +68,9 @@ public:
 
 	void Destroy();
 	void Render();
+
+private:
+	D2D1::Matrix3x2F m_D2DMatrix;
 };
 
 class NND3DSprite : public NNSprite
@@ -83,4 +86,7 @@ public:
 
 	void Destroy();
 	void Render();
+
+private:
+	D3DXMATRIX m_D3DMatrix;
 };
