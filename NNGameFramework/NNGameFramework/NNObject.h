@@ -72,8 +72,8 @@ public:
 	void SetScaleX( float scaleX ) { m_ScaleX = scaleX; }
 	void SetScaleY( float scaleY ) { m_ScaleY = scaleY; }
 	void SetRotation( float rotation ) { m_Rotation = rotation; }
-	void SetZindex( int zindex ) { m_Zindex = zindex; }
-	void SetVisible( bool visible ) { m_Visible = visible; SortingChildByZindex(); }
+	void SetZindex( int zindex ) { m_Zindex = zindex; SortingChildByZindex(); }
+	void SetVisible( bool visible ) { m_Visible = visible; }
 
 protected:
 	NNObject* m_pParent;
