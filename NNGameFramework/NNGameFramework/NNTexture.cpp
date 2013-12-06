@@ -156,9 +156,7 @@ NND3DTexture::NND3DTexture( std::wstring path )
 
 	m_Path = path;
 
-	LPDIRECT3DDEVICE9 temp = pD3DRenderer->GetDevice();
-
-	HRESULT hr = D3DXCreateTextureFromFileEx( pD3DRenderer->GetDevice(), path.c_str(), D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2,
+	D3DXCreateTextureFromFileEx( pD3DRenderer->GetDevice(), path.c_str(), D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2,
 		1, 0, D3DFMT_FROM_FILE, D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, NULL, NULL, NULL, &mTexture );
 }
 NND3DTexture::~NND3DTexture()
