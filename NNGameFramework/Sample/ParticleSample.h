@@ -3,6 +3,7 @@
 
 #include "NNScene.h"
 #include "NNParticleSystem.h"
+#include "NNSprite.h"
 
 class ParticleSample : public NNScene
 {
@@ -20,4 +21,5 @@ private:
 	NNParticleSystem* m_ParticleSystem1;
 	NNParticleSystem* m_ParticleSystem2;
 	NNParticleSystem* m_ParticleSystem3;
+	NNSprite* m_Sprite;
 };

@@ -17,7 +17,7 @@ void ParticleSample::Init()
 	AddChild( m_ParticleSystem1 );
 	m_ParticleSystem2 = NNParticleSystem::Create(L"Resources/Texture/fire.jpg");
 	AddChild( m_ParticleSystem2 );
-	m_ParticleSystem3 = NNParticleSystem::Create(L"Resources/Texture/walk_0.png");
+	m_ParticleSystem3 = NNParticleSystem::Create(L"Resources/Texture/particle3.png");
 	AddChild( m_ParticleSystem3 );
 	// 
 	m_ParticleSystem1->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
@@ -34,11 +34,20 @@ void ParticleSample::Init()
 	m_ParticleSystem2->SetMaxStartSpeed( 10.f );
 	m_ParticleSystem2->SetSpreadDegree( 360.f );
 
+
 	m_ParticleSystem3->SetPosition( NNApplication::GetInstance()->GetScreenWidth()/2.f, NNApplication::GetInstance()->GetScreenHeight()/2.f );
+	m_ParticleSystem3->SetMinStartColor( NNColor(0,255,255,1.f) );
+	m_ParticleSystem3->SetMaxStartColor( NNColor(0,255,255,1.f) );
+	m_ParticleSystem3->SetMinEndColor( NNColor(255,255,0,0.f) );
+	m_ParticleSystem3->SetMaxEndColor( NNColor(255,255,0,0.f) );
+	m_ParticleSystem3->SetMinStartSpeed( 100.f );
+	m_ParticleSystem3->SetMaxStartSpeed( 100.f );
+	m_ParticleSystem3->SetMinEndSpeed( 1000.f );
+	m_ParticleSystem3->SetMaxEndSpeed( 1000.f );
 
 	m_ParticleSystem1->SetVisible(false);
-	m_ParticleSystem2->SetVisible(true);
-	m_ParticleSystem3->SetVisible(false);
+	m_ParticleSystem2->SetVisible(false);
+	m_ParticleSystem3->SetVisible(true);
 
 	//m_ParticleSystem2->SetPosition( 200.f, 100.f );
 	//m_ParticleSystem3->SetPosition( 300.f, 100.f );
