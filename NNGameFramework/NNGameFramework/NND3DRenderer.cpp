@@ -91,7 +91,7 @@ bool NND3DRenderer::Release()
 bool NND3DRenderer::Clear()
 {
 	HRESULT hr = 0;
-	hr = mD3DDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_ARGB(255,255,255,255), 1.0f, 0 );
+	hr = mD3DDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_ARGB(255,0,0,0), 1.0f, 0 );
 	if( FAILED(hr) )
 		return false;
 
