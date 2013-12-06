@@ -26,6 +26,9 @@ NNParticle* NNParticle::Create( std::wstring path )
 	case D2D:
 		pInstance = new NND2DParticle( path );
 		break;
+	case D3D:
+		pInstance = new NND3DParticle( path );
+		break;
 	default:
 		break;
 	}
@@ -101,6 +104,62 @@ void NND2DParticle::Render()
 }
 
 void NND2DParticle::Update( float dTime )
+{
+	NNParticle::Update( dTime );
+}
+
+//////////////////////////////////////////////////////////////////////////
+/*					NND3DParticle										*/
+//////////////////////////////////////////////////////////////////////////
+NND3DParticle::NND3DParticle()
+	: m_pD3DRenderer(nullptr), m_pD3DTexture(nullptr)
+{
+	D3DXMatrixIdentity( &m_D3DMatrix );
+}
+NND3DParticle::NND3DParticle( std::wstring path )
+	: m_pD3DRenderer(nullptr), m_pD3DTexture(nullptr)
+{
+	m_pD3DRenderer = static_cast<NND3DRenderer*>(NNApplication::GetInstance()->GetRenderer());
+	m_pD3DTexture = static_cast<NND3DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromFile( path ));
+
+	D3DSURFACE_DESC desc;
+	m_pD3DTexture->GetTexture()->GetLevelDesc( 0, &desc );
+
+	m_ImageWidth = (float)desc.Width;
+	m_ImageHeight = (float)desc.Height;
+
+	D3DXMatrixIdentity( &m_D3DMatrix );
+}
+NND3DParticle::~NND3DParticle()
+{
+	Destroy();
+}
+
+void NND3DParticle::Destroy()
+{
+	m_pD3DRenderer = nullptr;
+	m_pD3DTexture = nullptr;
+}
+
+void NND3DParticle::Render()
+{
+	NNParticle::Render();
+
+	m_D3DMatrix._11 = m_Matrix._11; m_D3DMatrix._12 = m_Matrix._12;
+	m_D3DMatrix._21 = m_Matrix._21; m_D3DMatrix._22 = m_Matrix._22;
+	m_D3DMatrix._41 = m_Matrix._31; m_D3DMatrix._42 = m_Matrix._32;
+
+	m_pD3DRenderer->GetSprite()->Begin( D3DXSPRITE_ALPHABLEND );
+	m_pD3DRenderer->GetSprite()->SetTransform( &m_D3DMatrix );
+
+	m_pD3DRenderer->GetDevice()->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA );
+	m_pD3DRenderer->GetDevice()->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE );
+	m_pD3DRenderer->GetDevice()->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD );
+
+	m_pD3DRenderer->GetSprite()->Draw( m_pD3DTexture->GetTexture(), NULL, NULL, NULL, D3DCOLOR_ARGB(m_Color.GetAlpha(),m_Color.GetRed(),m_Color.GetGreen(),m_Color.GetBlue()) );
+	m_pD3DRenderer->GetSprite()->End();
+}
+void NND3DParticle::Update( float dTime )
 {
 	NNParticle::Update( dTime );
 }
