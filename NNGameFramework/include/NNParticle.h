@@ -16,6 +16,7 @@
 #include "NNMatrix.h"
 
 #include "NND2DRenderer.h"
+#include "NND3DRenderer.h"
 #include "NNTexture.h"
 
 class NNParticle
@@ -120,4 +121,22 @@ private:
 	NND2DRenderer* m_pD2DRenderer;
 	NND2DTexture* m_pD2DTexture;
 	D2D1::Matrix3x2F m_D2DMatrix;
+};
+
+class NND3DParticle : public NNParticle
+{
+public:
+	NND3DParticle();
+	NND3DParticle( std::wstring path );
+	virtual ~NND3DParticle();
+
+	void Destroy();
+
+	void Render();
+	void Update( float dTime );
+
+private:
+	NND3DRenderer* m_pD3DRenderer;
+	NND3DTexture* m_pD3DTexture;
+	D3DXMATRIX m_D3DMatrix;
 };
