@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 05
+ * 수정일: 2013. 12. 07
  */
 
 #include "NNSpriteAtlas.h"
@@ -111,6 +111,18 @@ NND3DSpriteAtlas::NND3DSpriteAtlas( std::wstring path )
 	D3DXMatrixIdentity( &m_D3DMatrix );
 	mpD3DRenderer = static_cast<NND3DRenderer*>(NNApplication::GetInstance()->GetRenderer());
 	mpD3DTexture = static_cast<NND3DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromFile( path ));
+
+	D3DSURFACE_DESC desc;
+	mpD3DTexture->GetTexture()->GetLevelDesc( 0, &desc );
+
+	m_ImageWidth = (float)desc.Width;
+	m_ImageHeight = (float)desc.Height;
+}
+NND3DSpriteAtlas::NND3DSpriteAtlas( NNZip* buf )
+{
+	D3DXMatrixIdentity( &m_D3DMatrix );
+	mpD3DRenderer = static_cast<NND3DRenderer*>(NNApplication::GetInstance()->GetRenderer());
+	mpD3DTexture = static_cast<NND3DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromMemory( buf ));
 
 	D3DSURFACE_DESC desc;
 	mpD3DTexture->GetTexture()->GetLevelDesc( 0, &desc );

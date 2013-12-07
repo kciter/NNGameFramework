@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 05
+ * 수정일: 2013. 12. 07
  */
 
 #pragma once
@@ -77,6 +77,7 @@ private:
 public:
 	NND3DSpriteAtlas();
 	NND3DSpriteAtlas( std::wstring path );
+	NND3DSpriteAtlas( NNZip* buf );
 	virtual ~NND3DSpriteAtlas();
 
 	void Destroy();
