@@ -1,0 +1,35 @@
+
+#include "NNLogger.h"
+#include <windows.h>
+#include <iostream>
+
+void NNLogger::InfoLog( std::string string )
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ConsoleColor::GRAY);
+	std::cout << "INFO:: " << string << std::endl;
+}
+void NNLogger::WarningLog( std::string string )
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ConsoleColor::YELLOW);
+	std::cout << "WARNING:: " << string << std::endl;
+}
+void NNLogger::ErrorLog( std::string string )
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ConsoleColor::RED);
+	std::cout << "ERROR:: " << string << std::endl;
+}
+void NNLogger::FatalLog( std::string string )
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ConsoleColor::VOILET);
+	std::cout << "FATAL:: " << string << std::endl;
+}
+void NNLogger::TraceLog( std::string string )
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ConsoleColor::SKY_BLUE);
+	std::cout << "TRACE:: " << string << std::endl;
+}
+void NNLogger::DebugLog( std::string string )
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ConsoleColor::WHITE);
+	std::cout << "DEBUG:: " << string << std::endl;
+}
