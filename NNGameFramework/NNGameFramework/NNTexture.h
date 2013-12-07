@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 수정일: 2013. 12. 07
  */
 
 #pragma once
@@ -37,12 +37,10 @@ class NND2DTexture : public NNTexture
 {
 public:
 	NND2DTexture();
-	NND2DTexture( char *buf , int size );
+	NND2DTexture( char *buf, int size );
 	NND2DTexture( std::wstring path );
 	virtual ~NND2DTexture();
 
-	//void Create();
-	//static NND2DTexture* Create( std::wstring path );
 	void Destroy();
 
 public:
@@ -58,6 +56,7 @@ class NND3DTexture : public NNTexture
 {
 public:
 	NND3DTexture();
+	NND3DTexture( char* buf, int size );
 	NND3DTexture( std::wstring path );
 	virtual ~NND3DTexture();
 
