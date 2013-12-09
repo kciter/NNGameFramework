@@ -23,7 +23,7 @@ public:
 	void Render();
 	void Update( float dTime );
 
-	static NNAnimation* Create( int count, ... );
+	static NNAnimation* Create( int count, float frameRate... );
 	static NNAnimation* Create();
 
 	int GetFrameCount() const { return m_FrameCount; }
@@ -32,6 +32,8 @@ public:
 
 	void AddSpriteNode( wchar_t* path );
 	void SetLoop( bool loop ) { m_Loop = loop; }
+
+	std::vector<NNFrameNode*> GetSpriteList() { return m_SpriteList; }
 
 private:
 	std::vector<NNFrameNode*> m_SpriteList;

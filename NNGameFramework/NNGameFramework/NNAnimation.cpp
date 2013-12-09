@@ -23,7 +23,7 @@ NNAnimation::~NNAnimation()
 	m_SpriteList.clear();
 }
 
-NNAnimation* NNAnimation::Create( int count, ... )
+NNAnimation* NNAnimation::Create( int count, float frameRate... )
 {
 	NNAnimation* pInstance = new NNAnimation();
 
@@ -34,7 +34,7 @@ NNAnimation* NNAnimation::Create( int count, ... )
 	{
 		NNFrameNode* spriteInstance = NNFrameNode::Create( va_arg( ap, wchar_t* ) );
 		pInstance->m_SpriteList.push_back( spriteInstance );
-		pInstance->m_SpriteList[i]->SetFrameTime( 0.2f );
+		pInstance->m_SpriteList[i]->SetFrameTime( frameRate );
 		spriteInstance->SetParent( pInstance );
 		//pInstance->AddChild( spriteInstance );
 	}
