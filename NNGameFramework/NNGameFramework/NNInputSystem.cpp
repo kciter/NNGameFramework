@@ -42,6 +42,8 @@ void NNInputSystem::ReleaseInstance()
 
 void NNInputSystem::UpdateKeyState()
 {
+	if ( GetFocus() == NULL ) return;
+
 	for (int i=0; i<256; i++ )
 	{
 		mPrevKeyState[i] = mNowKeyState[i];
