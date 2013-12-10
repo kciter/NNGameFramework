@@ -3,8 +3,8 @@
  * NNAnimationNode.h
  * 작성자: 이선협
  * 작성일: 2013. 11. 08
- * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 마지막으로 수정한 사람: 김지환
+ * 수정일: 2013. 12. 10
  */
 
 #pragma once
@@ -23,7 +23,7 @@ public:
 	void Render();
 	void Update( float dTime );
 
-	static NNAnimation* Create( int count, ... );
+	static NNAnimation* Create( int count, float frameRate, ... );
 	static NNAnimation* Create();
 
 	int GetFrameCount() const { return mFrameCount; }
@@ -32,6 +32,8 @@ public:
 
 	void AddSpriteNode( wchar_t* path );
 	void SetLoop( bool loop ) { mLoop = loop; }
+
+	std::vector<NNFrameNode*> GetSpriteList() { return m_SpriteList; }
 
 private:
 	std::vector<NNFrameNode*> mSpriteList;
