@@ -291,11 +291,11 @@
     <ClCompile Include="NNAnimationAtlas.cpp">
       <Filter>Framework\Node\AnimationAtlas</Filter>
     </ClCompile>
-    <ClCompile Include="CutFrameNode.cpp">
-      <Filter>Framework\Node\AnimationAtlas\CutFrameNode</Filter>
-    </ClCompile>
     <ClCompile Include="NNLogger.cpp">
       <Filter>Framework\Util\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="NNCutFrameNode.cpp">
+      <Filter>Framework\Node\AnimationAtlas\CutFrameNode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -716,11 +716,11 @@
     <ClInclude Include="NNAnimationAtlas.h">
       <Filter>Framework\Node\AnimationAtlas</Filter>
     </ClInclude>
-    <ClInclude Include="CutFrameNode.h">
-      <Filter>Framework\Node\AnimationAtlas\CutFrameNode</Filter>
-    </ClInclude>
     <ClInclude Include="NNLogger.h">
       <Filter>Framework\Util\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="NNCutFrameNode.h">
+      <Filter>Framework\Node\AnimationAtlas\CutFrameNode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -86,7 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CutFrameNode.cpp" />
+    <ClCompile Include="NNCutFrameNode.cpp" />
     <ClCompile Include="Library\MD5\md5.cpp" />
     <ClCompile Include="Library\TinyXML\action_store.cpp" />
     <ClCompile Include="Library\TinyXML\htmlutil.cpp" />
@@ -139,7 +139,7 @@
     <ClCompile Include="NNZip.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CutFrameNode.h" />
+    <ClInclude Include="NNCutFrameNode.h" />
     <ClInclude Include="Library\DirectX\Include\audiodefs.h" />
     <ClInclude Include="Library\DirectX\Include\comdecl.h" />
     <ClInclude Include="Library\DirectX\Include\D2D1.h" />
