@@ -2,8 +2,8 @@
  * NN
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
- * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 05
+ * 마지막으로 수정한 사람: 김지환
+ * 수정일: 2013. 12. 10
  */
 
 
@@ -123,7 +123,7 @@ NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
 {
 	//char *result = CreateZipCode( buf->GetBuffer(), buf->GetSize());
 
-	char result[33];
+	char result[34];
 	CreateZipCode( buf->GetBuffer(), buf->GetSize(), result);
 
 	if ( !mXMLTable[result] )
@@ -135,7 +135,7 @@ NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
 NNTexture* NNResourceManager::LoadTextureFromMemory( NNZip *buf )
 {
 	//char *code = CreateZipCode( buf->GetBuffer(), buf->GetSize());
-	char code[33];
+	char code[34];
 
 	CreateZipCode( buf->GetBuffer(), buf->GetSize(), code);
 
@@ -149,9 +149,7 @@ NNTexture* NNResourceManager::LoadTextureFromMemory( NNZip *buf )
 
 NNSound* NNResourceManager::LoadSoundFromMemory( NNZip *buf, bool isLoop, bool isBackground )
 {
-	//char *result = CreateZipCode( buf->GetBuffer(), buf->GetSize());
-	//char result[33];
-	char result[33];
+	char result[34];
 	CreateZipCode( buf->GetBuffer(), buf->GetSize(), result);
 
 	if ( !mSoundTable[result] )
