@@ -20,17 +20,21 @@ public:
 	NNSound();
 	~NNSound();
 
-	static NNSound* Create( std::string path, bool isLoop=false, bool isBackground=false );
-	static NNSound* CreateStream( NNZip* buf, bool isLoop=false, bool isBackground=false );
-
+public:
 	FMOD::Sound* GetSound() { return mSound; }
 	FMOD::Sound** GetSoundPointer() { return &mSound; }
 	FMOD::Channel* GetChannel() { return mChannel; }
 	FMOD::Channel** GetChannelPointer() { return &mChannel; }
 
-public:
+private:
+	static NNSound* Create( std::string path, bool isLoop=false, bool isBackground=false );
+	static NNSound* CreateStream( NNZip* buf, bool isLoop=false, bool isBackground=false );
+
+private:
 	FMOD::Sound* mSound;
 	FMOD::Channel* mChannel;
+
+	friend class NNResourceManager;
 };
 
 /*

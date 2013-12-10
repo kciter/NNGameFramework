@@ -24,6 +24,7 @@ public:
 	NNTexture(){}
 	virtual ~NNTexture(){}
 
+private:
 	//virtual NNTexture* Create() = 0;
 	static NNTexture* Create( std::wstring path );
 	static NNTexture* CreateStream( char *buf, int size );
@@ -31,6 +32,8 @@ public:
 
 protected:
 	std::wstring mPath;
+
+	friend class NNResourceManager;
 };
 
 class NND2DTexture : public NNTexture

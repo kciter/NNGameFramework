@@ -17,6 +17,7 @@ public:
 	NNFrameNode();
 	virtual ~NNFrameNode();
 
+private:
 	void Init(){}
 
 	void Render();
@@ -26,7 +27,6 @@ public:
 
 	static NNFrameNode* Create( wchar_t* path );
 
-public:
 	NNSprite* GetSprite() const { return mSprite; }
 	float GetFrameTime() const { return mFrameTime; }
 
@@ -35,4 +35,6 @@ public:
 private:
 	NNSprite* mSprite;
 	float mFrameTime;
+
+	friend class NNAnimation;
 };
