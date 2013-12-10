@@ -4,7 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 10. 30
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 05
+ * 수정일: 2013. 12. 07
  */
 
 #pragma once
@@ -20,8 +20,8 @@ class NNSpriteAtlas : public NNObject
 {
 public:
 	NNSpriteAtlas()
-		: m_ImageWidth(0.f), m_ImageHeight(0.f),
-		m_ColorR(0.f), m_ColorG(0.f), m_ColorB(0.f), m_Opacity(1.f){}
+		: mImageWidth(0.f), mImageHeight(0.f),
+		mColorR(0.f), mColorG(0.f), mColorB(0.f), mOpacity(1.f){}
 	virtual ~NNSpriteAtlas(){}
 
 	void Init(){}
@@ -32,28 +32,28 @@ public:
 	static NNSpriteAtlas* Create( std::wstring path );
 	static NNSpriteAtlas* Create( NNZip *buf );
 
-	inline float GetImageWidth() const { return m_ImageWidth; }
-	inline float GetImageHeight() const { return m_ImageHeight; }
-	inline float GetOpacity() const { return m_Opacity; }
+	inline float GetImageWidth() const { return mImageWidth; }
+	inline float GetImageHeight() const { return mImageHeight; }
+	inline float GetOpacity() const { return mOpacity; }
 
-	void SetImageWidth( float width ) { m_ImageWidth = width; }
-	void SetImageHeight( float height ) { m_ImageHeight = height; }
-	void SetOpacity( float opacity ) { m_Opacity = opacity; }
-	void SetCutSize( float leftX, float topY, float rightX, float bottomY ) { m_CutLeftX=leftX; m_CutTopY=topY; m_CutRightX=rightX; m_CutBottomY=bottomY; }
+	void SetImageWidth( float width ) { mImageWidth = width; }
+	void SetImageHeight( float height ) { mImageHeight = height; }
+	void SetOpacity( float opacity ) { mOpacity = opacity; }
+	void SetCutSize( float leftX, float topY, float rightX, float bottomY ) { mCutLeftX=leftX; mCutTopY=topY; mCutRightX=rightX; mCutBottomY=bottomY; }
 
 protected:
-	float m_ImageWidth;
-	float m_ImageHeight;
-	float m_ColorR, m_ColorG, m_ColorB;
-	float m_Opacity;
-	float m_CutLeftX, m_CutTopY, m_CutRightX, m_CutBottomY;
+	float mImageWidth;
+	float mImageHeight;
+	float mColorR, mColorG, mColorB;
+	float mOpacity;
+	float mCutLeftX, mCutTopY, mCutRightX, mCutBottomY;
 };
 
 class NND2DSpriteAtlas : public NNSpriteAtlas
 {
 private:
-	NND2DRenderer* m_pD2DRenderer;
-	NND2DTexture* m_pD2DTexture;
+	NND2DRenderer* mpD2DRenderer;
+	NND2DTexture* mpD2DTexture;
 
 public:
 	NND2DSpriteAtlas();
@@ -65,7 +65,7 @@ public:
 	void Render();
 
 private:
-	D2D1::Matrix3x2F m_D2DMatrix;
+	D2D1::Matrix3x2F mD2DMatrix;
 };
 
 class NND3DSpriteAtlas : public NNSpriteAtlas
@@ -77,12 +77,13 @@ private:
 public:
 	NND3DSpriteAtlas();
 	NND3DSpriteAtlas( std::wstring path );
+	NND3DSpriteAtlas( NNZip* buf );
 	virtual ~NND3DSpriteAtlas();
 
 	void Destroy();
 	void Render();
 
 private:
-	D3DXMATRIX m_D3DMatrix;
-	RECT m_Rect;
+	D3DXMATRIX mD3DMatrix;
+	RECT mRect;
 };

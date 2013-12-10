@@ -29,12 +29,12 @@ public:
 	virtual void Render();
 	virtual void Update( float dTime );
 
-	NNCamera& GetCamera() { return m_Camera; }
-	NNUISet* GetUISet() { return m_UISet; }
+	NNCamera& GetCamera() { return mCamera; }
+	NNUISet* GetUISet() { return mUISet; }
 
-	void SetUISet( NNUISet* uiSet ) { m_UISet = uiSet; }
+	void SetUISet( NNUISet* uiSet ) { mUISet = uiSet; }
 
 protected:
-	NNCamera m_Camera;
-	NNUISet* m_UISet;
+	NNCamera mCamera;
+	NNUISet* mUISet;
 };

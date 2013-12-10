@@ -23,11 +23,11 @@ class NNParticle
 {
 public:
 	NNParticle()
-	 : m_Position(0.f,0.f), m_StartScaleX(0.f), m_StartScaleY(0.f), m_EndScaleX(0.f), m_EndScaleY(0.f), 
-	   m_ImageWidth(0.f), m_ImageHeight(0.f), m_StartRotationSpeed(0.f), m_EndRotationSpeed(0.f),
-	   m_LifeTime(0.f), m_NowLifeTime(0.f), m_Visible(true),
-	   m_StartColor(255,255,255,1.f), m_EndColor(255,255,255,1.f),
-	   m_Speed(0.f), m_ScaleX(1.f), m_ScaleY(1.f), m_Rotation(0.f), m_RotationSpeed(0.f), m_Color(255,255,255,1.f) {}
+	 : mPosition(0.f,0.f), mStartScaleX(0.f), mStartScaleY(0.f), mEndScaleX(0.f), mEndScaleY(0.f), 
+	   mImageWidth(0.f), mImageHeight(0.f), mStartRotationSpeed(0.f), mEndRotationSpeed(0.f),
+	   mLifeTime(0.f), mNowLifeTime(0.f), mVisible(true),
+	   mStartColor(255,255,255,1.f), mEndColor(255,255,255,1.f),
+	   mSpeed(0.f), mScaleX(1.f), mScaleY(1.f), mRotation(0.f), mRotationSpeed(0.f), mColor(255,255,255,1.f) {}
 	virtual ~NNParticle(){}
 
 	static NNParticle* Create( std::wstring path );
@@ -37,72 +37,72 @@ public:
 	virtual void Update( float dTime );
 
 public:
-	void SetParentMatrix( NNMatrix matrix ) { m_ParentMatrix = matrix; }
-	void SetPosition( NNPoint position ) { m_Position = position; }
-	void SetPosition( float x, float y ) { m_Position.SetPoint(x,y); }
-	void SetStartSpeed( float speed ) { m_StartSpeed = speed; }
-	void SetEndSpeed( float speed ) { m_EndSpeed = speed; }
-	void SetStartScaleX( float scaleX ) { m_StartScaleX = scaleX; }
-	void SetStartScaleY( float scaleY ) { m_StartScaleY = scaleY; }
-	void SetEndScaleX( float scaleX ) { m_EndScaleX = scaleX; }
-	void SetEndScaleY( float scaleY ) { m_EndScaleY = scaleY; }
-	void SetStartScale( float scaleX, float scaleY ) { m_StartScaleX = scaleX; m_StartScaleY = scaleY; }
-	void SetEndScale( float scaleX, float scaleY ) { m_EndScaleX = scaleX; m_EndScaleY = scaleY; }
-	void SetStartRotationSpeed( float rotation ) { m_StartRotationSpeed = rotation; }
-	void SetEndRotationSpeed( float rotation ) { m_EndRotationSpeed = rotation; }
-	void SetVisible( bool visible ) { m_Visible = visible; }
-	void SetLifeTime( float lifetime ) { m_LifeTime = lifetime; }
-	void SetStartColor( NNColor color ) { m_StartColor = color; }
-	void SetStartColor( int r, int g, int b, float opacity ) { m_StartColor = NNColor(r,g,b,opacity); }
-	void SetStartRGB( int r, int g, int b ) { m_StartColor = NNColor(r,g,b,1.f); }
-	void SetStartRGBA( int r, int g, int b, int a ) { m_StartColor = NNColor(r,g,b,a); }
-	void SetEndColor( NNColor color ) { m_EndColor = color; }
-	void SetEndColor( int r, int g, int b, float opacity ) { m_EndColor = NNColor(r,g,b,opacity); }
-	void SetEndRGB( int r, int g, int b ) { m_EndColor = NNColor(r,g,b,1.f); }
-	void SetEndRGBA( int r, int g, int b, int a ) { m_EndColor = NNColor(r,g,b,a); }
-	void SetDirection( float direction ) { m_Direction = direction; }
+	void SetParentMatrix( NNMatrix matrix ) { mParentMatrix = matrix; }
+	void SetPosition( NNPoint position ) { mPosition = position; }
+	void SetPosition( float x, float y ) { mPosition.SetPoint(x,y); }
+	void SetStartSpeed( float speed ) { mStartSpeed = speed; }
+	void SetEndSpeed( float speed ) { mEndSpeed = speed; }
+	void SetStartScaleX( float scaleX ) { mStartScaleX = scaleX; }
+	void SetStartScaleY( float scaleY ) { mStartScaleY = scaleY; }
+	void SetEndScaleX( float scaleX ) { mEndScaleX = scaleX; }
+	void SetEndScaleY( float scaleY ) { mEndScaleY = scaleY; }
+	void SetStartScale( float scaleX, float scaleY ) { mStartScaleX = scaleX; mStartScaleY = scaleY; }
+	void SetEndScale( float scaleX, float scaleY ) { mEndScaleX = scaleX; mEndScaleY = scaleY; }
+	void SetStartRotationSpeed( float rotation ) { mStartRotationSpeed = rotation; }
+	void SetEndRotationSpeed( float rotation ) { mEndRotationSpeed = rotation; }
+	void SetVisible( bool visible ) { mVisible = visible; }
+	void SetLifeTime( float lifetime ) { mLifeTime = lifetime; }
+	void SetStartColor( NNColor color ) { mStartColor = color; }
+	void SetStartColor( int r, int g, int b, float opacity ) { mStartColor = NNColor(r,g,b,opacity); }
+	void SetStartRGB( int r, int g, int b ) { mStartColor = NNColor(r,g,b,1.f); }
+	void SetStartRGBA( int r, int g, int b, int a ) { mStartColor = NNColor(r,g,b,a); }
+	void SetEndColor( NNColor color ) { mEndColor = color; }
+	void SetEndColor( int r, int g, int b, float opacity ) { mEndColor = NNColor(r,g,b,opacity); }
+	void SetEndRGB( int r, int g, int b ) { mEndColor = NNColor(r,g,b,1.f); }
+	void SetEndRGBA( int r, int g, int b, int a ) { mEndColor = NNColor(r,g,b,a); }
+	void SetDirection( float direction ) { mDirection = direction; }
 
-	NNMatrix GetParentMatrix() const { return m_ParentMatrix; }
-	NNMatrix GetMatrix() const { return m_Matrix; }
-	NNPoint GetPosition() { return m_Position; }
-	float GetStartSpeed() const { return m_StartSpeed; }
-	float GetEndSpeed() const { return m_EndSpeed; }
-	float GetStartScaleX() const { return m_StartScaleX; }
-	float GetStartScaleY() const { return m_StartScaleY; }
-	float GetEndScaleX() const { return m_EndScaleX; }
-	float GetEndScaleY() const { return m_EndScaleY; }
-	float GetImageWidth() const { return m_ImageWidth; }
-	float GetImageHeight() const { return m_ImageHeight; }
-	float GetStartRotationSpeed() const { return m_StartRotationSpeed; }
-	float GetEndRotationSpeed() const { return m_EndRotationSpeed; }
-	float GetLifeTime() const { return m_LifeTime; }
-	float GetNowLifeTime() const { return m_NowLifeTime; }
-	bool IsVisible() const { return m_Visible; }
-	NNColor GetStartColor() { return m_StartColor; }
-	NNColor GetEndColor() { return m_EndColor; }
-	float GetDirection() { return m_Direction; }
+	NNMatrix GetParentMatrix() const { return mParentMatrix; }
+	NNMatrix GetMatrix() const { return mMatrix; }
+	NNPoint GetPosition() { return mPosition; }
+	float GetStartSpeed() const { return mStartSpeed; }
+	float GetEndSpeed() const { return mEndSpeed; }
+	float GetStartScaleX() const { return mStartScaleX; }
+	float GetStartScaleY() const { return mStartScaleY; }
+	float GetEndScaleX() const { return mEndScaleX; }
+	float GetEndScaleY() const { return mEndScaleY; }
+	float GetImageWidth() const { return mImageWidth; }
+	float GetImageHeight() const { return mImageHeight; }
+	float GetStartRotationSpeed() const { return mStartRotationSpeed; }
+	float GetEndRotationSpeed() const { return mEndRotationSpeed; }
+	float GetLifeTime() const { return mLifeTime; }
+	float GetNowLifeTime() const { return mNowLifeTime; }
+	bool IsVisible() const { return mVisible; }
+	NNColor GetStartColor() { return mStartColor; }
+	NNColor GetEndColor() { return mEndColor; }
+	float GetDirection() { return mDirection; }
 
 protected:
-	NNMatrix m_ParentMatrix;
-	NNMatrix m_Matrix;
-	NNPoint m_Position;
-	float m_StartSpeed, m_EndSpeed;
-	float m_StartScaleX, m_EndScaleX;
-	float m_StartScaleY, m_EndScaleY;
-	float m_ImageWidth;
-	float m_ImageHeight;
-	float m_StartRotationSpeed, m_EndRotationSpeed; // Degree
-	float m_LifeTime;
-	float m_NowLifeTime;
-	bool m_Visible;
-	NNColor m_StartColor, m_EndColor;
+	NNMatrix mParentMatrix;
+	NNMatrix mMatrix;
+	NNPoint mPosition;
+	float mStartSpeed, mEndSpeed;
+	float mStartScaleX, mEndScaleX;
+	float mStartScaleY, mEndScaleY;
+	float mImageWidth;
+	float mImageHeight;
+	float mStartRotationSpeed, mEndRotationSpeed; // Degree
+	float mLifeTime;
+	float mNowLifeTime;
+	bool mVisible;
+	NNColor mStartColor, mEndColor;
 
-	float m_Speed;
-	float m_ScaleX, m_ScaleY;
-	float m_Rotation;
-	float m_RotationSpeed;
-	float m_Direction;
-	NNColor m_Color;
+	float mSpeed;
+	float mScaleX, mScaleY;
+	float mRotation;
+	float mRotationSpeed;
+	float mDirection;
+	NNColor mColor;
 };
 
 class NND2DParticle : public NNParticle
@@ -118,9 +118,9 @@ public:
 	void Update( float dTime );
 
 private:
-	NND2DRenderer* m_pD2DRenderer;
-	NND2DTexture* m_pD2DTexture;
-	D2D1::Matrix3x2F m_D2DMatrix;
+	NND2DRenderer* mpD2DRenderer;
+	NND2DTexture* mpD2DTexture;
+	D2D1::Matrix3x2F mD2DMatrix;
 };
 
 class NND3DParticle : public NNParticle
@@ -136,7 +136,7 @@ public:
 	void Update( float dTime );
 
 private:
-	NND3DRenderer* m_pD3DRenderer;
-	NND3DTexture* m_pD3DTexture;
-	D3DXMATRIX m_D3DMatrix;
+	NND3DRenderer* mpD3DRenderer;
+	NND3DTexture* mpD3DTexture;
+	D3DXMATRIX mD3DMatrix;
 };

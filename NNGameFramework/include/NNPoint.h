@@ -20,16 +20,16 @@
 class NNPoint
 {
 private:
-	float m_X;
-	float m_Y;
+	float mX;
+	float mY;
 
 public:
 	NNPoint() 
-		: m_X(0.f), m_Y(0.f) {}
+		: mX(0.f), mY(0.f) {}
 	NNPoint( float x, float y ) 
-		: m_X(x), m_Y(y) {}
+		: mX(x), mY(y) {}
 	NNPoint( NNPoint& point )
-		: m_X(point.GetX()), m_Y(point.GetY()) {}
+		: mX(point.GetX()), mY(point.GetY()) {}
 	/* 생성자 */
 	~NNPoint() {}
 	/* 소멸자 */
@@ -52,30 +52,30 @@ public:
 
 public:
 	inline float GetDistance( NNPoint& point ) const { 
-		return sqrtf( pow(m_X-point.GetX(), 2) + pow(m_Y-point.GetY(), 2) );
+		return sqrtf( pow(mX-point.GetX(), 2) + pow(mY-point.GetY(), 2) );
 	}
 	/* 점과 점사이의 거리를 계산하는 함수 */
 	inline float GetDistance( float x, float y ) const { 
-		return sqrtf( pow(m_X-x, 2) + pow(m_Y-y, 2) );
+		return sqrtf( pow(mX-x, 2) + pow(mY-y, 2) );
 	}
 	/* 점과 점사이의 거리를 계산하는 함수 */
 
 public:
-	inline float GetX() const { return m_X; }
+	inline float GetX() const { return mX; }
 	/* X좌표를 반환하는 함수 */
-	inline float GetY() const { return m_Y; }
+	inline float GetY() const { return mY; }
 	/* Y좌표를 반환하는 함수 */
 
 	void SetPoint( float x, float y ) {
-		m_X = x;
-		m_Y = y;
+		mX = x;
+		mY = y;
 	}
 	/* 좌표를 설정하는 함수 */
 	void SetPoint( NNPoint& point ) { *this = point; }
 	/* 좌표를 설정하는 함수 */
-	void SetX( float x ) { m_X = x; }
+	void SetX( float x ) { mX = x; }
 	/* X좌표를 설정하는 함수 */
-	void SetY( float y ) { m_Y = y; }
+	void SetY( float y ) { mY = y; }
 	/* Y좌표를 설정하는 함수 */
 };
 

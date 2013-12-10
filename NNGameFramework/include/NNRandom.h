@@ -20,15 +20,15 @@ public:
 
 	static void ReleaseInstance()
 	{
-		if ( m_pInstance != nullptr )
+		if ( mpInstance != nullptr )
 		{
-			delete m_pInstance;
-			m_pInstance = nullptr;
+			delete mpInstance;
+			mpInstance = nullptr;
 		}
 	}
 
 private:
-	static NNRandom* m_pInstance;
+	static NNRandom* mpInstance;
 
 	NNRandom();
 	~NNRandom();

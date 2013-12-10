@@ -17,11 +17,11 @@ public:
 
 	static NNZip *Create(char *buf, int size);
 
-	char *GetBuffer() { return m_buf; }
-	int GetSize() { return m_size; }
+	char *GetBuffer() { return mbuf; }
+	int GetSize() { return msize; }
 
 private:
-	char *m_buf;
-	int m_size;
+	char *mbuf;
+	int msize;
 };
 

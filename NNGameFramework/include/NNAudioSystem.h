@@ -47,16 +47,16 @@ public:
 	bool IsPlay( NNSound* sound );
 	/* 현재 사운드가 재생되고 있는지 판별하는 함수 */
 
-	FMOD::System* GetSystem() { return m_System; }
+	FMOD::System* GetSystem() { return mSystem; }
 	/* FMOD 라이브러리의 System변수를 반환하는 함수 */
 
 private:
-	FMOD::System* m_System;
+	FMOD::System* mSystem;
 	/* FMOD 라이브러리의 System */
-	FMOD::ChannelGroup* m_ChannelGroup;
+	FMOD::ChannelGroup* mChannelGroup;
 	/* FMOD 라이브러리의 ChannelGroup */
 
-	static NNAudioSystem* m_pInstance;
+	static NNAudioSystem* mpInstance;
 	/* NNAudioSystem의 싱글톤 인스턴스 */
 
 	NNAudioSystem();

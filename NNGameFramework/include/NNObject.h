@@ -37,10 +37,10 @@ public:
 
 	virtual void Init() = 0;
 
-	NNObject* GetParent() { return m_pParent; }
-	std::list<NNObject*> GetChildList() { return m_ChildList; }
+	NNObject* GetParent() { return mpParent; }
+	std::list<NNObject*> GetChildList() { return mChildList; }
 
-	void SetParent( NNObject* object ) { m_pParent = object; }
+	void SetParent( NNObject* object ) { mpParent = object; }
 
 	void AddChild( NNObject* object );
 	void AddChild( NNObject* object, int zindex );
@@ -48,46 +48,46 @@ public:
 
 	void SortingChildByZindex();
 
-	inline NNMatrix GetMatrix() const { return m_Matrix; }
-	inline NNPoint GetPosition() { return m_Position; }
-	inline float GetPositionX() const { return m_Position.GetX(); }
-	inline float GetPositionY() const { return m_Position.GetY(); }
-	inline NNPoint GetCenter() { return m_Center; }
-	inline float GetCenterX() const { return m_Center.GetX(); }
-	inline float GetCenterY() const { return m_Center.GetY(); }
-	inline float GetScaleX() const { return m_ScaleX; }
-	inline float GetScaleY() const { return m_ScaleY; }
-	inline float GetRotation() const { return m_Rotation; }
-	inline int GetZindex() const { return m_Zindex; }
-	inline bool IsVisible() const { return m_Visible; }
+	inline NNMatrix GetMatrix() const { return mMatrix; }
+	inline NNPoint GetPosition() { return mPosition; }
+	inline float GetPositionX() const { return mPosition.GetX(); }
+	inline float GetPositionY() const { return mPosition.GetY(); }
+	inline NNPoint GetCenter() { return mCenter; }
+	inline float GetCenterX() const { return mCenter.GetX(); }
+	inline float GetCenterY() const { return mCenter.GetY(); }
+	inline float GetScaleX() const { return mScaleX; }
+	inline float GetScaleY() const { return mScaleY; }
+	inline float GetRotation() const { return mRotation; }
+	inline int GetZindex() const { return mZindex; }
+	inline bool IsVisible() const { return mVisible; }
 
-	void SetPosition( float x, float y ) { m_Position = NNPoint(x,y); }
-	void SetPosition( NNPoint point ) { m_Position = point; }
-	void SetCenter( float x, float y ) { m_Center = NNPoint(x,y); }
-	void SetCenter( NNPoint point ) { m_Center = point; }
+	void SetPosition( float x, float y ) { mPosition = NNPoint(x,y); }
+	void SetPosition( NNPoint point ) { mPosition = point; }
+	void SetCenter( float x, float y ) { mCenter = NNPoint(x,y); }
+	void SetCenter( NNPoint point ) { mCenter = point; }
 	void SetScale( float scaleX, float scaleY ) { 
-		m_ScaleX = scaleX; 
-		m_ScaleY = scaleY;
+		mScaleX = scaleX; 
+		mScaleY = scaleY;
 	}
-	void SetScaleX( float scaleX ) { m_ScaleX = scaleX; }
-	void SetScaleY( float scaleY ) { m_ScaleY = scaleY; }
-	void SetRotation( float rotation ) { m_Rotation = rotation; }
-	void SetZindex( int zindex ) { m_Zindex = zindex; SortingChildByZindex(); }
-	void SetVisible( bool visible ) { m_Visible = visible; }
+	void SetScaleX( float scaleX ) { mScaleX = scaleX; }
+	void SetScaleY( float scaleY ) { mScaleY = scaleY; }
+	void SetRotation( float rotation ) { mRotation = rotation; }
+	void SetZindex( int zindex ) { mZindex = zindex; SortingChildByZindex(); }
+	void SetVisible( bool visible ) { mVisible = visible; }
 
 protected:
-	NNObject* m_pParent;
-	std::list<NNObject*> m_ChildList;
+	NNObject* mpParent;
+	std::list<NNObject*> mChildList;
 
 protected:
-	NNMatrix m_Matrix;
-	NNPoint m_Position;
-	NNPoint m_Center;
-	float m_ScaleX;
-	float m_ScaleY;
-	float m_Rotation; // Degree
-	NNSize m_Size;
-	int m_Zindex;
-	int m_ZindexCount;
-	bool m_Visible;
+	NNMatrix mMatrix;
+	NNPoint mPosition;
+	NNPoint mCenter;
+	float mScaleX;
+	float mScaleY;
+	float mRotation; // Degree
+	NNSize mSize;
+	int mZindex;
+	int mZindexCount;
+	bool mVisible;
 };

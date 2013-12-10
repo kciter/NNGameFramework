@@ -28,7 +28,7 @@ enum KeyState
 class NNInputSystem
 {
 private:
-	static NNInputSystem* m_pInstance;
+	static NNInputSystem* mpInstance;
 	/* NNInputSystem의 싱글톤 클래스 */
 
 private:
@@ -38,9 +38,9 @@ private:
 	/* 소멸자 */
 
 private:
-	bool m_PrevKeyState[256];
+	bool mPrevKeyState[256];
 	/* 한 프레임 전 키 상태 */
-	bool m_NowKeyState[256];
+	bool mNowKeyState[256];
 	/* 현재 프레임의 키 상태 */
 
 public:

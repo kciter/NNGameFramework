@@ -23,21 +23,21 @@ public:
 	static NNSound* Create( std::string path, bool isLoop=false, bool isBackground=false );
 	static NNSound* CreateStream( NNZip* buf, bool isLoop=false, bool isBackground=false );
 
-	FMOD::Sound* GetSound() { return m_Sound; }
-	FMOD::Sound** GetSoundPointer() { return &m_Sound; }
-	FMOD::Channel* GetChannel() { return m_Channel; }
-	FMOD::Channel** GetChannelPointer() { return &m_Channel; }
+	FMOD::Sound* GetSound() { return mSound; }
+	FMOD::Sound** GetSoundPointer() { return &mSound; }
+	FMOD::Channel* GetChannel() { return mChannel; }
+	FMOD::Channel** GetChannelPointer() { return &mChannel; }
 
 public:
-	FMOD::Sound* m_Sound;
-	FMOD::Channel* m_Channel;
+	FMOD::Sound* mSound;
+	FMOD::Channel* mChannel;
 };
 
 /*
 class NNSound
 {
 private:
-	MCIDEVICEID m_MciDevice;
+	MCIDEVICEID mMciDevice;
 
 public:
 	NNSound();
@@ -52,9 +52,9 @@ public:
 	void Stop();
 
 private:
-	bool m_Playing;
+	bool mPlaying;
 
 public:
-	inline bool IsPlaying() { return m_Playing; }
+	inline bool IsPlaying() { return mPlaying; }
 };
 */

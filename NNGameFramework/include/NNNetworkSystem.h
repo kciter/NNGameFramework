@@ -36,20 +36,20 @@ private:
 	void ProcessPacket();
 
 private:
-	SOCKET m_Socket;
+	SOCKET mSocket;
 
-	SOCKADDR_IN m_ServerAddr;
+	SOCKADDR_IN mServerAddr;
 
-	char* m_ServerIP;
-	int m_Port;
+	char* mServerIP;
+	int mPort;
 
-	NNCircularBuffer m_RecvBuffer;
-	NNCircularBuffer m_SendBuffer;
+	NNCircularBuffer mRecvBuffer;
+	NNCircularBuffer mSendBuffer;
 
-	std::map<short,NNBaseHandler*> m_PacketHandler;
+	std::map<short,NNBaseHandler*> mPacketHandler;
 
 private:
-	static NNNetworkSystem* m_pInstance;
+	static NNNetworkSystem* mpInstance;
 
 	NNNetworkSystem();
 	~NNNetworkSystem();
