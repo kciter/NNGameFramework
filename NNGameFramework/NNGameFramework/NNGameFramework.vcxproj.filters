@@ -133,6 +133,15 @@
     <Filter Include="Framework\Node\Animation\FrameNode">
       <UniqueIdentifier>{dc9bfbb7-1e34-42cc-a38e-b63ce72f262d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Node\AnimationAtlas">
+      <UniqueIdentifier>{50714d12-4be3-47c7-b5f9-de57418b5b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Node\AnimationAtlas\CutFrameNode">
+      <UniqueIdentifier>{5a7b8bf2-85b8-4dbc-a5f1-6fba3a07a653}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Util\Logger">
+      <UniqueIdentifier>{a1663359-45e3-45a2-81de-09f2666f48dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NNApplication.cpp">
@@ -278,6 +287,15 @@
     </ClCompile>
     <ClCompile Include="NNFrameNode.cpp">
       <Filter>Framework\Node\Animation\FrameNode</Filter>
+    </ClCompile>
+    <ClCompile Include="NNAnimationAtlas.cpp">
+      <Filter>Framework\Node\AnimationAtlas</Filter>
+    </ClCompile>
+    <ClCompile Include="CutFrameNode.cpp">
+      <Filter>Framework\Node\AnimationAtlas\CutFrameNode</Filter>
+    </ClCompile>
+    <ClCompile Include="NNLogger.cpp">
+      <Filter>Framework\Util\Logger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -694,6 +712,15 @@
     </ClInclude>
     <ClInclude Include="Library\DirectX\Include\wincodec.h">
       <Filter>Library\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="NNAnimationAtlas.h">
+      <Filter>Framework\Node\AnimationAtlas</Filter>
+    </ClInclude>
+    <ClInclude Include="CutFrameNode.h">
+      <Filter>Framework\Node\AnimationAtlas\CutFrameNode</Filter>
+    </ClInclude>
+    <ClInclude Include="NNLogger.h">
+      <Filter>Framework\Util\Logger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

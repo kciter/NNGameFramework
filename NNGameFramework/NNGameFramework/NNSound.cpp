@@ -12,13 +12,13 @@
 #include "NNAudioSystem.h"
 
 NNSound::NNSound()
-	: m_Channel(nullptr), m_Sound(nullptr)
+	: mChannel(nullptr), mSound(nullptr)
 {
 
 }
 NNSound::~NNSound()
 {
-	m_Sound->release();
+	mSound->release();
 }
 
 NNSound* NNSound::Create( std::string path, bool isLoop, bool isBackground )

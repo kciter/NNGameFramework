@@ -30,7 +30,7 @@ public:
 	virtual void Destroy() = 0;
 
 protected:
-	std::wstring m_Path;
+	std::wstring mPath;
 };
 
 class NND2DTexture : public NNTexture
@@ -44,12 +44,12 @@ public:
 	void Destroy();
 
 public:
-	ID2D1Bitmap* GetD2DBitmap() { return m_D2DBitmap; }
+	ID2D1Bitmap* GetD2DBitmap() { return mD2DBitmap; }
 
 private:
 	static IWICImagingFactory* g_pWICFactory;
-	ID2D1Bitmap* m_D2DBitmap;
-	IWICFormatConverter* m_FmtConverter;
+	ID2D1Bitmap* mD2DBitmap;
+	IWICFormatConverter* mFmtConverter;
 };
 
 class NND3DTexture : public NNTexture

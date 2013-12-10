@@ -10,21 +10,21 @@
 #include "NNXML.h"
 
 NNXML::NNXML( std::string path )
-	: m_LoadSuccess(false)
+	: mLoadSuccess(false)
 {
-	m_Document = TiXmlDocument( path.c_str() );
-	//m_Document.LoadFile(TIXML_ENCODING_UTF8);
-	m_LoadSuccess = m_Document.LoadFile();
+	mDocument = TiXmlDocument( path.c_str() );
+	//mDocument.LoadFile(TIXML_ENCODING_UTF8);
+	mLoadSuccess = mDocument.LoadFile();
 }
 NNXML::NNXML( char *buf )
 {
-	m_Document = TiXmlDocument();
-	//m_Document.LoadFile(TIXML_ENCODING_UTF8);
-	m_Document.Parse( buf );
+	mDocument = TiXmlDocument();
+	//mDocument.LoadFile(TIXML_ENCODING_UTF8);
+	mDocument.Parse( buf );
 }
 NNXML::NNXML()
 {
-	m_Document = TiXmlDocument();
+	mDocument = TiXmlDocument();
 }
 NNXML::~NNXML()
 {
@@ -49,5 +49,5 @@ NNXML* NNXML::Create()
 
 TiXmlString NNXML::XPathToString( std::string xpath )
 {
-	return TinyXPath::S_xpath_string(m_Document.RootElement(), xpath.c_str());
+	return TinyXPath::S_xpath_string(mDocument.RootElement(), xpath.c_str());
 }

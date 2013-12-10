@@ -16,23 +16,23 @@ NNSize& NNSize::operator= ( const NNSize& size )
 }
 NNSize NNSize::operator+( const NNSize& size ) const
 {
-	return NNSize( this->m_Width+size.GetWidth(), this->m_Height+size.GetHeight() );
+	return NNSize( this->mWidth+size.GetWidth(), this->mHeight+size.GetHeight() );
 }
 NNSize NNSize::operator-( const NNSize& size ) const
 {
-	return NNSize( this->m_Width-size.GetWidth(), this->m_Height-size.GetHeight() );
+	return NNSize( this->mWidth-size.GetWidth(), this->mHeight-size.GetHeight() );
 }
 NNSize NNSize::operator-() const
 {
-	return NNSize( -this->m_Width, -this->m_Height );
+	return NNSize( -this->mWidth, -this->mHeight );
 }
 NNSize NNSize::operator*( float n ) const
 {
-	return NNSize( this->m_Width*n, this->m_Height*n );
+	return NNSize( this->mWidth*n, this->mHeight*n );
 }
 NNSize NNSize::operator/( float n ) const
 {
-	return NNSize( this->m_Width/n, this->m_Height/n );
+	return NNSize( this->mWidth/n, this->mHeight/n );
 }
 
 

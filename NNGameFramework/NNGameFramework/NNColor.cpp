@@ -16,21 +16,21 @@ NNColor& NNColor::operator= ( const NNColor& color )
 }
 NNColor NNColor::operator+( const NNColor& color ) const
 {
-	return NNColor( this->m_Red+color.GetRed(), this->m_Green+color.GetGreen(), this->m_Blue+color.GetBlue(), this->GetAlpha()+color.GetAlpha() );
+	return NNColor( this->mRed+color.GetRed(), this->mGreen+color.GetGreen(), this->mBlue+color.GetBlue(), this->GetAlpha()+color.GetAlpha() );
 }
 NNColor NNColor::operator-( const NNColor& color ) const
 {
-	return NNColor( this->m_Red-color.GetRed(), this->m_Green-color.GetGreen(), this->m_Blue-color.GetBlue(), this->GetAlpha()-color.GetAlpha() );
+	return NNColor( this->mRed-color.GetRed(), this->mGreen-color.GetGreen(), this->mBlue-color.GetBlue(), this->GetAlpha()-color.GetAlpha() );
 }
 NNColor NNColor::operator-() const
 {
-	return NNColor( -this->m_Red, -this->m_Green, -this->m_Blue, -this->GetAlpha() );
+	return NNColor( -this->mRed, -this->mGreen, -this->mBlue, -this->GetAlpha() );
 }
 NNColor NNColor::operator*( float n ) const
 {
-	return NNColor( static_cast<int>(this->m_Red*n), static_cast<int>(this->m_Green*n), static_cast<int>(this->m_Blue*n), static_cast<int>(this->GetAlpha()*n) );
+	return NNColor( static_cast<int>(this->mRed*n), static_cast<int>(this->mGreen*n), static_cast<int>(this->mBlue*n), static_cast<int>(this->GetAlpha()*n) );
 }
 NNColor NNColor::operator/( float n ) const
 {
-	return NNColor( static_cast<int>(this->m_Red/n), static_cast<int>(this->m_Green/n), static_cast<int>(this->m_Blue/n), static_cast<int>(this->GetAlpha()/n) );
+	return NNColor( static_cast<int>(this->mRed/n), static_cast<int>(this->mGreen/n), static_cast<int>(this->mBlue/n), static_cast<int>(this->GetAlpha()/n) );
 }

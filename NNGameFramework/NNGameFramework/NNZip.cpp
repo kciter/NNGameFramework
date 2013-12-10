@@ -13,13 +13,13 @@
 
 NNZip::NNZip(char *buf, int size)
 {
-	m_size = size;
-	m_buf = new char[size];
-	memcpy(m_buf, buf, size);
+	msize = size;
+	mbuf = new char[size];
+	memcpy(mbuf, buf, size);
 }
 NNZip::~NNZip(void)
 {
-	SafeDelete(m_buf);
+	SafeDelete(mbuf);
 }
 NNZip* NNZip::Create(char *buf, int size)
 {

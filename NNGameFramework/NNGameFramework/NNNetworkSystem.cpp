@@ -10,12 +10,12 @@
 #include "NNNetworkSystem.h"
 #include "NNApplication.h"
 
-NNNetworkSystem* NNNetworkSystem::m_pInstance = nullptr;
+NNNetworkSystem* NNNetworkSystem::mpInstance = nullptr;
 
 NNNetworkSystem::NNNetworkSystem()
-	: m_ServerIP(nullptr), m_Port(9001), 
-	m_RecvBuffer(NNCircularBuffer(1024*4)),
-	m_SendBuffer(NNCircularBuffer(1024*4))
+	: mServerIP(nullptr), mPort(9001), 
+	mRecvBuffer(NNCircularBuffer(1024*4)),
+	mSendBuffer(NNCircularBuffer(1024*4))
 {
 }
 NNNetworkSystem::~NNNetworkSystem()
@@ -31,11 +31,11 @@ bool NNNetworkSystem::Init()
 	if ( nResult != 0 )
 		return false ;
 
-	m_Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) ;
-	if ( m_Socket == INVALID_SOCKET )
+	mSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) ;
+	if ( mSocket == INVALID_SOCKET )
 		return false ;
 
-	nResult = WSAAsyncSelect(NNNetworkSystem::GetInstance()->m_Socket, NNApplication::GetInstance()->GetHWND(), WM_SOCKET,(FD_CLOSE|FD_CONNECT));
+	nResult = WSAAsyncSelect(NNNetworkSystem::GetInstance()->mSocket, NNApplication::GetInstance()->GetHWND(), WM_SOCKET,(FD_CLOSE|FD_CONNECT));
 	if (nResult)
 	{
 		MessageBox(NNApplication::GetInstance()->GetHWND(), L"WSAAsyncSelect failed", L"Critical Error", MB_ICONERROR);
@@ -48,11 +48,11 @@ bool NNNetworkSystem::Init()
 
 void NNNetworkSystem::Destroy()
 {
-	for (auto& iter=m_PacketHandler.begin(); iter!=m_PacketHandler.end(); iter++ )
+	for (auto& iter=mPacketHandler.begin(); iter!=mPacketHandler.end(); iter++ )
 	{
 		SafeDelete( iter->second );
 	}
-	m_PacketHandler.clear();
+	mPacketHandler.clear();
 }
 
 bool NNNetworkSystem::Connect( const char* serverIP, int port )
@@ -69,7 +69,7 @@ bool NNNetworkSystem::Connect( const char* serverIP, int port )
 	SockAddr.sin_family = AF_INET;
 	SockAddr.sin_addr.s_addr = *((unsigned long*)host->h_addr) ;
 
-	if ( SOCKET_ERROR == connect(m_Socket, (LPSOCKADDR)(&SockAddr), sizeof(SockAddr)) )
+	if ( SOCKET_ERROR == connect(mSocket, (LPSOCKADDR)(&SockAddr), sizeof(SockAddr)) )
 	{
 		if (GetLastError() != WSAEWOULDBLOCK )
 			return false ;
@@ -83,23 +83,23 @@ void NNNetworkSystem::ProcessPacket()
 	{
 		NNPacketHeader header;
 
-		if ( m_RecvBuffer.Peek((char*)&header, sizeof(NNPacketHeader)) == false )
+		if ( mRecvBuffer.Peek((char*)&header, sizeof(NNPacketHeader)) == false )
 		{
 			break;
 		}
 
-		if ( header.m_Size > m_RecvBuffer.GetCurrentSize() ) /// warning
+		if ( header.mSize > mRecvBuffer.GetCurrentSize() ) /// warning
 		{
 			break;
 		}
 
-		m_PacketHandler[header.m_Type]->HandlingPacket(header.m_Type, &m_RecvBuffer, &header);
+		mPacketHandler[header.mType]->HandlingPacket(header.mType, &mRecvBuffer, &header);
 	}
 }
 
 void NNNetworkSystem::Write( const char* data, size_t size )
 {
-	if ( m_SendBuffer.Write(data, size) )
+	if ( mSendBuffer.Write(data, size) )
 	{
 		PostMessage(NNApplication::GetInstance()->GetHWND(), WM_SOCKET, NULL, FD_WRITE) ;
 	}
@@ -109,9 +109,9 @@ void NNNetworkSystem::Read()
 {
 	char inBuf[4096] = {0, } ;
 
-	int recvLen = recv(m_Socket, inBuf, 4096, 0) ;
+	int recvLen = recv(mSocket, inBuf, 4096, 0) ;
 
-	if ( !m_RecvBuffer.Write(inBuf, recvLen) )
+	if ( !mRecvBuffer.Write(inBuf, recvLen) )
 	{
 		/// ¹öÆÛ ²ËÃ¡´Ù. 
 		//assert(false) ;
@@ -124,22 +124,22 @@ void NNNetworkSystem::Read()
 
 void NNNetworkSystem::SetPacketHandler( short packetType, NNBaseHandler* handler )
 {
-	m_PacketHandler[packetType] = handler;
+	mPacketHandler[packetType] = handler;
 }
 
 NNNetworkSystem* NNNetworkSystem::GetInstance()
 {
-	if ( m_pInstance == nullptr )
+	if ( mpInstance == nullptr )
 	{
-		m_pInstance = new NNNetworkSystem();
+		mpInstance = new NNNetworkSystem();
 	}
 
-	return m_pInstance;
+	return mpInstance;
 }
 void NNNetworkSystem::ReleaseInstance()
 {
-	if ( m_pInstance != nullptr )
+	if ( mpInstance != nullptr )
 	{
-		delete m_pInstance;
+		delete mpInstance;
 	}
 }

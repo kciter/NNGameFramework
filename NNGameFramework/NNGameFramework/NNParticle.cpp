@@ -38,26 +38,26 @@ NNParticle* NNParticle::Create( std::wstring path )
 
 void NNParticle::Render()
 {
-	m_Matrix = NNMatrix::Translate( -m_ImageWidth/2.f, -m_ImageHeight/2.f ) *
-		NNMatrix::Rotation( m_Rotation ) *
-		NNMatrix::Scale( m_ScaleX, m_ScaleY ) *
-		NNMatrix::Translate( m_Position.GetX(), m_Position.GetY() );
+	mMatrix = NNMatrix::Translate( -mImageWidth/2.f, -mImageHeight/2.f ) *
+		NNMatrix::Rotation( mRotation ) *
+		NNMatrix::Scale( mScaleX, mScaleY ) *
+		NNMatrix::Translate( mPosition.GetX(), mPosition.GetY() );
 
-	m_Matrix = m_Matrix * m_ParentMatrix;
+	mMatrix = mMatrix * mParentMatrix;
 }
 void NNParticle::Update( float dTime )
 {
-	m_NowLifeTime += dTime;
+	mNowLifeTime += dTime;
 
-	m_Speed = m_StartSpeed + (m_EndSpeed-m_StartSpeed)*(m_NowLifeTime/m_LifeTime);
-	m_RotationSpeed = m_StartRotationSpeed + (m_EndRotationSpeed-m_StartRotationSpeed)*(m_NowLifeTime/m_LifeTime);
+	mSpeed = mStartSpeed + (mEndSpeed-mStartSpeed)*(mNowLifeTime/mLifeTime);
+	mRotationSpeed = mStartRotationSpeed + (mEndRotationSpeed-mStartRotationSpeed)*(mNowLifeTime/mLifeTime);
 
-	m_Position = m_Position + NNPoint( cos(NNDegreeToRadian(m_Direction)), sin(NNDegreeToRadian(m_Direction)) ) * m_Speed * dTime;
-	m_Rotation += m_RotationSpeed * dTime;
+	mPosition = mPosition + NNPoint( cos(NNDegreeToRadian(mDirection)), sin(NNDegreeToRadian(mDirection)) ) * mSpeed * dTime;
+	mRotation += mRotationSpeed * dTime;
 
-	m_ScaleX = (m_StartScaleX + (m_EndScaleX-m_StartScaleX)*(m_NowLifeTime/m_LifeTime));
-	m_ScaleY = (m_StartScaleY + (m_EndScaleY-m_StartScaleY)*(m_NowLifeTime/m_LifeTime));
-	m_Color = (m_StartColor + (m_EndColor-m_StartColor)*(m_NowLifeTime/m_LifeTime));
+	mScaleX = (mStartScaleX + (mEndScaleX-mStartScaleX)*(mNowLifeTime/mLifeTime));
+	mScaleY = (mStartScaleY + (mEndScaleY-mStartScaleY)*(mNowLifeTime/mLifeTime));
+	mColor = (mStartColor + (mEndColor-mStartColor)*(mNowLifeTime/mLifeTime));
 }
 
 
@@ -65,17 +65,17 @@ void NNParticle::Update( float dTime )
 /*					NND2DParticle										*/
 //////////////////////////////////////////////////////////////////////////
 NND2DParticle::NND2DParticle()
-	: m_pD2DRenderer(nullptr), m_pD2DTexture(nullptr)
+	: mpD2DRenderer(nullptr), mpD2DTexture(nullptr)
 {
 
 }
 NND2DParticle::NND2DParticle( std::wstring path )
 {
-	m_pD2DRenderer = static_cast<NND2DRenderer*>(NNApplication::GetInstance()->GetRenderer());
-	m_pD2DTexture = static_cast<NND2DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromFile( path ));
+	mpD2DRenderer = static_cast<NND2DRenderer*>(NNApplication::GetInstance()->GetRenderer());
+	mpD2DTexture = static_cast<NND2DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromFile( path ));
 
-	m_ImageWidth = m_pD2DTexture->GetD2DBitmap()->GetSize().width;
-	m_ImageHeight = m_pD2DTexture->GetD2DBitmap()->GetSize().height;
+	mImageWidth = mpD2DTexture->GetD2DBitmap()->GetSize().width;
+	mImageHeight = mpD2DTexture->GetD2DBitmap()->GetSize().height;
 }
 NND2DParticle::~NND2DParticle()
 {
@@ -83,8 +83,8 @@ NND2DParticle::~NND2DParticle()
 }
 void NND2DParticle::Destroy()
 {
-	m_pD2DRenderer = nullptr;
-	m_pD2DTexture = nullptr;
+	mpD2DRenderer = nullptr;
+	mpD2DTexture = nullptr;
 }
 
 void NND2DParticle::Render()
@@ -93,14 +93,14 @@ void NND2DParticle::Render()
 
 // 	블랜딩 모드 추가해야함
 
-	m_D2DMatrix._11 = m_Matrix._11; m_D2DMatrix._12 = m_Matrix._12;
-	m_D2DMatrix._21 = m_Matrix._21; m_D2DMatrix._22 = m_Matrix._22;
-	m_D2DMatrix._31 = m_Matrix._31; m_D2DMatrix._32 = m_Matrix._32;
+	mD2DMatrix._11 = mMatrix._11; mD2DMatrix._12 = mMatrix._12;
+	mD2DMatrix._21 = mMatrix._21; mD2DMatrix._22 = mMatrix._22;
+	mD2DMatrix._31 = mMatrix._31; mD2DMatrix._32 = mMatrix._32;
 
-	m_pD2DRenderer->GetHwndRenderTarget()->SetTransform( m_D2DMatrix );
-	m_pD2DRenderer->GetHwndRenderTarget()->DrawBitmap(
-		m_pD2DTexture->GetD2DBitmap(), D2D1::RectF(0.f,0.f,m_ImageWidth,m_ImageHeight),
-		m_Color.GetOpacity() );
+	mpD2DRenderer->GetHwndRenderTarget()->SetTransform( mD2DMatrix );
+	mpD2DRenderer->GetHwndRenderTarget()->DrawBitmap(
+		mpD2DTexture->GetD2DBitmap(), D2D1::RectF(0.f,0.f,mImageWidth,mImageHeight),
+		mColor.GetOpacity() );
 }
 
 void NND2DParticle::Update( float dTime )
@@ -112,23 +112,23 @@ void NND2DParticle::Update( float dTime )
 /*					NND3DParticle										*/
 //////////////////////////////////////////////////////////////////////////
 NND3DParticle::NND3DParticle()
-	: m_pD3DRenderer(nullptr), m_pD3DTexture(nullptr)
+	: mpD3DRenderer(nullptr), mpD3DTexture(nullptr)
 {
-	D3DXMatrixIdentity( &m_D3DMatrix );
+	D3DXMatrixIdentity( &mD3DMatrix );
 }
 NND3DParticle::NND3DParticle( std::wstring path )
-	: m_pD3DRenderer(nullptr), m_pD3DTexture(nullptr)
+	: mpD3DRenderer(nullptr), mpD3DTexture(nullptr)
 {
-	m_pD3DRenderer = static_cast<NND3DRenderer*>(NNApplication::GetInstance()->GetRenderer());
-	m_pD3DTexture = static_cast<NND3DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromFile( path ));
+	mpD3DRenderer = static_cast<NND3DRenderer*>(NNApplication::GetInstance()->GetRenderer());
+	mpD3DTexture = static_cast<NND3DTexture*>(NNResourceManager::GetInstance()->LoadTextureFromFile( path ));
 
 	D3DSURFACE_DESC desc;
-	m_pD3DTexture->GetTexture()->GetLevelDesc( 0, &desc );
+	mpD3DTexture->GetTexture()->GetLevelDesc( 0, &desc );
 
-	m_ImageWidth = (float)desc.Width;
-	m_ImageHeight = (float)desc.Height;
+	mImageWidth = (float)desc.Width;
+	mImageHeight = (float)desc.Height;
 
-	D3DXMatrixIdentity( &m_D3DMatrix );
+	D3DXMatrixIdentity( &mD3DMatrix );
 }
 NND3DParticle::~NND3DParticle()
 {
@@ -137,27 +137,27 @@ NND3DParticle::~NND3DParticle()
 
 void NND3DParticle::Destroy()
 {
-	m_pD3DRenderer = nullptr;
-	m_pD3DTexture = nullptr;
+	mpD3DRenderer = nullptr;
+	mpD3DTexture = nullptr;
 }
 
 void NND3DParticle::Render()
 {
 	NNParticle::Render();
 
-	m_D3DMatrix._11 = m_Matrix._11; m_D3DMatrix._12 = m_Matrix._12;
-	m_D3DMatrix._21 = m_Matrix._21; m_D3DMatrix._22 = m_Matrix._22;
-	m_D3DMatrix._41 = m_Matrix._31; m_D3DMatrix._42 = m_Matrix._32;
+	mD3DMatrix._11 = mMatrix._11; mD3DMatrix._12 = mMatrix._12;
+	mD3DMatrix._21 = mMatrix._21; mD3DMatrix._22 = mMatrix._22;
+	mD3DMatrix._41 = mMatrix._31; mD3DMatrix._42 = mMatrix._32;
 
-	m_pD3DRenderer->GetSprite()->Begin( D3DXSPRITE_ALPHABLEND );
-	m_pD3DRenderer->GetSprite()->SetTransform( &m_D3DMatrix );
+	mpD3DRenderer->GetSprite()->Begin( D3DXSPRITE_ALPHABLEND );
+	mpD3DRenderer->GetSprite()->SetTransform( &mD3DMatrix );
 
-	m_pD3DRenderer->GetDevice()->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA );
-	m_pD3DRenderer->GetDevice()->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE );
-	m_pD3DRenderer->GetDevice()->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD );
+	mpD3DRenderer->GetDevice()->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA );
+	mpD3DRenderer->GetDevice()->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE );
+	mpD3DRenderer->GetDevice()->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD );
 
-	m_pD3DRenderer->GetSprite()->Draw( m_pD3DTexture->GetTexture(), NULL, NULL, NULL, D3DCOLOR_ARGB(m_Color.GetAlpha(),m_Color.GetRed(),m_Color.GetGreen(),m_Color.GetBlue()) );
-	m_pD3DRenderer->GetSprite()->End();
+	mpD3DRenderer->GetSprite()->Draw( mpD3DTexture->GetTexture(), NULL, NULL, NULL, D3DCOLOR_ARGB(mColor.GetAlpha(),mColor.GetRed(),mColor.GetGreen(),mColor.GetBlue()) );
+	mpD3DRenderer->GetSprite()->End();
 }
 void NND3DParticle::Update( float dTime )
 {

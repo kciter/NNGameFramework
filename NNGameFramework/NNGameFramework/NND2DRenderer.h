@@ -31,10 +31,10 @@ public:
 	bool End();
 
 public:
-	ID2D1Factory* GetD2DFactory() const { return m_ipD2DFactory; }
-	ID2D1HwndRenderTarget* GetHwndRenderTarget() const { return m_ipRenderTarget; }
+	ID2D1Factory* GetD2DFactory() const { return mipD2DFactory; }
+	ID2D1HwndRenderTarget* GetHwndRenderTarget() const { return mipRenderTarget; }
 
 private:
-	ID2D1Factory* m_ipD2DFactory;
-	ID2D1HwndRenderTarget* m_ipRenderTarget;
+	ID2D1Factory* mipD2DFactory;
+	ID2D1HwndRenderTarget* mipRenderTarget;
 };

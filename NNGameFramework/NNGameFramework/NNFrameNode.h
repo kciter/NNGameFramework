@@ -27,12 +27,12 @@ public:
 	static NNFrameNode* Create( wchar_t* path );
 
 public:
-	NNSprite* GetSprite() const { return m_Sprite; }
-	float GetFrameTime() const { return m_FrameTime; }
+	NNSprite* GetSprite() const { return mSprite; }
+	float GetFrameTime() const { return mFrameTime; }
 
-	void SetFrameTime( float frameTime ) { m_FrameTime = frameTime; }
+	void SetFrameTime( float frameTime ) { mFrameTime = frameTime; }
 
 private:
-	NNSprite* m_Sprite;
-	float m_FrameTime;
+	NNSprite* mSprite;
+	float mFrameTime;
 };

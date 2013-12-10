@@ -10,24 +10,24 @@
 #include "NNScene.h"
 
 NNScene::NNScene()
-	: m_UISet(nullptr)
+	: mUISet(nullptr)
 {
 }
 NNScene::~NNScene()
 {
-	SafeDelete(m_UISet);
+	SafeDelete(mUISet);
 }
 
 void NNScene::Render()
 {
-	if ( m_Visible == false ) return;
+	if ( mVisible == false ) return;
 
-	m_Matrix = NNMatrix::Translate( m_Camera.GetCenterX(), m_Camera.GetCenterY() ) *
-		NNMatrix::Scale( m_Camera.GetZoom(), m_Camera.GetZoom() ) *
-		NNMatrix::Rotation( m_Camera.GetRotation() ) *
-		NNMatrix::Translate( -m_Camera.GetPositionX(), -m_Camera.GetPositionY());
+	mMatrix = NNMatrix::Translate( mCamera.GetCenterX(), mCamera.GetCenterY() ) *
+		NNMatrix::Scale( mCamera.GetZoom(), mCamera.GetZoom() ) *
+		NNMatrix::Rotation( mCamera.GetRotation() ) *
+		NNMatrix::Translate( -mCamera.GetPositionX(), -mCamera.GetPositionY());
 
-	for (const auto& child : m_ChildList )
+	for (const auto& child : mChildList )
 	{
 		if ( child->IsVisible() == true )
 		{
@@ -35,19 +35,19 @@ void NNScene::Render()
 		}
 	}
 
-	if ( m_UISet != nullptr )
+	if ( mUISet != nullptr )
 	{
-		if ( m_UISet->IsVisible() == true )
+		if ( mUISet->IsVisible() == true )
 		{
-			m_UISet->Render();
+			mUISet->Render();
 		}
 	}
 }
 void NNScene::Update( float dTime )
 {
-	if ( m_Visible == false ) return;
+	if ( mVisible == false ) return;
 
-	for (const auto& child : m_ChildList)
+	for (const auto& child : mChildList)
 	{
 		if ( child->IsVisible() == true )
 		{
@@ -55,11 +55,11 @@ void NNScene::Update( float dTime )
 		}
 	}
 
-	if ( m_UISet != nullptr )
+	if ( mUISet != nullptr )
 	{
-		if ( m_UISet->IsVisible() == true )
+		if ( mUISet->IsVisible() == true )
 		{
-			m_UISet->Update( dTime );
+			mUISet->Update( dTime );
 		}
 	}
 }

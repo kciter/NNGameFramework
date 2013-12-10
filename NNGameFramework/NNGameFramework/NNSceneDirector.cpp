@@ -9,10 +9,10 @@
 
 #include "NNSceneDirector.h"
 
-NNSceneDirector* NNSceneDirector::m_pInstance = nullptr;
+NNSceneDirector* NNSceneDirector::mpInstance = nullptr;
 
 NNSceneDirector::NNSceneDirector()
-	: m_NowScene(nullptr)
+	: mNowScene(nullptr)
 {
 }
 NNSceneDirector::~NNSceneDirector()
@@ -22,44 +22,44 @@ NNSceneDirector::~NNSceneDirector()
 
 NNSceneDirector* NNSceneDirector::GetInstance()
 {
-	if ( m_pInstance == nullptr )
+	if ( mpInstance == nullptr )
 	{
-		m_pInstance = new NNSceneDirector();
+		mpInstance = new NNSceneDirector();
 	}
 
-	return m_pInstance;
+	return mpInstance;
 }
 void NNSceneDirector::ReleaseInstance()
 {
-	if ( m_pInstance != nullptr )
+	if ( mpInstance != nullptr )
 	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
+		delete mpInstance;
+		mpInstance = nullptr;
 	}
 }
 
 bool NNSceneDirector::Init()
 {
-	m_NowScene = nullptr;
+	mNowScene = nullptr;
 	return true;
 }
 
 bool NNSceneDirector::Release()
 {
-	SafeDelete( m_NowScene );
+	SafeDelete( mNowScene );
 	return true;
 }
 
 bool NNSceneDirector::ChangeScene( NNScene* scene )
 {
-	if ( m_NowScene == nullptr )
+	if ( mNowScene == nullptr )
 	{
-		m_NowScene = scene;
+		mNowScene = scene;
 	}
 	else
 	{
-		SafeDelete( m_NowScene );
-		m_NowScene = scene;
+		SafeDelete( mNowScene );
+		mNowScene = scene;
 	}
 
 	scene->Init();
@@ -68,19 +68,19 @@ bool NNSceneDirector::ChangeScene( NNScene* scene )
 }
 bool NNSceneDirector::RenderScene()
 {
-	if ( m_NowScene == nullptr )
+	if ( mNowScene == nullptr )
 		return false;
 
-	m_NowScene->Render();
+	mNowScene->Render();
 
 	return true;
 }
 bool NNSceneDirector::UpdateScene( float dTime )
 {
-	if ( m_NowScene == nullptr )
+	if ( mNowScene == nullptr )
 		return false;
 
-	m_NowScene->Update( dTime );
+	mNowScene->Update( dTime );
 
 	return true;
 }

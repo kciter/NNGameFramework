@@ -26,13 +26,13 @@
 class NNResourceManager
 {
 private:
-	static NNResourceManager* m_pInstance;
+	static NNResourceManager* mpInstance;
 
 private:
-	std::map<std::wstring,NNTexture*> m_TextureTable;
-	std::map<std::string,NNXML*> m_XMLTable;
-	std::map<std::string,NNSound*> m_SoundTable;
-	std::map<std::wstring,NNZip*> m_ZipTable;
+	std::map<std::wstring,NNTexture*> mTextureTable;
+	std::map<std::string,NNXML*> mXMLTable;
+	std::map<std::string,NNSound*> mSoundTable;
+	std::map<std::wstring,NNZip*> mZipTable;
 private:
 	NNResourceManager();
 	~NNResourceManager();

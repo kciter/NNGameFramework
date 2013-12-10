@@ -9,84 +9,84 @@
 
 #include "NNResourceManager.h"
 
-NNResourceManager* NNResourceManager::m_pInstance = nullptr;
+NNResourceManager* NNResourceManager::mpInstance = nullptr;
 
 NNResourceManager::NNResourceManager()
 {
 }
 NNResourceManager::~NNResourceManager()
 {
-	for (auto& iter=m_TextureTable.begin(); iter!=m_TextureTable.end(); iter++ )
+	for (auto& iter=mTextureTable.begin(); iter!=mTextureTable.end(); iter++ )
 	{
 		SafeDelete( iter->second );
 	}
-	m_TextureTable.clear();
+	mTextureTable.clear();
 
-	for (auto& iter=m_XMLTable.begin(); iter!=m_XMLTable.end(); iter++ )
+	for (auto& iter=mXMLTable.begin(); iter!=mXMLTable.end(); iter++ )
 	{
 		SafeDelete( iter->second );
 	}
-	m_XMLTable.clear();
+	mXMLTable.clear();
 
-	for (auto& iter=m_SoundTable.begin(); iter!=m_SoundTable.end(); iter++ )
+	for (auto& iter=mSoundTable.begin(); iter!=mSoundTable.end(); iter++ )
 	{
 		SafeDelete( iter->second );
 	}
-	m_XMLTable.clear();
+	mXMLTable.clear();
 
-	for (auto& iter=m_ZipTable.begin(); iter!=m_ZipTable.end(); iter++ )
+	for (auto& iter=mZipTable.begin(); iter!=mZipTable.end(); iter++ )
 	{
 		SafeDelete( iter->second );
 	}
-	m_ZipTable.clear();
+	mZipTable.clear();
 }
 
 NNResourceManager* NNResourceManager::GetInstance()
 {
-	if( m_pInstance == nullptr )
+	if( mpInstance == nullptr )
 	{
-		m_pInstance = new NNResourceManager();
+		mpInstance = new NNResourceManager();
 	}
-	return m_pInstance;
+	return mpInstance;
 }
 void NNResourceManager::ReleaseInstance()
 {
-	if( m_pInstance != nullptr )
+	if( mpInstance != nullptr )
 	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
+		delete mpInstance;
+		mpInstance = nullptr;
 	}
 }
 NNTexture* NNResourceManager::LoadTextureFromFile( std::wstring path )
 {
-	if ( !m_TextureTable[path] )
+	if ( !mTextureTable[path] )
 	{
-		m_TextureTable[path] = NNTexture::Create( path );
+		mTextureTable[path] = NNTexture::Create( path );
 	}
-	return m_TextureTable[path];
+	return mTextureTable[path];
 }
 
 NNXML* NNResourceManager::LoadXMLFromFIle( std::string path )
 {
-	if ( !m_XMLTable[path] )
+	if ( !mXMLTable[path] )
 	{
-		m_XMLTable[path] = NNXML::Create( path );
+		mXMLTable[path] = NNXML::Create( path );
 	}
-	return m_XMLTable[path];
+	return mXMLTable[path];
 }
 
 NNSound* NNResourceManager::LoadSoundFromFile( std::string path, bool isLoop, bool isBackground )
 {
-	if ( !m_SoundTable[path] )
+	if ( !mSoundTable[path] )
 	{
-		m_SoundTable[path] = NNSound::Create( path, isLoop, isBackground );
+		mSoundTable[path] = NNSound::Create( path, isLoop, isBackground );
 	}
-	return m_SoundTable[path];
+	return mSoundTable[path];
 }
 
 NNZip* NNResourceManager::UnzipFileToMemory( std::wstring zipPath, std::wstring FileName)
 {
-	if(! m_ZipTable[zipPath + FileName])
+	if(! mZipTable[zipPath + FileName])
 	{
 		HZIP hz = OpenZip(zipPath.c_str(),0);
 		ZIPENTRY ze;
@@ -97,12 +97,12 @@ NNZip* NNResourceManager::UnzipFileToMemory( std::wstring zipPath, std::wstring 
 		char *buf = new char[ze.unc_size];
 		UnzipItem(hz,index, buf, ze.unc_size);
 
-		m_ZipTable[zipPath + FileName] = NNZip::Create(buf, ze.unc_size);
+		mZipTable[zipPath + FileName] = NNZip::Create(buf, ze.unc_size);
 
 		SafeDelete(buf);
 		CloseZip(hz);
 	}	
-	return m_ZipTable[zipPath + FileName];
+	return mZipTable[zipPath + FileName];
 }
 
 void NNResourceManager::CreateZipCode( char *buf, int size, char *result)
@@ -126,10 +126,10 @@ NNXML* NNResourceManager::LoadXMLFromMemory( NNZip *buf )
 	char result[33];
 	CreateZipCode( buf->GetBuffer(), buf->GetSize(), result);
 
-	if ( !m_XMLTable[result] )
-		m_XMLTable[result] = NNXML::CreateStream( buf->GetBuffer() );
+	if ( !mXMLTable[result] )
+		mXMLTable[result] = NNXML::CreateStream( buf->GetBuffer() );
 
-	return m_XMLTable[result];
+	return mXMLTable[result];
 }
 
 NNTexture* NNResourceManager::LoadTextureFromMemory( NNZip *buf )
@@ -141,10 +141,10 @@ NNTexture* NNResourceManager::LoadTextureFromMemory( NNZip *buf )
 
 	std::wstring result = std::wstring(code, code + sizeof(char) * 32);
 
- 	if ( !m_TextureTable[result] )
- 		m_TextureTable[result] = NNTexture::CreateStream( buf->GetBuffer(), buf->GetSize() );
+ 	if ( !mTextureTable[result] )
+ 		mTextureTable[result] = NNTexture::CreateStream( buf->GetBuffer(), buf->GetSize() );
  
- 	return m_TextureTable[result];
+ 	return mTextureTable[result];
 }
 
 NNSound* NNResourceManager::LoadSoundFromMemory( NNZip *buf, bool isLoop, bool isBackground )
@@ -154,8 +154,8 @@ NNSound* NNResourceManager::LoadSoundFromMemory( NNZip *buf, bool isLoop, bool i
 	char result[33];
 	CreateZipCode( buf->GetBuffer(), buf->GetSize(), result);
 
-	if ( !m_SoundTable[result] )
-		m_SoundTable[result] = NNSound::CreateStream( buf, isLoop, isBackground );
+	if ( !mSoundTable[result] )
+		mSoundTable[result] = NNSound::CreateStream( buf, isLoop, isBackground );
 
-	return m_SoundTable[result];
+	return mSoundTable[result];
 }

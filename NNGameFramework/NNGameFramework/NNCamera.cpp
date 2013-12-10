@@ -11,11 +11,11 @@
 #include "NNApplication.h"
 
 NNCamera::NNCamera()
-	: m_Anchor(CameraAnchor::TOP_LEFT), m_Position(0.f,0.f), m_Zoom(1.f), m_Rotation(0.f),
-	  m_ScreenWidth(0), m_ScreenHeight(0)
+	: mAnchor(CameraAnchor::TOP_LEFT), mPosition(0.f,0.f), mZoom(1.f), mRotation(0.f),
+	  mScreenWidth(0), mScreenHeight(0)
 {
-	m_ScreenWidth = NNApplication::GetInstance()->GetScreenWidth();
-	m_ScreenHeight = NNApplication::GetInstance()->GetScreenHeight();
+	mScreenWidth = NNApplication::GetInstance()->GetScreenWidth();
+	mScreenHeight = NNApplication::GetInstance()->GetScreenHeight();
 }
 NNCamera::~NNCamera()
 {

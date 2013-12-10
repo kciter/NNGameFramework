@@ -10,36 +10,36 @@
 #include "NNObject.h"
 
 NNObject::NNObject()
-	: m_pParent(nullptr),
-	m_Position(0.f,0.f), m_Center(0.f,0.f),
-	m_ScaleX(1.f), m_ScaleY(1.f), m_Rotation(0.f), m_Zindex(0),
-	m_Visible(true)
+	: mpParent(nullptr),
+	mPosition(0.f,0.f), mCenter(0.f,0.f),
+	mScaleX(1.f), mScaleY(1.f), mRotation(0.f), mZindex(0),
+	mVisible(true)
 {
 }
 NNObject::~NNObject()
 {
-	for (auto& iter=m_ChildList.begin(); iter!=m_ChildList.end(); iter++ )
+	for (auto& iter=mChildList.begin(); iter!=mChildList.end(); iter++ )
 	{
 		SafeDelete( *iter );
 	}
-	m_ChildList.clear();
+	mChildList.clear();
 }
 
 void NNObject::Render()
 {
-	if ( m_Visible == false ) return;
+	if ( mVisible == false ) return;
 
-	m_Matrix = NNMatrix::Translate( -m_Center.GetX(), -m_Center.GetY() ) * 
-		NNMatrix::Scale( m_ScaleX, m_ScaleY ) *
-		NNMatrix::Rotation( m_Rotation ) *
-		NNMatrix::Translate( m_Position.GetX(), m_Position.GetY() );
+	mMatrix = NNMatrix::Translate( -mCenter.GetX(), -mCenter.GetY() ) * 
+		NNMatrix::Scale( mScaleX, mScaleY ) *
+		NNMatrix::Rotation( mRotation ) *
+		NNMatrix::Translate( mPosition.GetX(), mPosition.GetY() );
 
-	if( m_pParent )
+	if( mpParent )
 	{
-		m_Matrix = m_Matrix * m_pParent->GetMatrix();
+		mMatrix = mMatrix * mpParent->GetMatrix();
 	}
 
-	for (const auto& child : m_ChildList )
+	for (const auto& child : mChildList )
 	{
 		if ( child->IsVisible() == true )
 		{
@@ -49,9 +49,9 @@ void NNObject::Render()
 }
 void NNObject::Update( float dTime )
 {
-	if ( m_Visible == false ) return;
+	if ( mVisible == false ) return;
 
-	for (const auto& child : m_ChildList)
+	for (const auto& child : mChildList)
 	{
 		if ( child->IsVisible() == true )
 		{
@@ -61,25 +61,25 @@ void NNObject::Update( float dTime )
 }
 void NNObject::SortingChildByZindex()
 {
-	m_ChildList.sort([](const NNObject* object1, const NNObject* object2) -> bool {
+	mChildList.sort([](const NNObject* object1, const NNObject* object2) -> bool {
 		return object1->GetZindex() < object2->GetZindex();
 	});
 }
 void NNObject::AddChild( NNObject* object )
 {
 	object->SetParent( this );
-	m_ChildList.push_back( object );
+	mChildList.push_back( object );
 }
 void NNObject::AddChild( NNObject* object, int zindex )
 {
 	object->SetParent( this );
 	object->SetZindex( zindex );
-	m_ChildList.push_back( object );
+	mChildList.push_back( object );
 	SortingChildByZindex();
 }
 void NNObject::RemoveChild( NNObject* object, bool memoryDel )
 {
-	for (auto& iter=m_ChildList.begin(); iter!=m_ChildList.end(); iter++ )
+	for (auto& iter=mChildList.begin(); iter!=mChildList.end(); iter++ )
 	{
 		if ( (*iter) == object )
 		{
@@ -87,7 +87,7 @@ void NNObject::RemoveChild( NNObject* object, bool memoryDel )
 			{
 				SafeDelete( *iter );
 			}
-			m_ChildList.erase( iter );
+			mChildList.erase( iter );
 			break;
 		}
 	}

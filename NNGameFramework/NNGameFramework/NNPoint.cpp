@@ -16,21 +16,21 @@ NNPoint& NNPoint::operator= ( const NNPoint& point )
 }
 NNPoint NNPoint::operator+( const NNPoint& point ) const
 {
-	return NNPoint( this->m_X+point.GetX(), this->m_Y+point.GetY() );
+	return NNPoint( this->mX+point.GetX(), this->mY+point.GetY() );
 }
 NNPoint NNPoint::operator-( const NNPoint& point ) const
 {
-	return NNPoint( this->m_X-point.GetX(), this->m_Y-point.GetY() );
+	return NNPoint( this->mX-point.GetX(), this->mY-point.GetY() );
 }
 NNPoint NNPoint::operator-() const
 {
-	return NNPoint( -this->m_X, -this->m_Y );
+	return NNPoint( -this->mX, -this->mY );
 }
 NNPoint NNPoint::operator*( float n ) const
 {
-	return NNPoint( this->m_X*n, this->m_Y*n );
+	return NNPoint( this->mX*n, this->mY*n );
 }
 NNPoint NNPoint::operator/( float n ) const
 {
-	return NNPoint( this->m_X/n, this->m_Y/n );
+	return NNPoint( this->mX/n, this->mY/n );
 }

@@ -13,9 +13,9 @@
 
 struct NNPacketHeader
 {
-	NNPacketHeader() : m_Size(0), m_Type(0) {}
-	short m_Size;
-	short m_Type;
+	NNPacketHeader() : mSize(0), mType(0) {}
+	short mSize;
+	short mType;
 };
 
 #pragma pack(pop)

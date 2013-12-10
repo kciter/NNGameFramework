@@ -18,15 +18,15 @@
 #include "NND2DRenderer.h"
 #include "NND3DRenderer.h"
 
-NNApplication* NNApplication::m_pInstance = nullptr;
+NNApplication* NNApplication::mpInstance = nullptr;
 
 NNApplication::NNApplication()
-	: m_Hwnd(nullptr), m_hInstance(nullptr),
-	m_ScreenHeight(0), m_ScreenWidth(0),
-	m_Fps(0.f), m_ElapsedTime(0.f), m_DeltaTime(0.f),m_FpsTimer(0.f),
-	m_PrevTime(0), m_NowTime(0),
-	m_Renderer(nullptr), m_pSceneDirector(nullptr),
-	m_RendererStatus(UNKNOWN),m_DestroyWindow(false)
+	: mHwnd(nullptr), mhInstance(nullptr),
+	mScreenHeight(0), mScreenWidth(0),
+	mFps(0.f), mElapsedTime(0.f), mDeltaTime(0.f),mFpsTimer(0.f),
+	mPrevTime(0), mNowTime(0),
+	mRenderer(nullptr), mpSceneDirector(nullptr),
+	mRendererStatus(UNKNOWN),mDestroyWindow(false)
 {
 }
 NNApplication::~NNApplication()
@@ -36,38 +36,38 @@ NNApplication::~NNApplication()
 
 NNApplication* NNApplication::GetInstance()
 {
-	if ( m_pInstance == nullptr )
+	if ( mpInstance == nullptr )
 	{
-		m_pInstance = new NNApplication();
+		mpInstance = new NNApplication();
 	}
 
-	return m_pInstance;
+	return mpInstance;
 }
 void NNApplication::ReleaseInstance()
 {
-	if ( m_pInstance != nullptr )
+	if ( mpInstance != nullptr )
 	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
+		delete mpInstance;
+		mpInstance = nullptr;
 	}
 }
 
 bool NNApplication::Init( wchar_t* title, int width, int height, RendererStatus renderStatus )
 {
-	m_hInstance = GetModuleHandle(0);
+	mhInstance = GetModuleHandle(0);
 
-	m_Title = title;
-	m_ScreenWidth = width;
-	m_ScreenHeight = height;
-	m_RendererStatus = renderStatus;
+	mTitle = title;
+	mScreenWidth = width;
+	mScreenHeight = height;
+	mRendererStatus = renderStatus;
 
-	_CreateWindow( m_Title, m_ScreenWidth, m_ScreenHeight );
+	_CreateWindow( mTitle, mScreenWidth, mScreenHeight );
 	_CreateRenderer( renderStatus );
 
-	m_pSceneDirector = NNSceneDirector::GetInstance();
+	mpSceneDirector = NNSceneDirector::GetInstance();
 
-	m_Renderer->Init();
-	m_pSceneDirector->Init();
+	mRenderer->Init();
+	mpSceneDirector->Init();
 
 	srand( (unsigned int)time(NULL) ) ;
 
@@ -76,11 +76,11 @@ bool NNApplication::Init( wchar_t* title, int width, int height, RendererStatus 
 
 bool NNApplication::Release()
 {
-	if ( m_DestroyWindow ) {
+	if ( mDestroyWindow ) {
 		ReleaseInstance();
 		return true;
 	}
-	m_pSceneDirector->Release();
+	mpSceneDirector->Release();
 
 	NNSceneDirector::ReleaseInstance();
 	NNResourceManager::ReleaseInstance();
@@ -90,7 +90,7 @@ bool NNApplication::Release()
 
 	NNRandom::ReleaseInstance();
 
-	SafeDelete( m_Renderer );
+	SafeDelete( mRenderer );
 	ReleaseInstance();
 
 	return true;
@@ -113,31 +113,31 @@ bool NNApplication::Run()
 			DispatchMessage( &msg );
 		}
 		else{
-			m_FrameCount++;
-			m_NowTime = timeGetTime();
-			if ( m_PrevTime == 0.f )
+			mFrameCount++;
+			mNowTime = timeGetTime();
+			if ( mPrevTime == 0.f )
 			{
-				m_PrevTime = m_NowTime;
+				mPrevTime = mNowTime;
 			}
-			m_DeltaTime = (static_cast<float>(m_NowTime - m_PrevTime)) / 1000.f;
-			m_ElapsedTime += m_DeltaTime;
-			m_FpsTimer += m_DeltaTime;
-			if(m_FpsTimer > 0.1f)
+			mDeltaTime = (static_cast<float>(mNowTime - mPrevTime)) / 1000.f;
+			mElapsedTime += mDeltaTime;
+			mFpsTimer += mDeltaTime;
+			if(mFpsTimer > 0.1f)
 			{
-				m_Fps = ((float)m_FrameCount) / m_FpsTimer;
-				m_FrameCount = 0;
-				m_FpsTimer = 0.f;
+				mFps = ((float)mFrameCount) / mFpsTimer;
+				mFrameCount = 0;
+				mFpsTimer = 0.f;
 			}
-			m_PrevTime = m_NowTime;
+			mPrevTime = mNowTime;
 
 			NNInputSystem::GetInstance()->UpdateKeyState();
 
-			m_pSceneDirector->UpdateScene( m_DeltaTime );
+			mpSceneDirector->UpdateScene( mDeltaTime );
 
-			m_Renderer->Begin();
-			m_Renderer->Clear();
-			m_pSceneDirector->RenderScene();
-			m_Renderer->End();
+			mRenderer->Begin();
+			mRenderer->Clear();
+			mpSceneDirector->RenderScene();
+			mRenderer->End();
 
 			if ( NNInputSystem::GetInstance()->GetKeyState( VK_ESCAPE ) == KEY_DOWN )
 			{
@@ -157,7 +157,7 @@ bool NNApplication::_CreateWindow( wchar_t* title, int width, int height )
 	wcex.lpfnWndProc = WndProc;
 	wcex.cbClsExtra = NULL;
 	wcex.cbWndExtra = NULL;
-	wcex.hInstance = m_hInstance;
+	wcex.hInstance = mhInstance;
 	wcex.hIcon = NULL;
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
@@ -173,10 +173,10 @@ bool NNApplication::_CreateWindow( wchar_t* title, int width, int height )
 	RECT wr = {0, 0, width, height};
 	AdjustWindowRect( &wr, WS_OVERLAPPEDWINDOW, FALSE );
 
-	m_Hwnd = CreateWindow( L"NNApplication", title, style, CW_USEDEFAULT, CW_USEDEFAULT,
-		wr.right-wr.left, wr.bottom-wr.top, NULL, NULL, m_hInstance, NULL);
+	mHwnd = CreateWindow( L"NNApplication", title, style, CW_USEDEFAULT, CW_USEDEFAULT,
+		wr.right-wr.left, wr.bottom-wr.top, NULL, NULL, mhInstance, NULL);
 
-	ShowWindow( m_Hwnd, SW_SHOWNORMAL );
+	ShowWindow( mHwnd, SW_SHOWNORMAL );
 
 	return true;
 }
@@ -186,12 +186,12 @@ bool NNApplication::_CreateRenderer( RendererStatus renderStatus )
 	{
 	case D2D:
 		{
-			m_Renderer = new NND2DRenderer();
+			mRenderer = new NND2DRenderer();
 			break;
 		}
 	case D3D:
 		{
-			m_Renderer = new NND3DRenderer();
+			mRenderer = new NND3DRenderer();
 			break;
 		}
 	default:
@@ -213,7 +213,7 @@ LRESULT CALLBACK NNApplication::WndProc( HWND hWnd, UINT message, WPARAM wParam,
 	case WM_DESTROY:
 		{
 			NNApplication::GetInstance()->Release();
-			NNApplication::GetInstance()->m_DestroyWindow = true;
+			NNApplication::GetInstance()->mDestroyWindow = true;
 			PostQuitMessage(0);
 			break;
 		}
@@ -242,9 +242,9 @@ LRESULT CALLBACK NNApplication::WndProc( HWND hWnd, UINT message, WPARAM wParam,
 					/// NAGLE Algorithm
 					/// http://en.wikipedia.org/wiki/Nagle's_algorithm
 					int opt = 1 ;
-					::setsockopt(NNNetworkSystem::GetInstance()->m_Socket, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)) ;
+					::setsockopt(NNNetworkSystem::GetInstance()->mSocket, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)) ;
 
-					int nResult = WSAAsyncSelect(NNNetworkSystem::GetInstance()->m_Socket, hWnd, WM_SOCKET, (FD_CLOSE|FD_READ|FD_WRITE) ) ;
+					int nResult = WSAAsyncSelect(NNNetworkSystem::GetInstance()->mSocket, hWnd, WM_SOCKET, (FD_CLOSE|FD_READ|FD_WRITE) ) ;
 					if (nResult)
 					{
 						assert(false) ;
@@ -257,9 +257,9 @@ LRESULT CALLBACK NNApplication::WndProc( HWND hWnd, UINT message, WPARAM wParam,
 				{
 					char inBuf[4096] = {0, } ;
 
-					int recvLen = recv(NNNetworkSystem::GetInstance()->m_Socket, inBuf, 4096, 0) ;
+					int recvLen = recv(NNNetworkSystem::GetInstance()->mSocket, inBuf, 4096, 0) ;
 
-					if ( !NNNetworkSystem::GetInstance()->m_RecvBuffer.Write(inBuf, recvLen) )
+					if ( !NNNetworkSystem::GetInstance()->mRecvBuffer.Write(inBuf, recvLen) )
 					{
 						/// 버퍼 꽉찼다. 
 						assert(false) ;
@@ -273,19 +273,19 @@ LRESULT CALLBACK NNApplication::WndProc( HWND hWnd, UINT message, WPARAM wParam,
 			case FD_WRITE:
 				{
 					/// 실제로 버퍼에 있는것들 꺼내서 보내기
-					int size = NNNetworkSystem::GetInstance()->m_SendBuffer.GetCurrentSize() ;
+					int size = NNNetworkSystem::GetInstance()->mSendBuffer.GetCurrentSize() ;
 					if ( size > 0 )
 					{
 						char* data = new char[size] ;
-						NNNetworkSystem::GetInstance()->m_SendBuffer.Peek(data) ;
+						NNNetworkSystem::GetInstance()->mSendBuffer.Peek(data) ;
 
-						int sent = send(NNNetworkSystem::GetInstance()->m_Socket, data, size, 0) ;
+						int sent = send(NNNetworkSystem::GetInstance()->mSocket, data, size, 0) ;
 
 						/// 다를수 있다
 						if ( sent != size )
 							OutputDebugStringA("sent != request\n") ;
 
-						NNNetworkSystem::GetInstance()->m_SendBuffer.Consume(sent) ;
+						NNNetworkSystem::GetInstance()->mSendBuffer.Consume(sent) ;
 
 						delete [] data ;
 					}
@@ -296,7 +296,7 @@ LRESULT CALLBACK NNApplication::WndProc( HWND hWnd, UINT message, WPARAM wParam,
 			case FD_CLOSE:
 				{
 					MessageBox(hWnd, L"Server closed connection", L"Connection closed!", MB_ICONINFORMATION|MB_OK);
-					closesocket(NNNetworkSystem::GetInstance()->m_Socket);
+					closesocket(NNNetworkSystem::GetInstance()->mSocket);
 					SendMessage(hWnd,WM_DESTROY,NULL,NULL);
 				}
 				break;

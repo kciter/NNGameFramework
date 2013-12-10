@@ -26,19 +26,19 @@ public:
 	static NNAnimation* Create( int count, ... );
 	static NNAnimation* Create();
 
-	int GetFrameCount() const { return m_FrameCount; }
-	int GetNowFrame() const { return m_Frame; }
-	bool IsLoop() const { return m_Loop; }
+	int GetFrameCount() const { return mFrameCount; }
+	int GetNowFrame() const { return mFrame; }
+	bool IsLoop() const { return mLoop; }
 
 	void AddSpriteNode( wchar_t* path );
-	void SetLoop( bool loop ) { m_Loop = loop; }
+	void SetLoop( bool loop ) { mLoop = loop; }
 
 private:
-	std::vector<NNFrameNode*> m_SpriteList;
+	std::vector<NNFrameNode*> mSpriteList;
 
-	int m_FrameCount;
-	int m_Frame;
-	float m_Time;
-	bool m_Loop;
-	bool m_AnimationEnd;
+	int mFrameCount;
+	int mFrame;
+	float mTime;
+	bool mLoop;
+	bool mAnimationEnd;
 };

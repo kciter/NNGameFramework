@@ -11,12 +11,12 @@
 #include "NNApplication.h"
 #include <windows.h>
 
-NNInputSystem* NNInputSystem::m_pInstance = nullptr;
+NNInputSystem* NNInputSystem::mpInstance = nullptr;
 
 NNInputSystem::NNInputSystem()
 {
-	ZeroMemory( m_PrevKeyState, sizeof(m_PrevKeyState) );
-	ZeroMemory( m_NowKeyState, sizeof(m_NowKeyState) );
+	ZeroMemory( mPrevKeyState, sizeof(mPrevKeyState) );
+	ZeroMemory( mNowKeyState, sizeof(mNowKeyState) );
 }
 NNInputSystem::~NNInputSystem()
 {
@@ -24,19 +24,19 @@ NNInputSystem::~NNInputSystem()
 
 NNInputSystem* NNInputSystem::GetInstance()
 {
-	if ( m_pInstance == nullptr )
+	if ( mpInstance == nullptr )
 	{
-		m_pInstance = new NNInputSystem();
+		mpInstance = new NNInputSystem();
 	}
 
-	return m_pInstance;
+	return mpInstance;
 }
 void NNInputSystem::ReleaseInstance()
 {
-	if ( m_pInstance != nullptr )
+	if ( mpInstance != nullptr )
 	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
+		delete mpInstance;
+		mpInstance = nullptr;
 	}
 }
 
@@ -44,29 +44,29 @@ void NNInputSystem::UpdateKeyState()
 {
 	for (int i=0; i<256; i++ )
 	{
-		m_PrevKeyState[i] = m_NowKeyState[i];
+		mPrevKeyState[i] = mNowKeyState[i];
 
 		if( ::GetKeyState(i) & 0x8000 )
 		{
-			m_NowKeyState[i] = true;
+			mNowKeyState[i] = true;
 		}
 		else
 		{
-			m_NowKeyState[i] = false;
+			mNowKeyState[i] = false;
 		}
 	}
 }
 KeyState NNInputSystem::GetKeyState( int key )
 {
-	if ( m_PrevKeyState[key] == false && m_NowKeyState[key] == true )
+	if ( mPrevKeyState[key] == false && mNowKeyState[key] == true )
 	{
 		return KEY_DOWN;
 	}
-	else if ( m_PrevKeyState[key] == true && m_NowKeyState[key] == true )
+	else if ( mPrevKeyState[key] == true && mNowKeyState[key] == true )
 	{
 		return KEY_PRESSED;
 	}
-	else if ( m_PrevKeyState[key] == true && m_NowKeyState[key] == false )
+	else if ( mPrevKeyState[key] == true && mNowKeyState[key] == false )
 	{
 		return KEY_UP;
 	}

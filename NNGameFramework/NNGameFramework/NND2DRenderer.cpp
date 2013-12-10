@@ -11,7 +11,7 @@
 #include "NNApplication.h"
 
 NND2DRenderer::NND2DRenderer()
-	: m_ipD2DFactory(nullptr), m_ipRenderTarget(nullptr)
+	: mipD2DFactory(nullptr), mipRenderTarget(nullptr)
 {
 }
 NND2DRenderer::~NND2DRenderer()
@@ -22,7 +22,7 @@ NND2DRenderer::~NND2DRenderer()
 bool NND2DRenderer::Init()
 {
 	HRESULT hr;
-	hr = D2D1CreateFactory( D2D1_FACTORY_TYPE_SINGLE_THREADED, &m_ipD2DFactory );
+	hr = D2D1CreateFactory( D2D1_FACTORY_TYPE_SINGLE_THREADED, &mipD2DFactory );
 	if ( hr != S_OK )
 	{
 		return false;
@@ -33,9 +33,9 @@ bool NND2DRenderer::Init()
 	GetClientRect( hwnd, &rt );
 	D2D1_SIZE_U size = D2D1::SizeU( rt.right-rt.left, rt.bottom-rt.top );
 
-	hr = m_ipD2DFactory->CreateHwndRenderTarget( D2D1::RenderTargetProperties(),
+	hr = mipD2DFactory->CreateHwndRenderTarget( D2D1::RenderTargetProperties(),
 		D2D1::HwndRenderTargetProperties( hwnd, size, D2D1_PRESENT_OPTIONS_IMMEDIATELY ),	
-		&m_ipRenderTarget );
+		&mipRenderTarget );
 
 	if ( hr != S_OK )
 	{
@@ -46,25 +46,25 @@ bool NND2DRenderer::Init()
 }
 bool NND2DRenderer::Release()
 {
-	SafeRelease( m_ipD2DFactory );
-	SafeRelease( m_ipRenderTarget );
+	SafeRelease( mipD2DFactory );
+	SafeRelease( mipRenderTarget );
 
 	return true;
 }
 
 bool NND2DRenderer::Clear()
 {
-	m_ipRenderTarget->Clear( D2D1::ColorF( D2D1::ColorF::White ) );
+	mipRenderTarget->Clear( D2D1::ColorF( D2D1::ColorF::White ) );
 	return true;
 }
 bool NND2DRenderer::Begin()
 {
-	m_ipRenderTarget->BeginDraw();
+	mipRenderTarget->BeginDraw();
 	return true;
 }
 bool NND2DRenderer::End()
 {
-	m_ipRenderTarget->EndDraw();
+	mipRenderTarget->EndDraw();
 	return true;
 }
 

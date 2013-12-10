@@ -86,6 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CutFrameNode.cpp" />
     <ClCompile Include="Library\MD5\md5.cpp" />
     <ClCompile Include="Library\TinyXML\action_store.cpp" />
     <ClCompile Include="Library\TinyXML\htmlutil.cpp" />
@@ -106,6 +107,7 @@
     <ClCompile Include="Library\zip\unzip.cpp" />
     <ClCompile Include="Library\zip\zip.cpp" />
     <ClCompile Include="NNAnimation.cpp" />
+    <ClCompile Include="NNAnimationAtlas.cpp" />
     <ClCompile Include="NNApplication.cpp" />
     <ClCompile Include="NNAudioSystem.cpp" />
     <ClCompile Include="NNCamera.cpp" />
@@ -115,6 +117,7 @@
     <ClCompile Include="NND3DRenderer.cpp" />
     <ClCompile Include="NNInputSystem.cpp" />
     <ClCompile Include="NNLabel.cpp" />
+    <ClCompile Include="NNLogger.cpp" />
     <ClCompile Include="NNMatrix.cpp" />
     <ClCompile Include="NNNetworkSystem.cpp" />
     <ClCompile Include="NNObject.cpp" />
@@ -136,6 +139,7 @@
     <ClCompile Include="NNZip.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CutFrameNode.h" />
     <ClInclude Include="Library\DirectX\Include\audiodefs.h" />
     <ClInclude Include="Library\DirectX\Include\comdecl.h" />
     <ClInclude Include="Library\DirectX\Include\D2D1.h" />
@@ -239,6 +243,7 @@
     <ClInclude Include="Library\zip\unzip.h" />
     <ClInclude Include="Library\zip\zip.h" />
     <ClInclude Include="NNAnimation.h" />
+    <ClInclude Include="NNAnimationAtlas.h" />
     <ClInclude Include="NNApplication.h" />
     <ClInclude Include="NNAudioSystem.h" />
     <ClInclude Include="NNBaseHandler.h" />
@@ -252,6 +257,7 @@
     <ClInclude Include="NNInputSystem.h" />
     <ClInclude Include="NNLabel.h" />
     <ClInclude Include="NNLibSet.h" />
+    <ClInclude Include="NNLogger.h" />
     <ClInclude Include="NNMacroSet.h" />
     <ClInclude Include="NNMatrix.h" />
     <ClInclude Include="NNNetworkSystem.h" />

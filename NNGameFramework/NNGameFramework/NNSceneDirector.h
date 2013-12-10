@@ -15,7 +15,7 @@
 class NNSceneDirector
 {
 private:
-	static NNSceneDirector* m_pInstance;
+	static NNSceneDirector* mpInstance;
 
 private:
 	NNSceneDirector();
@@ -26,13 +26,13 @@ public:
 	static void ReleaseInstance();
 
 private:
-	NNScene* m_NowScene;
+	NNScene* mNowScene;
 
 public:
 	bool Init();
 	bool Release();
 	
-	NNScene* GetNowScene() { return m_NowScene; }
+	NNScene* GetNowScene() { return mNowScene; }
 
 public:
 	bool ChangeScene( NNScene* scene );

@@ -11,7 +11,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-NNRandom* NNRandom::m_pInstance = nullptr;
+NNRandom* NNRandom::mpInstance = nullptr;
 
 int NNRandom::NextInt( int min, int max )
 {

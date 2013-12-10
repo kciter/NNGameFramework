@@ -26,9 +26,9 @@ public:
 	static NNXML* CreateStream( char* buf );
 
 	TiXmlString XPathToString( std::string xpath );
-	TiXmlDocument* GetDoc(){ return &m_Document; }
+	TiXmlDocument* GetDoc(){ return &mDocument; }
 private:
-	TiXmlDocument m_Document;
+	TiXmlDocument mDocument;
 
-	bool m_LoadSuccess;
+	bool mLoadSuccess;
 };

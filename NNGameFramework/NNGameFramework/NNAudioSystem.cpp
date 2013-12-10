@@ -9,40 +9,40 @@
 
 #include "NNAudioSystem.h"
 
-NNAudioSystem* NNAudioSystem::m_pInstance = nullptr;
+NNAudioSystem* NNAudioSystem::mpInstance = nullptr;
 
 NNAudioSystem::NNAudioSystem()
-	: m_System(nullptr)
+	: mSystem(nullptr)
 {
-	FMOD::System_Create( &m_System );
-	m_System->init( 32, FMOD_INIT_NORMAL, 0 );
-	m_System->createChannelGroup( "MasterChannelGroup", &m_ChannelGroup );
+	FMOD::System_Create( &mSystem );
+	mSystem->init( 32, FMOD_INIT_NORMAL, 0 );
+	mSystem->createChannelGroup( "MasterChannelGroup", &mChannelGroup );
 }
 NNAudioSystem::~NNAudioSystem()
 {
-	m_System->release();
+	mSystem->release();
 }
 
 NNAudioSystem* NNAudioSystem::GetInstance()
 {
-	if ( m_pInstance == nullptr )
+	if ( mpInstance == nullptr )
 	{
-		m_pInstance = new NNAudioSystem();
+		mpInstance = new NNAudioSystem();
 	}
-	return m_pInstance;
+	return mpInstance;
 }
 void NNAudioSystem::ReleaseInstance()
 {
-	if ( m_pInstance != nullptr )
+	if ( mpInstance != nullptr )
 	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
+		delete mpInstance;
+		mpInstance = nullptr;
 	}
 }
 
 void NNAudioSystem::Play( NNSound* sound )
 {
-	m_System->playSound( sound->GetSound(), m_ChannelGroup, false, sound->GetChannelPointer() );
+	mSystem->playSound( sound->GetSound(), mChannelGroup, false, sound->GetChannelPointer() );
 }
 void NNAudioSystem::Pause( NNSound* sound )
 {

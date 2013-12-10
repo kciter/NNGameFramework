@@ -10,7 +10,7 @@
 #include "NNFrameNode.h"
 
 NNFrameNode::NNFrameNode()
-	: m_Sprite(nullptr), m_FrameTime(0.f)
+	: mSprite(nullptr), mFrameTime(0.f)
 {
 }
 NNFrameNode::~NNFrameNode()
@@ -21,7 +21,7 @@ NNFrameNode* NNFrameNode::Create( wchar_t* path )
 {
 	NNFrameNode* pInstance = new NNFrameNode();
 	NNSprite* spriteInstance = NNSprite::Create( path );
-	pInstance->m_Sprite = spriteInstance;
+	pInstance->mSprite = spriteInstance;
 
 	pInstance->AddChild( spriteInstance );
 
@@ -32,7 +32,7 @@ void NNFrameNode::Render()
 {
 	NNObject::Render();
 
-	//m_Sprite->Render();
+	//mSprite->Render();
 }
 void NNFrameNode::Update( float dTime )
 {

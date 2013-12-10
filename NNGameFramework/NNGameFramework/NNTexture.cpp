@@ -57,7 +57,7 @@ NNTexture* NNTexture::CreateStream( char *buf, int size )
 IWICImagingFactory* NND2DTexture::g_pWICFactory = nullptr;
 
 NND2DTexture::NND2DTexture()
-	: m_D2DBitmap(nullptr), m_FmtConverter(nullptr)
+	: mD2DBitmap(nullptr), mFmtConverter(nullptr)
 { 
 }
 NND2DTexture::NND2DTexture( std::wstring path )
@@ -71,7 +71,7 @@ NND2DTexture::NND2DTexture( std::wstring path )
 		}
 	}
 
-	m_Path = path;
+	mPath = path;
 
 	IWICBitmapDecoder* bitmapDecoder = nullptr;
 	g_pWICFactory->CreateDecoderFromFilename( path.c_str(), nullptr, GENERIC_READ, 
@@ -80,9 +80,9 @@ NND2DTexture::NND2DTexture( std::wstring path )
 	IWICBitmapFrameDecode* bitmapFrameDecode = nullptr;
 	bitmapDecoder->GetFrame( 0, &bitmapFrameDecode );
 
-	g_pWICFactory->CreateFormatConverter( &m_FmtConverter );
+	g_pWICFactory->CreateFormatConverter( &mFmtConverter );
 
-	m_FmtConverter->Initialize( bitmapFrameDecode,
+	mFmtConverter->Initialize( bitmapFrameDecode,
 		GUID_WICPixelFormat32bppPBGRA,
 		WICBitmapDitherTypeNone,
 		nullptr,
@@ -91,7 +91,7 @@ NND2DTexture::NND2DTexture( std::wstring path )
 
 	NND2DRenderer* pD2DRenderer = static_cast<NND2DRenderer*>(NNApplication::GetInstance()->GetRenderer());
 
-	pD2DRenderer->GetHwndRenderTarget()->CreateBitmapFromWicBitmap( m_FmtConverter, nullptr, &m_D2DBitmap );
+	pD2DRenderer->GetHwndRenderTarget()->CreateBitmapFromWicBitmap( mFmtConverter, nullptr, &mD2DBitmap );
 
 	SafeRelease( bitmapDecoder );
 	SafeRelease( bitmapFrameDecode );
@@ -115,9 +115,9 @@ NND2DTexture::NND2DTexture( char *buf, int size )
 	IWICBitmapFrameDecode* bitmapFrameDecode = nullptr;
 	bitmapDecoder->GetFrame( 0, &bitmapFrameDecode );
 
-	g_pWICFactory->CreateFormatConverter( &m_FmtConverter );
+	g_pWICFactory->CreateFormatConverter( &mFmtConverter );
 
-	m_FmtConverter->Initialize( bitmapFrameDecode,
+	mFmtConverter->Initialize( bitmapFrameDecode,
 		GUID_WICPixelFormat32bppPBGRA,
 		WICBitmapDitherTypeNone,
 		nullptr,
@@ -126,7 +126,7 @@ NND2DTexture::NND2DTexture( char *buf, int size )
 
 	NND2DRenderer* pD2DRenderer = static_cast<NND2DRenderer*>(NNApplication::GetInstance()->GetRenderer());
 
-	pD2DRenderer->GetHwndRenderTarget()->CreateBitmapFromWicBitmap( m_FmtConverter, nullptr, &m_D2DBitmap );
+	pD2DRenderer->GetHwndRenderTarget()->CreateBitmapFromWicBitmap( mFmtConverter, nullptr, &mD2DBitmap );
 
 	SafeRelease( bitmapDecoder );
 	SafeRelease( bitmapFrameDecode );
@@ -138,8 +138,8 @@ NND2DTexture::~NND2DTexture()
 }
 void NND2DTexture::Destroy()
 {
-	SafeRelease( m_D2DBitmap );
-	SafeRelease( m_FmtConverter );
+	SafeRelease( mD2DBitmap );
+	SafeRelease( mFmtConverter );
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -154,7 +154,7 @@ NND3DTexture::NND3DTexture( std::wstring path )
 {
 	NND3DRenderer* pD3DRenderer = static_cast<NND3DRenderer*>(NNApplication::GetInstance()->GetRenderer());
 
-	m_Path = path;
+	mPath = path;
 
 	D3DXCreateTextureFromFileEx( pD3DRenderer->GetDevice(), path.c_str(), D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2,
 		1, 0, D3DFMT_FROM_FILE, D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, NULL, NULL, NULL, &mTexture );

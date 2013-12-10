@@ -19,23 +19,23 @@ NNUISet::~NNUISet()
 
 void NNUISet::Render()
 {
-	if ( m_Visible == false ) return;\
+	if ( mVisible == false ) return;\
 
-	m_Matrix = NNMatrix::Translate( -m_Center.GetX(), -m_Center.GetY() )* 
-		NNMatrix::Rotation( m_Rotation ) *
-		NNMatrix::Scale( m_ScaleX, m_ScaleY ) *
-		NNMatrix::Translate( m_Position.GetX(), m_Position.GetY() );
+	mMatrix = NNMatrix::Translate( -mCenter.GetX(), -mCenter.GetY() )* 
+		NNMatrix::Rotation( mRotation ) *
+		NNMatrix::Scale( mScaleX, mScaleY ) *
+		NNMatrix::Translate( mPosition.GetX(), mPosition.GetY() );
 
-	for (const auto& child : m_ChildList )
+	for (const auto& child : mChildList )
 	{
 		child->Render();
 	}
 }
 void NNUISet::Update( float dTime )
 {
-	if ( m_Visible == false ) return;
+	if ( mVisible == false ) return;
 
-	for (const auto& child : m_ChildList)
+	for (const auto& child : mChildList)
 	{
 		child->Update( dTime );
 	}

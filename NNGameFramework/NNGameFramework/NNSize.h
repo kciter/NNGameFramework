@@ -19,16 +19,16 @@
 class NNSize
 {
 private:
-	float m_Width;
-	float m_Height;
+	float mWidth;
+	float mHeight;
 
 public:
 	NNSize() 
-		: m_Width(0.f), m_Height(0.f) {}
+		: mWidth(0.f), mHeight(0.f) {}
 	NNSize( float width, float height )
-		: m_Width(width), m_Height(height) {}
+		: mWidth(width), mHeight(height) {}
 	NNSize( NNSize& size )
-		: m_Width(size.GetWidth()), m_Height(size.GetHeight()) {}
+		: mWidth(size.GetWidth()), mHeight(size.GetHeight()) {}
 	/* 생성자 */
 	~NNSize() {}
 	/* 소멸자 */
@@ -43,18 +43,18 @@ public:
 	/* 연산자 오버로딩 */
 
 public:
-	inline float GetWidth() const { return m_Width; }
+	inline float GetWidth() const { return mWidth; }
 	/* 사각형의 너비 */
-	inline float GetHeight() const { return m_Height; }
+	inline float GetHeight() const { return mHeight; }
 	/* 사각형의 높이 */
 
-	void SetWidth( float width ) { m_Width = width; }
+	void SetWidth( float width ) { mWidth = width; }
 	/* 사각형의 너비를 설정하는 함수 */
-	void SetHeight( float height) { m_Height = height; }
+	void SetHeight( float height) { mHeight = height; }
 	/* 사각형의 높이를 설정하는 함수 */
 	void SetSize( float width, float height ) {
-		m_Width = width;
-		m_Height = height;
+		mWidth = width;
+		mHeight = height;
 	}
 	/* 사각형의 크기를 설정하는 함수 */
 	void SetSize( NNSize& size ) { *this = size; }

@@ -11,38 +11,38 @@
 #include "NNRandom.h"
 
 NNParticleSystem::NNParticleSystem()
-	: m_IsCreate(true), m_CreateParticlePerSecond(180),
-	m_MinLifeTime(1.f), m_MaxLifeTime(1.f),
-	m_MinStartSpeed(100.f), m_MaxStartSpeed(100.f),
-	m_MinEndSpeed(200.f), m_MaxEndSpeed(200.f),
-	m_MinStartRotationSpeed(30.f), m_MaxStartRotationSpeed(30.f),
-	m_MinEndRotationSpeed(90.f), m_MaxEndRotationSpeed(90.f),
-	m_MinStartScaleX(1.f), m_MaxStartScaleX(1.f),
-	m_MinStartScaleY(1.f), m_MaxStartScaleY(1.f),
-	m_MinEndScaleX(2.f), m_MaxEndScaleX(2.f),
-	m_MinEndScaleY(2.f), m_MaxEndScaleY(2.f),
-	m_Direction(0.f), m_SpreadDegree(360.f),
-	m_MinStartRadiusX(0.f), m_MaxStartRadiusX(0.f),
-	m_MinStartRadiusY(0.f), m_MaxStartRadiusY(0.f),
-	m_MinStartColor(255,255,255,1.f), m_MaxStartColor(255,255,255,1.f),
-	m_MinEndColor(0,0,0,0.f), m_MaxEndColor(0,0,0,0.f),
-	m_Timer(0.f), m_PoolCount(0), m_ParticlePool(nullptr)
+	: mIsCreate(true), mCreateParticlePerSecond(180),
+	mMinLifeTime(1.f), mMaxLifeTime(1.f),
+	mMinStartSpeed(100.f), mMaxStartSpeed(100.f),
+	mMinEndSpeed(200.f), mMaxEndSpeed(200.f),
+	mMinStartRotationSpeed(30.f), mMaxStartRotationSpeed(30.f),
+	mMinEndRotationSpeed(90.f), mMaxEndRotationSpeed(90.f),
+	mMinStartScaleX(1.f), mMaxStartScaleX(1.f),
+	mMinStartScaleY(1.f), mMaxStartScaleY(1.f),
+	mMinEndScaleX(2.f), mMaxEndScaleX(2.f),
+	mMinEndScaleY(2.f), mMaxEndScaleY(2.f),
+	mDirection(0.f), mSpreadDegree(360.f),
+	mMinStartRadiusX(0.f), mMaxStartRadiusX(0.f),
+	mMinStartRadiusY(0.f), mMaxStartRadiusY(0.f),
+	mMinStartColor(255,255,255,1.f), mMaxStartColor(255,255,255,1.f),
+	mMinEndColor(0,0,0,0.f), mMaxEndColor(0,0,0,0.f),
+	mTimer(0.f), mPoolCount(0), mParticlePool(nullptr)
 {
 }
 
 NNParticleSystem::~NNParticleSystem()
 {
-	for ( const auto& iter : m_ParticleList )
+	for ( const auto& iter : mParticleList )
 	{
 		delete iter;
 	}
-	m_ParticleList.clear();
+	mParticleList.clear();
 }
 
 NNParticleSystem* NNParticleSystem::Create( std::wstring path )
 {
 	NNParticleSystem* pInstance = new NNParticleSystem();
-	pInstance->m_TexturePath = path;
+	pInstance->mTexturePath = path;
 
 	return pInstance;
 }
@@ -51,7 +51,7 @@ void NNParticleSystem::Render()
 {
 	NNObject::Render();
 
-	for ( const auto& iter : m_ParticleList )
+	for ( const auto& iter : mParticleList )
 	{
 		iter->Render();
 	}
@@ -61,27 +61,27 @@ void NNParticleSystem::Update( float dTime )
 {
 	NNObject::Update( dTime );
 
-	if ( m_IsCreate == true )
+	if ( mIsCreate == true )
 	{
-		m_Timer += dTime;
-		if ( m_Timer >= 1.f/m_CreateParticlePerSecond)
+		mTimer += dTime;
+		if ( mTimer >= 1.f/mCreateParticlePerSecond)
 		{
-			for (int i=0; i< 2*dTime*m_CreateParticlePerSecond/(m_MinLifeTime+m_MaxLifeTime); i++ )
+			for (int i=0; i< 2*dTime*mCreateParticlePerSecond/(mMinLifeTime+mMaxLifeTime); i++ )
 			{
 				CreateParticle();
 			}
-			m_Timer = 0.f;
+			mTimer = 0.f;
 		}
 	}
 
-	for (auto& iter=m_ParticleList.begin(); iter!=m_ParticleList.end(); iter++ )
+	for (auto& iter=mParticleList.begin(); iter!=mParticleList.end(); iter++ )
 	{
 		(*iter)->Update( dTime );
 		if ( (*iter)->GetNowLifeTime() > (*iter)->GetLifeTime() )
 		{
 			delete *iter;
-			iter = m_ParticleList.erase( iter );
-			if ( iter == m_ParticleList.end() )
+			iter = mParticleList.erase( iter );
+			if ( iter == mParticleList.end() )
 			{
 				break;
 			}
@@ -91,40 +91,40 @@ void NNParticleSystem::Update( float dTime )
 
 void NNParticleSystem::CreateParticle()
 {
-	NNParticle* pInstance = NNParticle::Create( m_TexturePath );
+	NNParticle* pInstance = NNParticle::Create( mTexturePath );
 
-	pInstance->SetParentMatrix( this->m_Matrix );
+	pInstance->SetParentMatrix( this->mMatrix );
 	
-	float tempDirection = NNDegreeToRadian(NNRandom::NextFloat(m_Direction-m_SpreadDegree/2.f,m_Direction+m_SpreadDegree/2.f));
+	float tempDirection = NNDegreeToRadian(NNRandom::NextFloat(mDirection-mSpreadDegree/2.f,mDirection+mSpreadDegree/2.f));
 	pInstance->SetPosition(
-		NNRandom::NextFloat(m_MinStartRadiusX, m_MaxStartRadiusX)*cos(tempDirection),
-		NNRandom::NextFloat(m_MinStartRadiusX, m_MaxStartRadiusX)*sin(tempDirection) );
+		NNRandom::NextFloat(mMinStartRadiusX, mMaxStartRadiusX)*cos(tempDirection),
+		NNRandom::NextFloat(mMinStartRadiusX, mMaxStartRadiusX)*sin(tempDirection) );
 
-	pInstance->SetStartSpeed( NNRandom::NextFloat(m_MinStartSpeed, m_MaxStartSpeed) );
-	pInstance->SetEndSpeed( NNRandom::NextFloat(m_MinEndSpeed, m_MaxEndSpeed) );
+	pInstance->SetStartSpeed( NNRandom::NextFloat(mMinStartSpeed, mMaxStartSpeed) );
+	pInstance->SetEndSpeed( NNRandom::NextFloat(mMinEndSpeed, mMaxEndSpeed) );
 
-	pInstance->SetStartScaleX( NNRandom::NextFloat(m_MinStartScaleX, m_MaxStartScaleX) );
-	pInstance->SetStartScaleY( NNRandom::NextFloat(m_MinStartScaleY, m_MaxStartScaleY) );
-	pInstance->SetEndScaleX( NNRandom::NextFloat(m_MinEndScaleX, m_MaxEndScaleX) );
-	pInstance->SetEndScaleY( NNRandom::NextFloat(m_MinEndScaleY, m_MaxEndScaleY) );
+	pInstance->SetStartScaleX( NNRandom::NextFloat(mMinStartScaleX, mMaxStartScaleX) );
+	pInstance->SetStartScaleY( NNRandom::NextFloat(mMinStartScaleY, mMaxStartScaleY) );
+	pInstance->SetEndScaleX( NNRandom::NextFloat(mMinEndScaleX, mMaxEndScaleX) );
+	pInstance->SetEndScaleY( NNRandom::NextFloat(mMinEndScaleY, mMaxEndScaleY) );
 
-	pInstance->SetStartRotationSpeed( NNRandom::NextFloat(m_MinStartRotationSpeed, m_MaxStartRotationSpeed) );
-	pInstance->SetEndRotationSpeed( NNRandom::NextFloat(m_MinEndRotationSpeed, m_MaxEndRotationSpeed) );
+	pInstance->SetStartRotationSpeed( NNRandom::NextFloat(mMinStartRotationSpeed, mMaxStartRotationSpeed) );
+	pInstance->SetEndRotationSpeed( NNRandom::NextFloat(mMinEndRotationSpeed, mMaxEndRotationSpeed) );
 
-	pInstance->SetDirection( NNRandom::NextFloat(m_Direction-m_SpreadDegree/2.f, m_Direction+m_SpreadDegree/2.f) );
+	pInstance->SetDirection( NNRandom::NextFloat(mDirection-mSpreadDegree/2.f, mDirection+mSpreadDegree/2.f) );
 
-	pInstance->SetLifeTime( NNRandom::NextFloat(m_MinLifeTime, m_MaxLifeTime) );
+	pInstance->SetLifeTime( NNRandom::NextFloat(mMinLifeTime, mMaxLifeTime) );
 
 	pInstance->SetStartRGBA( 
-		NNRandom::NextInt(m_MinStartColor.GetRed(), m_MaxStartColor.GetRed()),
-		NNRandom::NextInt(m_MinStartColor.GetGreen(), m_MaxStartColor.GetGreen()),
-		NNRandom::NextInt(m_MinStartColor.GetBlue(), m_MaxStartColor.GetBlue()),
-		NNRandom::NextInt(m_MinStartColor.GetAlpha(), m_MaxStartColor.GetAlpha()) );
+		NNRandom::NextInt(mMinStartColor.GetRed(), mMaxStartColor.GetRed()),
+		NNRandom::NextInt(mMinStartColor.GetGreen(), mMaxStartColor.GetGreen()),
+		NNRandom::NextInt(mMinStartColor.GetBlue(), mMaxStartColor.GetBlue()),
+		NNRandom::NextInt(mMinStartColor.GetAlpha(), mMaxStartColor.GetAlpha()) );
 	pInstance->SetEndRGBA( 
-		NNRandom::NextInt(m_MinEndColor.GetRed(), m_MaxEndColor.GetRed()),
-		NNRandom::NextInt(m_MinEndColor.GetGreen(), m_MaxEndColor.GetGreen()),
-		NNRandom::NextInt(m_MinEndColor.GetBlue(), m_MaxEndColor.GetBlue()),
-		NNRandom::NextInt(m_MinEndColor.GetAlpha(), m_MaxEndColor.GetAlpha()) );
+		NNRandom::NextInt(mMinEndColor.GetRed(), mMaxEndColor.GetRed()),
+		NNRandom::NextInt(mMinEndColor.GetGreen(), mMaxEndColor.GetGreen()),
+		NNRandom::NextInt(mMinEndColor.GetBlue(), mMaxEndColor.GetBlue()),
+		NNRandom::NextInt(mMinEndColor.GetAlpha(), mMaxEndColor.GetAlpha()) );
 
-	m_ParticleList.push_back( pInstance );
+	mParticleList.push_back( pInstance );
 }
