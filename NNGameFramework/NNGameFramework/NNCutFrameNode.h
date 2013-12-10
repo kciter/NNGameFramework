@@ -3,6 +3,7 @@
 
 #include "NNObject.h"
 #include "NNSpriteAtlas.h"
+#include <string>
 
 class NNCutFrameNode : public NNObject
 {
@@ -14,7 +15,7 @@ public:
 	void Render();
 	void Update( float dTime );
 
-	static NNCutFrameNode* Create( wchar_t* path, NNSize size );
+	static NNCutFrameNode* Create( std::wstring path, NNSize size );
 
 	NNSpriteAtlas* GetSpriteAtlas() const { return mSpriteAtlas; }
 	float GetFrameTime() const { return mFrameTime; }
