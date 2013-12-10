@@ -11,28 +11,10 @@
 
 NNSize& NNSize::operator= ( const NNSize& size )
 {
-	this->SetSize( size.GetWidth(), size.GetHeight() );
+	this->SetSize( size.GetX(), size.GetY(), size.GetWidth(), size.GetHeight() );
 	return *this;
-}
-NNSize NNSize::operator+( const NNSize& size ) const
-{
-	return NNSize( this->mWidth+size.GetWidth(), this->mHeight+size.GetHeight() );
-}
-NNSize NNSize::operator-( const NNSize& size ) const
-{
-	return NNSize( this->mWidth-size.GetWidth(), this->mHeight-size.GetHeight() );
 }
 NNSize NNSize::operator-() const
 {
-	return NNSize( -this->mWidth, -this->mHeight );
+	return NNSize( -this->mX, -this->mY, -this->mWidth, -this->mHeight );
 }
-NNSize NNSize::operator*( float n ) const
-{
-	return NNSize( this->mWidth*n, this->mHeight*n );
-}
-NNSize NNSize::operator/( float n ) const
-{
-	return NNSize( this->mWidth/n, this->mHeight/n );
-}
-
-
