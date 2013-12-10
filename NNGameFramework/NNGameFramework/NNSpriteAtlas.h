@@ -16,6 +16,8 @@
 #include "NND2DRenderer.h"
 #include "NND3DRenderer.h"
 
+#include "NNSize.h"
+
 class NNSpriteAtlas : public NNObject
 {
 public:
@@ -39,14 +41,15 @@ public:
 	void SetImageWidth( float width ) { mImageWidth = width; }
 	void SetImageHeight( float height ) { mImageHeight = height; }
 	void SetOpacity( float opacity ) { mOpacity = opacity; }
-	void SetCutSize( float leftX, float topY, float rightX, float bottomY ) { mCutLeftX=leftX; mCutTopY=topY; mCutRightX=rightX; mCutBottomY=bottomY; }
+	void SetCutSize( NNSize size ) { mSize = size; }
+	void SetCutSize( float x, float y, float width, float height ) { mSize = NNSize(x,y,width,height); }
 
 protected:
 	float mImageWidth;
 	float mImageHeight;
 	float mColorR, mColorG, mColorB;
 	float mOpacity;
-	float mCutLeftX, mCutTopY, mCutRightX, mCutBottomY;
+	NNSize mSize;
 };
 
 class NND2DSpriteAtlas : public NNSpriteAtlas

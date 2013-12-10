@@ -95,8 +95,8 @@ void NND2DSpriteAtlas::Render()
 	mpD2DRenderer->GetHwndRenderTarget()->SetTransform( mD2DMatrix );
 	mpD2DRenderer->GetHwndRenderTarget()->DrawBitmap( 
 		//mpD2DTexture->GetD2DBitmap(), D2D1::RectF(mCutLeftX,mCutTopY,mCutRightX,mCutBottomY),
-		mpD2DTexture->GetD2DBitmap(), D2D1::RectF(0,0,mCutRightX-mCutLeftX,mCutBottomY-mCutTopY),
-		mOpacity, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, D2D1::RectF(mCutLeftX,mCutTopY,mCutRightX,mCutBottomY) );
+		mpD2DTexture->GetD2DBitmap(), D2D1::RectF(0,0,mSize.GetWidth()-mSize.GetX(),mSize.GetHeight()-mSize.GetY()),
+		mOpacity, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, D2D1::RectF(mSize.GetX(),mSize.GetY(),mSize.GetWidth(),mSize.GetHeight()) );
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -148,10 +148,10 @@ void NND3DSpriteAtlas::Render()
 	mD3DMatrix._21 = mMatrix._21; mD3DMatrix._22 = mMatrix._22;
 	mD3DMatrix._41 = mMatrix._31; mD3DMatrix._42 = mMatrix._32;
 
-	mRect.left = (LONG)mCutLeftX;
-	mRect.top = (LONG)mCutTopY;
-	mRect.right = (LONG)mCutRightX;
-	mRect.bottom = (LONG)mCutBottomY;
+	mRect.left = (LONG)mSize.GetX();
+	mRect.top = (LONG)mSize.GetY();
+	mRect.right = (LONG)mSize.GetWidth();
+	mRect.bottom = (LONG)mSize.GetHeight();
 
 	mpD3DRenderer->GetSprite()->Begin( D3DXSPRITE_ALPHABLEND );
 	mpD3DRenderer->GetSprite()->SetTransform( &mD3DMatrix );
