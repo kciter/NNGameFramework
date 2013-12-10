@@ -3,8 +3,9 @@
  * NNAnimation.cpp
  * 작성자: 이선협
  * 작성일: 2013. 11. 08
- * 마지막으로 수정한 사람: 김지환
- * 수정 이유: GetPlayTime()함수 추가 - 애니메이션의 재생 시간을 구함.
+ * 마지막으로 수정한 사람: 이선협
+ * 수정 이유: 네이밍 변경 Sprite -> Frame
+ *			  SetFrameRate 네이밍 변경 SetFrameRate -> SetFrameTimeInSection
  * 수정일: 2013. 12. 10
  */
 
@@ -17,25 +18,25 @@ NNAnimation::NNAnimation()
 }
 NNAnimation::~NNAnimation()
 {
-	for (auto& iter=mSpriteList.begin(); iter!=mSpriteList.end(); iter++ )
+	for (auto& iter=mFrameList.begin(); iter!=mFrameList.end(); iter++ )
 	{
 		SafeDelete(*iter);
 	}
-	mSpriteList.clear();
+	mFrameList.clear();
 }
 
-NNAnimation* NNAnimation::Create( int count, float frameRate, ... )
+NNAnimation* NNAnimation::Create( int count, float frameTime, ... )
 {
 	NNAnimation* pInstance = new NNAnimation();
 
 	va_list ap;
-	va_start( ap, frameRate );
+	va_start( ap, frameTime );
 
 	for (int i=0; i<count; i++ )
 	{
 		NNFrameNode* spriteInstance = NNFrameNode::Create( va_arg( ap, wchar_t* ) );
-		pInstance->mSpriteList.push_back( spriteInstance );
-		pInstance->mSpriteList[i]->SetFrameTime( frameRate );
+		pInstance->mFrameList.push_back( spriteInstance );
+		pInstance->mFrameList[i]->SetFrameTime( frameTime );
 		spriteInstance->SetParent( pInstance );
 		//pInstance->AddChild( spriteInstance );
 	}
@@ -52,11 +53,11 @@ NNAnimation* NNAnimation::Create()
 	return pInstance;
 }
 
-void NNAnimation::AddSpriteNode( wchar_t* path )
+void NNAnimation::AddFrameNode( wchar_t* path )
 {
 	NNFrameNode* spriteInstance = NNFrameNode::Create( path);
 	mFrameCount++;
-	mSpriteList.push_back( spriteInstance );
+	mFrameList.push_back( spriteInstance );
 	spriteInstance->SetParent( this );
 	//AddChild( spriteInstance );
 }
@@ -67,7 +68,7 @@ void NNAnimation::Render()
 
 	NNObject::Render();
 
-	mSpriteList[mFrame]->Render();
+	mFrameList[mFrame]->Render();
 }
 void NNAnimation::Update( float dTime )
 {
@@ -77,7 +78,7 @@ void NNAnimation::Update( float dTime )
 
 	mTime += dTime;
 
-	if ( mTime >= mSpriteList[mFrame]->GetFrameTime() )
+	if ( mTime >= mFrameList[mFrame]->GetFrameTime() )
 	{
 		++mFrame;
 		mTime = 0.f;
@@ -93,10 +94,10 @@ void NNAnimation::Update( float dTime )
 	}
 }
 
-void NNAnimation::SetFrameRate( float time, int index1, int index2 )
+void NNAnimation::SetFrameTimeInSection( float frameRate, int start, int end )
 {
-	for (; index1 <= index2; ++index1)
-		mSpriteList[index1]->SetFrameTime(time);
+	for (; start <= end; ++start)
+		mFrameList[start]->SetFrameTime(frameRate);
 }
 
 float NNAnimation::GetPlayTime()
@@ -104,7 +105,7 @@ float NNAnimation::GetPlayTime()
 	float result = 0.f;
 
 	for ( int i=0; i< mFrameCount; ++i)
-		result += mSpriteList[i]->GetFrameTime();
+		result += mFrameList[i]->GetFrameTime();
 
 	return result;
 }

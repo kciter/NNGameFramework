@@ -3,7 +3,7 @@
  * NNAnimationNode.h
  * 작성자: 이선협
  * 작성일: 2013. 11. 08
- * 마지막으로 수정한 사람: 김지환
+ * 마지막으로 수정한 사람: 이선협
  * 수정일: 2013. 12. 10
  */
 
@@ -30,15 +30,16 @@ public:
 	int GetNowFrame() const { return mFrame; }
 	bool IsLoop() const { return mLoop; }
 
-	void AddSpriteNode( wchar_t* path );
+	void AddFrameNode( wchar_t* path );
 	void SetLoop( bool loop ) { mLoop = loop; }
 
-	void SetFrameRate(float time, int index1, int index2);
+	void SetFrameTimeInSection(float frameRate, int start, int end);
 	float GetPlayTime();
-	std::vector<NNFrameNode*> GetSpriteList() { return mSpriteList; }
+	std::vector<NNFrameNode*> GetFrameList() { return mFrameList; }
+	NNFrameNode* GetFrame( int index ) { return mFrameList[index]; }
 
 private:
-	std::vector<NNFrameNode*> mSpriteList;
+	std::vector<NNFrameNode*> mFrameList;
 
 	int mFrameCount;
 	int mFrame;
