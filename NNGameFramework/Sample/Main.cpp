@@ -1,4 +1,3 @@
-
 #include "NNApplication.h"
 
 #include "SpriteSample.h"
@@ -37,7 +36,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	Application->Init( L"Sample", 800, 600, D2D );
 
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );
-	// NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
+	 NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( XMLSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( CameraSample::Create() );
@@ -46,7 +45,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	// NNSceneDirector::GetInstance()->ChangeScene( UISetSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( TestSample::Create() );
-	 NNSceneDirector::GetInstance()->ChangeScene( LabelSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( LabelSample::Create() );
 
 	Application->Run();
 	Application->Release();

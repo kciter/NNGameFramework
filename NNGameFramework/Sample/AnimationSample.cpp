@@ -10,7 +10,7 @@ AnimationSample::~AnimationSample()
 
 void AnimationSample::Init()
 {
-	m_Animation = NNAnimation::Create( 3, L"Resources/Texture/z1.png",
+	m_Animation = NNAnimation::Create( 3, 0.1f, L"Resources/Texture/z1.png",
 		L"Resources/Texture/z2.png", 
 		L"Resources/Texture/z3.png");
 

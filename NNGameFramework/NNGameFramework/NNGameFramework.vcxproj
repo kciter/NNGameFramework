@@ -46,7 +46,7 @@
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
     <OutDir>$(SolutionDir)lib\</OutDir>
     <TargetName>$(ProjectName)_DEBUG</TargetName>
-    <IncludePath>$(IncludePath)</IncludePath>
+    <IncludePath>..\NNGameFramework\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
