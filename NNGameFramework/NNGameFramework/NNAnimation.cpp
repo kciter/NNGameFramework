@@ -28,7 +28,7 @@ NNAnimation* NNAnimation::Create( int count, float frameRate, ... )
 	NNAnimation* pInstance = new NNAnimation();
 
 	va_list ap;
-	va_start( ap, count );
+	va_start( ap, frameRate );
 
 	for (int i=0; i<count; i++ )
 	{
