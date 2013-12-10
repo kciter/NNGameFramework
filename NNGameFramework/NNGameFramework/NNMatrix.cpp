@@ -59,8 +59,8 @@ NNMatrix NNMatrix::Translate( float x, float y )
 NNMatrix NNMatrix::Rotation( float angle )
 {
 	NNMatrix instance;
-	instance._11 = cos(angle); instance._12 = -sin(angle);
-	instance._21 = sin(angle); instance._22 = cos(angle);
+	instance._11 = cos(angle); instance._12 = sin(angle);
+	instance._21 = -sin(angle); instance._22 = cos(angle);
 	instance._31 = 0.0f; instance._32 = 0.0f;
 	return instance;
 }
