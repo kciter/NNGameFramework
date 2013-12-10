@@ -19,7 +19,7 @@ NNUISet::~NNUISet()
 
 void NNUISet::Render()
 {
-	if ( mVisible == false ) return;\
+	if ( mVisible == false ) return;
 
 	mMatrix = NNMatrix::Translate( -mCenter.GetX(), -mCenter.GetY() )* 
 		NNMatrix::Rotation( mRotation ) *
