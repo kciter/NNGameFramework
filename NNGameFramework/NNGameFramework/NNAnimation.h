@@ -34,6 +34,7 @@ public:
 	void SetLoop( bool loop ) { mLoop = loop; }
 
 	void SetFrameRate(float time, int index1, int index2);
+	float GetPlayTime();
 	std::vector<NNFrameNode*> GetSpriteList() { return mSpriteList; }
 
 private:

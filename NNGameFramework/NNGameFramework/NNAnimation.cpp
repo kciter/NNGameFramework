@@ -4,6 +4,7 @@
  * 작성자: 이선협
  * 작성일: 2013. 11. 08
  * 마지막으로 수정한 사람: 김지환
+ * 수정 이유: GetPlayTime()함수 추가 - 애니메이션의 재생 시간을 구함.
  * 수정일: 2013. 12. 10
  */
 
@@ -96,4 +97,14 @@ void NNAnimation::SetFrameRate( float time, int index1, int index2 )
 {
 	for (; index1 <= index2; ++index1)
 		mSpriteList[index1]->SetFrameTime(time);
+}
+
+float NNAnimation::GetPlayTime()
+{
+	float result = 0.f;
+
+	for ( int i=0; i< mFrameCount; ++i)
+		result += mSpriteList[i]->GetFrameTime();
+
+	return result;
 }
