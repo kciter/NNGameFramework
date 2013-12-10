@@ -21,14 +21,18 @@ public:
 	NNXML();
 	~NNXML();
 
+public:
+	TiXmlString XPathToString( std::string xpath );
+	TiXmlDocument* GetDoc(){ return &mDocument; }
+
+private:
 	static NNXML* Create( std::string path );
 	static NNXML* Create();
 	static NNXML* CreateStream( char* buf );
 
-	TiXmlString XPathToString( std::string xpath );
-	TiXmlDocument* GetDoc(){ return &mDocument; }
 private:
 	TiXmlDocument mDocument;
-
 	bool mLoadSuccess;
+
+	friend class NNResourceManager;
 };

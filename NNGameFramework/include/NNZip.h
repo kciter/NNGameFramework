@@ -15,13 +15,17 @@ public:
 	NNZip(char *buf, int size);
 	~NNZip(void);
 
-	static NNZip *Create(char *buf, int size);
-
+public:
 	char *GetBuffer() { return mbuf; }
 	int GetSize() { return msize; }
 
 private:
+	static NNZip *Create(char *buf, int size);
+
+private:
 	char *mbuf;
 	int msize;
+
+	friend class NNResourceManager;
 };
 

@@ -85,7 +85,7 @@ protected:
 	NNPoint mCenter;
 	float mScaleX;
 	float mScaleY;
-	float mRotation; // Degree
+	float mRotation; // Radian
 	NNSize mSize;
 	int mZindex;
 	int mZindexCount;
