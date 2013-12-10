@@ -15,12 +15,8 @@
     <ClCompile Include="CameraSample.cpp" />
     <ClCompile Include="FMODSoundSample.cpp" />
     <ClCompile Include="LabelSample.cpp" />
-    <ClCompile Include="LoginHandler.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MoveBroadcastHandler.cpp" />
-    <ClCompile Include="NetworkSample.cpp" />
     <ClCompile Include="ParticleSample.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpriteAtlasSample.cpp" />
     <ClCompile Include="SpriteSample.cpp" />
     <ClCompile Include="TestSample.cpp" />
@@ -34,11 +30,7 @@
     <ClInclude Include="CameraSample.h" />
     <ClInclude Include="FMODSoundSample.h" />
     <ClInclude Include="LabelSample.h" />
-    <ClInclude Include="NetworkSample.h" />
-    <ClInclude Include="PacketHandler.h" />
-    <ClInclude Include="PacketType.h" />
     <ClInclude Include="ParticleSample.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="SpriteAtlasSample.h" />
     <ClInclude Include="SpriteSample.h" />
     <ClInclude Include="TestSample.h" />

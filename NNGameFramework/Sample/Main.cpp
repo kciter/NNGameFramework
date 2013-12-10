@@ -7,7 +7,6 @@
 #include "SpriteAtlasSample.h"
 #include "CameraSample.h" 
 #include "FMODSoundSample.h"
-#include "NetworkSample.h"
 #include "UISetSample.h"
 #include "ParticleSample.h"
 #include "TestSample.h"
@@ -35,9 +34,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 
 	NNApplication* Application = NNApplication::GetInstance();
 
-	Application->Init( L"Sample", 800, 600, D3D );
+	Application->Init( L"Sample", 800, 600, D2D );
 
-	// NNSceneDirector::GetInstance()->ChangeScene( NetworkSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( XMLSample::Create() );
@@ -46,9 +44,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	// NNSceneDirector::GetInstance()->ChangeScene( FMODSoundSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( ZipSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( UISetSample::Create() );
-	 NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( ParticleSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( TestSample::Create() );
-	// NNSceneDirector::GetInstance()->ChangeScene( LabelSample::Create() );
+	 NNSceneDirector::GetInstance()->ChangeScene( LabelSample::Create() );
 
 	Application->Run();
 	Application->Release();

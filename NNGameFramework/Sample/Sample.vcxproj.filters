@@ -22,18 +22,6 @@
     <Filter Include="Scene\XMLSample">
       <UniqueIdentifier>{ff464720-f472-4487-b945-7ad81b6ea0f0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\NetworkSample">
-      <UniqueIdentifier>{327f9d51-2e63-4ba9-90f4-d2d81f4173a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\NetworkSample\PacketHandler">
-      <UniqueIdentifier>{43b7adc5-241d-4e75-a172-fe3d510f38ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\NetworkSample\PacketType">
-      <UniqueIdentifier>{b9bfe511-caa5-4a9c-9ff9-dad06b757325}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\NetworkSample\Player">
-      <UniqueIdentifier>{2f39f06d-4a72-46ef-9ebe-9e82dd378fb4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\ParticleSample">
       <UniqueIdentifier>{02ffd270-ce42-477c-aa27-bdc49d44863c}</UniqueIdentifier>
     </Filter>
@@ -69,18 +57,6 @@
     </ClCompile>
     <ClCompile Include="SpriteSample.cpp">
       <Filter>Scene\SpriteSample</Filter>
-    </ClCompile>
-    <ClCompile Include="NetworkSample.cpp">
-      <Filter>Scene\NetworkSample</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginHandler.cpp">
-      <Filter>Scene\NetworkSample\PacketHandler</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveBroadcastHandler.cpp">
-      <Filter>Scene\NetworkSample\PacketHandler</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Scene\NetworkSample\Player</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSample.cpp">
       <Filter>Scene\ParticleSample</Filter>
@@ -119,18 +95,6 @@
     </ClInclude>
     <ClInclude Include="SpriteSample.h">
       <Filter>Scene\SpriteSample</Filter>
-    </ClInclude>
-    <ClInclude Include="NetworkSample.h">
-      <Filter>Scene\NetworkSample</Filter>
-    </ClInclude>
-    <ClInclude Include="PacketHandler.h">
-      <Filter>Scene\NetworkSample\PacketHandler</Filter>
-    </ClInclude>
-    <ClInclude Include="PacketType.h">
-      <Filter>Scene\NetworkSample\PacketType</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Scene\NetworkSample\Player</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSample.h">
       <Filter>Scene\ParticleSample</Filter>

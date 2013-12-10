@@ -1,5 +1,6 @@
 
 #include "CameraSample.h"
+#include "NNLogger.h"
 
 CameraSample::CameraSample()
 {
@@ -28,4 +29,10 @@ void CameraSample::Render()
 void CameraSample::Update( float dTime )
 {
 	NNScene::Update(dTime);
+	NNLogger::WarningLog("э六六");
+	NNLogger::InfoLog("э六六");
+	NNLogger::ErrorLog("э六六");
+	NNLogger::TraceLog("э六六");
+	NNLogger::DebugLog("э六六");
+	NNLogger::FatalLog("э六六");
 }

@@ -7,7 +7,6 @@ SpriteSample::SpriteSample()
 }
 SpriteSample::~SpriteSample()
 {
-
 }
 
 void SpriteSample::Init()
