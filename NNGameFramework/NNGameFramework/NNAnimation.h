@@ -33,7 +33,7 @@ public:
 	void AddSpriteNode( wchar_t* path );
 	void SetLoop( bool loop ) { mLoop = loop; }
 
-	std::vector<NNFrameNode*> GetSpriteList() { return m_SpriteList; }
+	std::vector<NNFrameNode*> GetSpriteList() { return mSpriteList; }
 
 private:
 	std::vector<NNFrameNode*> mSpriteList;
