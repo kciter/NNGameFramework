@@ -23,7 +23,7 @@ public:
 	void Render();
 	void Update( float dTime );
 
-	static NNAnimation* Create( int count, float frameRate, ... );
+	static NNAnimation* Create( int count, ... );
 	static NNAnimation* Create();
 
 	int GetFrameCount() const { return mFrameCount; }
