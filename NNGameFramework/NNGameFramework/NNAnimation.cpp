@@ -91,3 +91,9 @@ void NNAnimation::Update( float dTime )
 		}
 	}
 }
+
+void NNAnimation::SetFrameRate( float time, int index1, int index2 )
+{
+	for (; index1 <= index2; ++index1)
+		mSpriteList[index1]->SetFrameTime(time);
+}

@@ -33,6 +33,7 @@ public:
 	void AddSpriteNode( wchar_t* path );
 	void SetLoop( bool loop ) { mLoop = loop; }
 
+	void SetFrameRate(float time, int index1, int index2);
 	std::vector<NNFrameNode*> GetSpriteList() { return mSpriteList; }
 
 private:
