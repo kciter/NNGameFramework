@@ -3,8 +3,8 @@
  * NNAnimation.cpp
  * 작성자: 이선협
  * 작성일: 2013. 11. 08
- * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 04
+ * 마지막으로 수정한 사람: 김지환
+ * 수정일: 2013. 12. 10
  */
 
 #include "NNAnimation.h"
@@ -23,7 +23,7 @@ NNAnimation::~NNAnimation()
 	m_SpriteList.clear();
 }
 
-NNAnimation* NNAnimation::Create( int count, float frameRate... )
+NNAnimation* NNAnimation::Create( int count, float frameRate, ... )
 {
 	NNAnimation* pInstance = new NNAnimation();
 
