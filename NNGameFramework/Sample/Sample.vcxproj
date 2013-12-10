@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationAtlasSample.cpp" />
     <ClCompile Include="AnimationSample.cpp" />
     <ClCompile Include="CameraSample.cpp" />
     <ClCompile Include="FMODSoundSample.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="ZipSample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationAtlasSample.h" />
     <ClInclude Include="AnimationSample.h" />
     <ClInclude Include="CameraSample.h" />
     <ClInclude Include="FMODSoundSample.h" />

@@ -40,6 +40,9 @@
     <Filter Include="Scene\LabelSample">
       <UniqueIdentifier>{f06158c1-795d-4582-a776-f2b658548b7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\AnimationAtlasSample">
+      <UniqueIdentifier>{4c83b602-bf6a-460a-82c1-6af95f21eddd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -79,6 +82,9 @@
     <ClCompile Include="LabelSample.cpp">
       <Filter>Scene\LabelSample</Filter>
     </ClCompile>
+    <ClCompile Include="AnimationAtlasSample.cpp">
+      <Filter>Scene\AnimationAtlasSample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationSample.h">
@@ -116,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="LabelSample.h">
       <Filter>Scene\LabelSample</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationAtlasSample.h">
+      <Filter>Scene\AnimationAtlasSample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

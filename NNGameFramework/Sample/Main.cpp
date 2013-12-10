@@ -2,6 +2,7 @@
 
 #include "SpriteSample.h"
 #include "AnimationSample.h"
+#include "AnimationAtlasSample.h"
 #include "XMLSample.h"
 #include "SpriteAtlasSample.h"
 #include "CameraSample.h" 
@@ -36,7 +37,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdP
 	Application->Init( L"Sample", 800, 600, D2D );
 
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteSample::Create() );
-	 NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
+	// NNSceneDirector::GetInstance()->ChangeScene( AnimationSample::Create() );
+	NNSceneDirector::GetInstance()->ChangeScene( AnimationAtlasSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( XMLSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( SpriteAtlasSample::Create() );
 	// NNSceneDirector::GetInstance()->ChangeScene( CameraSample::Create() );
