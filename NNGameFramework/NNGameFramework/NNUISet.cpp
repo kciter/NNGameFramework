@@ -4,7 +4,8 @@
  * 작성자: 이선협
  * 작성일: 2013. 11. 25
  * 마지막으로 수정한 사람: 이선협
- * 수정일: 2013. 12. 05
+ * 수정이유: IsVisible과 상관없이 출력되던 문제 수정
+ * 수정일: 2013. 12. 11
  */
 
 #include "NNUISet.h"
@@ -28,7 +29,10 @@ void NNUISet::Render()
 
 	for (const auto& child : mChildList )
 	{
-		child->Render();
+		if ( child->IsVisible() == true )
+		{
+			child->Render();
+		}
 	}
 }
 void NNUISet::Update( float dTime )
@@ -37,6 +41,9 @@ void NNUISet::Update( float dTime )
 
 	for (const auto& child : mChildList)
 	{
-		child->Update( dTime );
+		if ( child->IsVisible() == true )
+		{
+			child->Update( dTime );
+		}
 	}
 }
