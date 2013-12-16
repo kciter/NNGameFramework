@@ -1,3 +1,11 @@
+/**
+* NNAnimationAtlas.cpp
+* 작성자: 이선협
+* 작성일: 2013. 
+* 마지막으로 수정한 사람: 김지환
+* 수정일: 2013. 12. 16
+* 수정 이유 : 정의만 되어있던 GetPlayTime()과 SetFrameTimeInSection() 구현.
+*/
 
 #include "NNAnimationAtlas.h"
 
@@ -73,4 +81,19 @@ NNAnimationAtlas* NNAnimationAtlas::Create( std::wstring path )
 	pInstance->mPath = path;
 
 	return pInstance;
+}
+void NNAnimationAtlas::SetFrameTimeInSection(float frameRate, int start, int end)
+{
+	for (; start <= end; ++start)
+		mFrameList[start]->SetFrameTime(frameRate);
+}
+
+float NNAnimationAtlas::GetPlayTime()
+{
+	float result = 0.f;
+
+	for (int i = 0; i < mFrameCount; ++i)
+		result += mFrameList[i]->GetFrameTime();
+
+	return result;
 }
