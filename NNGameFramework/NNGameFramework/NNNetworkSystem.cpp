@@ -51,6 +51,7 @@ void NNNetworkSystem::Destroy()
 	for (auto& iter=mPacketHandler.begin(); iter!=mPacketHandler.end(); iter++ )
 	{
 		SafeDelete( iter->second );
+		iter->second = nullptr;
 	}
 	mPacketHandler.clear();
 }
