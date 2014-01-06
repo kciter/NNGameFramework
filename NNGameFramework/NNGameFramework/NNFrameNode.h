@@ -27,6 +27,7 @@ private:
 
 	static NNFrameNode* Create( wchar_t* path );
 
+public:
 	NNSprite* GetSprite() const { return mSprite; }
 	float GetFrameTime() const { return mFrameTime; }
 
