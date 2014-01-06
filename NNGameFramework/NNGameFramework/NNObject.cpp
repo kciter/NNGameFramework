@@ -29,10 +29,10 @@ void NNObject::Render()
 {
 	if ( mVisible == false ) return;
 
-	mMatrix = NNMatrix::Translate( -mCenter.GetX(), -mCenter.GetY() ) * 
+	mMatrix = NNMatrix::Translate( (int)-mCenter.GetX(), (int)-mCenter.GetY() ) * 
 		NNMatrix::Scale( mScaleX, mScaleY ) *
 		NNMatrix::Rotation( mRotation ) *
-		NNMatrix::Translate( mPosition.GetX(), mPosition.GetY() );
+		NNMatrix::Translate( (int)mPosition.GetX(), (int)mPosition.GetY() );
 
 	if( mpParent )
 	{

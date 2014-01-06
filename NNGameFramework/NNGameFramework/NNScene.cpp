@@ -22,10 +22,10 @@ void NNScene::Render()
 {
 	if ( mVisible == false ) return;
 
-	mMatrix = NNMatrix::Translate( mCamera.GetCenterX(), mCamera.GetCenterY() ) *
+	mMatrix = NNMatrix::Translate( (int)mCamera.GetCenterX(), (int)mCamera.GetCenterY() ) *
 		NNMatrix::Scale( mCamera.GetZoom(), mCamera.GetZoom() ) *
 		NNMatrix::Rotation( mCamera.GetRotation() ) *
-		NNMatrix::Translate( -mCamera.GetPositionX(), -mCamera.GetPositionY());
+		NNMatrix::Translate( (int)-mCamera.GetPositionX(), (int)-mCamera.GetPositionY());
 
 	for (const auto& child : mChildList )
 	{
