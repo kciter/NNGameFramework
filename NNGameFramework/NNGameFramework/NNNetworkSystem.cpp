@@ -14,8 +14,8 @@ NNNetworkSystem* NNNetworkSystem::mpInstance = nullptr;
 
 NNNetworkSystem::NNNetworkSystem()
 	: mServerIP(nullptr), mPort(9001), 
-	mRecvBuffer(NNCircularBuffer(1024*4)),
-	mSendBuffer(NNCircularBuffer(1024*4))
+	mRecvBuffer(NNCircularBuffer(1024*10)),
+	mSendBuffer(NNCircularBuffer(1024*10))
 {
 }
 NNNetworkSystem::~NNNetworkSystem()
