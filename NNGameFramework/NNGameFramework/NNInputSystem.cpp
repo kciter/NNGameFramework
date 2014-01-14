@@ -84,3 +84,13 @@ NNPoint NNInputSystem::GetMousePosition()
 
 	return NNPoint((float)pt.x,(float)pt.y);
 }
+
+bool NNInputSystem::IsPressedAnyKey()
+{
+	for (int i = 0; i < sizeof(mNowKeyState) / sizeof(bool); ++i)
+	{
+		if (mNowKeyState[i] == true)
+			return true;
+	}
+	return false;
+}
